@@ -13,4 +13,14 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!--        <item name="colorPrimary">@color/colorSecondary</item>-->
+        <!--        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.SmallComponent</item>-->
+        <!--        <item name="colorSurface">@color/white</item>-->
+        <!--        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button</item>-->
+        <!--        <item name="buttonBarNegativeButtonStyle">@style/Widget.App.SecondaryButton</item>-->
+        <!--        <item name="materialAlertDialogTitleTextStyle">@style/Font.OpenSans.Bold.Large.Black</item>-->
+        <!--        <item name="materialAlertDialogBodyTextStyle">@style/Font.OpenSans.Regular.Medium.Black</item>-->
+    </style>
 </resources>
