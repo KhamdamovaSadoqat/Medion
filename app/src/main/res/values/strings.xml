@@ -5,5 +5,12 @@
     <string name="msg_unknown_error">Noma\'lum xatolik.</string>
     <string name="action_ok" translatable="false">OK</string>
     <string name="msg_cannot_connect_to_server">Bizning serverlarimiz texnik va profilaktik xizmatdan o\\\'tmoqda. Iltimos, birozdan keyin qayta urining.</string>
+    <string name="login">Login</string>
+    <string name="logo">logo</string>
+    <string name="parol">Parol</string>
+    <string name="remember_me">Remember me</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_up_with">Sign up with</string>
 
 </resources>
