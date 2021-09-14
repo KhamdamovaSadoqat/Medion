@@ -94,8 +94,7 @@
                 android:layout_height="match_parent"
                 android:background="#00FFFFFF"
                 android:hint="@string/parol"
-                android:maxLines="1"
-                max/>
+                android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
@@ -187,20 +186,14 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="8dp"
-                android:src="@drawable/google"/>
+                android:src="@drawable/ic_google"/>
 
             <ImageView
                 android:id="@+id/img_facebook"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="8dp"
-                android:padding="4dp"
-                android:src="@drawable/facebook"/>
-
-
+                android:src="@drawable/ic_facebook"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
