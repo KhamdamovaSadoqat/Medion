@@ -21,6 +21,8 @@
     <string name="submit">Submit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sms_send">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
+    <string name="resend_code">Resend code in 1:00</string>
 
 
 </resources>

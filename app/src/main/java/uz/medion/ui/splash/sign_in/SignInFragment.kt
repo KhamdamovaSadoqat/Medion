@@ -1,4 +1,4 @@
-package uz.medion.ui.splash.sign_up
+package uz.medion.ui.splash.sign_in
 
 import android.os.Bundle
 import android.util.Log
@@ -8,19 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import uz.medion.R
-import uz.medion.databinding.FragmentSignUpBinding
+import uz.medion.databinding.FragmentSignInBinding
 import uz.medion.ui.base.BaseFragment
 
-
-class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
-
+class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
 
     override fun onBound() {
         Log.d("-------------", "onBound: hello")
     }
 
-    override fun getLayoutResId() = R.layout.fragment_sign_up
-    override val vm: SignUpVM
-        get() = ViewModelProvider(this).get(SignUpVM::class.java)
+    override fun getLayoutResId() = R.layout.fragment_sign_in
+    override val vm: SignInVM
+        get() = ViewModelProvider(this).get(SignInVM::class.java)
 
 }

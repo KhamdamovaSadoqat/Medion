@@ -1,4 +1,4 @@
-package uz.medion.ui.main.user.registration.verification
+package uz.medion.ui.splash.verification
 
 import uz.medion.ui.base.BaseVM
 

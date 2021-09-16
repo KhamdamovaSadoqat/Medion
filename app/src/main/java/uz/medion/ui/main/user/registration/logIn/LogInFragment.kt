@@ -1,5 +1,6 @@
 package uz.medion.ui.main.user.registration.logIn
 
+import android.util.Log
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModelProvider
 import uz.medion.R
@@ -9,7 +10,7 @@ import uz.medion.ui.base.BaseFragment
 class LogInFragment : BaseFragment<FragmentLogInBinding, LogInVM>() {
 
     override fun onBound() {
-
+        Log.d("-------------", "onBound: hello")
     }
 
     @LayoutRes
