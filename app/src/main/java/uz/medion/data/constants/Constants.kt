@@ -3,6 +3,7 @@ package uz.medion.data.constants
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.medion.data.local.PrefsHelper
+import uz.medion.data.model.HomeItem
 
 object Constants {
 
@@ -54,4 +55,12 @@ object Constants {
     const val DENSITY_LDPI = 0.75
 
     const val MIN_HOURS_TO_SHOW_NEW_UPDATE_PROMPT: Int = 8
+
+    fun getHomeItems(): ArrayList<HomeItem> {
+        return arrayListOf(
+            HomeItem(
+
+            )
+        )
+    }
 }
