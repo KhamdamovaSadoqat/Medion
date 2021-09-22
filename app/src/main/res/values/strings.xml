@@ -19,7 +19,7 @@
     <string name="phone_number">Phone number</string>
     <string name="fill_phone_numeber">+998(__) ___-__-__</string>
     <string name="submit">Submit</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sms_send">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
     <string name="resend_code">Resend code in 1:00</string>
@@ -29,6 +29,32 @@
     <string name="about_clinic">Medical Center MEDION, located in the very center of Tashkent city, invites its clients to enjoy the best traditions of hospitality, evaluate the quality of our services, feel a sensitive attitude and an individual approach. MEDION is a path to harmony of soul and body, which is so difficult to find in the rhythm of a big city.</string>
     <string name="about_our_center">About our center</string>
     <string name="image">image</string>
+
+    <string name="lor">lor</string>
+    <string name="ginecology">ginecology</string>
+    <string name="pediatr">pediatr</string>
+    <string name="neuralogy">neurology</string>
+    <string name="traumatology">traumatology</string>
+    <string name="cardiology">cardiology</string>
+    <string name="eko">eko</string>
+    <string name="cardio_operation">cardio operation</string>
+    <string name="urology">urology</string>
+    <string name="endocrinology">endocrinology</string>
+    <string name="allergiology">allergiology</string>
+    <string name="mammology">mammology</string>
+    <string name="dermatology">dermatology</string>
+    <string name="psychology">psychology</string>
+    <string name="pulmonology">pulmonology</string>
+    <string name="psychoterapy">psychoterapy</string>
+    <string name="medicining">medicining</string>
+    <string name="electro_encefalography">electro encefalography</string>
+    <string name="gastroenterology">gastroenterology</string>
+    <string name="uzi">uzi</string>
+    <string name="uzi_maternity">uzi maternity</string>
+    <string name="mrt">mrt</string>
+    <string name="mskt">mskt</string>
+    <string name="endoscopy">endoscopy</string>
+
 
 
 </resources>

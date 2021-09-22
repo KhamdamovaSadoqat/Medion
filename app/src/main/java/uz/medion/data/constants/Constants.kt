@@ -2,6 +2,7 @@ package uz.medion.data.constants
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import uz.medion.R
 import uz.medion.data.local.PrefsHelper
 import uz.medion.data.model.HomeItem
 
@@ -15,11 +16,11 @@ object Constants {
     var language = ""
     private val unAuthorized = MutableLiveData<Boolean>()
 
-    fun setUnAuthorized(isUnAuthorized: Boolean){
+    fun setUnAuthorized(isUnAuthorized: Boolean) {
         unAuthorized.value = isUnAuthorized
     }
 
-    fun getUnAuthorized(): LiveData<Boolean>{
+    fun getUnAuthorized(): LiveData<Boolean> {
         return unAuthorized
     }
 
@@ -56,11 +57,57 @@ object Constants {
 
     const val MIN_HOURS_TO_SHOW_NEW_UPDATE_PROMPT: Int = 8
 
+    //    <string name="lor">lor</string>
+//    <string name="ginecology">ginecology</string>
+//    <string name="pediatr">pediatr</string>
+//    <string name="neuralogy">neurology</string>
+//    <string name="traumatology">traumatology</string>
+//    <string name="cardiology">cardiology</string>
+//    <string name="eko">eko</string>
+//    <string name="cardio_operation">cardio operation</string>
+//    <string name="urology">urology</string>
+//    <string name="endocrinology">endocrinology</string>
+//    <string name="allergiology">allergiology</string>
+//    <string name="mammology">mammology</string>
+//    <string name="dermatology">dermatology</string>
+//    <string name="psychology">psychology</string>
+//    <string name="pulmonology">pulmonology</string>
+//    <string name="psychoterapy">psychoterapy</string>
+//    <string name="medicining">medicining</string>
+//    <string name="electro_encefalography">electro encefalography</string>
+//    <string name="gastroenterology">gastroenterology</string>
+//    <string name="uzi">uzi</string>
+//    <string name="uzi_maternity">uzi maternity</string>
+//    <string name="mrt">mrt</string>
+//    <string name="mskt">mskt</string>
+//    <string name="endoscopy">endoscopy</string>
+//
     fun getHomeItems(): ArrayList<HomeItem> {
         return arrayListOf(
-            HomeItem(
-
-            )
+            HomeItem(R.drawable.ic_lor, R.string.lor),
+            HomeItem(R.drawable.ic_ginecology, R.string.ginecology),
+            HomeItem(R.drawable.ic_pediatr, R.string.pediatr),
+            HomeItem(R.drawable.ic_neurolog, R.string.neuralogy),
+            HomeItem(R.drawable.ic_traumatolog, R.string.traumatology),
+            HomeItem(R.drawable.ic_cardiolog, R.string.cardiology),
+            HomeItem(R.drawable.ic_eko, R.string.eko),
+            HomeItem(R.drawable.ic_cardio_operation, R.string.cardio_operation),
+            HomeItem(R.drawable.ic_urolog, R.string.urology),
+            HomeItem(R.drawable.ic_endocrinolog, R.string.endocrinology),
+            HomeItem(R.drawable.ic_allergolog, R.string.allergiology),
+            HomeItem(R.drawable.ic_mammolog, R.string.mammology),
+            HomeItem(R.drawable.ic_dermatolog, R.string.dermatology),
+            HomeItem(R.drawable.ic_psycology, R.string.psychology),
+            HomeItem(R.drawable.ic_pulmonolog, R.string.pulmonology),
+            HomeItem(R.drawable.ic_psychoterapy, R.string.psychoterapy),
+            HomeItem(R.drawable.ic_medicining, R.string.medicining),
+            HomeItem(R.drawable.ic_electro_smth, R.string.electro_encefalography),
+            HomeItem(R.drawable.ic_gastroentesy, R.string.gastroenterology),
+            HomeItem(R.drawable.ic_uzi, R.string.uzi),
+            HomeItem(R.drawable.ic_uzi_maternity, R.string.uzi_maternity),
+            HomeItem(R.drawable.ic_mrt, R.string.mrt),
+            HomeItem(R.drawable.ic_mckt, R.string.mskt),
+            HomeItem(R.drawable.ic_endoscopy, R.string.endoscopy)
         )
     }
 }
