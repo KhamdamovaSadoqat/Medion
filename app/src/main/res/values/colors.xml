@@ -15,5 +15,7 @@
     <color name="tangaroa_900">#040609</color> //text color
     <color name="fire_brick_900_40">#66B82828</color> //main red color
     <color name="alice_blue_50">#F2F6FE</color> //home item card color
+    <color name="solitude_50">#E9EAED</color> //doctor category card color
+
 
 </resources>

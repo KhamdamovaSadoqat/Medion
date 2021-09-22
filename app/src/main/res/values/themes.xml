@@ -23,4 +23,16 @@
         <!--        <item name="materialAlertDialogTitleTextStyle">@style/Font.OpenSans.Bold.Large.Black</item>-->
         <!--        <item name="materialAlertDialogBodyTextStyle">@style/Font.OpenSans.Regular.Medium.Black</item>-->
     </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        <item name="color">@color/solitude_50</item>
+    </style>
+
 </resources>

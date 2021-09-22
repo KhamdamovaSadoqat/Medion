@@ -54,7 +54,12 @@
     <string name="mrt">mrt</string>
     <string name="mskt">mskt</string>
     <string name="endoscopy">endoscopy</string>
-
+    <string name="medical_services">Medical services</string>
+    <string name="show_all">show all</string>
+    <string name="full_name">Name Surname Father\'s name</string>
+    <string name="main_doctor_of_urology">Main Doctor of Urology</string>
+    <string name="experience"><b>22</b> years of experience</string>
+    <string name="comment"><b>64</b> comments</string>
 
 
 </resources>
