@@ -12,9 +12,14 @@ import uz.medion.ui.base.BaseFragment
 
 class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>() {
 
+//    private lateinit var categoryAdapter
 
     override fun onBound() {
         TODO("Not yet implemented")
+    }
+
+    fun setUp(){
+
     }
 
     override fun getLayoutResId() = R.layout.fragment_our_doctors

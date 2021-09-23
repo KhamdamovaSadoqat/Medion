@@ -60,6 +60,9 @@
     <string name="main_doctor_of_urology">Main Doctor of Urology</string>
     <string name="experience"><b>22</b> years of experience</string>
     <string name="comment"><b>64</b> comments</string>
+    <string name="clinic_name"><![CDATA[Medical Center MEDION CLINIC, AESTHETIC & SPA]]></string>
+    <string name="doc_detail">Repeated consultation with a urologist within 2 weeks</string>
+    <string name="doctor_s_appointment">Doctor\'s appointment</string>
 
 
 </resources>
