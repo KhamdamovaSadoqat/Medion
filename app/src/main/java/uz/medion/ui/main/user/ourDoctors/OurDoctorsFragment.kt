@@ -34,9 +34,13 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             if (tvCategoryAll) {
                 binding.rvDoctorsCategories.layoutManager =
                     LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+                binding.clReason.visibility = View.GONE
+                binding.clCalendar.visibility = View.GONE
                 tvCategoryAll = false
             } else {
                 binding.rvDoctorsCategories.layoutManager = GridLayoutManager(requireContext(), 3)
+                binding.clReason.visibility = View.VISIBLE
+                binding.clCalendar.visibility = View.VISIBLE
                 tvCategoryAll = true
             }
         }

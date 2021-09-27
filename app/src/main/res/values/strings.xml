@@ -65,9 +65,9 @@
     <string name="doctor_s_appointment">Doctor\'s appointment</string>
     <string name="ilyasov_Doniyor">Ilyasov Doniyor Hojiakbarovich</string>
     <string name="nuridinov_hojiakbar">Nuriddinov Hojiakbar Tashpulatovich</string>
-
-
-
+    <string name="urology_costs">Urology costs</string>
+    <string name="initial_consultation_with_a_urologists">Initial consultation with a urologists</string>
+    <string name="check">check</string>
 
 
 </resources>
