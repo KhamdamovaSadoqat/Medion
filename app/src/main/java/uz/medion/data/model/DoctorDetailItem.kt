@@ -11,5 +11,5 @@ data class DoctorDetailItem(
     val comment: Int,
     @StringRes
     val clinicName: Int,
-    val details: String
+    val details: Int
 )

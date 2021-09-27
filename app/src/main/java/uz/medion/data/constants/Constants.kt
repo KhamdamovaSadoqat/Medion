@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.medion.R
 import uz.medion.data.local.PrefsHelper
+import uz.medion.data.model.DoctorCategoryItem
+import uz.medion.data.model.DoctorDetailItem
 import uz.medion.data.model.HomeItem
 
 object Constants {
@@ -108,6 +110,72 @@ object Constants {
             HomeItem(R.drawable.ic_mrt, R.string.mrt),
             HomeItem(R.drawable.ic_mckt, R.string.mskt),
             HomeItem(R.drawable.ic_endoscopy, R.string.endoscopy)
+        )
+    }
+
+    fun getOurDoctorCategory(): ArrayList<DoctorCategoryItem> {
+        return arrayListOf(
+            DoctorCategoryItem(R.string.lor),
+            DoctorCategoryItem(R.string.ginecology),
+            DoctorCategoryItem(R.string.pediatr),
+            DoctorCategoryItem(R.string.neuralogy),
+            DoctorCategoryItem(R.string.traumatology),
+            DoctorCategoryItem(R.string.cardiology),
+            DoctorCategoryItem(R.string.eko),
+            DoctorCategoryItem(R.string.cardio_operation),
+            DoctorCategoryItem(R.string.urology),
+            DoctorCategoryItem(R.string.endocrinology),
+            DoctorCategoryItem(R.string.allergiology),
+            DoctorCategoryItem(R.string.mammology),
+            DoctorCategoryItem(R.string.dermatology),
+            DoctorCategoryItem(R.string.psychology),
+            DoctorCategoryItem(R.string.pulmonology),
+            DoctorCategoryItem(R.string.psychoterapy),
+            DoctorCategoryItem(R.string.medicining),
+            DoctorCategoryItem(R.string.electro_encefalography),
+            DoctorCategoryItem(R.string.gastroenterology),
+            DoctorCategoryItem(R.string.uzi),
+            DoctorCategoryItem(R.string.uzi_maternity),
+            DoctorCategoryItem(R.string.mrt),
+            DoctorCategoryItem(R.string.mskt),
+            DoctorCategoryItem(R.string.endoscopy)
+        )
+    }
+
+    fun getOurDoctorDetail(): ArrayList<DoctorDetailItem> {
+        return arrayListOf(
+            DoctorDetailItem(
+                R.string.ilyasov_Doniyor,
+                R.string.main_doctor_of_urology,
+                22,
+                64,
+                R.string.clinic_name,
+                R.string.doc_detail
+            ),
+            DoctorDetailItem(
+                R.string.nuridinov_hojiakbar,
+                R.string.main_doctor_of_urology,
+                22,
+                64,
+                R.string.clinic_name,
+                R.string.doc_detail
+            ),
+            DoctorDetailItem(
+                R.string.ilyasov_Doniyor,
+                R.string.main_doctor_of_urology,
+                22,
+                64,
+                R.string.clinic_name,
+                R.string.doc_detail
+            ),
+            DoctorDetailItem(
+                R.string.nuridinov_hojiakbar,
+                R.string.main_doctor_of_urology,
+                22,
+                64,
+                R.string.clinic_name,
+                R.string.doc_detail
+            )
         )
     }
 }

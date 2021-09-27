@@ -15,5 +15,15 @@
         android:id="@+id/homeFragment"
         android:name="uz.medion.ui.main.user.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_ourDoctorsFragment"
+            app:destination="@id/ourDoctorsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ourDoctorsFragment"
+        android:name="uz.medion.ui.main.user.ourDoctors.OurDoctorsFragment"
+        android:label="OurDoctorsFragment"
+        tools:layout="@layout/fragment_our_doctors"/>
 </navigation>

@@ -6,6 +6,7 @@ import android.widget.RelativeLayout
 import androidx.annotation.LayoutRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,7 +29,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
     fun setUp(){
         adapter = HomeAdapter {
             when(it){
-                //some navigation
+                it -> findNavController().navigate(R.id.ourDoctorsFragment)
             }
         }
         adapter.setData(Constants.getHomeItems())

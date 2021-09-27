@@ -49,10 +49,10 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (Int) -> Unit) :
             binding.apply {
                 tvFullName.setText(doctorDetailItem.doctorName)
                 tvCategoryOfDoctor.setText(doctorDetailItem.doctorCategory)
-                tvExperience.setText(doctorDetailItem.experience)
-                tvComments.setText(doctorDetailItem.comment)
-                tvClinicName.setText(doctorDetailItem.clinicName)
-                tvDetail.text = doctorDetailItem.details
+//                tvExperience.setText(doctorDetailItem.experience)
+//                tvComments.setText(doctorDetailItem.comment)
+//                tvClinicName.setText(doctorDetailItem.clinicName)
+//                tvDetail.setText(doctorDetailItem.details)
             }
         }
     }
