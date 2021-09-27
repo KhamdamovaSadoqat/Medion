@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,7 +46,9 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             }
         }
 
-        ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter { }
+        ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter {
+            findNavController().navigate(R.id.aboutDoctorFragment)
+        }
         ourDoctorsDetailsAdapter.setData(Constants.getOurDoctorDetail())
         binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
         binding.rvDoctors.layoutManager =

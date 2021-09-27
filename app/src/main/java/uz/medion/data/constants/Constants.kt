@@ -13,6 +13,7 @@ object Constants {
     lateinit var prefs: PrefsHelper
 
     const val BASE_API_URL = "HERE SHOULD BE THAT URL WHICH WE SHOULD GET"
+    const val YOUTUBE_API = "AIzaSyALAoQ1eIP7lM2STLmeRpKiDaSXqv84Ulc"
 
     var token = ""
     var language = ""
