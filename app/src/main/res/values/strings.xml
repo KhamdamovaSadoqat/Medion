@@ -71,6 +71,9 @@
     <string name="_4_6">4.6</string>
     <string name="icon">icon</string>
     <string name="reyting">reyting</string>
+    <string name="work">work</string>
+    <string name="about_doctor">about doctor</string>
+    <string name="sertificate">sertificate</string>
     <string name="years_of_experience">years of experience</string>
     <string name="chat">chat</string>
     <string name="university_name">Tashkent Medical Academy, Tashkent</string>

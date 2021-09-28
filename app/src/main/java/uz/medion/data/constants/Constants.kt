@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.medion.R
 import uz.medion.data.local.PrefsHelper
+import uz.medion.data.model.AboutDoctorItems
 import uz.medion.data.model.DoctorCategoryItem
 import uz.medion.data.model.DoctorDetailItem
 import uz.medion.data.model.HomeItem
@@ -177,6 +178,15 @@ object Constants {
                 R.string.clinic_name,
                 R.string.doc_detail
             )
+        )
+    }
+
+    fun getAboutDoctorItems(): ArrayList<AboutDoctorItems>{
+        return arrayListOf<AboutDoctorItems>(
+            AboutDoctorItems(R.string.about_doctor, ),
+            AboutDoctorItems(R.string.work),
+            AboutDoctorItems(R.string.reyting),
+            AboutDoctorItems(R.string.sertificate)
         )
     }
 }
