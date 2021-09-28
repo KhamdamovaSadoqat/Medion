@@ -9,19 +9,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.model.AboutDoctorItems
-import uz.medion.data.model.DoctorCategoryItem
 import uz.medion.databinding.ItemDoctorCategoryBinding
-import uz.medion.ui.main.user.ourDoctors.OurDoctorsCategoryAdapter
 
-class AboutDoctorAdapter(private val itemClickListener: (Int) -> Unit) :
+class AboutDoctorAdapter(private val itemClickListener: (Int, Int) -> Unit) :
     RecyclerView.Adapter<AboutDoctorAdapter.VH>() {
 
     private var listItem = listOf<AboutDoctorItems>()
+    private var lastClickedPosition: Int = 0
 
     fun setData(listItem: List<AboutDoctorItems>) {
         this.listItem = listItem
         notifyDataSetChanged()
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val inflater = LayoutInflater.from(parent.context)
@@ -37,7 +37,8 @@ class AboutDoctorAdapter(private val itemClickListener: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(position, lastClickedPosition)
+            lastClickedPosition = position
         }
         holder.onBind(listItem[position], position)
     }
@@ -48,15 +49,12 @@ class AboutDoctorAdapter(private val itemClickListener: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(category: AboutDoctorItems, position: Int) {
             Log.d("-------------", "onBind: position: $position")
-            if(position == 0) {
-                binding.cvCard.setCardBackgroundColor(ContextCompat.getColor(context, R.color.nile_blue_900))
-                binding.tvCategory.setTextColor(ContextCompat.getColor(context, R.color.white))
-            }else{
-                binding.apply {
-                    tvCategory.setText(category.categoryName)
-                    binding.cvCard.setCardBackgroundColor(ContextCompat.getColor(context, R.color.solitude_50))
-                }
+            binding.apply {
+                tvCategory.setText(category.categoryName)
+                tvCategory.setTextColor(ContextCompat.getColor(context, category.textColor))
+                cvCard.setCardBackgroundColor(ContextCompat.getColor(context, category.backgroundColor))
             }
+
         }
     }
 }

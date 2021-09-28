@@ -3,6 +3,7 @@ package uz.medion.ui.main.user.ourDoctors
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
@@ -44,6 +45,7 @@ class OurDoctorsCategoryAdapter(private val itemClickListener: (Int) -> Unit) :
         fun onBind(category: DoctorCategoryItem) {
             binding.apply {
                 tvCategory.setText(category.categoryName)
+                cvCard.setCardBackgroundColor(ContextCompat.getColor(context, R.color.solitude_50))
             }
         }
     }

@@ -1,12 +1,17 @@
 package uz.medion.ui.main.user.aboutDoctor
 
+import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayerFragment
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.AboutDoctorItems
@@ -18,10 +23,10 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     private lateinit var aboutDoctorItemAdapter: AboutDoctorAdapter
     private lateinit var adapterBinding: ItemDoctorCategoryBinding
+    private lateinit var data: ArrayList<AboutDoctorItems>
 
     override fun onBound() {
         setUp()
-
     }
 
     fun setUp() {
@@ -46,76 +51,29 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 //                }
 //            })
 
-        adapterBinding = DataBindingUtil.inflate(
-            layoutInflater, R.layout.item_doctor_category,
-            this.view as ViewGroup?, false
-        )
+        data = Constants.getAboutDoctorItems()
+        aboutDoctorItemAdapter = AboutDoctorAdapter { position, lastPosition ->
+            Log.d("-------------", "setUp: $lastPosition")
+            Log.d("-------------", "setUp: $position")
+            if(position != lastPosition){
+                data[position] =
+                    AboutDoctorItems(data[position].categoryName, R.color.nile_blue_900, R.color.white)
+                data[lastPosition] = AboutDoctorItems(
+                    data[lastPosition].categoryName,
+                    R.color.solitude_50,
+                    R.color.tangaroa_900
+                )
+                aboutDoctorItemAdapter.setData(data)
+                when(position){
+                    0 -> {}
+                    1 -> {}
+                    2 -> {}
+                    3 -> {}
+                }
 
-//        binding.cvCard.setCardBackgroundColor(ContextCompat.getColor(context, R.color.nile_blue_900))
-//        binding.tvCategory.setTextColor(ContextCompat.getColor(context, R.color.white))
-
-        aboutDoctorItemAdapter = AboutDoctorAdapter {
-            Log.d("-------------", "setUp: $it")
-            when (it) {
-                0 -> {
-                    adapterBinding.cvCard.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.nile_blue_900
-                        )
-                    )
-                    adapterBinding.tvCategory.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.white
-                        )
-                    )
-                }
-                1 -> {
-                    adapterBinding.cvCard.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.nile_blue_900
-                        )
-                    )
-                    adapterBinding.tvCategory.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.white
-                        )
-                    )
-                }
-                2 -> {
-                    adapterBinding.cvCard.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.nile_blue_900
-                        )
-                    )
-                    adapterBinding.tvCategory.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.white
-                        )
-                    )
-                }
-                3 -> {
-                    adapterBinding.cvCard.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.nile_blue_900
-                        )
-                    )
-                    adapterBinding.tvCategory.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.white
-                        )
-                    )
-                }
             }
         }
-        aboutDoctorItemAdapter.setData(Constants.getAboutDoctorItems())
+        aboutDoctorItemAdapter.setData(data)
         binding.rvDoctorAboutDetails.adapter = aboutDoctorItemAdapter
         binding.rvDoctorAboutDetails.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)

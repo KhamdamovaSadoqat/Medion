@@ -1,5 +1,6 @@
 package uz.medion.data.constants
 
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.medion.R
@@ -61,31 +62,6 @@ object Constants {
 
     const val MIN_HOURS_TO_SHOW_NEW_UPDATE_PROMPT: Int = 8
 
-    //    <string name="lor">lor</string>
-//    <string name="ginecology">ginecology</string>
-//    <string name="pediatr">pediatr</string>
-//    <string name="neuralogy">neurology</string>
-//    <string name="traumatology">traumatology</string>
-//    <string name="cardiology">cardiology</string>
-//    <string name="eko">eko</string>
-//    <string name="cardio_operation">cardio operation</string>
-//    <string name="urology">urology</string>
-//    <string name="endocrinology">endocrinology</string>
-//    <string name="allergiology">allergiology</string>
-//    <string name="mammology">mammology</string>
-//    <string name="dermatology">dermatology</string>
-//    <string name="psychology">psychology</string>
-//    <string name="pulmonology">pulmonology</string>
-//    <string name="psychoterapy">psychoterapy</string>
-//    <string name="medicining">medicining</string>
-//    <string name="electro_encefalography">electro encefalography</string>
-//    <string name="gastroenterology">gastroenterology</string>
-//    <string name="uzi">uzi</string>
-//    <string name="uzi_maternity">uzi maternity</string>
-//    <string name="mrt">mrt</string>
-//    <string name="mskt">mskt</string>
-//    <string name="endoscopy">endoscopy</string>
-//
     fun getHomeItems(): ArrayList<HomeItem> {
         return arrayListOf(
             HomeItem(R.drawable.ic_lor, R.string.lor),
@@ -183,10 +159,10 @@ object Constants {
 
     fun getAboutDoctorItems(): ArrayList<AboutDoctorItems>{
         return arrayListOf<AboutDoctorItems>(
-            AboutDoctorItems(R.string.about_doctor, ),
-            AboutDoctorItems(R.string.work),
-            AboutDoctorItems(R.string.reyting),
-            AboutDoctorItems(R.string.sertificate)
+            AboutDoctorItems(R.string.about_doctor, R.color.nile_blue_900, R.color.white),
+            AboutDoctorItems(R.string.work, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.reyting, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.sertificate, R.color.solitude_50, R.color.tangaroa_900)
         )
     }
 }

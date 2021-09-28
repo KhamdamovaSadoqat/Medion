@@ -87,6 +87,8 @@
         audiological problems in children. Conducts
         studies that help assess the degree
         hearing loss, to prevent its further development.</string>
+    <string name="send">send</string>
+    <string name="undo">undo</string>
 
 
 </resources>
