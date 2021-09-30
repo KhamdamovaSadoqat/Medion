@@ -91,5 +91,19 @@
     <string name="send">send</string>
     <string name="undo">undo</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="name_doctor">Имя</string>
+     <string name="middle_name">Отчество</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="doctor">Врачи</string>
+    <string name="phone">Телефон</string>
+    <string name="staj">года стажа</string>
+    <string name="higher_education">Высшее образование</string>
+    <string name="current">Текущие</string>
+    <string name="previous">Предыдущие</string>
+    <string name="certificates">Сертификаты</string>
+    <string name="lbl_set_profile_photo">Set profile image</string>
+    <string name="lbl_take_camera_picture">Take a picture</string>
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
 
 </resources>
