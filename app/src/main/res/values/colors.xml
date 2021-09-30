@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="fire_brick_900">#B82828</color> //main red color
+    <color name="cello_800">#3A4D67</color> //main dark blue color
+    <color name="nile_blue_900">#27384E</color> //secondary dark blue color
+    <color name="steel_grey_800">#454749</color> //main text color
+    <color name="tangaroa_900">#040609</color> //text color
+    <color name="fire_brick_900_40">#66B82828</color> //main red color
+    <color name="alice_blue_50">#F2F6FE</color> //home item card color
+    <color name="solitude_50">#E9EAED</color> //doctor category card color
+
+
 </resources>
