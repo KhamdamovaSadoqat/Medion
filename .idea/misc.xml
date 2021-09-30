@@ -3,23 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/idrok/Medion/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26666666666666666" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_menu.xml" value="0.26666666666666666" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_profile_image.xml" value="0.26666666666666666" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_fi_arrow_right.xml" value="0.26666666666666666" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_image_placeholder.xml" value="0.26666666666666666" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26666666666666666" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_vector.xml" value="0.26666666666666666" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_profile_doc.xml" value="0.264" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/layout/item_profile.xml" value="0.4" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/layout/item_selected.xml" value="0.536" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/layout/profile_item.xml" value="0.161231884057971" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/menu/menu_media.xml" value="0.25052083333333336" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.21822916666666667" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_fi_camera.xml" value="0.13072916666666667" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_image_placeholder.xml" value="0.21822916666666667" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_person.xml" value="0.21979166666666666" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/activity_main.xml" value="0.20153985507246377" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/activity_splash.xml" value="0.1793478260869565" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/content_profile.xml" value="0.20364583333333333" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_chamge_profile_doctor.xml" value="0.264" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_change_profile_doctor.xml" value="0.23136094674556212" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_log_in.xml" value="0.1793478260869565" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_profile_doc.xml" value="0.1" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_reg_doctor.xml" value="0.1" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_reg_doctor_.xml" value="0.13020833333333334" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_sign_in.xml" value="0.1793478260869565" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_sign_up.xml" value="0.1793478260869565" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_verification.xml" value="0.1793478260869565" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/item_foto.xml" value="0.20677083333333332" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/item_profile.xml" value="0.1" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/item_selected.xml" value="0.1" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/item_video.xml" value="0.20677083333333332" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/layout1.xml" value="0.2033514492753623" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/menu/menu_media.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

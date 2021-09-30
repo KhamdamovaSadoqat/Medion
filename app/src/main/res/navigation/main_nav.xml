@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/chamgeProfileDoctorFragment">
 
+    <fragment
+        android:id="@+id/chamgeProfileDoctorFragment"
+        android:name="uz.medion.doctor.ChangeProfileDoctorFragment"
+        android:label="fragment_chamge_profile_doctor"
+        tools:layout="@layout/fragment_change_profile_doctor" />
 </navigation>
