@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     private lateinit var aboutDoctorItemAdapter: AboutDoctorAdapter
     private lateinit var adapterBinding: ItemDoctorCategoryBinding
+    private lateinit var aboutDoctorCommentAdapter: AboutDoctorCommentAdapter
     private lateinit var data: ArrayList<AboutDoctorItems>
 
     override fun onBound() {
@@ -55,20 +57,43 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         aboutDoctorItemAdapter = AboutDoctorAdapter { position, lastPosition ->
             Log.d("-------------", "setUp: $lastPosition")
             Log.d("-------------", "setUp: $position")
-            if(position != lastPosition){
+            if (position != lastPosition) {
                 data[position] =
-                    AboutDoctorItems(data[position].categoryName, R.color.nile_blue_900, R.color.white)
+                    AboutDoctorItems(
+                        data[position].categoryName,
+                        R.color.nile_blue_900,
+                        R.color.white
+                    )
                 data[lastPosition] = AboutDoctorItems(
                     data[lastPosition].categoryName,
                     R.color.solitude_50,
                     R.color.tangaroa_900
                 )
                 aboutDoctorItemAdapter.setData(data)
-                when(position){
-                    0 -> {}
-                    1 -> {}
-                    2 -> {}
-                    3 -> {}
+                when (position) {
+                    0 -> {
+                        binding.clAboutDoctor.visibility = View.VISIBLE
+                        binding.clComment.visibility = View.GONE
+                        binding.clWork.visibility = View.GONE
+                    }
+                    1 -> {
+                        binding.clAboutDoctor.visibility = View.GONE
+                        binding.clWork.visibility = View.VISIBLE
+                        binding.clComment.visibility = View.GONE
+                    }
+                    2 -> {
+                        binding.clAboutDoctor.visibility = View.GONE
+                        binding.clWork.visibility = View.GONE
+                        binding.clComment.visibility = View.VISIBLE
+
+                        aboutDoctorCommentAdapter = AboutDoctorCommentAdapter { }
+                        aboutDoctorCommentAdapter.setData(Constants.getComments())
+                        binding.rvComments.layoutManager =
+                            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
+                    }
+                    3 -> {
+                    }
                 }
 
             }

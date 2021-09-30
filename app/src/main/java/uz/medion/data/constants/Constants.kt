@@ -1,14 +1,10 @@
 package uz.medion.data.constants
 
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.medion.R
 import uz.medion.data.local.PrefsHelper
-import uz.medion.data.model.AboutDoctorItems
-import uz.medion.data.model.DoctorCategoryItem
-import uz.medion.data.model.DoctorDetailItem
-import uz.medion.data.model.HomeItem
+import uz.medion.data.model.*
 
 object Constants {
 
@@ -164,5 +160,17 @@ object Constants {
             AboutDoctorItems(R.string.reyting, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.sertificate, R.color.solitude_50, R.color.tangaroa_900)
         )
+    }
+
+    fun getComments(): ArrayList<AboutDoctorCommentItem>{
+        return arrayListOf<AboutDoctorCommentItem>(
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021")
+        )
+
     }
 }

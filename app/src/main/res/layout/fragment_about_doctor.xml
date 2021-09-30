@@ -266,7 +266,9 @@
                     android:text="@string/about_consultation"
                     android:textColor="@color/tangaroa_900"
                     android:textSize="12sp"
-                    app:layout_constraintTop_toBottomOf="@id/v_divider3" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v_divider3"
+                    tools:layout_editor_absoluteX="16dp" />
 
                 <!--            <androidx.fragment.app.FragmentContainerView-->
                 <!--                android:id="@+id/yt_about_center"-->
@@ -332,6 +334,7 @@
                 app:layout_constraintTop_toBottomOf="@id/v_divider2">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_comment_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -383,9 +386,9 @@
                             android:layout_height="16dp"
                             android:contentDescription="@string/icon"
                             android:src="@drawable/ic_u_star_grey"
-                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"/>
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
                             android:id="@+id/iv_star2"
@@ -394,9 +397,9 @@
                             android:layout_marginStart="4dp"
                             android:contentDescription="@string/icon"
                             android:src="@drawable/ic_u_star_grey"
-                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@id/iv_star1"/>
+                            app:layout_constraintLeft_toRightOf="@id/iv_star1"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
                             android:id="@+id/iv_star3"
@@ -405,9 +408,9 @@
                             android:layout_marginStart="4dp"
                             android:contentDescription="@string/icon"
                             android:src="@drawable/ic_u_star_grey"
-                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@id/iv_star2"/>
+                            app:layout_constraintLeft_toRightOf="@id/iv_star2"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
                             android:id="@+id/iv_star4"
@@ -416,9 +419,9 @@
                             android:layout_marginStart="4dp"
                             android:contentDescription="@string/icon"
                             android:src="@drawable/ic_u_star_grey"
-                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@id/iv_star3"/>
+                            app:layout_constraintLeft_toRightOf="@id/iv_star3"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
                             android:id="@+id/iv_star5"
@@ -427,9 +430,9 @@
                             android:layout_marginStart="4dp"
                             android:contentDescription="@string/icon"
                             android:src="@drawable/ic_u_star_grey"
-                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@id/iv_star4"/>
+                            app:layout_constraintLeft_toRightOf="@id/iv_star4"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -440,8 +443,8 @@
                         android:text="@string/send"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
-                        app:layout_constraintTop_toBottomOf="@id/et_user_name"
-                        app:layout_constraintRight_toRightOf="parent"/>
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/et_user_name" />
 
                     <TextView
                         android:id="@+id/tv_comment_undo"
@@ -451,11 +454,19 @@
                         android:text="@string/undo"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
-                        app:layout_constraintTop_toBottomOf="@id/et_user_name"
-                        app:layout_constraintRight_toLeftOf="@id/tv_comment_send"/>
-
+                        app:layout_constraintRight_toLeftOf="@id/tv_comment_send"
+                        app:layout_constraintTop_toBottomOf="@id/et_user_name" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl_comment_user"
+                    tools:layout_editor_absoluteX="0dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
