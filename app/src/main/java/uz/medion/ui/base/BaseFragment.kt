@@ -22,7 +22,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseVM> : Fragment(), BaseM
 
     abstract fun onBound()
 
-    private lateinit var binding: T
+    lateinit var binding: T
 
     abstract val vm: V
 

@@ -19,6 +19,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import retrofit2.HttpException
 import uz.medion.R
+import uz.medion.BR
 import uz.medion.data.constants.Constants
 import uz.medion.data.local.PrefsHelper
 import uz.medion.data.retrofit.ApiClient
@@ -42,7 +43,7 @@ abstract class BaseActivity<T: ViewDataBinding, V: BaseVM> : AppCompatActivity()
     protected abstract val vm: V
 
     protected lateinit var binding: T
-    private set
+         private set
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)

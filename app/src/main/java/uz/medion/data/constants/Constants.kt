@@ -2,23 +2,26 @@ package uz.medion.data.constants
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import uz.medion.R
 import uz.medion.data.local.PrefsHelper
+import uz.medion.data.model.*
 
 object Constants {
 
     lateinit var prefs: PrefsHelper
 
     const val BASE_API_URL = "HERE SHOULD BE THAT URL WHICH WE SHOULD GET"
+    const val YOUTUBE_API = "AIzaSyALAoQ1eIP7lM2STLmeRpKiDaSXqv84Ulc"
 
     var token = ""
     var language = ""
     private val unAuthorized = MutableLiveData<Boolean>()
 
-    fun setUnAuthorized(isUnAuthorized: Boolean){
+    fun setUnAuthorized(isUnAuthorized: Boolean) {
         unAuthorized.value = isUnAuthorized
     }
 
-    fun getUnAuthorized(): LiveData<Boolean>{
+    fun getUnAuthorized(): LiveData<Boolean> {
         return unAuthorized
     }
 
@@ -54,4 +57,120 @@ object Constants {
     const val DENSITY_LDPI = 0.75
 
     const val MIN_HOURS_TO_SHOW_NEW_UPDATE_PROMPT: Int = 8
+
+    fun getHomeItems(): ArrayList<HomeItem> {
+        return arrayListOf(
+            HomeItem(R.drawable.ic_lor, R.string.lor),
+            HomeItem(R.drawable.ic_ginecology, R.string.ginecology),
+            HomeItem(R.drawable.ic_pediatr, R.string.pediatr),
+            HomeItem(R.drawable.ic_neurolog, R.string.neuralogy),
+            HomeItem(R.drawable.ic_traumatolog, R.string.traumatology),
+            HomeItem(R.drawable.ic_cardiolog, R.string.cardiology),
+            HomeItem(R.drawable.ic_eko, R.string.eko),
+            HomeItem(R.drawable.ic_cardio_operation, R.string.cardio_operation),
+            HomeItem(R.drawable.ic_urolog, R.string.urology),
+            HomeItem(R.drawable.ic_endocrinolog, R.string.endocrinology),
+            HomeItem(R.drawable.ic_allergolog, R.string.allergiology),
+            HomeItem(R.drawable.ic_mammolog, R.string.mammology),
+            HomeItem(R.drawable.ic_dermatolog, R.string.dermatology),
+            HomeItem(R.drawable.ic_psycology, R.string.psychology),
+            HomeItem(R.drawable.ic_pulmonolog, R.string.pulmonology),
+            HomeItem(R.drawable.ic_psychoterapy, R.string.psychoterapy),
+            HomeItem(R.drawable.ic_medicining, R.string.medicining),
+            HomeItem(R.drawable.ic_electro_smth, R.string.electro_encefalography),
+            HomeItem(R.drawable.ic_gastroentesy, R.string.gastroenterology),
+            HomeItem(R.drawable.ic_uzi, R.string.uzi),
+            HomeItem(R.drawable.ic_uzi_maternity, R.string.uzi_maternity),
+            HomeItem(R.drawable.ic_mrt, R.string.mrt),
+            HomeItem(R.drawable.ic_mckt, R.string.mskt),
+            HomeItem(R.drawable.ic_endoscopy, R.string.endoscopy)
+        )
+    }
+
+    fun getOurDoctorCategory(): ArrayList<DoctorCategoryItem> {
+        return arrayListOf(
+            DoctorCategoryItem(R.string.lor),
+            DoctorCategoryItem(R.string.ginecology),
+            DoctorCategoryItem(R.string.pediatr),
+            DoctorCategoryItem(R.string.neuralogy),
+            DoctorCategoryItem(R.string.traumatology),
+            DoctorCategoryItem(R.string.cardiology),
+            DoctorCategoryItem(R.string.eko),
+            DoctorCategoryItem(R.string.cardio_operation),
+            DoctorCategoryItem(R.string.urology),
+            DoctorCategoryItem(R.string.endocrinology),
+            DoctorCategoryItem(R.string.allergiology),
+            DoctorCategoryItem(R.string.mammology),
+            DoctorCategoryItem(R.string.dermatology),
+            DoctorCategoryItem(R.string.psychology),
+            DoctorCategoryItem(R.string.pulmonology),
+            DoctorCategoryItem(R.string.psychoterapy),
+            DoctorCategoryItem(R.string.medicining),
+            DoctorCategoryItem(R.string.electro_encefalography),
+            DoctorCategoryItem(R.string.gastroenterology),
+            DoctorCategoryItem(R.string.uzi),
+            DoctorCategoryItem(R.string.uzi_maternity),
+            DoctorCategoryItem(R.string.mrt),
+            DoctorCategoryItem(R.string.mskt),
+            DoctorCategoryItem(R.string.endoscopy)
+        )
+    }
+
+    fun getOurDoctorDetail(): ArrayList<DoctorDetailItem> {
+        return arrayListOf(
+            DoctorDetailItem(
+                R.string.ilyasov_Doniyor,
+                R.string.main_doctor_of_urology,
+                22,
+                64,
+                R.string.clinic_name,
+                R.string.doc_detail
+            ),
+            DoctorDetailItem(
+                R.string.nuridinov_hojiakbar,
+                R.string.main_doctor_of_urology,
+                22,
+                64,
+                R.string.clinic_name,
+                R.string.doc_detail
+            ),
+            DoctorDetailItem(
+                R.string.ilyasov_Doniyor,
+                R.string.main_doctor_of_urology,
+                22,
+                64,
+                R.string.clinic_name,
+                R.string.doc_detail
+            ),
+            DoctorDetailItem(
+                R.string.nuridinov_hojiakbar,
+                R.string.main_doctor_of_urology,
+                22,
+                64,
+                R.string.clinic_name,
+                R.string.doc_detail
+            )
+        )
+    }
+
+    fun getAboutDoctorItems(): ArrayList<AboutDoctorItems>{
+        return arrayListOf<AboutDoctorItems>(
+            AboutDoctorItems(R.string.about_doctor, R.color.nile_blue_900, R.color.white),
+            AboutDoctorItems(R.string.work, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.reyting, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.sertificate, R.color.solitude_50, R.color.tangaroa_900)
+        )
+    }
+
+    fun getComments(): ArrayList<AboutDoctorCommentItem>{
+        return arrayListOf<AboutDoctorCommentItem>(
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
+            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021")
+        )
+
+    }
 }
