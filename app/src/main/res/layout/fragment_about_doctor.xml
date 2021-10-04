@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.main.user.aboutDoctor.AboutDoctorFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -199,7 +201,6 @@
                 android:id="@+id/cl_about_doctor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/btn_submit"
                 app:layout_constraintTop_toBottomOf="@id/v_divider2">
 
@@ -209,7 +210,7 @@
                     android:layout_height="24dp"
                     android:layout_margin="16dp"
                     android:contentDescription="@string/icon"
-                    android:src="@drawable/ic_u_graduation_cap"
+                    android:src="@drawable/ic_graduation_cap"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -232,7 +233,7 @@
                     android:layout_height="24dp"
                     android:layout_margin="16dp"
                     android:contentDescription="@string/icon"
-                    android:src="@drawable/ic_u_university"
+                    android:src="@drawable/ic_university"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_graduation" />
 
@@ -296,6 +297,17 @@
                 app:layout_constraintBottom_toTopOf="@id/btn_submit"
                 app:layout_constraintTop_toBottomOf="@id/v_divider2">
 
+                <TextView
+                    android:id="@+id/tv_current"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/current_job"
+                    android:textSize="12sp"
+                    android:textColor="@color/steel_grey_800"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_work_current"
                     android:layout_width="match_parent"
@@ -303,7 +315,7 @@
                     android:layout_margin="16dp"
                     android:clipToPadding="false"
                     app:layout_constraintBottom_toTopOf="@id/v_divider5"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_current" />
 
                 <View
                     android:id="@+id/v_divider5"
@@ -314,6 +326,17 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rv_work_current" />
 
+                <TextView
+                    android:id="@+id/tv_past"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/past_job"
+                    android:textSize="12sp"
+                    android:textColor="@color/steel_grey_800"
+                    app:layout_constraintTop_toBottomOf="@id/v_divider5"/>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_work_past"
                     android:layout_width="match_parent"
@@ -321,7 +344,7 @@
                     android:layout_margin="16dp"
                     android:clipToPadding="false"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/v_divider5" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_past" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -330,6 +353,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/btn_submit"
                 app:layout_constraintTop_toBottomOf="@id/v_divider2">
 
@@ -354,10 +378,11 @@
                         app:strokeWidth="1dp" />
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_user_name"
+                        android:id="@+id/et_user_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="56dp"
+                        android:layout_marginEnd="24dp"
                         android:maxLines="1"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="14sp"
@@ -368,7 +393,7 @@
                         android:layout_height="16dp"
                         android:contentDescription="@string/icon"
                         android:src="@drawable/ic_pen"
-                        app:layout_constraintBottom_toBottomOf="@id/et_user_name"
+                        app:layout_constraintBottom_toBottomOf="@id/et_user_comment"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -378,14 +403,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="56dp"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/et_user_name">
+                        app:layout_constraintTop_toBottomOf="@id/et_user_comment">
 
                         <ImageView
                             android:id="@+id/iv_star1"
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:contentDescription="@string/icon"
-                            android:src="@drawable/ic_u_star_grey"
+                            android:src="@drawable/ic_star_grey"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -396,7 +421,7 @@
                             android:layout_height="16dp"
                             android:layout_marginStart="4dp"
                             android:contentDescription="@string/icon"
-                            android:src="@drawable/ic_u_star_grey"
+                            android:src="@drawable/ic_star_grey"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toRightOf="@id/iv_star1"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -407,7 +432,7 @@
                             android:layout_height="16dp"
                             android:layout_marginStart="4dp"
                             android:contentDescription="@string/icon"
-                            android:src="@drawable/ic_u_star_grey"
+                            android:src="@drawable/ic_star_grey"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toRightOf="@id/iv_star2"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -418,7 +443,7 @@
                             android:layout_height="16dp"
                             android:layout_marginStart="4dp"
                             android:contentDescription="@string/icon"
-                            android:src="@drawable/ic_u_star_grey"
+                            android:src="@drawable/ic_star_grey"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toRightOf="@id/iv_star3"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -429,7 +454,7 @@
                             android:layout_height="16dp"
                             android:layout_marginStart="4dp"
                             android:contentDescription="@string/icon"
-                            android:src="@drawable/ic_u_star_grey"
+                            android:src="@drawable/ic_star_grey"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toRightOf="@id/iv_star4"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -444,7 +469,7 @@
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/et_user_name" />
+                        app:layout_constraintTop_toBottomOf="@id/et_user_comment" />
 
                     <TextView
                         android:id="@+id/tv_comment_undo"
@@ -455,18 +480,37 @@
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
                         app:layout_constraintRight_toLeftOf="@id/tv_comment_send"
-                        app:layout_constraintTop_toBottomOf="@id/et_user_name" />
+                        app:layout_constraintTop_toBottomOf="@id/et_user_comment" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_comments"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cl_comment_user"
                     tools:layout_editor_absoluteX="0dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_sertificate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/v_divider2"
+                app:layout_constraintBottom_toTopOf="@id/btn_submit">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_sertificate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:clipToPadding="false"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

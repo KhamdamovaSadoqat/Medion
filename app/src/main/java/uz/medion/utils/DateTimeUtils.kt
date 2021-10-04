@@ -16,7 +16,7 @@ object DateTimeUtils {
      */
     fun dateToText(date: Date?, format: String): String? {
         return if (date != null) {
-            val sdf = SimpleDateFormat(format)
+            val sdf = SimpleDateFormat(format, Locale.getDefault())
             sdf.format(date)
         } else
             null
@@ -33,7 +33,7 @@ object DateTimeUtils {
      */
     fun textToDate(dateText: String?, format: String): Date? {
         return if (dateText != null) {
-            val sdf = SimpleDateFormat(format)
+            val sdf = SimpleDateFormat(format, Locale.getDefault())
             try {
                 sdf.parse(dateText)
             } catch (e: ParseException) {

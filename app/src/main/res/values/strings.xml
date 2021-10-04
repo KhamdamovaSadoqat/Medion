@@ -90,6 +90,8 @@
         hearing loss, to prevent its further development.</string>
     <string name="send">send</string>
     <string name="undo">undo</string>
+    <string name="current_job">Current Job</string>
+    <string name="past_job">Past job</string>
 
 
 </resources>

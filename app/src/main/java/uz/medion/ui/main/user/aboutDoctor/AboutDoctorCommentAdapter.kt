@@ -3,6 +3,7 @@ package uz.medion.ui.main.user.aboutDoctor
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
@@ -39,12 +40,115 @@ class AboutDoctorCommentAdapter(private val itemClickListener: (Int) -> Unit) :
     }
 
     override fun getItemCount() = listItem.size
+
     class VH(private val binding: ItemCommentOthersBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(comment: AboutDoctorCommentItem) {
             binding.apply {
-                tvComment.text = context.getText(comment.comment)
+                tvComment.text = comment.comment
                 tvDate.text = comment.date
+                when (comment.reyting) {
+                    1 -> {
+                        binding.ivStar1.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                    }
+                    2 -> {
+                        binding.ivStar1.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar2.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                    }
+                    3 -> {
+                        binding.ivStar1.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar2.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar3.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                    }
+                    4 -> {
+                        binding.ivStar1.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar2.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar3.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar4.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                    }
+                    5 -> {
+                        binding.ivStar1.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar2.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar3.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar4.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                        binding.ivStar5.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_star
+                            )
+                        )
+                    }
+                }
             }
 
         }

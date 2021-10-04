@@ -1,5 +1,7 @@
 package uz.medion.data.constants
 
+import android.content.Context
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.medion.R
@@ -10,7 +12,7 @@ object Constants {
 
     lateinit var prefs: PrefsHelper
 
-    const val BASE_API_URL = "HERE SHOULD BE THAT URL WHICH WE SHOULD GET"
+    const val BASE_API_URL = "https://medion.uz/"
     const val YOUTUBE_API = "AIzaSyALAoQ1eIP7lM2STLmeRpKiDaSXqv84Ulc"
 
     var token = ""
@@ -164,13 +166,93 @@ object Constants {
 
     fun getComments(): ArrayList<AboutDoctorCommentItem>{
         return arrayListOf<AboutDoctorCommentItem>(
-            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
-            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
-            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
-            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
-            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021"),
-            AboutDoctorCommentItem(R.string.about_consultation, 4, "22 august 2021")
+            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
+                    "        ENT organs. Before diagnosing and" +
+                    "        define a treatment plan, collects a detailed" +
+                    "        history and carefully examines patients with" +
+                    "        using high-precision safe" +
+                    "        equipment. With the help of objective and reliable" +
+                    "        testing methods reveals audiological and" +
+                    "        audiological problems in children. Conducts" +
+                    "        studies that help assess the degree" +
+                    "        hearing loss, to prevent its further development.", 4, "22 august 2021"),
+            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
+                    "        ENT organs. Before diagnosing and" +
+                    "        define a treatment plan, collects a detailed" +
+                    "        history and carefully examines patients with" +
+                    "        using high-precision safe" +
+                    "        equipment. With the help of objective and reliable" +
+                    "        testing methods reveals audiological and" +
+                    "        audiological problems in children. Conducts" +
+                    "        studies that help assess the degree" +
+                    "        hearing loss, to prevent its further development.", 2, "22 august 2021"),
+            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
+                    "        ENT organs. Before diagnosing and" +
+                    "        define a treatment plan, collects a detailed" +
+                    "        history and carefully examines patients with" +
+                    "        using high-precision safe" +
+                    "        equipment. With the help of objective and reliable" +
+                    "        testing methods reveals audiological and" +
+                    "        audiological problems in children. Conducts" +
+                    "        studies that help assess the degree" +
+                    "        hearing loss, to prevent its further development.", 1, "22 august 2021"),
+            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
+                    "        ENT organs. Before diagnosing and" +
+                    "        define a treatment plan, collects a detailed" +
+                    "        history and carefully examines patients with" +
+                    "        using high-precision safe" +
+                    "        equipment. With the help of objective and reliable" +
+                    "        testing methods reveals audiological and" +
+                    "        audiological problems in children. Conducts" +
+                    "        studies that help assess the degree" +
+                    "        hearing loss, to prevent its further development.", 4, "22 august 2021"),
+            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
+                    "        ENT organs. Before diagnosing and" +
+                    "        define a treatment plan, collects a detailed" +
+                    "        history and carefully examines patients with" +
+                    "        using high-precision safe" +
+                    "        equipment. With the help of objective and reliable" +
+                    "        testing methods reveals audiological and" +
+                    "        audiological problems in children. Conducts" +
+                    "        studies that help assess the degree" +
+                    "        hearing loss, to prevent its further development.", 5, "22 august 2021"),
+            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
+                    "        ENT organs. Before diagnosing and" +
+                    "        define a treatment plan, collects a detailed" +
+                    "        history and carefully examines patients with" +
+                    "        using high-precision safe" +
+                    "        equipment. With the help of objective and reliable" +
+                    "        testing methods reveals audiological and" +
+                    "        audiological problems in children. Conducts" +
+                    "        studies that help assess the degree" +
+                    "        hearing loss, to prevent its further development.", 3, "22 august 2021"),
         )
+    }
 
+    fun getCurrentWork(): ArrayList<AboutDoctorWorkItem>{
+        return arrayListOf(
+            AboutDoctorWorkItem("Medical Center MEDION CLINIC, AESTHETIC & SPA", "doctor of urology"),
+            AboutDoctorWorkItem("Medical Center MEDION CLINIC, AESTHETIC & SPA", "doctor of urology"),
+            AboutDoctorWorkItem("Medical Center MEDION CLINIC, AESTHETIC & SPA", "doctor of urology"),
+            AboutDoctorWorkItem("Medical Center MEDION CLINIC, AESTHETIC & SPA", "doctor of urology")
+        )
+    }
+
+    fun getPastWork(): ArrayList<AboutDoctorWorkItem>{
+        return arrayListOf(
+            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
+            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
+            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
+            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
+            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
+        )
+    }
+
+    fun getSertificate(): ArrayList<AboutDoctorSertificateItem>{
+        return arrayListOf(
+            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),
+            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),
+            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg")
+        )
     }
 }
