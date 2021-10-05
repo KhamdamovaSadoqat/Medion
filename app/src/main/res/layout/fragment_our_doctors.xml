@@ -43,6 +43,7 @@
                 android:id="@+id/cl_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/rv_doctors_categories">
 
                 <TextView
@@ -59,28 +60,39 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_option_1"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_option_1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/initial_consultation_with_a_urologists"
-                    android:textColor="@color/tangaroa_900"
-                    android:textSize="12sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_urology_costs" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_urology_costs">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:contentDescription="@string/check"
-                    android:src="@drawable/ic_check"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_urology_costs" />
+                    <TextView
+                        android:id="@+id/tv_option_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="16dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/initial_consultation_with_a_urologists"
+                        android:textColor="@color/tangaroa_900"
+                        android:textSize="12sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_option_1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/check"
+                        android:src="@drawable/ic_check"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
                     android:id="@+id/devider1"
@@ -89,31 +101,41 @@
                     android:layout_marginTop="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_option_1" />
+                    app:layout_constraintTop_toBottomOf="@id/cl_option_1" />
 
-                <TextView
-                    android:id="@+id/tv_option_2"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_option_2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/initial_consultation_with_a_urologists"
-                    android:textColor="@color/tangaroa_900"
-                    android:textSize="12sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/devider1" />
+                    app:layout_constraintTop_toBottomOf="@id/devider1">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:contentDescription="@string/check"
-                    android:src="@drawable/ic_check"
-                    android:visibility="invisible"
-                    app:layout_constraintBottom_toTopOf="@id/devider2"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/devider1" />
+                    <TextView
+                        android:id="@+id/tv_option_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="16dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/initial_consultation_with_a_urologists"
+                        android:textColor="@color/tangaroa_900"
+                        android:textSize="12sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_option_2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/check"
+                        android:src="@drawable/ic_check"
+                        android:visibility="invisible"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
                     android:id="@+id/devider2"
@@ -122,31 +144,41 @@
                     android:layout_marginTop="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_option_2" />
+                    app:layout_constraintTop_toBottomOf="@id/cl_option_2" />
 
-                <TextView
-                    android:id="@+id/tv_option_3"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_option_3"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/initial_consultation_with_a_urologists"
-                    android:textColor="@color/tangaroa_900"
-                    android:textSize="12sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/devider2" />
+                    app:layout_constraintTop_toBottomOf="@id/devider2">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:contentDescription="@string/check"
-                    android:src="@drawable/ic_check"
-                    android:visibility="invisible"
-                    app:layout_constraintBottom_toTopOf="@id/devider3"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/devider2" />
+                    <TextView
+                        android:id="@+id/tv_option_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="16dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/initial_consultation_with_a_urologists"
+                        android:textColor="@color/tangaroa_900"
+                        android:textSize="12sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_option_3"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/check"
+                        android:src="@drawable/ic_check"
+                        android:visibility="invisible"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
                     android:id="@+id/devider3"
@@ -155,7 +187,7 @@
                     android:layout_marginTop="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_option_3" />
+                    app:layout_constraintTop_toBottomOf="@id/cl_option_3" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -165,6 +197,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/cl_reason">
 
                 <CalendarView
