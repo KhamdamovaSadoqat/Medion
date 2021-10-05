@@ -110,4 +110,8 @@
     <string name="personal_room">Personal room</string>
     <string name="on_back_pressed">Press twice</string>
 
+    <!-- App bar -->
+    <string name="our_doctors">Our Doctors</string>
+
+
 </resources>

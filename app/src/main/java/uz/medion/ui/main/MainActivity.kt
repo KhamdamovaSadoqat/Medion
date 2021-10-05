@@ -32,18 +32,58 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             navController = navHost.findNavController()
         }
         bottomNavController = BottomNavController(binding.partialBottomNav, this, navController)
+        binding.ivBackArrow.setOnClickListener {
+            onBackPressed()
+        }
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-
-            binding.ivBackArrow.setOnClickListener {
-                onBackPressed()
-            }
             //from where bottom navigation should be removed
             if (destination.id == R.id.aboutDoctorFragment) {
                 ViewUtils.fadeOut(binding.partialBottomNav.root)
             } else {
                 ViewUtils.fadeIn(binding.partialBottomNav.root)
             }
+
+            //here goes HomeFragment
+            if (destination.id == R.id.homeFragment) {
+                ViewUtils.fadeIn(binding.ivMedion)
+                ViewUtils.fadeIn(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivBackArrow)
+                ViewUtils.fadeOut(binding.tvMain)
+                ViewUtils.fadeOut(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivHeart)
+            }
+            //here goes OurDoctorsFragment
+            if(destination.id == R.id.ourDoctorsFragment){
+                binding.tvMain.setText(R.string.our_doctors)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeIn(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+            }
+            //here goes AboutDoctorsFragment
+            if(destination.id == R.id.aboutDoctorFragment){
+                binding.tvMain.setText(R.string.our_doctors)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.ivHeart)
+                ViewUtils.fadeOut(binding.tvMain)
+                ViewUtils.fadeOut(binding.ivMedion)
+                ViewUtils.fadeOut(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivNotification)
+            }
+            //here goes CertificateFragment
+            if(destination.id == R.id.certificateFragment){
+                binding.tvMain.setText(R.string.image)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+                ViewUtils.fadeOut(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivNotification)
+            }
         }
+
     }
 
     @LayoutRes

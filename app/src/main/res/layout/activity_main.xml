@@ -30,6 +30,7 @@
                     android:id="@+id/iv_back_arrow"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:visibility="gone"
                     android:src="@drawable/ic_back_arrow"
                     android:layout_marginStart="16dp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -52,8 +53,31 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
-                    android:visibility="gone"
                     android:src="@drawable/ic_notification"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:contentDescription="@string/icon" />
+
+                <ImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_search_white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:contentDescription="@string/icon" />
+
+                <ImageView
+                    android:id="@+id/iv_heart"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_heart"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -63,7 +87,6 @@
                     android:id="@+id/iv_medion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:layout_marginStart="16dp"
                     android:layout_marginVertical="8dp"
                     android:src="@drawable/medion_white"
