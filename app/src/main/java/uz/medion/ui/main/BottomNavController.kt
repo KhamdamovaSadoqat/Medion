@@ -1,6 +1,6 @@
 package uz.medion.ui.main
 
-import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
@@ -12,7 +12,7 @@ import uz.medion.utils.showToast
 
 class BottomNavController(
     private val binding: PartialBottomNavigationBinding,
-    private val activity: Activity,
+    private val activity: AppCompatActivity,
     private val navController: NavController
 ) {
 

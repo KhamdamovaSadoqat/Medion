@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -11,7 +10,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:contentDescription="@string/logo"
-            android:src="@drawable/medion_black"
+            app:srcCompat="@drawable/medion_black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +55,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_eye"
+                app:srcCompat="@drawable/ic_eye"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -102,7 +101,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_eye_slash"
+                app:srcCompat="@drawable/ic_eye_slash"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -187,14 +186,14 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
-                    android:src="@drawable/ic_google"/>
+                    app:srcCompat="@drawable/ic_google"/>
 
                 <ImageView
                     android:id="@+id/img_facebook"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
-                    android:src="@drawable/ic_facebook"/>
+                    app:srcCompat="@drawable/ic_facebook"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

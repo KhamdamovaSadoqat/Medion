@@ -9,7 +9,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/cerficates"
+        app:srcCompat="@drawable/cerficates"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

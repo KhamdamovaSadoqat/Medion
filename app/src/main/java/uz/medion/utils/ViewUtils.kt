@@ -1,6 +1,6 @@
 package uz.medion.utils
 
-import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Bitmap
@@ -15,7 +15,6 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
@@ -28,7 +27,7 @@ object ViewUtils {
      * @param activity
      * @param color is new color which set for background if [StatusBar]
      */
-    fun setLightStatusBar(activity: Activity, @ColorRes color: Int) {
+    fun setLightStatusBar(activity: AppCompatActivity, @ColorRes color: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             var flags = activity.window.decorView.systemUiVisibility
             flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -45,7 +44,7 @@ object ViewUtils {
      * @param activity
      * @param color is new color which set for background if [StatusBar]
      */
-    fun clearLightStatusBar(activity: Activity, @ColorRes colorRes: Int? = null, color:Int? = null) {
+    fun clearLightStatusBar(activity: AppCompatActivity, @ColorRes colorRes: Int? = null, color:Int? = null) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val window: Window = activity.window
             var flags: Int = window.decorView.getSystemUiVisibility()
@@ -65,7 +64,7 @@ object ViewUtils {
      *
      * @param activity
      */
-    fun getStatusBarHeight(activity: Activity): Int {
+    fun getStatusBarHeight(activity: AppCompatActivity): Int {
         // status bar height
         var statusBarHeight = 0
         val resourceId = activity.resources.getIdentifier("status_bar_height", "dimen", "android")

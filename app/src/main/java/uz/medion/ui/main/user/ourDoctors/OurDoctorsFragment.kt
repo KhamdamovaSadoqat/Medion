@@ -31,6 +31,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
         binding.rvDoctorsCategories.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
         binding.clShowAll.setOnClickListener {
             if (tvCategoryAll) {
                 binding.rvDoctorsCategories.layoutManager =
