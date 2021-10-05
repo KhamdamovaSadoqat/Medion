@@ -3,7 +3,6 @@ package uz.medion.ui.base
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.preference.PreferenceManager
 import android.text.Spanned
 import android.view.View
@@ -45,8 +44,8 @@ abstract class BaseActivity<T: ViewDataBinding, V: BaseVM> : AppCompatActivity()
     protected lateinit var binding: T
          private set
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         updateBaseContextLocale(this)
 

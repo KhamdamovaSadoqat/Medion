@@ -6,12 +6,6 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/logInFragment"
-        android:name="uz.medion.ui.main.user.registration.logIn.LogInFragment"
-        android:label="LogInFragment"
-        tools:layout="@layout/fragment_log_in"/>
-
-    <fragment
         android:id="@+id/homeFragment"
         android:name="uz.medion.ui.main.user.home.HomeFragment"
         android:label="HomeFragment"
