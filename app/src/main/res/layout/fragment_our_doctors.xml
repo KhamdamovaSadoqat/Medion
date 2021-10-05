@@ -7,10 +7,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.main.user.ourDoctors.OurDoctorsFragment">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:scrollbars="vertical"
+                android:src="@drawable/ic_example" />
 
             <TextView
                 android:id="@+id/tv_medical_service"
@@ -77,7 +86,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:contentDescription="@string/check"
-                    android:src="@drawable/ic_u_check"
+                    android:src="@drawable/ic_check"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_urology_costs" />
 
@@ -108,7 +117,7 @@
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
                     android:contentDescription="@string/check"
-                    android:src="@drawable/ic_u_check"
+                    android:src="@drawable/ic_check"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toTopOf="@id/devider2"
                     app:layout_constraintRight_toRightOf="parent"
@@ -141,7 +150,7 @@
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
                     android:contentDescription="@string/check"
-                    android:src="@drawable/ic_u_check"
+                    android:src="@drawable/ic_check"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toTopOf="@id/devider3"
                     app:layout_constraintRight_toRightOf="parent"
@@ -210,6 +219,10 @@
                 android:layout_marginTop="16dp"
                 android:clipToPadding="false"
                 app:layout_constraintTop_toBottomOf="@id/cl_show_all" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
     </androidx.core.widget.NestedScrollView>
 </layout>
