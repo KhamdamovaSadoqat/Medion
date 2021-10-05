@@ -34,5 +34,14 @@
         android:id="@+id/aboutDoctorFragment"
         android:name="uz.medion.ui.main.user.aboutDoctor.AboutDoctorFragment"
         android:label="AboutDoctorFragment"
-        tools:layout="@layout/fragment_about_doctor"/>
+        tools:layout="@layout/fragment_about_doctor">
+        <action
+            android:id="@+id/action_aboutDoctorFragment_to_certificateFragment"
+            app:destination="@id/certificateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/certificateFragment"
+        android:name="uz.medion.ui.main.user.aboutDoctor.CertificateFragment"
+        android:label="CertificateFragment"
+        tools:layout="@layout/fragment_certificate"/>
 </navigation>

@@ -3,13 +3,19 @@ package uz.medion.ui.main.user.aboutDoctor
 import android.util.Log
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
+import androidx.core.view.get
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.constants.Constants
+import uz.medion.data.constants.Keys
 import uz.medion.data.model.AboutDoctorCommentItem
 import uz.medion.data.model.AboutDoctorItems
 import uz.medion.databinding.FragmentAboutDoctorBinding
@@ -60,7 +66,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     }
 
-    fun loadAboutDoctor(){
+    fun loadAboutDoctor() {
         // setting history of doctor
         data = Constants.getAboutDoctorItems()
         aboutDoctorItemAdapter = AboutDoctorAdapter { position, lastPosition ->
@@ -126,22 +132,24 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
     }
 
-    fun loadWork(){
+    fun loadWork() {
         //workCurrent
         aboutDoctorWorkCurrentAdapter = AboutDoctorWorkAdapter()
         aboutDoctorWorkCurrentAdapter.setData(Constants.getCurrentWork())
         binding.rvWorkCurrent.adapter = aboutDoctorWorkCurrentAdapter
-        binding.rvWorkCurrent.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.rvWorkCurrent.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
         //workPast
         aboutDoctorWorkPastAdapter = AboutDoctorWorkAdapter()
         aboutDoctorWorkPastAdapter.setData(Constants.getPastWork())
         binding.rvWorkPast.adapter = aboutDoctorWorkCurrentAdapter
-        binding.rvWorkPast.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.rvWorkPast.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
     }
 
-    fun loadComment(){
+    fun loadComment() {
         //generating comments from constant date
         aboutDoctorCommentAdapter = AboutDoctorCommentAdapter { }
         aboutDoctorCommentAdapter.setData(Constants.getComments())
@@ -332,7 +340,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             time = DateTimeUtils.dateToText(date, "HH:mm yyyy-MM-dd").toString()
             if (binding.etUserComment.text.isNullOrEmpty() || binding.etUserComment.text.isNullOrBlank()) {
                 binding.etUserComment.error = "Write comment please!"
-            }else{
+            } else {
                 vm.sendComment(
                     AboutDoctorCommentItem(
                         binding.etUserComment.text.toString(),
@@ -351,16 +359,22 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     }
 
-    fun loadCertificate(){
+    fun loadCertificate() {
         //certificate
-        aboutDoctorSertificateAdapter = AboutDoctorSertificateAdapter {  }
+        aboutDoctorSertificateAdapter = AboutDoctorSertificateAdapter {
+            findNavController().navigate(
+                R.id.action_aboutDoctorFragment_to_certificateFragment, bundleOf(
+                    Keys.BUNDLE_CERTIFICATE to it
+                )
+            )
+        }
         aboutDoctorSertificateAdapter.setData(Constants.getSertificate())
         binding.rvSertificate.adapter = aboutDoctorSertificateAdapter
         binding.rvSertificate.layoutManager = GridLayoutManager(requireContext(), 2)
 
     }
 
-    fun reloadLayout(){
+    fun reloadLayout() {
         binding.etUserComment.setText("")
         binding.apply {
             ivStar1.setImageDrawable(
@@ -397,7 +411,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         reyting = 1
     }
 
-    fun setScreenDemention(){
+    fun setScreenDemention() {
         val screenDimension = ViewUtils.screenDimention(requireContext())
 //        val constraintLayout: ConstraintLayout.LayoutParams = binding.clMain.layoutParams as ConstraintLayout.LayoutParams
 //        constraintLayout.height = screenDimension[1]
@@ -405,12 +419,25 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 //        binding.clMain.layoutParams = constraintLayout
 
         val layout = ConstraintLayout.LayoutParams(
-            ConstraintLayout.LayoutParams.WRAP_CONTENT,
-            ConstraintLayout.LayoutParams.WRAP_CONTENT
+            50000,
+            50000
         )
-        layout.width = screenDimension[0]
-        layout.height = screenDimension[1]
-        binding.nsvMain.layoutParams = layout
+
+        val constraintSet1 = NestedScrollView(requireContext())
+        constraintSet1.layoutParams = layout
+
+
+        Log.d("-------------", "setScreenDemention: screen: $screenDimension")
+
+//        constraintSet1.constrainWidth(R.id.cl_main, screenDimension[0])
+//        constraintSet1.constrainHeight(R.id.cl_main, screenDimension[1])
+//
+//        constraintSet1.applyTo(binding.clMain)
+
+
+//        layout.width = screenDimension[0]
+//        layout.height = screenDimension[1]
+//        binding.nsvMain.layoutParams = layout
     }
 
     override fun getLayoutResId() = R.layout.fragment_about_doctor

@@ -13,5 +13,6 @@ object Keys {
     const val MEDION_NOTIFICATION = "should_check_for_update"
 
     const val EXTRA_UNAUTHORIZED = "extra_unAthorized"
+    const val BUNDLE_CERTIFICATE = "bundle_certificate"
 
 }
