@@ -50,6 +50,10 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         binding.rvDoctors.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
+        binding.cvCalendar.date = System.currentTimeMillis()
+//        binding.cvCalendar.
+
+
     }
 
     override fun getLayoutResId() = R.layout.fragment_our_doctors
