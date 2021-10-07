@@ -3,15 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+<!--    <string name="main">Main</string>-->
+<!--    <string name="estethic_medicine">Estethic Medicine</string>-->
+<!--    <string name="spa_medicine">SPA medicine</string>-->
+<!--    <string name="adress_contact">Andress and contacs</string>-->
+<!--    <string name="my_account">My account</string>-->
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="@string/hello_blank_fragment" />
+            android:title="@string/main" />
         <item
-            android:id="@+id/nav_gallery"
-            android:title="@string/hello_blank_fragment" />
+            android:id="@+id/nav_our_doctorsy"
+            android:title="@string/our_doctors" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:title="@string/hello_blank_fragment" />
+            android:id="@+id/nav_estethic_medicine"
+            android:title="@string/estethic_medicine" />
+        <item
+            android:id="@+id/nav_spa_medicine"
+            android:title="@string/spa_medicine" />
+        <item
+            android:id="@+id/nav_adress_contact"
+            android:title="@string/adress_contact" />
+        <item
+            android:id="@+id/nav_my_account"
+            android:title="@string/my_account" />
     </group>
 </menu>

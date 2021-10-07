@@ -114,4 +114,11 @@
     <string name="our_doctors">Our Doctors</string>
 
 
+    <!-- App bar -->
+    <string name="main">Main</string>
+    <string name="estethic_medicine">Estethic Medicine</string>
+    <string name="spa_medicine">SPA medicine</string>
+    <string name="adress_contact">Andress and contacs</string>
+    <string name="my_account">My account</string>
+
 </resources>
