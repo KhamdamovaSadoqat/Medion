@@ -2,24 +2,30 @@ package uz.medion.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import android.view.Gravity
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
+import androidx.navigation.ui.AppBarConfiguration
 import uz.medion.R
+import uz.medion.databinding.ActivityMainBinding
 import uz.medion.databinding.PartialBottomNavigationBinding
 import uz.medion.utils.ViewUtils
 import uz.medion.utils.showToast
 
 class BottomNavController(
+    private val bindingActivity: ActivityMainBinding,
     private val binding: PartialBottomNavigationBinding,
     private val activity: AppCompatActivity,
     private val navController: NavController
 ) {
 
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private var oldClickedItemPos = 0
     private var lastClickedItemPos = 0
     private lateinit var navOptions: NavOptions
     private var lastBackClickTime = 0L
+
 
     init {
         controlBottomNav()
@@ -96,11 +102,11 @@ class BottomNavController(
                 2 -> {
                     navOptions = NavOptions.Builder()
                         .setLaunchSingleTop(true)
-//                        .setPopUpTo(R.id.omadFragment, true)
+                        .setPopUpTo(R.id.nav_view, true)
                         .build()
                     ViewUtils.fadeIn(view3, 200)
-//                    navController.navigate(R.id.omadFragment, bundleOf(), navOptions)
-//                    navController.popBackStack(R.id.omadFragment, true)
+                    if(!bindingActivity.dlMenu.isDrawerOpen(Gravity.LEFT)) bindingActivity.dlMenu.openDrawer(Gravity.LEFT);
+                    else bindingActivity.dlMenu.closeDrawer(Gravity.RIGHT);
                     return@apply
                 }
             }

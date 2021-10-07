@@ -1,23 +1,26 @@
 package uz.medion.ui.main
 
-import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import uz.medion.R
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.ui.base.BaseActivity
 import uz.medion.utils.ViewUtils
-import uz.medion.utils.gone
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavController: BottomNavController
     private lateinit var navController: NavController
 
@@ -26,15 +29,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     }
 
     private fun setUp() {
-        val navHost =
-            supportFragmentManager.findFragmentById(R.id.main_nav_controller)
-        if (navHost != null) {
-            navController = navHost.findNavController()
-        }
-        bottomNavController = BottomNavController(binding.partialBottomNav, this, navController)
-        binding.ivBackArrow.setOnClickListener {
-            onBackPressed()
-        }
+        val navHost = supportFragmentManager.findFragmentById(R.id.main_nav_controller)
+
+
+        if (navHost != null) { navController = navHost.findNavController() }
+        bottomNavController = BottomNavController(binding, binding.partialBottomNav, this, navController)
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             //from where bottom navigation should be removed
             if (destination.id == R.id.aboutDoctorFragment) {
@@ -84,6 +83,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             }
         }
 
+        binding.ivBackArrow.setOnClickListener { onBackPressed() }
     }
 
     @LayoutRes
@@ -92,6 +92,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
     override fun setStatusBarBackgroundHeight(statusBarBackground: View) {
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     override fun onBackPressed() {
