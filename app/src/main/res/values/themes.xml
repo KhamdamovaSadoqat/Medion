@@ -31,7 +31,7 @@
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="background">?android:attr/listDivider</item>
+        <item name="background">@color/solitude_50</item>
         <item name="color">@color/solitude_50</item>
     </style>
 

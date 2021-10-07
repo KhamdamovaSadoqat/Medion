@@ -2,11 +2,12 @@ package uz.medion.ui.main.user.ourDoctors
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
+//import com.google.android.flexbox.FlexDirection
+//import com.google.android.flexbox.FlexboxLayoutManager
+//import com.google.android.flexbox.JustifyContent
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.databinding.FragmentOurDoctorsBinding
@@ -40,10 +41,10 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 binding.clCalendar.gone()
                 tvCategoryAll = false
             } else {
-                val flexboxLayoutManager = FlexboxLayoutManager(context)
-                flexboxLayoutManager.flexDirection = FlexDirection.COLUMN
-                flexboxLayoutManager.justifyContent = JustifyContent.FLEX_END
-                binding.rvDoctorsCategories.layoutManager = flexboxLayoutManager
+//                val flexboxLayoutManager = FlexboxLayoutManager(context)
+//                flexboxLayoutManager.flexDirection = FlexDirection.COLUMN
+//                flexboxLayoutManager.justifyContent = JustifyContent.FLEX_END
+                binding.rvDoctorsCategories.layoutManager = GridLayoutManager(requireContext(), 3)
                 binding.clReason.visible()
                 binding.clCalendar.visible()
                 tvCategoryAll = true

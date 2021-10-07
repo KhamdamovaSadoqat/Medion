@@ -7,12 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.main.user.ourDoctors.OurDoctorsFragment">
-
 
             <TextView
                 android:id="@+id/tv_medical_service"
@@ -72,14 +70,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
                         android:layout_marginStart="16dp"
-                        android:gravity="center"
                         android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
                         android:text="@string/initial_consultation_with_a_urologists"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent" />
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/iv_option_1"
@@ -87,10 +85,10 @@
                         android:layout_height="24dp"
                         android:layout_marginEnd="16dp"
                         android:contentDescription="@string/check"
-                        app:srcCompat="@drawable/ic_check"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_check" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,14 +113,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
                         android:layout_marginStart="16dp"
-                        android:gravity="center"
                         android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
                         android:text="@string/initial_consultation_with_a_urologists"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent" />
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/iv_option_2"
@@ -130,11 +128,11 @@
                         android:layout_height="24dp"
                         android:layout_marginEnd="16dp"
                         android:contentDescription="@string/check"
-                        app:srcCompat="@drawable/ic_check"
                         android:visibility="invisible"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_check" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
@@ -158,14 +156,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
                         android:layout_marginStart="16dp"
-                        android:gravity="center"
                         android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
                         android:text="@string/initial_consultation_with_a_urologists"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"/>
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/iv_option_3"
@@ -173,11 +171,11 @@
                         android:layout_height="24dp"
                         android:layout_marginEnd="16dp"
                         android:contentDescription="@string/check"
-                        app:srcCompat="@drawable/ic_check"
                         android:visibility="invisible"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent" />
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_check" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
@@ -204,14 +202,14 @@
                     android:id="@+id/cv_calendar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/CalenderViewCustom"
                     android:dateTextAppearance="@style/CalenderViewDateCustomText"
-                    android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
-                    android:unfocusedMonthDateColor="@color/black"
-                    android:selectedWeekBackgroundColor="@color/nile_blue_900"
                     android:focusedMonthDateColor="@color/nile_blue_900"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    android:selectedWeekBackgroundColor="@color/nile_blue_900"
+                    android:theme="@style/CalenderViewCustom"
+                    android:unfocusedMonthDateColor="@color/black"
+                    android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -230,10 +228,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:contentDescription="@string/show_all"
-                    app:srcCompat="@drawable/ic_show_all"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_show_all" />
 
                 <TextView
                     android:id="@+id/tv_show_all"
@@ -259,8 +257,5 @@
                 app:layout_constraintTop_toBottomOf="@id/cl_show_all" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
     </androidx.core.widget.NestedScrollView>
 </layout>
