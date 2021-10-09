@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.user.chooseLanguage.ChooseLanguageFragment">
+
+        <CheckBox
+            android:id="@+id/chb_russian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableEnd="@drawable/item_checkbox"
+            android:drawablePadding="50dp"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/russian"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <CheckBox
+            android:id="@+id/chb_uzbek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableEnd="@drawable/item_checkbox"
+            android:drawablePadding="50dp"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/russian"
+            app:layout_constraintTop_toBottomOf="@id/chb_russian"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -16,6 +16,9 @@ class PersonalAccountFragment : BaseFragment<FragmentPersonalAccountBinding, Per
         binding.cl2.setOnClickListener {
             findNavController().navigate(R.id.action_personalAccountFragment_to_changePasswordFragment)
         }
+        binding.cl6.setOnClickListener {
+            findNavController().navigate(R.id.action_personalAccountFragment_to_chooseLanguageFragment)
+        }
     }
 
     override fun getLayoutResId() = R.layout.fragment_personal_account

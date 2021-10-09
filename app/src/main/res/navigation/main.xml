@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_personalAccountFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_personalAccountFragment_to_chooseLanguageFragment"
+            app:destination="@id/chooseLanguageFragment" />
     </fragment>
     <fragment
         android:id="@+id/changeNumberFragment"
@@ -69,4 +72,9 @@
         android:name="uz.medion.ui.main.user.changePassword.ChangePasswordFragment"
         android:label="ChangePasswordFragment"
         tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/chooseLanguageFragment"
+        android:name="uz.medion.ui.main.user.chooseLanguage.ChooseLanguageFragment"
+        android:label="ChooseLanguageFragment"
+        tools:layout="@layout/fragment_choose_language"/>
 </navigation>

@@ -132,5 +132,6 @@
     <string name="new_password">New password</string>
     <string name="again">Again</string>
     <string name="save">save</string>
+    <string name="russian">Russian</string>
 
 </resources>
