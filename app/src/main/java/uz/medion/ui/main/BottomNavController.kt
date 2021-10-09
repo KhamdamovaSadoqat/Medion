@@ -1,12 +1,15 @@
 package uz.medion.ui.main
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.Gravity
+import android.view.MenuItem
 import androidx.core.os.bundleOf
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import androidx.navigation.ui.AppBarConfiguration
+import com.google.android.material.navigation.NavigationView
 import uz.medion.R
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.databinding.PartialBottomNavigationBinding
@@ -18,9 +21,8 @@ class BottomNavController(
     private val binding: PartialBottomNavigationBinding,
     private val activity: AppCompatActivity,
     private val navController: NavController
-) {
+){
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private var oldClickedItemPos = 0
     private var lastClickedItemPos = 0
     private lateinit var navOptions: NavOptions
@@ -76,6 +78,7 @@ class BottomNavController(
 
     }
 
+    @SuppressLint("RtlHardcoded")
     private fun highlightItem() {
         binding.apply {
             when (lastClickedItemPos) {
@@ -102,11 +105,11 @@ class BottomNavController(
                 2 -> {
                     navOptions = NavOptions.Builder()
                         .setLaunchSingleTop(true)
-                        .setPopUpTo(R.id.nav_view, true)
+                        .setPopUpTo(R.id.nv_navigation_drawer, true)
                         .build()
                     ViewUtils.fadeIn(view3, 200)
-                    if(!bindingActivity.dlMenu.isDrawerOpen(Gravity.LEFT)) bindingActivity.dlMenu.openDrawer(Gravity.LEFT);
-                    else bindingActivity.dlMenu.closeDrawer(Gravity.RIGHT);
+                    if(!bindingActivity.dlMenu.isDrawerOpen(Gravity.LEFT)) bindingActivity.dlMenu.openDrawer(Gravity.LEFT)
+                    else bindingActivity.dlMenu.closeDrawer(Gravity.RIGHT)
                     return@apply
                 }
             }

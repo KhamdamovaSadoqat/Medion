@@ -1,18 +1,16 @@
 package uz.medion.ui.main
 
+import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationView
 import uz.medion.R
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.ui.base.BaseActivity
@@ -32,8 +30,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         val navHost = supportFragmentManager.findFragmentById(R.id.main_nav_controller)
 
 
-        if (navHost != null) { navController = navHost.findNavController() }
-        bottomNavController = BottomNavController(binding, binding.partialBottomNav, this, navController)
+        if (navHost != null) {
+            navController = navHost.findNavController()
+        }
+        bottomNavController =
+            BottomNavController(binding, binding.partialBottomNav, this, navController)
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             //from where bottom navigation should be removed
             if (destination.id == R.id.aboutDoctorFragment) {
@@ -52,7 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivHeart)
             }
             //here goes OurDoctorsFragment
-            if(destination.id == R.id.ourDoctorsFragment){
+            if (destination.id == R.id.ourDoctorsFragment) {
                 binding.tvMain.setText(R.string.our_doctors)
                 ViewUtils.fadeIn(binding.ivBackArrow)
                 ViewUtils.fadeIn(binding.tvMain)
@@ -62,7 +63,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivMedion)
             }
             //here goes AboutDoctorsFragment
-            if(destination.id == R.id.aboutDoctorFragment){
+            if (destination.id == R.id.aboutDoctorFragment) {
                 binding.tvMain.setText(R.string.our_doctors)
                 ViewUtils.fadeIn(binding.ivBackArrow)
                 ViewUtils.fadeIn(binding.ivHeart)
@@ -72,7 +73,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivNotification)
             }
             //here goes CertificateFragment
-            if(destination.id == R.id.certificateFragment){
+            if (destination.id == R.id.certificateFragment) {
                 binding.tvMain.setText(R.string.image)
                 ViewUtils.fadeIn(binding.ivBackArrow)
                 ViewUtils.fadeIn(binding.tvMain)
@@ -81,10 +82,31 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivSearch)
                 ViewUtils.fadeOut(binding.ivNotification)
             }
+            //here goes PersonalAccountFragment
+            if (destination.id == R.id.personalAccountFragment) {
+                binding.tvMain.setText(R.string.personal_room)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.ivNotification)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+                ViewUtils.fadeOut(binding.ivSearch)
+            }
+        }
+        binding.ivBackArrow.setOnClickListener { onBackPressed() }
+
+        binding.nvNavigationDrawer.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> navController.navigate(R.id.homeFragment)
+                R.id.nav_our_doctors -> navController.navigate(R.id.ourDoctorsFragment)
+                R.id.nav_personal_account -> navController.navigate(R.id.personalAccountFragment)
+            }
+            binding.dlMenu.closeDrawer(GravityCompat.START)
+            true
         }
 
-        binding.ivBackArrow.setOnClickListener { onBackPressed() }
     }
+
 
     @LayoutRes
     override fun getLayoutResId() = R.layout.activity_main
@@ -104,11 +126,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 //        if (navController.currentDestination?.id == R.id.olympiadRegistrationDoneFragment) {
 //            navController.popBackStack(R.id.olympiadFragment, false)
 //            // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
-        if(!bottomNavController.onBackPressed()){
+        if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
+            binding.dlMenu.closeDrawer(GravityCompat.START)
+        } else super.onBackPressed()
+        if (!bottomNavController.onBackPressed()) {
             bottomNavController.onBackPressed()
             super.onBackPressed()
         }
-
     }
 
 

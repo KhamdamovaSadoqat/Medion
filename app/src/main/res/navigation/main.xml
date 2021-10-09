@@ -38,4 +38,9 @@
         android:name="uz.medion.ui.main.user.aboutDoctor.CertificateFragment"
         android:label="CertificateFragment"
         tools:layout="@layout/fragment_certificate"/>
+    <fragment
+        android:id="@+id/personalAccountFragment"
+        android:name="uz.medion.ui.main.user.personalAccount.PersonalAccountFragment"
+        android:label="PersonalAccountFragment"
+        tools:layout="@layout/fragment_personal_account"/>
 </navigation>

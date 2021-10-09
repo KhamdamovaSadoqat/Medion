@@ -13,7 +13,6 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         app:cardBackgroundColor="#C4C4C4"
-
         app:cardCornerRadius="36dp"
         >
         <ImageView

@@ -95,7 +95,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="name_doctor">Имя</string>
-     <string name="middle_name">Отчество</string>
+    <string name="middle_name">Отчество</string>
     <string name="birthday">Дата рождения</string>
     <string name="doctor">Врачи</string>
     <string name="phone">Телефон</string>
@@ -120,5 +120,13 @@
     <string name="spa_medicine">SPA medicine</string>
     <string name="adress_contact">Andress and contacs</string>
     <string name="my_account">My account</string>
+    <string name="mobile_phone">mobile phone</string>
+    <string name="change_mobile_phone_number">Change mobile phone number</string>
+    <string name="change_password">Change password</string>
+    <string name="personal_information">Personal information</string>
+    <string name="my_documents">My documents</string>
+    <string name="my_doctors">My doctors</string>
+    <string name="languages">Languages</string>
+    <string name="quit">Quit</string>
 
 </resources>
