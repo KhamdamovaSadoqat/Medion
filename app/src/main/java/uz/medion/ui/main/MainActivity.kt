@@ -15,6 +15,8 @@ import uz.medion.R
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.ui.base.BaseActivity
 import uz.medion.utils.ViewUtils
+import uz.medion.utils.gone
+import uz.medion.utils.visible
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
@@ -37,12 +39,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             BottomNavController(binding, binding.partialBottomNav, this, navController)
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             //from where bottom navigation should be removed
-            if (destination.id == R.id.aboutDoctorFragment) {
+            if (destination.id == R.id.aboutDoctorFragment || destination.id == R.id.verificationFragment2) {
                 ViewUtils.fadeOut(binding.partialBottomNav.root)
             } else {
                 ViewUtils.fadeIn(binding.partialBottomNav.root)
             }
-
             //here goes HomeFragment
             if (destination.id == R.id.homeFragment) {
                 ViewUtils.fadeIn(binding.ivMedion)
@@ -51,6 +52,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.tvMain)
                 ViewUtils.fadeOut(binding.ivSearch)
                 ViewUtils.fadeOut(binding.ivHeart)
+                binding.partialBottomNav.bottomNavigationViewHome.visible()
             }
             //here goes OurDoctorsFragment
             if (destination.id == R.id.ourDoctorsFragment) {
@@ -61,6 +63,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivNotification)
                 ViewUtils.fadeOut(binding.ivHeart)
                 ViewUtils.fadeOut(binding.ivMedion)
+                binding.partialBottomNav.bottomNavigationViewHome.visible()
             }
             //here goes AboutDoctorsFragment
             if (destination.id == R.id.aboutDoctorFragment) {
@@ -71,6 +74,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivMedion)
                 ViewUtils.fadeOut(binding.ivSearch)
                 ViewUtils.fadeOut(binding.ivNotification)
+                binding.partialBottomNav.bottomNavigationViewHome.visible()
             }
             //here goes CertificateFragment
             if (destination.id == R.id.certificateFragment) {
@@ -81,6 +85,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivMedion)
                 ViewUtils.fadeOut(binding.ivSearch)
                 ViewUtils.fadeOut(binding.ivNotification)
+                binding.partialBottomNav.bottomNavigationViewHome.visible()
             }
             //here goes PersonalAccountFragment
             if (destination.id == R.id.personalAccountFragment) {
@@ -91,6 +96,29 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivHeart)
                 ViewUtils.fadeOut(binding.ivMedion)
                 ViewUtils.fadeOut(binding.ivSearch)
+                binding.partialBottomNav.bottomNavigationViewHome.visible()
+            }
+            //here goes ChangeNumberFragment
+            if (destination.id == R.id.changeNumberFragment) {
+                binding.tvMain.setText(R.string.change_mobile_phone_number)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+                ViewUtils.fadeOut(binding.ivSearch)
+                binding.partialBottomNav.bottomNavigationViewHome.gone()
+            }
+            //here goes ChangePasswordFragment
+            if (destination.id == R.id.changePasswordFragment) {
+                binding.tvMain.setText(R.string.change_password)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+                ViewUtils.fadeOut(binding.ivSearch)
+                binding.partialBottomNav.bottomNavigationViewHome.gone()
             }
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
@@ -104,6 +132,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             binding.dlMenu.closeDrawer(GravityCompat.START)
             true
         }
+
+
 
     }
 

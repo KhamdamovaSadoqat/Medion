@@ -37,10 +37,36 @@
         android:id="@+id/certificateFragment"
         android:name="uz.medion.ui.main.user.aboutDoctor.CertificateFragment"
         android:label="CertificateFragment"
-        tools:layout="@layout/fragment_certificate"/>
+        tools:layout="@layout/fragment_certificate" />
     <fragment
         android:id="@+id/personalAccountFragment"
         android:name="uz.medion.ui.main.user.personalAccount.PersonalAccountFragment"
         android:label="PersonalAccountFragment"
-        tools:layout="@layout/fragment_personal_account"/>
+        tools:layout="@layout/fragment_personal_account">
+        <action
+            android:id="@+id/action_personalAccountFragment_to_changeNumberFragment"
+            app:destination="@id/changeNumberFragment" />
+        <action
+            android:id="@+id/action_personalAccountFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeNumberFragment"
+        android:name="uz.medion.ui.main.user.changeNumber.ChangeNumberFragment"
+        android:label="ChangeNumberFragment"
+        tools:layout="@layout/fragment_change_number">
+        <action
+            android:id="@+id/action_changeNumberFragment_to_verificationFragment2"
+            app:destination="@id/verificationFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/verificationFragment2"
+        android:name="uz.medion.ui.splash.verification.VerificationFragment"
+        android:label="VerificationFragment"
+        tools:layout="@layout/fragment_verification" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="uz.medion.ui.main.user.changePassword.ChangePasswordFragment"
+        android:label="ChangePasswordFragment"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>
