@@ -1,7 +1,5 @@
 package uz.medion.ui.main
 
-import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
@@ -121,7 +119,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 binding.partialBottomNav.bottomNavigationViewHome.gone()
             }
             //here goes ChooseLanguageFragment
-            if(destination.id == R.id.chooseLanguageFragment){
+            if (destination.id == R.id.chooseLanguageFragment) {
                 binding.tvMain.setText(R.string.choose_language)
                 ViewUtils.fadeIn(binding.ivBackArrow)
                 ViewUtils.fadeIn(binding.tvMain)
@@ -145,7 +143,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         }
 
 
-
     }
 
 
@@ -162,18 +159,24 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     }
 
     override fun onBackPressed() {
-        val navigationOptions =
-            NavOptions.Builder().setPopUpTo(navController.currentDestination!!.id, true).build()
-//        if (navController.currentDestination?.id == R.id.olympiadRegistrationDoneFragment) {
-//            navController.popBackStack(R.id.olympiadFragment, false)
-//            // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
-        if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
-            binding.dlMenu.closeDrawer(GravityCompat.START)
-        } else super.onBackPressed()
-        if (!bottomNavController.onBackPressed()) {
-            bottomNavController.onBackPressed()
-            super.onBackPressed()
+//        val navigationOptions =
+//            NavOptions.Builder().setPopUpTo(navController.currentDestination!!.id, true).build()
+        if (navController.currentDestination!!.id == R.id.changeNumberFragment ||
+            navController.currentDestination!!.id == R.id.changePasswordFragment ||
+            navController.currentDestination!!.id == R.id.chooseLanguageFragment
+        ) {
+            navController.popBackStack(R.id.personalAccountFragment, false)
+            // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
+        } else{
+            if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
+                binding.dlMenu.closeDrawer(GravityCompat.START)
+            } else super.onBackPressed()
+            if (!bottomNavController.onBackPressed()) {
+                bottomNavController.onBackPressed()
+                super.onBackPressed()
+            }
         }
+
     }
 
 

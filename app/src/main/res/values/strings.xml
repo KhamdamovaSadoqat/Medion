@@ -13,11 +13,14 @@
     <string name="sign_up">Sign up</string>
     <string name="sign_up_with">Sign up with</string>
 
-    <string name="enter_phone">Enter phone number to register</string>
     <string name="name">Name</string>
     <string name="surname">Surname</string>
+    <string name="middle_name">Middle name</string>
+    <string name="enter_phone">Enter phone number to register</string>
     <string name="phone_number">Phone number</string>
     <string name="fill_phone_numeber">+998(__) ___-__-__</string>
+    <string name="blood_group">Blood group</string>
+    <string name="dob">Date of birth</string>
     <string name="submit">Submit</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -95,7 +98,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="name_doctor">Имя</string>
-    <string name="middle_name">Отчество</string>
     <string name="birthday">Дата рождения</string>
     <string name="doctor">Врачи</string>
     <string name="phone">Телефон</string>

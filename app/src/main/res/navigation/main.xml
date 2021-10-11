@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_personalAccountFragment_to_chooseLanguageFragment"
             app:destination="@id/chooseLanguageFragment" />
+        <action
+            android:id="@+id/action_personalAccountFragment_to_personalDateFragment"
+            app:destination="@id/personalDateFragment" />
     </fragment>
     <fragment
         android:id="@+id/changeNumberFragment"
@@ -77,4 +80,9 @@
         android:name="uz.medion.ui.main.user.chooseLanguage.ChooseLanguageFragment"
         android:label="ChooseLanguageFragment"
         tools:layout="@layout/fragment_choose_language"/>
+    <fragment
+        android:id="@+id/personalDateFragment"
+        android:name="uz.medion.ui.main.user.personalDate.PersonalDateFragment"
+        android:label="PersonalDateFragment"
+        tools:layout="@layout/fragment_personal_date"/>
 </navigation>
