@@ -133,5 +133,8 @@
     <string name="again">Again</string>
     <string name="save">save</string>
     <string name="russian">Russian</string>
+    <string name="uzbek">Uzbek</string>
+    <string name="english">English</string>
+    <string name="choose_language">Choose Language</string>
 
 </resources>

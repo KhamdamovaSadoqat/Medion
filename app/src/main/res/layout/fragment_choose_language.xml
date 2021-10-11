@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.main.user.chooseLanguage.ChooseLanguageFragment">
@@ -11,28 +11,59 @@
             android:id="@+id/chb_russian"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@android:color/transparent"
             android:button="@null"
             android:drawableEnd="@drawable/item_checkbox"
             android:drawablePadding="50dp"
-            android:layout_margin="16dp"
-            android:clickable="true"
-            android:focusable="true"
             android:text="@string/russian"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_height="1dp"
+            android:background="@color/solitude_50"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chb_russian"
+            app:layout_constraintBottom_toTopOf="@id/chb_uzbek"/>
 
         <CheckBox
             android:id="@+id/chb_uzbek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@android:color/transparent"
             android:button="@null"
             android:drawableEnd="@drawable/item_checkbox"
             android:drawablePadding="50dp"
-            android:layout_margin="16dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/russian"
-            app:layout_constraintTop_toBottomOf="@id/chb_russian"/>
+            android:text="@string/uzbek"
+            app:layout_constraintTop_toBottomOf="@id/chb_russian" />
 
+        <View
+            android:id="@+id/v_divider2"
+            android:layout_height="1dp"
+            android:background="@color/solitude_50"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chb_uzbek"
+            app:layout_constraintBottom_toTopOf="@id/chb_english"/>
+
+        <CheckBox
+            android:id="@+id/chb_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:drawableEnd="@drawable/item_checkbox"
+            android:drawablePadding="50dp"
+            android:text="@string/english"
+            app:layout_constraintTop_toBottomOf="@id/chb_uzbek" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

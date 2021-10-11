@@ -120,6 +120,17 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivSearch)
                 binding.partialBottomNav.bottomNavigationViewHome.gone()
             }
+            //here goes ChooseLanguageFragment
+            if(destination.id == R.id.chooseLanguageFragment){
+                binding.tvMain.setText(R.string.choose_language)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+                ViewUtils.fadeOut(binding.ivSearch)
+                binding.partialBottomNav.bottomNavigationViewHome.gone()
+            }
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
 

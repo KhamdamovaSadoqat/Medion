@@ -1,10 +1,5 @@
 package uz.medion.ui.main.user.chooseLanguage
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import uz.medion.R
 import uz.medion.databinding.FragmentChooseLanguageBinding
@@ -14,7 +9,18 @@ class ChooseLanguageFragment : BaseFragment<FragmentChooseLanguageBinding, Choos
 
 
     override fun onBound() {
-
+        binding.chbRussian.setOnClickListener {
+            binding.chbEnglish.isChecked = false
+            binding.chbUzbek.isChecked = false
+        }
+        binding.chbUzbek.setOnClickListener {
+            binding.chbEnglish.isChecked = false
+            binding.chbRussian.isChecked = false
+        }
+        binding.chbEnglish.setOnClickListener {
+            binding.chbRussian.isChecked = false
+            binding.chbUzbek.isChecked = false
+        }
     }
 
     override fun getLayoutResId() = R.layout.fragment_choose_language
