@@ -255,4 +255,11 @@ object Constants {
             AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg")
         )
     }
+
+    fun getGender(): ArrayList<Int>{
+        return arrayListOf(
+            R.string.male,
+            R.string.female
+        )
+    }
 }

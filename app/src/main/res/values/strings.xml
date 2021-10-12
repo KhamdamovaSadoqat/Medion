@@ -139,4 +139,10 @@
     <string name="english">English</string>
     <string name="choose_language">Choose Language</string>
 
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+
 </resources>

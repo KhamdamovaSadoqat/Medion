@@ -16,6 +16,9 @@ class PersonalAccountFragment : BaseFragment<FragmentPersonalAccountBinding, Per
         binding.cl2.setOnClickListener {
             findNavController().navigate(R.id.action_personalAccountFragment_to_changePasswordFragment)
         }
+        binding.cl3.setOnClickListener {
+            findNavController().navigate(R.id.action_personalAccountFragment_to_personalDateFragment)
+        }
         binding.cl6.setOnClickListener {
             findNavController().navigate(R.id.action_personalAccountFragment_to_chooseLanguageFragment)
         }
