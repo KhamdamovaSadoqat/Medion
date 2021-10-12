@@ -27,7 +27,7 @@
     <string name="sms_send">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
     <string name="resend_code">Resend code in 1:00</string>
     <string name="medical_service">Medical service</string>
-    <string name="all">all</string>
+    <string name="all">All</string>
     <string name="clinic_photo">clinic photo</string>
     <string name="about_clinic">Medical Center MEDION, located in the very center of Tashkent city, invites its clients to enjoy the best traditions of hospitality, evaluate the quality of our services, feel a sensitive attitude and an individual approach. MEDION is a path to harmony of soul and body, which is so difficult to find in the rhythm of a big city.</string>
     <string name="about_our_center">About our center</string>
@@ -144,5 +144,7 @@
     <string name="female">Female</string>
     <string name="weight">Weight</string>
     <string name="height">Height</string>
+    <string name="favourites">Favourites</string>
+    <string name="_21_12_1970">21.12.1970</string>
 
 </resources>

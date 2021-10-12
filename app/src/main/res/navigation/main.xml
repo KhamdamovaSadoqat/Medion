@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_personalAccountFragment_to_personalDateFragment"
             app:destination="@id/personalDateFragment" />
+        <action
+            android:id="@+id/action_personalAccountFragment_to_myDoctorsFragment"
+            app:destination="@id/myDoctorsFragment" />
     </fragment>
     <fragment
         android:id="@+id/changeNumberFragment"
@@ -85,4 +88,9 @@
         android:name="uz.medion.ui.main.user.personalDate.PersonalDateFragment"
         android:label="PersonalDateFragment"
         tools:layout="@layout/fragment_personal_date"/>
+    <fragment
+        android:id="@+id/myDoctorsFragment"
+        android:name="uz.medion.ui.main.user.myDoctors.MyDoctorsFragment"
+        android:label="MyDoctorsFragment"
+        tools:layout="@layout/fragment_my_doctors"/>
 </navigation>

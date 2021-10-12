@@ -129,6 +129,27 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivSearch)
                 binding.partialBottomNav.bottomNavigationViewHome.gone()
             }
+            //here goes PersonalDataFragment
+            if (destination.id == R.id.personalDateFragment) {
+                binding.tvMain.setText(R.string.personal_information)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+                ViewUtils.fadeOut(binding.ivSearch)
+                binding.partialBottomNav.bottomNavigationViewHome.gone()
+            }
+            //here goes MyDoctorsFragment
+            if (destination.id == R.id.myDoctorsFragment) {
+                binding.tvMain.setText(R.string.my_doctors)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeIn(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+            }
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
 
@@ -163,11 +184,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 //            NavOptions.Builder().setPopUpTo(navController.currentDestination!!.id, true).build()
         if (navController.currentDestination!!.id == R.id.changeNumberFragment ||
             navController.currentDestination!!.id == R.id.changePasswordFragment ||
-            navController.currentDestination!!.id == R.id.chooseLanguageFragment
+            navController.currentDestination!!.id == R.id.chooseLanguageFragment ||
+            navController.currentDestination!!.id == R.id.personalDateFragment ||
+            navController.currentDestination!!.id == R.id.myDoctorsFragment
         ) {
             navController.popBackStack(R.id.personalAccountFragment, false)
             // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
-        } else{
+        } else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)
             } else super.onBackPressed()

@@ -262,4 +262,27 @@ object Constants {
             R.string.female
         )
     }
+
+    fun getMyDoctors(): ArrayList<MyDoctorsItem>{
+        return arrayListOf(
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, false),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, false),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true)
+        )
+    }
+
+    fun getMyDoctorsFavourite(): ArrayList<MyDoctorsItem>{
+        return arrayListOf(
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doc_detail, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.about_doctor, true)
+        )
+    }
+
 }
