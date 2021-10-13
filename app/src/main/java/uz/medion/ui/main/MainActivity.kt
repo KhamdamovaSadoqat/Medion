@@ -159,6 +159,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivNotification)
                 ViewUtils.fadeOut(binding.ivHeart)
                 ViewUtils.fadeOut(binding.ivMedion)
+                binding.partialBottomNav.bottomNavigationViewHome.gone()
             }
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }

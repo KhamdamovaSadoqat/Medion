@@ -293,10 +293,9 @@ object Constants {
             MyDoctorDocumentItem("02 avg, 2021", "EHC", "Clinical results blood test", "word"),
         )
     }
-
     fun getMyDoctorDocumentsType(): ArrayList<AboutDoctorItems>{
         return arrayListOf(
-            AboutDoctorItems(R.string.analyzes, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.analyzes, R.color.nile_blue_900, R.color.white),
             AboutDoctorItems(R.string.reformence, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.appointment, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.recipe, R.color.solitude_50, R.color.tangaroa_900),
