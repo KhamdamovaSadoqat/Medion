@@ -284,5 +284,24 @@ object Constants {
             MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.about_doctor, true)
         )
     }
+    fun getMyDoctorsDocuments(): ArrayList<MyDoctorDocumentItem>{
+        return  arrayListOf(
+            MyDoctorDocumentItem("22 oct, 2021", "Analyzes", "Clinical results blood test", "word"),
+            MyDoctorDocumentItem("53 sept, 2021", "Reformence", "Clinical results blood test", "exel"),
+            MyDoctorDocumentItem("12 sept, 2021", "Appointment", "Clinical results blood test", "pdf"),
+            MyDoctorDocumentItem("35 avg, 2021", "Recipe", "Clinical results blood test", "jpeg"),
+            MyDoctorDocumentItem("02 avg, 2021", "EHC", "Clinical results blood test", "word"),
+        )
+    }
+
+    fun getMyDoctorDocumentsType(): ArrayList<AboutDoctorItems>{
+        return arrayListOf(
+            AboutDoctorItems(R.string.analyzes, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.reformence, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.appointment, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.recipe, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.ehc, R.color.solitude_50, R.color.tangaroa_900)
+        )
+    }
 
 }

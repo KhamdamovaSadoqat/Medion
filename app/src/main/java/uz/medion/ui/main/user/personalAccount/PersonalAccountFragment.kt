@@ -19,13 +19,15 @@ class PersonalAccountFragment : BaseFragment<FragmentPersonalAccountBinding, Per
         binding.cl3.setOnClickListener {
             findNavController().navigate(R.id.action_personalAccountFragment_to_personalDateFragment)
         }
+        binding.cl4.setOnClickListener {
+            findNavController().navigate(R.id.action_personalAccountFragment_to_myDocumentsFragment)
+        }
         binding.cl5.setOnClickListener {
             findNavController().navigate(R.id.action_personalAccountFragment_to_myDoctorsFragment)
         }
         binding.cl6.setOnClickListener {
             findNavController().navigate(R.id.action_personalAccountFragment_to_chooseLanguageFragment)
         }
-
     }
 
     override fun getLayoutResId() = R.layout.fragment_personal_account

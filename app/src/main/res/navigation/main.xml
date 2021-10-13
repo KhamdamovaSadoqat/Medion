@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_personalAccountFragment_to_myDoctorsFragment"
             app:destination="@id/myDoctorsFragment" />
+        <action
+            android:id="@+id/action_personalAccountFragment_to_myDocumentsFragment"
+            app:destination="@id/myDocumentsFragment" />
     </fragment>
     <fragment
         android:id="@+id/changeNumberFragment"
@@ -93,4 +96,9 @@
         android:name="uz.medion.ui.main.user.myDoctors.MyDoctorsFragment"
         android:label="MyDoctorsFragment"
         tools:layout="@layout/fragment_my_doctors"/>
+    <fragment
+        android:id="@+id/myDocumentsFragment"
+        android:name="uz.medion.ui.main.user.myDocuments.MyDocumentsFragment"
+        android:label="MyDocumentsFragment"
+        tools:layout="@layout/fragment_my_documents"/>
 </navigation>
