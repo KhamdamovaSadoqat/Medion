@@ -150,6 +150,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivHeart)
                 ViewUtils.fadeOut(binding.ivMedion)
             }
+            //here goes MyDocumentsFragment
+            if (destination.id == R.id.myDocumentsFragment) {
+                binding.tvMain.setText(R.string.my_documents)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeIn(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+            }
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
 
@@ -186,7 +196,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             navController.currentDestination!!.id == R.id.changePasswordFragment ||
             navController.currentDestination!!.id == R.id.chooseLanguageFragment ||
             navController.currentDestination!!.id == R.id.personalDateFragment ||
-            navController.currentDestination!!.id == R.id.myDoctorsFragment
+            navController.currentDestination!!.id == R.id.myDoctorsFragment ||
+            navController.currentDestination!!.id == R.id.myDocumentsFragment
         ) {
             navController.popBackStack(R.id.personalAccountFragment, false)
             // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
