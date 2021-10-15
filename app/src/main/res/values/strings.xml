@@ -149,11 +149,13 @@
 
 
     <string name="results">Clinical results blood test</string>
-    <string name="analyzes">analyzes</string>
+    <string name="analyzes">Analyzes</string>
     <string name="reformence">Reformence</string>
     <string name="appointment">Appointment</string>
     <string name="recipe">Recipe</string>
     <string name="ehc">EHC</string>
+    <string name="cancel">Cancel</string>
+    <string name="find_out_more_about_our_clinics">Find out more about our clinics</string>
 
 
 </resources>

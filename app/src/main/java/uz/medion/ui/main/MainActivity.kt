@@ -169,6 +169,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 R.id.nav_home -> navController.navigate(R.id.homeFragment)
                 R.id.nav_our_doctors -> navController.navigate(R.id.ourDoctorsFragment)
                 R.id.nav_personal_account -> navController.navigate(R.id.personalAccountFragment)
+                R.id.nav_adress_contact -> navController.navigate(R.id.adressAndContactsFragment)
             }
             binding.dlMenu.closeDrawer(GravityCompat.START)
             true

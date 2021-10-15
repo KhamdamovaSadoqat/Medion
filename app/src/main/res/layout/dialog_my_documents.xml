@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_types"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/bg_white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_analyzes"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:gravity="center"
+                android:text="@string/analyzes"
+                android:textColor="@color/tangaroa_900"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_reformence"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:gravity="center"
+                android:text="@string/reformence"
+                android:textColor="@color/tangaroa_900"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_analyzes"/>
+
+            <TextView
+                android:id="@+id/tv_appointment"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:gravity="center"
+                android:text="@string/appointment"
+                android:textColor="@color/tangaroa_900"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_reformence"/>
+
+            <TextView
+                android:id="@+id/tv_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:gravity="center"
+                android:text="@string/recipe"
+                android:textColor="@color/tangaroa_900"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_appointment"/>
+
+            <TextView
+                android:id="@+id/tv_ehc"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:gravity="center"
+                android:text="@string/ehc"
+                android:textColor="@color/tangaroa_900"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_recipe"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:background="@drawable/bg_my_doctors_blue"
+            app:layout_constraintTop_toBottomOf="@id/cl_types"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
