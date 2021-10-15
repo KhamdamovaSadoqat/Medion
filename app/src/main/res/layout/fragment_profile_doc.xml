@@ -13,13 +13,12 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         app:cardBackgroundColor="#C4C4C4"
-
         app:cardCornerRadius="36dp"
         >
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_fi_camera"
+            app:srcCompat="@drawable/ic_fi_camera"
             android:layout_gravity="center"
             />
     </androidx.cardview.widget.CardView>

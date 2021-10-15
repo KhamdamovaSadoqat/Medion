@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_menu">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/card_profile_avater"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="16dp"
+            android:padding="2dp"
+            android:src="@drawable/doc_pic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="1dp" />
+
+        <TextView
+            android:id="@+id/tv_doctor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="56dp"
+            android:text="@string/ilyasov_Doniyor"
+            android:textSize="16sp"
+            android:textColor="@color/tangaroa_900"
+            android:maxLines="2"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_doctor_sphere"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="56dp"
+            android:text="@string/main_doctor_of_urology"
+            android:textSize="12sp"
+            android:textColor="@color/steel_grey_800"
+            android:maxLines="2"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv_favourites"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_heart_sign"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:contentDescription="@string/icon" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_arrow_down_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:contentDescription="@string/icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

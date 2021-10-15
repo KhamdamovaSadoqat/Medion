@@ -19,6 +19,8 @@ buildscript {
 allprojects {
     repositories {
         maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com" }
+        maven { url "https://google.bintray.com/flexbox-layout" }
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
 <androidx.core.widget.NestedScrollView
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -34,7 +33,7 @@
             android:id="@+id/imgDoctor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_person" />
+            app:srcCompat="@drawable/ic_person" />
 
         <ImageView
             android:clickable="true"
@@ -43,7 +42,7 @@
             android:layout_height="30dp"
             android:layout_gravity="bottom|center"
             android:background="#83454749"
-            android:src="@drawable/ic_baseline_camera_alt_24"
+            app:srcCompat="@drawable/ic_baseline_camera_alt_24"
             android:visibility="visible"
             app:layout_anchor="@id/imgDoctor"
             app:layout_anchorGravity="bottom"

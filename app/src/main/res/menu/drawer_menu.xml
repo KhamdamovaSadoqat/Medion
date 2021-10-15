@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/main" />
+        <item
+            android:id="@+id/nav_our_doctors"
+            android:title="@string/our_doctors" />
+        <item
+            android:id="@+id/nav_estethic_medicine"
+            android:title="@string/estethic_medicine" />
+        <item
+            android:id="@+id/nav_spa_medicine"
+            android:title="@string/spa_medicine" />
+        <item
+            android:id="@+id/nav_adress_contact"
+            android:title="@string/adress_contact" />
+        <item
+            android:id="@+id/nav_personal_account"
+            android:title="@string/my_account" />
+    </group>
+</menu>

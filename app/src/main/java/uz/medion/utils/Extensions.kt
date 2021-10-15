@@ -1,6 +1,6 @@
 package uz.medion.utils
 
-import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -40,7 +40,7 @@ fun SharedPreferences.put(key: String, value: Boolean) {
 }
 
 fun Context.openActivity(
-    activityClass: KClass<out Activity>,
+    activityClass: KClass<out AppCompatActivity>,
     action: ((intent: Intent) -> Unit)? = null
 ) {
     val intent = Intent(this, activityClass.java)
@@ -48,8 +48,8 @@ fun Context.openActivity(
     startActivity(intent)
 }
 
-fun Activity.openActivityForResult(
-    activityClass: KClass<out Activity>,
+fun AppCompatActivity.openActivityForResult(
+    activityClass: KClass<out AppCompatActivity>,
     requestCode: Int,
     action: ((intent: Intent) -> Unit)? = null
 ) {

@@ -1,6 +1,6 @@
 package uz.medion.doctor
 
-import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -148,7 +148,7 @@ class ChangeProfileDoctorFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (resultCode) {
-            Activity.RESULT_OK -> {
+            AppCompatActivity.RESULT_OK -> {
                 // Uri object will not be null for RESULT_OK
                 val uri: Uri = data?.data!!
                 when (requestCode) {

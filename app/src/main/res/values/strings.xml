@@ -13,18 +13,21 @@
     <string name="sign_up">Sign up</string>
     <string name="sign_up_with">Sign up with</string>
 
-    <string name="enter_phone">Enter phone number to register</string>
     <string name="name">Name</string>
     <string name="surname">Surname</string>
+    <string name="middle_name">Middle name</string>
+    <string name="enter_phone">Enter phone number to register</string>
     <string name="phone_number">Phone number</string>
     <string name="fill_phone_numeber">+998(__) ___-__-__</string>
+    <string name="blood_group">Blood group</string>
+    <string name="dob">Date of birth</string>
     <string name="submit">Submit</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sms_send">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
     <string name="resend_code">Resend code in 1:00</string>
     <string name="medical_service">Medical service</string>
-    <string name="all">all</string>
+    <string name="all">All</string>
     <string name="clinic_photo">clinic photo</string>
     <string name="about_clinic">Medical Center MEDION, located in the very center of Tashkent city, invites its clients to enjoy the best traditions of hospitality, evaluate the quality of our services, feel a sensitive attitude and an individual approach. MEDION is a path to harmony of soul and body, which is so difficult to find in the rhythm of a big city.</string>
     <string name="about_our_center">About our center</string>
@@ -95,7 +98,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="name_doctor">Имя</string>
-     <string name="middle_name">Отчество</string>
     <string name="birthday">Дата рождения</string>
     <string name="doctor">Врачи</string>
     <string name="phone">Телефон</string>
@@ -107,5 +109,53 @@
     <string name="lbl_set_profile_photo">Set profile image</string>
     <string name="lbl_take_camera_picture">Take a picture</string>
     <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="personal_room">Personal room</string>
+    <string name="on_back_pressed">Press twice</string>
+
+    <!-- App bar -->
+    <string name="our_doctors">Our Doctors</string>
+    <string name="main">Main</string>
+    <string name="change_mobile_phone_number">Change mobile phone number</string>
+
+
+    <string name="estethic_medicine">Estethic Medicine</string>
+    <string name="spa_medicine">SPA medicine</string>
+    <string name="adress_contact">Andress and contacs</string>
+    <string name="my_account">My account</string>
+    <string name="mobile_phone">mobile phone</string>
+    <string name="change_password">Change password</string>
+    <string name="personal_information">Personal information</string>
+    <string name="my_documents">My documents</string>
+    <string name="my_doctors">My doctors</string>
+    <string name="languages">Languages</string>
+    <string name="quit">Quit</string>
+    <string name="next">next</string>
+    <string name="last_password">Last password</string>
+    <string name="new_password">New password</string>
+    <string name="again">Again</string>
+    <string name="save">save</string>
+    <string name="russian">Russian</string>
+    <string name="uzbek">Uzbek</string>
+    <string name="english">English</string>
+    <string name="choose_language">Choose Language</string>
+
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="favourites">Favourites</string>
+    <string name="_21_12_1970">21.12.1970</string>
+
+
+    <string name="results">Clinical results blood test</string>
+    <string name="analyzes">Analyzes</string>
+    <string name="reformence">Reformence</string>
+    <string name="appointment">Appointment</string>
+    <string name="recipe">Recipe</string>
+    <string name="ehc">EHC</string>
+    <string name="cancel">Cancel</string>
+    <string name="find_out_more_about_our_clinics">Find out more about our clinics</string>
+
 
 </resources>

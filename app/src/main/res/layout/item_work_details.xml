@@ -12,7 +12,7 @@
             android:id="@+id/iv_dot"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:src="@drawable/ic_dot"
+            app:srcCompat="@drawable/ic_dot"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:contentDescription="@string/icon" />

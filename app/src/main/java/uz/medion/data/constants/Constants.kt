@@ -155,7 +155,7 @@ object Constants {
         )
     }
 
-    fun getAboutDoctorItems(): ArrayList<AboutDoctorItems>{
+    fun getAboutDoctorItems(): ArrayList<AboutDoctorItems> {
         return arrayListOf<AboutDoctorItems>(
             AboutDoctorItems(R.string.about_doctor, R.color.nile_blue_900, R.color.white),
             AboutDoctorItems(R.string.work, R.color.solitude_50, R.color.tangaroa_900),
@@ -164,81 +164,117 @@ object Constants {
         )
     }
 
-    fun getComments(): ArrayList<AboutDoctorCommentItem>{
+    fun getComments(): ArrayList<AboutDoctorCommentItem> {
         return arrayListOf<AboutDoctorCommentItem>(
-            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
-                    "        ENT organs. Before diagnosing and" +
-                    "        define a treatment plan, collects a detailed" +
-                    "        history and carefully examines patients with" +
-                    "        using high-precision safe" +
-                    "        equipment. With the help of objective and reliable" +
-                    "        testing methods reveals audiological and" +
-                    "        audiological problems in children. Conducts" +
-                    "        studies that help assess the degree" +
-                    "        hearing loss, to prevent its further development.", 4, "22 august 2021"),
-            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
-                    "        ENT organs. Before diagnosing and" +
-                    "        define a treatment plan, collects a detailed" +
-                    "        history and carefully examines patients with" +
-                    "        using high-precision safe" +
-                    "        equipment. With the help of objective and reliable" +
-                    "        testing methods reveals audiological and" +
-                    "        audiological problems in children. Conducts" +
-                    "        studies that help assess the degree" +
-                    "        hearing loss, to prevent its further development.", 2, "22 august 2021"),
-            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
-                    "        ENT organs. Before diagnosing and" +
-                    "        define a treatment plan, collects a detailed" +
-                    "        history and carefully examines patients with" +
-                    "        using high-precision safe" +
-                    "        equipment. With the help of objective and reliable" +
-                    "        testing methods reveals audiological and" +
-                    "        audiological problems in children. Conducts" +
-                    "        studies that help assess the degree" +
-                    "        hearing loss, to prevent its further development.", 1, "22 august 2021"),
-            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
-                    "        ENT organs. Before diagnosing and" +
-                    "        define a treatment plan, collects a detailed" +
-                    "        history and carefully examines patients with" +
-                    "        using high-precision safe" +
-                    "        equipment. With the help of objective and reliable" +
-                    "        testing methods reveals audiological and" +
-                    "        audiological problems in children. Conducts" +
-                    "        studies that help assess the degree" +
-                    "        hearing loss, to prevent its further development.", 4, "22 august 2021"),
-            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
-                    "        ENT organs. Before diagnosing and" +
-                    "        define a treatment plan, collects a detailed" +
-                    "        history and carefully examines patients with" +
-                    "        using high-precision safe" +
-                    "        equipment. With the help of objective and reliable" +
-                    "        testing methods reveals audiological and" +
-                    "        audiological problems in children. Conducts" +
-                    "        studies that help assess the degree" +
-                    "        hearing loss, to prevent its further development.", 5, "22 august 2021"),
-            AboutDoctorCommentItem("Consults children and adults with medical conditions" +
-                    "        ENT organs. Before diagnosing and" +
-                    "        define a treatment plan, collects a detailed" +
-                    "        history and carefully examines patients with" +
-                    "        using high-precision safe" +
-                    "        equipment. With the help of objective and reliable" +
-                    "        testing methods reveals audiological and" +
-                    "        audiological problems in children. Conducts" +
-                    "        studies that help assess the degree" +
-                    "        hearing loss, to prevent its further development.", 3, "22 august 2021"),
+            AboutDoctorCommentItem(
+                "Consults children and adults with medical conditions" +
+                        "        ENT organs. Before diagnosing and" +
+                        "        define a treatment plan, collects a detailed" +
+                        "        history and carefully examines patients with" +
+                        "        using high-precision safe" +
+                        "        equipment. With the help of objective and reliable" +
+                        "        testing methods reveals audiological and" +
+                        "        audiological problems in children. Conducts" +
+                        "        studies that help assess the degree" +
+                        "        hearing loss, to prevent its further development.",
+                4,
+                "22 august 2021"
+            ),
+            AboutDoctorCommentItem(
+                "Consults children and adults with medical conditions" +
+                        "        ENT organs. Before diagnosing and" +
+                        "        define a treatment plan, collects a detailed" +
+                        "        history and carefully examines patients with" +
+                        "        using high-precision safe" +
+                        "        equipment. With the help of objective and reliable" +
+                        "        testing methods reveals audiological and" +
+                        "        audiological problems in children. Conducts" +
+                        "        studies that help assess the degree" +
+                        "        hearing loss, to prevent its further development.",
+                2,
+                "22 august 2021"
+            ),
+            AboutDoctorCommentItem(
+                "Consults children and adults with medical conditions" +
+                        "        ENT organs. Before diagnosing and" +
+                        "        define a treatment plan, collects a detailed" +
+                        "        history and carefully examines patients with" +
+                        "        using high-precision safe" +
+                        "        equipment. With the help of objective and reliable" +
+                        "        testing methods reveals audiological and" +
+                        "        audiological problems in children. Conducts" +
+                        "        studies that help assess the degree" +
+                        "        hearing loss, to prevent its further development.",
+                1,
+                "22 august 2021"
+            ),
+            AboutDoctorCommentItem(
+                "Consults children and adults with medical conditions" +
+                        "        ENT organs. Before diagnosing and" +
+                        "        define a treatment plan, collects a detailed" +
+                        "        history and carefully examines patients with" +
+                        "        using high-precision safe" +
+                        "        equipment. With the help of objective and reliable" +
+                        "        testing methods reveals audiological and" +
+                        "        audiological problems in children. Conducts" +
+                        "        studies that help assess the degree" +
+                        "        hearing loss, to prevent its further development.",
+                4,
+                "22 august 2021"
+            ),
+            AboutDoctorCommentItem(
+                "Consults children and adults with medical conditions" +
+                        "        ENT organs. Before diagnosing and" +
+                        "        define a treatment plan, collects a detailed" +
+                        "        history and carefully examines patients with" +
+                        "        using high-precision safe" +
+                        "        equipment. With the help of objective and reliable" +
+                        "        testing methods reveals audiological and" +
+                        "        audiological problems in children. Conducts" +
+                        "        studies that help assess the degree" +
+                        "        hearing loss, to prevent its further development.",
+                5,
+                "22 august 2021"
+            ),
+            AboutDoctorCommentItem(
+                "Consults children and adults with medical conditions" +
+                        "        ENT organs. Before diagnosing and" +
+                        "        define a treatment plan, collects a detailed" +
+                        "        history and carefully examines patients with" +
+                        "        using high-precision safe" +
+                        "        equipment. With the help of objective and reliable" +
+                        "        testing methods reveals audiological and" +
+                        "        audiological problems in children. Conducts" +
+                        "        studies that help assess the degree" +
+                        "        hearing loss, to prevent its further development.",
+                3,
+                "22 august 2021"
+            ),
         )
     }
 
-    fun getCurrentWork(): ArrayList<AboutDoctorWorkItem>{
+    fun getCurrentWork(): ArrayList<AboutDoctorWorkItem> {
         return arrayListOf(
-            AboutDoctorWorkItem("Medical Center MEDION CLINIC, AESTHETIC & SPA", "doctor of urology"),
-            AboutDoctorWorkItem("Medical Center MEDION CLINIC, AESTHETIC & SPA", "doctor of urology"),
-            AboutDoctorWorkItem("Medical Center MEDION CLINIC, AESTHETIC & SPA", "doctor of urology"),
-            AboutDoctorWorkItem("Medical Center MEDION CLINIC, AESTHETIC & SPA", "doctor of urology")
+            AboutDoctorWorkItem(
+                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
+                "doctor of urology"
+            ),
+            AboutDoctorWorkItem(
+                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
+                "doctor of urology"
+            ),
+            AboutDoctorWorkItem(
+                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
+                "doctor of urology"
+            ),
+            AboutDoctorWorkItem(
+                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
+                "doctor of urology"
+            )
         )
     }
 
-    fun getPastWork(): ArrayList<AboutDoctorWorkItem>{
+    fun getPastWork(): ArrayList<AboutDoctorWorkItem> {
         return arrayListOf(
             AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
             AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
@@ -248,11 +284,94 @@ object Constants {
         )
     }
 
-    fun getSertificate(): ArrayList<AboutDoctorSertificateItem>{
+    fun getSertificate(): ArrayList<AboutDoctorSertificateItem> {
         return arrayListOf(
             AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),
             AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),
             AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg")
         )
     }
+
+    fun getGender(): ArrayList<Int> {
+        return arrayListOf(
+            R.string.male,
+            R.string.female
+        )
+    }
+
+    fun getMyDoctors(): ArrayList<MyDoctorsItem> {
+        return arrayListOf(
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, false),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, false),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true)
+        )
+    }
+
+    fun getMyDoctorsFavourite(): ArrayList<MyDoctorsItem> {
+        return arrayListOf(
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doc_detail, true),
+            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.about_doctor, true)
+        )
+    }
+
+    fun getMyDoctorsDocuments(): ArrayList<MyDoctorDocumentItem> {
+        return arrayListOf(
+            MyDoctorDocumentItem("22 oct, 2021", "Analyzes", "Clinical results blood test", "word"),
+            MyDoctorDocumentItem(
+                "53 sept, 2021",
+                "Reformence",
+                "Clinical results blood test",
+                "exel"
+            ),
+            MyDoctorDocumentItem(
+                "12 sept, 2021",
+                "Appointment",
+                "Clinical results blood test",
+                "pdf"
+            ),
+            MyDoctorDocumentItem("35 avg, 2021", "Recipe", "Clinical results blood test", "jpeg"),
+            MyDoctorDocumentItem("02 avg, 2021", "EHC", "Clinical results blood test", "word"),
+        )
+    }
+
+    fun getMyDoctorDocumentsType(): ArrayList<AboutDoctorItems> {
+        return arrayListOf(
+            AboutDoctorItems(R.string.analyzes, R.color.nile_blue_900, R.color.white),
+            AboutDoctorItems(R.string.reformence, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.appointment, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.recipe, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.ehc, R.color.solitude_50, R.color.tangaroa_900)
+        )
+    }
+
+    fun getAdressAndContact(): ArrayList<AdressAndContactsItem> {
+        return arrayListOf(
+            AdressAndContactsItem(
+                R.drawable.center_photo,
+                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
+                "Shaykhantakhur district, st. Zulfiyakhanum 18",
+                "+99890 975 95 47"
+            ),
+            AdressAndContactsItem(
+                R.drawable.center_photo,
+                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
+                "Shaykhantakhur district, st. Zulfiyakhanum 18",
+                "+99890 975 95 47"
+            ),
+            AdressAndContactsItem(
+                R.drawable.center_photo,
+                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
+                "Shaykhantakhur district, st. Zulfiyakhanum 18",
+                "+99890 975 95 47"
+            )
+        )
+    }
+
 }
