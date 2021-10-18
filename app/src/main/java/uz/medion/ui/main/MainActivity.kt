@@ -161,6 +161,18 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivMedion)
                 binding.partialBottomNav.bottomNavigationViewHome.gone()
             }
+            //here goes EstethicMedicineFragment
+            if (destination.id == R.id.esteticMedicineFragment) {
+                binding.tvMain.setText(R.string.estethic_medicine)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeIn(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+                binding.partialBottomNav.bottomNavigationViewHome.gone()
+            }
+
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
 
@@ -170,6 +182,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 R.id.nav_our_doctors -> navController.navigate(R.id.ourDoctorsFragment)
                 R.id.nav_personal_account -> navController.navigate(R.id.personalAccountFragment)
                 R.id.nav_adress_contact -> navController.navigate(R.id.adressAndContactsFragment)
+                R.id.nav_estethic_medicine -> navController.navigate(R.id.esteticMedicineFragment)
             }
             binding.dlMenu.closeDrawer(GravityCompat.START)
             true

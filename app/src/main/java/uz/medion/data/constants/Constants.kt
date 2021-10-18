@@ -374,4 +374,13 @@ object Constants {
         )
     }
 
+    fun getEsteticMedicine_categories(): ArrayList<AboutDoctorItems> {
+        return arrayListOf<AboutDoctorItems>(
+            AboutDoctorItems(R.string.estetic_medicine_5, R.color.nile_blue_900, R.color.white),
+            AboutDoctorItems(R.string.estetic_medicine_6, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.estetic_medicine_7, R.color.solitude_50, R.color.tangaroa_900)
+        )
+    }
+
+
 }

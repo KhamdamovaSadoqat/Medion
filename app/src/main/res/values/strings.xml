@@ -21,7 +21,7 @@
     <string name="fill_phone_numeber">+998(__) ___-__-__</string>
     <string name="blood_group">Blood group</string>
     <string name="dob">Date of birth</string>
-    <string name="submit">Submit</string>
+    <string name="submit">Записаться</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sms_send">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
@@ -156,6 +156,18 @@
     <string name="ehc">EHC</string>
     <string name="cancel">Cancel</string>
     <string name="find_out_more_about_our_clinics">Find out more about our clinics</string>
+    <string name="clinic_adress">Shaykhantakhur district, st. AbdullahKodiriy 39</string>
+    <string name="in_map">In Map</string>
+
+
+    <string name="estetic_medicine_1">Мы бы хотели пригласить Вас к нам в гости. Показать, как выглядит наш центр. Прислушаться к внутреннему голосу и принять разумное решение.</string>
+    <string name="estetic_medicine_2">Услуги эстетической</string>
+    <string name="estetic_medicine_3">Глаза выдают реальный возраст, поэтому хирургическая коррекция дает возможность значительно улучшить свой внешний вид. В основном данная процедура востребована у пациентов средних лет. Первыми признаками возрастных изменений являются морщины и мешки под глазами, из-за которых человек выглядит старше. Иногда эта процедура требуется и в более молодом возрасте, если есть анатомическая предрасположенность к формированию провисаний и грыж.</string>
+    <string name="estetic_medicine_4">ПРИМЕРЫ НАШИХ РАБОТ:</string>
+    <string name="before_surgery">До процедуры</string>
+    <string name="estetic_medicine_5">Блефаропластика</string>
+    <string name="estetic_medicine_6">Маммопластика</string>
+    <string name="estetic_medicine_7">Пластика живота</string>
 
 
 </resources>

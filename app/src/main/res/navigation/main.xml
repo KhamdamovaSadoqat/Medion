@@ -103,7 +103,22 @@
         tools:layout="@layout/fragment_my_documents"/>
     <fragment
         android:id="@+id/adressAndContactsFragment"
-        android:name="uz.medion.ui.main.user.adressAndContacts.AdressAndContactsFragment"
+        android:name="uz.medion.ui.main.user.adressAndContacts.AddressAndContactsFragment"
         android:label="AdressAndContactsFragment"
-        tools:layout="@layout/fragment_adress_and_contacts"/>
+        tools:layout="@layout/fragment_adress_and_contacts">
+        <action
+            android:id="@+id/action_adressAndContactsFragment_to_addressDetailsFragment"
+            app:destination="@id/addressDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressDetailsFragment"
+        android:name="uz.medion.ui.main.user.adressAndContacts.AddressDetailsFragment"
+        android:label="AddressDetailsFragment"
+        tools:layout="@layout/fragment_adress_details"/>
+    <fragment
+        android:id="@+id/esteticMedicineFragment"
+        android:name="uz.medion.ui.main.user.esteticMedicine.EsteticMedicineFragment"
+        android:label="EsteticMedicineFragment"
+        tools:layout="@layout/fragment_estetic_medicine"/>
+
 </navigation>

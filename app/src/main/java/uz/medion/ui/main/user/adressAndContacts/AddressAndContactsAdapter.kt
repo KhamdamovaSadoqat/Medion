@@ -10,8 +10,8 @@ import uz.medion.R
 import uz.medion.data.model.AdressAndContactsItem
 import uz.medion.databinding.ItemLocationsBinding
 
-class AdressAndContactsAdapter(private val itemClickListener: (Int) -> Unit) :
-RecyclerView.Adapter<AdressAndContactsAdapter.VH>() {
+class AddressAndContactsAdapter(private val itemClickListener: (Int) -> Unit) :
+RecyclerView.Adapter<AddressAndContactsAdapter.VH>() {
 
     private var listItem = listOf<AdressAndContactsItem>()
     fun setData(listItem: List<AdressAndContactsItem>) {
