@@ -170,4 +170,49 @@
     <string name="estetic_medicine_7">Пластика живота</string>
 
 
+    <string name="spa_tv_1">Клиника MEDION предлагает Вам широкий выбор SPA-услуг, оказывающих благотворный физиотерапевтический и релаксирующий эффект на организм.</string>
+    <string name="spa_tv_2">Мы предоставляем процедуры:</string>
+    <string name="short_discription">Краткое описание</string>
+    <string name="massage">Массаж</string>
+    <string name="water_procedures">Водные процедуры</string>
+    <string name="medicine_in_bath">Процедуры в хаммаме</string>
+    <string name="preventive_service">Профилактические услуги/SPA</string>
+    <string name="lipolytics">Липолитики</string>
+    <string name="mesotherapy">Мезотерапия</string>
+    <string name="plasmolifting">Плазмалифтинг</string>
+    <string name="botulinum_toxins">Ботулотоксины</string>
+    <string name="biorevitalization">Биоревитализация и биорепарация</string>
+    <string name="contour_plastic">Контурная пластика</string>
+    <string name="healing_procedures">Лечебные процедуры</string>
+    <string name="body_peels">Пиллинги для тела</string>
+
+    <string name="massage1">Классический массаж на основе масла</string>
+    <string name="massage2">Лечебный массаж на основе масла</string>
+    <string name="massage4">Классический (Relax) массаж на основе масла</string>
+    <string name="massage6">Лечебный массаж</string>
+    <string name="massage8">Массаж шейно-воротниковой зоны</string>
+    <string name="massage9">Массаж спины</string>
+    <string name="massage10">Массаж рук</string>
+    <string name="massage11">Массаж головы</string>
+    <string name="massage12">Массаж лица</string>
+    <string name="massage13">Лечебный массаж ног</string>
+    <string name="massage14">Массаж ног</string>
+    <string name="massage15">Спортивный силовой массаж</string>
+    <string name="massage16">Лимфодренажный массаж (ручной)</string>
+    <string name="massage17">Антицеллюлитный массаж живота</string>
+    <string name="massage18">Антицеллюлитный массаж ног</string>
+    <string name="massage19">Антицеллюлитный массаж (более 90кг)</string>
+    <string name="massage20">Антицеллюлитный массаж (до 80 кг)</string>
+    <string name="massage21">Антицеллюлитный медовый массаж </string>
+    <string name="massage22">Детский массаж с 2,5 мес до 1 года</string>
+    <string name="massage23">Детский массаж с 1 года до 6 лет</string>
+    <string name="massage24">Детский массаж с 7 до 12 лет</string>
+    <string name="massage1_1">Проводится на основе масла Ericson Laboratoire (общий) 40 мин</string>
+    <string name="massage1_2">Проводится на основе масла Ericson Laboratoire (общий) 1 час</string>
+    <string name="massage1_3">Проводится на основе масла Ericson Laboratoire (общий) 1,5 часа</string>
+    <string name="massage1_4">1,5 часа</string>
+    <string name="massage1_5">20 мин</string>
+    <string name="massage1_6">30 мин</string>
+    <string name="massage1_7">15 мин</string>
+    <string name="massage1_8">1 час</string>
 </resources>
