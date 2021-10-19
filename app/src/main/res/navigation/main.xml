@@ -105,5 +105,14 @@
         android:id="@+id/adressAndContactsFragment"
         android:name="uz.medion.ui.main.user.adressAndContacts.AddressAndContactsFragment"
         android:label="AdressAndContactsFragment"
-        tools:layout="@layout/fragment_adress_and_contacts"/>
+        tools:layout="@layout/fragment_adress_and_contacts">
+        <action
+            android:id="@+id/action_adressAndContactsFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="uz.medion.ui.main.user.adressAndContacts.AddressFragment"
+        android:label="AddressFragment"
+        tools:layout="@layout/fragment_adress"/>
 </navigation>

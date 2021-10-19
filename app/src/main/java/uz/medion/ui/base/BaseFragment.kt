@@ -15,7 +15,7 @@ import uz.medion.data.local.PrefsHelper
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseVM> : Fragment(), BaseMethods {
     private val gson = Gson()
-    protected lateinit var prefs: PrefsHelper
+    private lateinit var prefs: PrefsHelper
 
     @LayoutRes
     abstract fun getLayoutResId(): Int
@@ -33,6 +33,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseVM> : Fragment(), BaseM
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         prefs = PrefsHelper(gson, PreferenceManager.getDefaultSharedPreferences(requireContext()))
+
 
         return DataBindingUtil.inflate<T>(inflater, getLayoutResId(), container, false)
             .apply { binding = this }.root

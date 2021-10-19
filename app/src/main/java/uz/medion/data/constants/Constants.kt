@@ -1,7 +1,5 @@
 package uz.medion.data.constants
 
-import android.content.Context
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.medion.R
@@ -351,26 +349,35 @@ object Constants {
         )
     }
 
-    fun getAdressAndContact(): ArrayList<AdressAndContactsItem> {
+    fun getAddressAndContact(): ArrayList<AdressAndContactsItem> {
         return arrayListOf(
             AdressAndContactsItem(
-                R.drawable.center_photo,
+                R.drawable.center_photo_1,
                 "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "Shaykhantakhur district, st. Zulfiyakhanum 18",
-                "+99890 975 95 47"
+                "Шайхантахурский район, ул. Зульфияханум 18",
+                "+998 78 140 00 44",
+
             ),
             AdressAndContactsItem(
-                R.drawable.center_photo,
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "Shaykhantakhur district, st. Zulfiyakhanum 18",
-                "+99890 975 95 47"
+                R.drawable.center_photo_2,
+                "Mедицинский центр MEDION INNOVATION",
+                "Шайхантахурский район, ул. Абдулла Кодирий 39",
+                "+998 78 140 00 44"
             ),
             AdressAndContactsItem(
-                R.drawable.center_photo,
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "Shaykhantakhur district, st. Zulfiyakhanum 18",
-                "+99890 975 95 47"
+                R.drawable.center_photo_3,
+                "Медицинский центр MEDION FAMILY HOSPITAL",
+                "Шайхантахурский район, ул. Истирохат 258",
+                "+998 78 140 00 44"
             )
+        )
+    }
+
+    fun getLocations(): ArrayList<Location>{
+        return arrayListOf(
+            Location(R.drawable.center_photo_1,"41.3303657", "69.2572476"),
+            Location(R.drawable.center_photo_2,"41.323868", "69.2519953"),
+            Location(R.drawable.center_photo_3,"41.3261357", "69.1859201")
         )
     }
 

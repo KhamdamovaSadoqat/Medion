@@ -161,6 +161,27 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivMedion)
                 binding.partialBottomNav.bottomNavigationViewHome.gone()
             }
+            //here goes AddressAndContactsFragment
+            if (destination.id == R.id.myDocumentsFragment) {
+                binding.tvMain.setText(R.string.adress_contact)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeIn(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+            }
+            //here goes AddressFragment
+            if (destination.id == R.id.myDocumentsFragment) {
+                binding.tvMain.setText(R.string.adress)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeIn(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+                binding.partialBottomNav.bottomNavigationViewHome.gone()
+            }
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
 
@@ -203,6 +224,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         ) {
             navController.popBackStack(R.id.personalAccountFragment, false)
             // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
+        } else if (navController.currentDestination!!.id == R.id.addressFragment) {
+            navController.popBackStack(R.id.adressAndContactsFragment, false)
         } else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)

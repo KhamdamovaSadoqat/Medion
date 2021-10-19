@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="24dp"
-                android:text="@string/find_out_more_about_our_clinics"
+                android:text="@string/address_contacts_3"
                 android:textColor="@color/tangaroa_900"
                 android:textSize="20sp"
                 android:textStyle="bold"

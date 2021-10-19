@@ -15,6 +15,9 @@ object Keys {
     const val EXTRA_UNAUTHORIZED = "extra_unAthorized"
     const val BUNDLE_CERTIFICATE = "bundle_certificate"
     const val BUNDLE_CHANGE_PHONE_NUMBER = "bundle_change_phone_number"
+    const val BUNDLE_LOCATION_POSITION = "bundle_location_position"
+    const val BUNDLE_MAPVIEW = "bundle_mapview"
+
 
 
 }

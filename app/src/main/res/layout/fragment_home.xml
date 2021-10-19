@@ -63,7 +63,7 @@
                     android:layout_height="220dp"
                     android:contentDescription="@string/clinic_photo"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/center_photo" />
+                    app:srcCompat="@drawable/center_photo_1" />
             </androidx.cardview.widget.CardView>
 
             <TextView

@@ -21,7 +21,7 @@
     <string name="fill_phone_numeber">+998(__) ___-__-__</string>
     <string name="blood_group">Blood group</string>
     <string name="dob">Date of birth</string>
-    <string name="submit">Submit</string>
+    <string name="submit">Записаться</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sms_send">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
@@ -120,7 +120,8 @@
 
     <string name="estethic_medicine">Estethic Medicine</string>
     <string name="spa_medicine">SPA medicine</string>
-    <string name="adress_contact">Andress and contacs</string>
+    <string name="adress_contact">Address and contact</string>
+    <string name="adress">Address</string>
     <string name="my_account">My account</string>
     <string name="mobile_phone">mobile phone</string>
     <string name="change_password">Change password</string>
@@ -148,15 +149,13 @@
     <string name="_21_12_1970">21.12.1970</string>
 
 
-    <string name="results">Clinical results blood test</string>
-    <string name="analyzes">Analyzes</string>
-    <string name="reformence">Reformence</string>
-    <string name="appointment">Appointment</string>
-    <string name="recipe">Recipe</string>
-    <string name="ehc">EHC</string>
-    <string name="cancel">Cancel</string>
-    <string name="find_out_more_about_our_clinics">Find out more about our clinics</string>
-
+    <string name="results">Результаты клинического анализа крови</string>
+    <string name="analyzes">Анализы</string>
+    <string name="reformence">Справка</string>
+    <string name="appointment">Назначение</string>
+    <string name="recipe">Рецепт</string>
+    <string name="ehc">ЕКГ</string>
+    <string name="cancel">Отмена</string>
 
     <string name="address_contacts_1">    MEDION - уникальный инновационный медицинский центр,
         основанный в 2016 году. Мы предлагаем весь спектр медицинских услуг и технологий,
@@ -164,7 +163,8 @@
         презентации мы расскажем вам подробно о всех направлениях нашего бизнеса!
     </string>
     <string name="address_contacts_2">Шайхантахурский район, ул. Абдулла Кодирий 39</string>
-    <string name="phone_number_example">+998 90 627 48 59</string>
+    <string name="address_contacts_3">Узнайте больше о наших клиниках</string>
+    <string name="in_maps">На карте</string>
 
 
 </resources>
