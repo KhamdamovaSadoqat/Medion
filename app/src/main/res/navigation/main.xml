@@ -103,7 +103,7 @@
         tools:layout="@layout/fragment_my_documents"/>
     <fragment
         android:id="@+id/adressAndContactsFragment"
-        android:name="uz.medion.ui.main.user.adressAndContacts.AdressAndContactsFragment"
+        android:name="uz.medion.ui.main.user.adressAndContacts.AddressAndContactsFragment"
         android:label="AdressAndContactsFragment"
         tools:layout="@layout/fragment_adress_and_contacts"/>
 </navigation>

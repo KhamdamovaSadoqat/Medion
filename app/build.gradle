@@ -99,4 +99,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
 
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    //Google Play Services for Maps
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    // Google play services for location information
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 }

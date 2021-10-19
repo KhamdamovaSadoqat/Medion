@@ -158,4 +158,13 @@
     <string name="find_out_more_about_our_clinics">Find out more about our clinics</string>
 
 
+    <string name="address_contacts_1">    MEDION - уникальный инновационный медицинский центр,
+        основанный в 2016 году. Мы предлагаем весь спектр медицинских услуг и технологий,
+        позволяющих получить желаемое комплексное решение вопросов здоровья и красоты. В этой
+        презентации мы расскажем вам подробно о всех направлениях нашего бизнеса!
+    </string>
+    <string name="address_contacts_2">Шайхантахурский район, ул. Абдулла Кодирий 39</string>
+    <string name="phone_number_example">+998 90 627 48 59</string>
+
+
 </resources>
