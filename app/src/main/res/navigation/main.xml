@@ -115,4 +115,26 @@
         android:name="uz.medion.ui.main.user.adressAndContacts.AddressFragment"
         android:label="AddressFragment"
         tools:layout="@layout/fragment_adress"/>
+
+    <fragment
+        android:id="@+id/esteticMedicineFragment"
+        android:name="uz.medion.ui.main.user.esteticMedicine.EsteticMedicineFragment"
+        android:label="EsteticMedicineFragment"
+        tools:layout="@layout/fragment_estetic_medicine"/>
+    <fragment
+        android:id="@+id/spaMedicineFragment"
+        android:name="uz.medion.ui.main.user.spaMedicine.SpaMedicineFragment"
+        android:label="SpaMedicineFragment"
+        tools:layout="@layout/fragment_spa_medicine">
+        <action
+            android:id="@+id/action_spaMedicineFragment_to_spaMedicineDetailsFragment"
+            app:destination="@id/spaMedicineDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/spaMedicineDetailsFragment"
+        android:name="uz.medion.ui.main.user.spaMedicine.SpaMedicineDetailsFragment"
+        android:label="SpaMedicineDetailsFragment"
+        tools:layout="@layout/fragment_spa_medicine_details"/>
+
+
 </navigation>

@@ -98,6 +98,7 @@ dependencies {
     //calendar
     implementation 'com.google.android.material:material:1.4.0'
 
+    //cardView
     implementation 'androidx.cardview:cardview:1.0.0'
 
     //Google Play Services for Maps

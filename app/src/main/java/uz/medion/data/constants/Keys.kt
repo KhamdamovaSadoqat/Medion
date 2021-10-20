@@ -18,6 +18,7 @@ object Keys {
     const val BUNDLE_LOCATION_POSITION = "bundle_location_position"
     const val BUNDLE_MAPVIEW = "bundle_mapview"
 
+    const val BUNDLE_SPA_TYPE = "bundle_spa_type"
 
 
 }
