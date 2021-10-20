@@ -5,7 +5,6 @@ import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -35,7 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         }
         bottomNavController =
             BottomNavController(binding, binding.partialBottomNav, this, navController)
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             //from where bottom navigation should be removed
             if (destination.id == R.id.aboutDoctorFragment || destination.id == R.id.verificationFragment2) {
                 ViewUtils.fadeOut(binding.partialBottomNav.root)

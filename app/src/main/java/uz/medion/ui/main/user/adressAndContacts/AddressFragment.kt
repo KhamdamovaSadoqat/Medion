@@ -47,19 +47,31 @@ class AddressFragment : Fragment(),
             container,
             false
         )
+        val bundle = requireArguments().getInt(BUNDLE_LOCATION_POSITION)
 
-        initGoogleMap(savedInstanceState)
+        setUp(bundle)
+        initGoogleMap(savedInstanceState, bundle)
         return binding.root
     }
 
-    private fun initGoogleMap(savedInstanceState: Bundle?) {
-        val bundle = requireArguments().getInt(BUNDLE_LOCATION_POSITION)
+    fun setUp(bundle: Int) {
         binding.ivCenterPhoto.setImageDrawable(
             ContextCompat.getDrawable(
                 requireContext(),
                 Constants.getLocations()[bundle].pic
             )
         )
+        binding.tvClinicName.text = Constants.getAddressAndContact()[bundle].name
+        binding.tvContact.text = Constants.getAddressAndContact()[bundle].phone
+        binding.tvAddress.text = Constants.getAddressAndContact()[bundle].location
+
+        binding.tvAddress.setOnClickListener {
+
+        }
+    }
+
+    private fun initGoogleMap(savedInstanceState: Bundle?, bundle: Int) {
+
         mMapView = binding.userListMap
         Log.d("-------------", "onCreateView: ${mMapView.toString()}")
         mMapView!!.onCreate(savedInstanceState)
@@ -81,7 +93,8 @@ class AddressFragment : Fragment(),
                 Constants.getLocations()[bundle].longitude.toDouble()
             )
             googleMap!!.addMarker(
-                MarkerOptions().position(medion).title(Constants.getAddressAndContact()[bundle].name)
+                MarkerOptions().position(medion)
+                    .title(Constants.getAddressAndContact()[bundle].name)
             )
 
             // For zooming automatically to the location of the marker
