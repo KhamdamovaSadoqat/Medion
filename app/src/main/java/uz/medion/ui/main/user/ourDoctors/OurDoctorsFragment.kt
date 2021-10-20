@@ -5,9 +5,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-//import com.google.android.flexbox.FlexDirection
-//import com.google.android.flexbox.FlexboxLayoutManager
-//import com.google.android.flexbox.JustifyContent
+import android.view.ViewGroup.LayoutParams
+import com.google.android.flexbox.AlignItems
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.databinding.FragmentOurDoctorsBinding
@@ -27,6 +29,10 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     }
 
     fun setUp() {
+        val layoutManager = FlexboxLayoutManager(requireContext())
+        layoutManager.flexDirection = FlexDirection.ROW
+        layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
+
         ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter {}
         ourDoctorsCategoryAdapter.setData(Constants.getOurDoctorCategory())
         binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
@@ -41,10 +47,10 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 binding.clCalendar.gone()
                 tvCategoryAll = false
             } else {
-//                val flexboxLayoutManager = FlexboxLayoutManager(context)
-//                flexboxLayoutManager.flexDirection = FlexDirection.COLUMN
-//                flexboxLayoutManager.justifyContent = JustifyContent.FLEX_END
-                binding.rvDoctorsCategories.layoutManager = GridLayoutManager(requireContext(), 3)
+
+                binding.rvDoctorsCategories.removeAllViews()
+                binding.rvDoctorsCategories.layoutManager =
+                    layoutManager
                 binding.clReason.visible()
                 binding.clCalendar.visible()
                 tvCategoryAll = true
@@ -55,6 +61,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             findNavController().navigate(R.id.aboutDoctorFragment)
         }
         ourDoctorsDetailsAdapter.setData(Constants.getOurDoctorDetail())
+
         binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
         binding.rvDoctors.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)

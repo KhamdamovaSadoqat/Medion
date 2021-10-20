@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/medion_black"
+        app:srcCompat="@drawable/medion_black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
