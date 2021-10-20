@@ -249,7 +249,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
         } else if (navController.currentDestination!!.id == R.id.addressFragment) {
             navController.popBackStack(R.id.adressAndContactsFragment, false)
-        } else {
+        } else if (navController.currentDestination!!.id == R.id.spaMedicineDetailsFragment) {
+            navController.popBackStack(R.id.spaMedicineFragment, false)
+        }else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)
             } else super.onBackPressed()

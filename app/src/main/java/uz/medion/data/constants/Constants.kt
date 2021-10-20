@@ -381,4 +381,86 @@ object Constants {
         )
     }
 
+    fun getEsteticMedicine_categories(): ArrayList<AboutDoctorItems> {
+        return arrayListOf<AboutDoctorItems>(
+            AboutDoctorItems(R.string.estetic_medicine_5, R.color.nile_blue_900, R.color.white),
+            AboutDoctorItems(R.string.estetic_medicine_6, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.estetic_medicine_7, R.color.solitude_50, R.color.tangaroa_900)
+        )
+    }
+
+    fun getSpaHeaders(): ArrayList<Int>{
+        return arrayListOf(
+            R.string.massage,
+            R.string.medicine_in_bath,
+            R.string.preventive_service,
+            R.string.lipolytics,
+            R.string.mesotherapy,
+            R.string.plasmolifting,
+            R.string.botulinum_toxins,
+            R.string.biorevitalization,
+            R.string.contour_plastic,
+            R.string.healing_procedures,
+            R.string.body_peels
+        )
+    }
+
+    fun getSpaMassageDetails(): ArrayList<Int>{
+        return arrayListOf(
+            R.string.massage1,
+            R.string.massage2,
+            R.string.massage1,
+            R.string.massage4,
+            R.string.massage4,
+            R.string.massage6,
+            R.string.massage6,
+            R.string.massage8,
+            R.string.massage9,
+            R.string.massage10,
+            R.string.massage11,
+            R.string.massage12,
+            R.string.massage13,
+            R.string.massage14,
+            R.string.massage15,
+            R.string.massage16,
+            R.string.massage17,
+            R.string.massage18,
+            R.string.massage19,
+            R.string.massage20,
+            R.string.massage21,
+            R.string.massage22,
+            R.string.massage23,
+            R.string.massage24
+        )
+    }
+
+    fun getSpaMassageTimeDetails(): ArrayList<Int>{
+        return arrayListOf(
+            R.string.massage1_1,
+            R.string.massage1_1,
+            R.string.massage1_2,
+            R.string.massage1_3,
+            R.string.massage1_2,
+            R.string.massage1_2,
+            R.string.massage1_4,
+            R.string.massage1_5,
+            R.string.massage1_6,
+            R.string.massage1_6,
+            R.string.massage1_5,
+            R.string.massage1_7,
+            R.string.massage1_6,
+            R.string.massage1_8,
+            R.string.massage1_8,
+            R.string.massage1_5,
+            R.string.massage1_5,
+            R.string.massage1_8,
+            R.string.massage1_8,
+            R.string.massage1_6,
+            R.string.massage1_6,
+            R.string.massage1_6,
+            R.string.massage1_6,
+            R.string.massage1_6
+        )
+    }
+
 }
