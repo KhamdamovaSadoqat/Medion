@@ -3,10 +3,8 @@ package uz.medion.ui.main.user.aboutDoctor
 import android.util.Log
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -23,6 +21,7 @@ import uz.medion.ui.base.BaseFragment
 import uz.medion.utils.DateTimeUtils
 import uz.medion.utils.ViewUtils
 import java.util.*
+
 
 class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
 
@@ -43,26 +42,40 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     fun setUp() {
 //        setScreenDemention()
         loadAboutDoctor()
-//        binding.ytAboutCenter.initialize(
-//            Constants.YOUTUBE_API,
-//            object : YouTubePlayer.OnInitializedListener {
-//                override fun onInitializationSuccess(
-//                    provider: YouTubePlayer.Provider,
-//                    youTubePlayer: YouTubePlayer, b: Boolean
-//                ) {
-//                    youTubePlayer.loadVideo("")
-//                    youTubePlayer.play()
-//                }
-//
-//                override fun onInitializationFailure(
-//                    provider: YouTubePlayer.Provider,
-//                    youTubeInitializationResult: YouTubeInitializationResult
-//                ) {
-//                    Toast.makeText(
-//                        requireContext(), "something went wrong", Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            })
+
+
+
+        lifecycle.addObserver(binding.youtubePlayerView)
+/*
+        binding.yt_about_center.initialize(
+            Constants.YOUTUBE_API,
+            object : YouTubePlayer.OnInitializedListener {
+                override fun onInitializationSuccess(
+                    provider: YouTubePlayer.Provider,
+                    youTubePlayer: YouTubePlayer, b: Boolean
+                ) {
+                    if(b){
+                        youTubePlayer.cueVideo(Constants.YOUTUBE_API)
+                    }
+                  //  youTubePlayer.loadVideo("")
+                    youTubePlayer.play()
+                }
+
+                override fun onInitializationFailure(
+                    provider: YouTubePlayer.Provider,
+                    youTubeInitializationResult: YouTubeInitializationResult
+                ) {
+                    Toast.makeText(
+                        requireContext(), "something went wrong", Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+
+*/
+
+
+
+
 
     }
 
