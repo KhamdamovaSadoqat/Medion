@@ -1,15 +1,14 @@
 package uz.medion.ui.main.user.ourDoctors
 
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.view.ViewGroup.LayoutParams
-import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.databinding.FragmentOurDoctorsBinding
@@ -17,8 +16,7 @@ import uz.medion.ui.base.BaseFragment
 import uz.medion.utils.gone
 import uz.medion.utils.visible
 
-
-class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>() {
+class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>(){
 
     private lateinit var ourDoctorsCategoryAdapter: OurDoctorsCategoryAdapter
     private lateinit var ourDoctorsDetailsAdapter: OurDoctorsDetailsAdapter
@@ -29,10 +27,6 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     }
 
     fun setUp() {
-        val layoutManager = FlexboxLayoutManager(requireContext())
-        layoutManager.flexDirection = FlexDirection.ROW
-        layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
-
         ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter {}
         ourDoctorsCategoryAdapter.setData(Constants.getOurDoctorCategory())
         binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
@@ -45,14 +39,29 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                     LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                 binding.clReason.gone()
                 binding.clCalendar.gone()
+                binding.ivShowAll.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_show_all
+                    )
+                )
+                binding.tvShowAll.setText(R.string.show_all)
                 tvCategoryAll = false
             } else {
-
+                val flexboxLayoutManager = FlexboxLayoutManager(context)
+                flexboxLayoutManager.flexDirection = FlexDirection.ROW
+                flexboxLayoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
                 binding.rvDoctorsCategories.removeAllViews()
-                binding.rvDoctorsCategories.layoutManager =
-                    layoutManager
+                binding.rvDoctorsCategories.layoutManager = flexboxLayoutManager
                 binding.clReason.visible()
                 binding.clCalendar.visible()
+                binding.ivShowAll.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_hide_all
+                    )
+                )
+                binding.tvShowAll.setText(R.string.hide_all)
                 tvCategoryAll = true
             }
         }
@@ -61,12 +70,30 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             findNavController().navigate(R.id.aboutDoctorFragment)
         }
         ourDoctorsDetailsAdapter.setData(Constants.getOurDoctorDetail())
-
         binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
         binding.rvDoctors.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
-        binding.cvCalendar.date = System.currentTimeMillis()
+        val currentDate = CalendarDay.today()
+        val calendarState = binding.cvCalendar.state().edit()
+        calendarState.setMinimumDate(
+            CalendarDay.from(
+                currentDate.year,
+                currentDate.month,
+                currentDate.day
+            )
+        )
+        if (currentDate.month == 12)
+            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 0, currentDate.day))
+        calendarState.setMaximumDate(
+            CalendarDay.from(
+                currentDate.year,
+                currentDate.month + 1,
+                currentDate.day
+            )
+        )
+        calendarState.commit()
+
 
         binding.clOption1.setOnClickListener {
             binding.ivOption1.visible()

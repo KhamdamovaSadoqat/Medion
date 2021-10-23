@@ -97,6 +97,7 @@ dependencies {
 
     //calendar
     implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
 
     //cardView
     implementation 'androidx.cardview:cardview:1.0.0'
