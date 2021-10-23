@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">Medion</string>
 
+    <string name="icon">icon</string>
+    <string name="image">image</string>
+    <string name="clinic_photo">clinic photo</string>
     <string name="msg_no_network">Internetga ulanib bo\'lmayapti.</string>
     <string name="msg_unknown_error">Noma\'lum xatolik.</string>
     <string name="action_ok" translatable="false">OK</string>
@@ -13,143 +16,101 @@
     <string name="sign_up">Sign up</string>
     <string name="sign_up_with">Sign up with</string>
 
-    <string name="name">Name</string>
-    <string name="surname">Surname</string>
-    <string name="middle_name">Middle name</string>
-    <string name="enter_phone">Enter phone number to register</string>
-    <string name="phone_number">Phone number</string>
-    <string name="fill_phone_numeber">+998(__) ___-__-__</string>
-    <string name="blood_group">Blood group</string>
-    <string name="dob">Date of birth</string>
-    <string name="submit">Записаться</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sms_send">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
     <string name="resend_code">Resend code in 1:00</string>
-    <string name="medical_service">Medical service</string>
-    <string name="all">All</string>
-    <string name="clinic_photo">clinic photo</string>
-    <string name="about_clinic">Medical Center MEDION, located in the very center of Tashkent city, invites its clients to enjoy the best traditions of hospitality, evaluate the quality of our services, feel a sensitive attitude and an individual approach. MEDION is a path to harmony of soul and body, which is so difficult to find in the rhythm of a big city.</string>
-    <string name="about_our_center">About our center</string>
-    <string name="image">image</string>
 
-    <string name="lor">lor</string>
-    <string name="ginecology">ginecology</string>
-    <string name="pediatr">pediatr</string>
-    <string name="neuralogy">neurology</string>
-    <string name="traumatology">traumatology</string>
-    <string name="cardiology">cardiology</string>
-    <string name="eko">eko</string>
-    <string name="cardio_operation">cardio operation</string>
-    <string name="urology">urology</string>
-    <string name="endocrinology">endocrinology</string>
-    <string name="allergiology">allergiology</string>
-    <string name="mammology">mammology</string>
-    <string name="dermatology">dermatology</string>
-    <string name="psychology">psychology</string>
-    <string name="pulmonology">pulmonology</string>
-    <string name="psychoterapy">psychoterapy</string>
-    <string name="medicining">medicining</string>
-    <string name="electro_encefalography">electro encefalography</string>
-    <string name="gastroenterology">gastroenterology</string>
-    <string name="uzi">uzi</string>
-    <string name="uzi_maternity">uzi maternity</string>
-    <string name="mrt">mrt</string>
-    <string name="mskt">mskt</string>
-    <string name="endoscopy">endoscopy</string>
-    <string name="medical_services">Medical services</string>
+
+    <!-- home -->
+    <string name="medical_service">Медицинские услуги</string>
+    <string name="all">все</string>
+    <string name="about_our_center">О нашем центре</string>
+    <string name="about_clinic">Медицинский Центр «MEDION», расположенный в самом центре города Ташкента, предлагает своим клиентам насладиться лучшими традициями гостеприимства, оценить качество наших услуг, ощутить чуткое отношение и индивидуальный подход. «MEDION» — это путь к гармонии души и тела, которую так трудно обрести в ритме большого города.</string>
+    <string name="lor">ЛОР</string>
+    <string name="ginecology">Гинекология</string>
+    <string name="pediatr">Педиатр</string>
+    <string name="neuralogy">Невролог</string>
+    <string name="traumatology">Травматолог</string>
+    <string name="cardiology">Кардиолог</string>
+    <string name="eko">ЭКО</string>
+    <string name="cardio_operation">Кардио операция</string>
+    <string name="urology">Уролог</string>
+    <string name="endocrinology">Эндокринолог</string>
+    <string name="allergiology">Аллерголог</string>
+    <string name="mammology">Маммолог</string>
+    <string name="dermatology">Дерматолог</string>
+    <string name="psychology">Психолог</string>
+    <string name="pulmonology">Пульмонолог</string>
+    <string name="psychoterapy">Физиотерапия</string>
+    <string name="medicining">Процедурная</string>
+    <string name="electro_encefalography">Электро энцефалография</string>
+    <string name="gastroenterology">Гастроэнтерология</string>
+    <string name="uzi">УЗИ</string>
+    <string name="uzi_maternity">УЗИ (беременность)</string>
+    <string name="mrt">МРТ</string>
+    <string name="mskt">МСКТ</string>
+    <string name="endoscopy">Эндоскопия</string>
     <string name="show_all">Показать все</string>
     <string name="hide_all">Скрыть все</string>
-    <string name="full_name">Name Surname Father\'s name</string>
-    <string name="main_doctor_of_urology">Main Doctor of Urology</string>
-    <string name="experience"><b>22</b> years of experience</string>
-    <string name="comment"><b>64</b> comments</string>
-    <string name="clinic_name"><![CDATA[Medical Center MEDION CLINIC, AESTHETIC & SPA]]></string>
-    <string name="doc_detail">Repeated consultation with a urologist within 2 weeks</string>
-    <string name="doctor_s_appointment">Doctor\'s appointment</string>
-    <string name="ilyasov_Doniyor">Ilyasov Doniyor Hojiakbarovich</string>
-    <string name="nuridinov_hojiakbar">Nuriddinov Hojiakbar Tashpulatovich</string>
-    <string name="urology_costs">Urology costs</string>
-    <string name="initial_consultation_with_a_urologists">Initial consultation with a urologists</string>
-    <string name="check">check</string>
+
+    <!-- ourDoctor -->
+    <string name="main_doctor_of_urology">Главное врач Урология</string>
     <string name="_4_6">4.6</string>
-    <string name="icon">icon</string>
-    <string name="reyting">reyting</string>
+    <string name="experience"><b>22</b> года стажа</string>
+    <string name="comment"><b>64</b> отзыва</string>
+    <string name="clinic_name">Медицинский центр MEDION CLINIC,AESTHETIC &amp; SPA</string>
+    <string name="doc_detail">Повторная консультация уролога в течение 2-х недель</string>
+    <string name="doctor_s_appointment">Назначение врача</string>
+    <string name="urology_costs">Затраты на урологию</string>
+    <string name="initial_consultation_with_a_urologists">Первичная консультация уролога</string>
+
+    <!-- aboutDoctor -->
+    <string name="ilyasov_Doniyor">Ильясов Дониёр Ходжиакбарович</string>
+    <string name="nuridinov_hojiakbar">Ахмедов Лазиз Лутфуллаевич</string>
+    <string name="years_of_experience">года стажа</string>
     <string name="date">22 august 2021</string>
-    <string name="work">work</string>
-    <string name="about_doctor">about doctor</string>
-    <string name="sertificate">sertificate</string>
-    <string name="years_of_experience">years of experience</string>
-    <string name="chat">chat</string>
-    <string name="university_name">Tashkent Medical Academy, Tashkent</string>
-    <string name="about_consultation">Consults children and adults with medical conditions
-        ENT organs. Before diagnosing and
-        define a treatment plan, collects a detailed
-        history and carefully examines patients with
-        using high-precision safe
-        equipment. With the help of objective and reliable
-        testing methods reveals audiological and
-        audiological problems in children. Conducts
-        studies that help assess the degree
-        hearing loss, to prevent its further development.</string>
-    <string name="send">send</string>
-    <string name="undo">undo</string>
-    <string name="current_job">Current Job</string>
-    <string name="past_job">Past job</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="name_doctor">Имя</string>
-    <string name="birthday">Дата рождения</string>
-    <string name="doctor">Врачи</string>
-    <string name="phone">Телефон</string>
-    <string name="staj">года стажа</string>
-    <string name="higher_education">Высшее образование</string>
-    <string name="current">Текущие</string>
-    <string name="previous">Предыдущие</string>
-    <string name="certificates">Сертификаты</string>
-    <string name="lbl_set_profile_photo">Set profile image</string>
-    <string name="lbl_take_camera_picture">Take a picture</string>
-    <string name="lbl_choose_from_gallery">Choose from gallery</string>
-    <string name="personal_room">Personal room</string>
-    <string name="on_back_pressed">Press twice</string>
-
-    <!-- App bar -->
-    <string name="our_doctors">Our Doctors</string>
-    <string name="main">Main</string>
-    <string name="change_mobile_phone_number">Change mobile phone number</string>
+    <string name="chat">Чат</string>
+    <string name="about_doctor">О враче</string>
+    <string name="work">Работа</string>
+    <string name="reyting">Рейтинг</string>
+    <string name="sertificate">Сертификаты</string>
+    <string name="university_name">Тошкент тиббиёт академияси, Тошкент </string>
+    <string name="about_consultation">Консультирует детей и взрослых с заболеваниями
+        ЛОР-органов. Прежде чем поставить диагноз и
+        определить план лечения, собирает подробный
+        анамнез и тщательно обследует пациентов с
+        использованием высокоточного безопасного
+        оборудования. С помощью объективных и достоверных
+        методов тестирования выявляет сурдологические и
+        аудиологические проблемы у детей. Проводит
+        исследования, которые помогают оценить степень
+        тугоухости, предотвратить ее дальнейшее развитие.</string>
+    <string name="send">Отправить</string>
+    <string name="undo">Отменить</string>
+    <string name="current_job">Текущие</string>
+    <string name="past_job">Предылущие</string>
 
 
-    <string name="estethic_medicine">Estethic Medicine</string>
-    <string name="spa_medicine">SPA medicine</string>
-    <string name="adress_contact">Address and contact</string>
-    <string name="adress">Address</string>
-    <string name="my_account">My account</string>
-    <string name="mobile_phone">mobile phone</string>
-    <string name="change_password">Change password</string>
-    <string name="personal_information">Personal information</string>
-    <string name="my_documents">My documents</string>
-    <string name="my_doctors">My doctors</string>
-    <string name="languages">Languages</string>
-    <string name="quit">Quit</string>
-    <string name="next">next</string>
-    <string name="last_password">Last password</string>
-    <string name="new_password">New password</string>
-    <string name="again">Again</string>
-    <string name="save">save</string>
-    <string name="russian">Russian</string>
-    <string name="uzbek">Uzbek</string>
-    <string name="english">English</string>
-    <string name="choose_language">Choose Language</string>
+    <!-- Drawer Layout -->
+    <string name="main">Главная</string>
+    <string name="our_doctors">Наши врачи</string>
+    <string name="estethic_medicine">Эстетическая медицина</string>
+    <string name="spa_medicine">CПА-комплекс</string>
+    <string name="adress_contact">Адрес и контакты</string>
+    <string name="adress">Адрес</string>
+    <string name="my_account">Личный кабинет</string>
 
+    <!-- Personal -->
+    <string name="change_mobile_phone_number">Изменить номер телефона</string>
+    <string name="mobile_phone">Телефон</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="personal_information">Личные данные</string>
+    <string name="my_documents">Мои документы</string>
+    <string name="my_doctors">Мои врачи</string>
+    <string name="languages">Языки</string>
+    <string name="quit">Выход</string>
 
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="weight">Weight</string>
-    <string name="height">Height</string>
-    <string name="favourites">Favourites</string>
-    <string name="_21_12_1970">21.12.1970</string>
-
-
+    <string name="favourites">Избранное</string>
     <string name="results">Результаты клинического анализа крови</string>
     <string name="analyzes">Анализы</string>
     <string name="reformence">Справка</string>
@@ -158,6 +119,36 @@
     <string name="ehc">ЕКГ</string>
     <string name="cancel">Отмена</string>
 
+    <!-- Registration -->
+    <string name="next">Далее</string>
+    <string name="last_password">Прежний пароль </string>
+    <string name="new_password">Новый пароль</string>
+    <string name="again">Павторы пароль</string>
+    <string name="save">Сохранить</string>
+
+    <string name="choose_language">Выберите язык</string>
+    <string name="russian">Русский</string>
+    <string name="uzbek">O‘zbek(Lotin)</string>
+    <string name="english">English</string>
+
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="middle_name">Отчество</string>
+    <string name="fill_phone_numeber">+998(__) ___-__-__</string>
+    <string name="blood_group">Группа крови</string>
+    <string name="dob">Дата рождения</string>
+    <string name="submit">Записаться</string>
+
+    <string name="enter_phone">Введите ваш номер телефона для входа</string>
+    <string name="phone_number">Номер телефона </string>
+
+    <string name="male">Мужской</string>
+    <string name="female">Женский </string>
+    <string name="weight">Вес, кг </string>
+    <string name="height">Рост, см</string>
+    <string name="_21_12_1970">21.12.1970</string>
+
+    <!-- Address and contacts -->
     <string name="address_contacts_1">    MEDION - уникальный инновационный медицинский центр,
         основанный в 2016 году. Мы предлагаем весь спектр медицинских услуг и технологий,
         позволяющих получить желаемое комплексное решение вопросов здоровья и красоты. В этой
@@ -167,6 +158,7 @@
     <string name="address_contacts_3">Узнайте больше о наших клиниках</string>
     <string name="in_maps">На карте</string>
 
+    <!-- Estethic medicine -->
     <string name="estetic_medicine_1">Мы бы хотели пригласить Вас к нам в гости. Показать, как выглядит наш центр. Прислушаться к внутреннему голосу и принять разумное решение.</string>
     <string name="estetic_medicine_2">Услуги эстетической</string>
     <string name="estetic_medicine_3">Глаза выдают реальный возраст, поэтому хирургическая коррекция дает возможность значительно улучшить свой внешний вид. В основном данная процедура востребована у пациентов средних лет. Первыми признаками возрастных изменений являются морщины и мешки под глазами, из-за которых человек выглядит старше. Иногда эта процедура требуется и в более молодом возрасте, если есть анатомическая предрасположенность к формированию провисаний и грыж.</string>
@@ -175,7 +167,6 @@
     <string name="estetic_medicine_5">Блефаропластика</string>
     <string name="estetic_medicine_6">Маммопластика</string>
     <string name="estetic_medicine_7">Пластика живота</string>
-
 
     <string name="spa_tv_1">Клиника MEDION предлагает Вам широкий выбор SPA-услуг, оказывающих благотворный физиотерапевтический и релаксирующий эффект на организм.</string>
     <string name="spa_tv_2">Мы предоставляем процедуры:</string>
@@ -222,4 +213,20 @@
     <string name="massage1_6">30 мин</string>
     <string name="massage1_7">15 мин</string>
     <string name="massage1_8">1 час</string>
+
+    <!-- need to change -->
+    <string name="name_doctor">Имя</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="doctor">Врачи</string>
+    <string name="phone">Телефон</string>
+    <string name="staj">года стажа</string>
+    <string name="higher_education">Высшее образование</string>
+    <string name="current">Текущие</string>
+    <string name="previous">Предыдущие</string>
+    <string name="certificates">Сертификаты</string>
+    <string name="lbl_set_profile_photo">Set profile image</string>
+    <string name="lbl_take_camera_picture">Take a picture</string>
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="personal_room">Personal room</string>
+    <string name="on_back_pressed">Press twice</string>
 </resources>
