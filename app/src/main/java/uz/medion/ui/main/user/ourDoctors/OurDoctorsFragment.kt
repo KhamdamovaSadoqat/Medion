@@ -1,10 +1,6 @@
 package uz.medion.ui.main.user.ourDoctors
 
-import android.content.res.Resources
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.StateListDrawable
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,9 +9,6 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.prolificinteractive.materialcalendarview.CalendarDay
-import com.prolificinteractive.materialcalendarview.DayViewDecorator
-import com.prolificinteractive.materialcalendarview.DayViewFacade
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.databinding.FragmentOurDoctorsBinding
@@ -23,8 +16,7 @@ import uz.medion.ui.base.BaseFragment
 import uz.medion.utils.gone
 import uz.medion.utils.visible
 
-class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>(),
-    DayViewDecorator {
+class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>(){
 
     private lateinit var ourDoctorsCategoryAdapter: OurDoctorsCategoryAdapter
     private lateinit var ourDoctorsDetailsAdapter: OurDoctorsDetailsAdapter
@@ -124,21 +116,5 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     override fun getLayoutResId() = R.layout.fragment_our_doctors
     override val vm: OurDoctorsVM
         get() = ViewModelProvider(this).get(OurDoctorsVM::class.java)
-
-    override fun shouldDecorate(day: CalendarDay?): Boolean {
-        return false
-    }
-
-    override fun decorate(view: DayViewFacade?) {
-
-        view?.setBackgroundDrawable(
-            ContextCompat.getDrawable(
-                requireContext(),
-                R.drawable.ic_round
-            )!!
-        )
-        view?.setDaysDisabled(true)
-
-    }
 
 }
