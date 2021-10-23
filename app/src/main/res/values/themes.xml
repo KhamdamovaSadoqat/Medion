@@ -41,7 +41,7 @@
     </style>
 
 
-    <style name="MySpinnerDatePickerStyle" parent="android:Theme.Material.Light.Dialog">
+    <style name="MySpinnerDatePickerStyle" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:datePickerStyle">@style/MySpinnerDatePicker</item>
     </style>
 
