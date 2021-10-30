@@ -19,6 +19,7 @@ object Keys {
     const val BUNDLE_MAPVIEW = "bundle_mapview"
 
     const val BUNDLE_SPA_TYPE = "bundle_spa_type"
+    const val BUNDLE_APPOINTMENT_TYPE = "bundle_appointment_type"
 
 
 }

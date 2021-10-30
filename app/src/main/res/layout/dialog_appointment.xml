@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_calendar_view">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_tire"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:text="@string/constultation"
+            android:textColor="@color/tangaroa_900"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/cv_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_appointment"
+            app:mcv_allowClickDaysOutsideCurrentMonth="false"
+            app:mcv_calendarMode="month"
+            app:mcv_dateTextAppearance="@style/CalenderViewCustom"
+            app:mcv_firstDayOfWeek="monday"
+            app:mcv_headerTextAppearance="@style/CalenderViewCustom"
+            app:mcv_leftArrow="@drawable/ic_arrow_left"
+            app:mcv_rightArrow="@drawable/ic_arrow_right_2"
+            app:mcv_selectionColor="@color/nile_blue_900"
+            app:mcv_selectionMode="single"
+            app:mcv_showOtherDates="out_of_range" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

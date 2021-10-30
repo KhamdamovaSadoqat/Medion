@@ -72,7 +72,7 @@
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="center"
-                        android:text="@string/initial_consultation_with_a_urologists"
+                        android:text="@string/first_time"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,7 +115,7 @@
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="center"
-                        android:text="@string/initial_consultation_with_a_urologists"
+                        android:text="@string/second_time"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -158,7 +158,7 @@
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="center"
-                        android:text="@string/initial_consultation_with_a_urologists"
+                        android:text="@string/third_time"
                         android:textColor="@color/tangaroa_900"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -198,23 +198,23 @@
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/cl_reason">
 
-                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-                    android:id="@+id/cv_calendar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    app:mcv_headerTextAppearance="@style/CalenderViewCustom"
-                    app:mcv_dateTextAppearance="@style/CalenderViewCustom"
-                    app:mcv_showOtherDates="out_of_range"
-                    app:mcv_allowClickDaysOutsideCurrentMonth="false"
-                    app:mcv_calendarMode="month"
-                    app:mcv_firstDayOfWeek="monday"
-                    app:mcv_leftArrow="@drawable/ic_arrow_left"
-                    app:mcv_rightArrow="@drawable/ic_arrow_right_2"
-                    app:mcv_selectionMode="multiple"
-                    app:mcv_selectionColor="@color/nile_blue_900"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+<!--                <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
+<!--                    android:id="@+id/cv_calendar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="16dp"-->
+<!--                    app:mcv_headerTextAppearance="@style/CalenderViewCustom"-->
+<!--                    app:mcv_dateTextAppearance="@style/CalenderViewCustom"-->
+<!--                    app:mcv_showOtherDates="out_of_range"-->
+<!--                    app:mcv_allowClickDaysOutsideCurrentMonth="false"-->
+<!--                    app:mcv_calendarMode="month"-->
+<!--                    app:mcv_firstDayOfWeek="monday"-->
+<!--                    app:mcv_leftArrow="@drawable/ic_arrow_left"-->
+<!--                    app:mcv_rightArrow="@drawable/ic_arrow_right_2"-->
+<!--                    app:mcv_selectionMode="multiple"-->
+<!--                    app:mcv_selectionColor="@color/nile_blue_900"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

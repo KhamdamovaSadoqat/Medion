@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.prolificinteractive.materialcalendarview.CalendarDay
+//import com.prolificinteractive.materialcalendarview.CalendarDay
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.databinding.FragmentOurDoctorsBinding
@@ -67,6 +67,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         }
 
         ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter {
+
             findNavController().navigate(R.id.aboutDoctorFragment)
         }
         ourDoctorsDetailsAdapter.setData(Constants.getOurDoctorDetail())
@@ -74,25 +75,25 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         binding.rvDoctors.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
-        val currentDate = CalendarDay.today()
-        val calendarState = binding.cvCalendar.state().edit()
-        calendarState.setMinimumDate(
-            CalendarDay.from(
-                currentDate.year,
-                currentDate.month,
-                currentDate.day
-            )
-        )
-        if (currentDate.month == 12)
-            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 0, currentDate.day))
-        calendarState.setMaximumDate(
-            CalendarDay.from(
-                currentDate.year,
-                currentDate.month + 1,
-                currentDate.day
-            )
-        )
-        calendarState.commit()
+//        val currentDate = CalendarDay.today()
+//        val calendarState = binding.cvCalendar.state().edit()
+//        calendarState.setMinimumDate(
+//            CalendarDay.from(
+//                currentDate.year,
+//                currentDate.month,
+//                currentDate.day
+//            )
+//        )
+//        if (currentDate.month == 12)
+//            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 0, currentDate.day))
+//        calendarState.setMaximumDate(
+//            CalendarDay.from(
+//                currentDate.year,
+//                currentDate.month + 1,
+//                currentDate.day
+//            )
+//        )
+//        calendarState.commit()
 
 
         binding.clOption1.setOnClickListener {

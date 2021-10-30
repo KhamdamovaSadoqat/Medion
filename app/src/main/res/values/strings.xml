@@ -1,24 +1,24 @@
 <resources>
     <string name="app_name" translatable="false">Medion</string>
 
-    <string name="icon">icon</string>
-    <string name="image">image</string>
-    <string name="clinic_photo">clinic photo</string>
-    <string name="msg_no_network">Internetga ulanib bo\'lmayapti.</string>
-    <string name="msg_unknown_error">Noma\'lum xatolik.</string>
+    <string name="icon" translatable="false">icon</string>
+    <string name="image" translatable="false">image</string>
+    <string name="clinic_photo" translatable="false">clinic photo</string>
+    <string name="msg_no_network" translatable="false">Internetga ulanib bo\'lmayapti.</string>
+    <string name="msg_unknown_error" translatable="false">Noma\'lum xatolik.</string>
     <string name="action_ok" translatable="false">OK</string>
-    <string name="msg_cannot_connect_to_server">Bizning serverlarimiz texnik va profilaktik xizmatdan o\\\'tmoqda. Iltimos, birozdan keyin qayta urining.</string>
-    <string name="login">Login</string>
-    <string name="logo">logo</string>
-    <string name="parol">Parol</string>
-    <string name="remember_me">Remember me</string>
-    <string name="sign_in">Sign in</string>
-    <string name="sign_up">Sign up</string>
-    <string name="sign_up_with">Sign up with</string>
+    <string name="msg_cannot_connect_to_server" translatable="false">Bizning serverlarimiz texnik va profilaktik xizmatdan o\\\'tmoqda. Iltimos, birozdan keyin qayta urining.</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="logo" translatable="false">logo</string>
+    <string name="parol" translatable="false">Parol</string>
+    <string name="remember_me" translatable="false">Remember me</string>
+    <string name="sign_in" translatable="false">Sign in</string>
+    <string name="sign_up" translatable="false">Sign up</string>
+    <string name="sign_up_with" translatable="false">Sign up with</string>
 
 
-    <string name="sms_send">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
-    <string name="resend_code">Resend code in 1:00</string>
+    <string name="sms_send" translatable="false">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
+    <string name="resend_code" translatable="false">Resend code in 1:00</string>
 
 
     <!-- home -->
@@ -62,7 +62,9 @@
     <string name="doc_detail">Повторная консультация уролога в течение 2-х недель</string>
     <string name="doctor_s_appointment">Назначение врача</string>
     <string name="urology_costs">Затраты на урологию</string>
-    <string name="initial_consultation_with_a_urologists">Первичная консультация уролога</string>
+    <string name="first_time">Первичная консультация уролога</string>
+    <string name="second_time">Повторная консультация уролога в течение 2-х недель</string>
+    <string name="third_time">Урофлоуметрия</string>
 
     <!-- aboutDoctor -->
     <string name="ilyasov_Doniyor">Ильясов Дониёр Ходжиакбарович</string>
@@ -168,6 +170,7 @@
     <string name="estetic_medicine_6">Маммопластика</string>
     <string name="estetic_medicine_7">Пластика живота</string>
 
+    <!-- spa medicine -->
     <string name="spa_tv_1">Клиника MEDION предлагает Вам широкий выбор SPA-услуг, оказывающих благотворный физиотерапевтический и релаксирующий эффект на организм.</string>
     <string name="spa_tv_2">Мы предоставляем процедуры:</string>
     <string name="short_discription">Краткое описание</string>
@@ -229,4 +232,24 @@
     <string name="lbl_choose_from_gallery">Choose from gallery</string>
     <string name="personal_room">Personal room</string>
     <string name="on_back_pressed">Press twice</string>
+
+    <!-- Calendar -->
+    <string name="constultation">Записаться на консультацию</string>
+    <string name="t_8_30">08:30</string>
+    <string name="t_9_00">09:00</string>
+    <string name="t_9_30">09:30</string>
+    <string name="t_10_00">10:00</string>
+    <string name="t_10_30">10:30</string>
+    <string name="t_11_00">11:00</string>
+    <string name="t_11_30">11:30</string>
+    <string name="t_12_00">12:00</string>
+    <string name="t_14_00">14:00</string>
+    <string name="t_14_30">14:30</string>
+    <string name="t_15_00">15:00</string>
+    <string name="t_15_30">15:30</string>
+    <string name="t_16_00">16:00</string>
+    <string name="t_16_30">16:30</string>
+    <string name="t_17_00">17:00</string>
+    <string name="t_17_30">17:30</string>
+
 </resources>
