@@ -2,6 +2,7 @@ package uz.medion.ui.main.user.appointment
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import uz.medion.R
 import uz.medion.data.constants.Keys
 import uz.medion.databinding.FragmentAppointmentEnrollBinding
@@ -35,6 +36,10 @@ class AppointmentEnrollFragment : BaseFragment<FragmentAppointmentEnrollBinding,
         }
         binding.chbCash.setOnClickListener {
             binding.chbCard.isChecked = false
+        }
+
+        binding.clAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_appointmentEnrollFragment_to_addCardFragment)
         }
 
     }

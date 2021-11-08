@@ -262,7 +262,12 @@
     <string name="uzcard">UZCARD</string>
     <string name="add_card">Добавить карту</string>
     <string name="pay">Оплатить</string>
-
+    <string name="card_number">1234 5678 9012 3456</string>
+    <string name="expire_date">Срок действия</string>
+    <string name="mm_yy">ММ/ГГ</string>
+    <string name="add">Добавить</string>
+    <string name="thanks">Спасибо!</string>
+    <string name="payment_competed">Оплата прошла УСПЕШНО</string>
 
 
 </resources>

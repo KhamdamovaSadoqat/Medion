@@ -162,7 +162,25 @@
         android:id="@+id/appointmentEnrollFragment"
         android:name="uz.medion.ui.main.user.appointment.AppointmentEnrollFragment"
         android:label="AppointmentEnrollFragment"
-        tools:layout="@layout/fragment_appointment_enroll"/>
+        tools:layout="@layout/fragment_appointment_enroll">
+        <action
+            android:id="@+id/action_appointmentEnrollFragment_to_addCardFragment"
+            app:destination="@id/addCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCardFragment"
+        android:name="uz.medion.ui.main.user.payment.AddCardFragment"
+        android:label="AddCardFragment"
+        tools:layout="@layout/fragment_add_card">
+        <action
+            android:id="@+id/action_addCardFragment_to_paymentCompleteFragment"
+            app:destination="@id/paymentCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentCompleteFragment"
+        android:name="uz.medion.ui.main.user.payment.PaymentCompleteFragment"
+        android:label="PaymentCompleteFragment"
+        tools:layout="@layout/fragment_payment_complete"/>
 
 
 </navigation>
