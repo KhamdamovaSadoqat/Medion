@@ -252,4 +252,17 @@
     <string name="t_17_00">17:00</string>
     <string name="t_17_30">17:30</string>
 
+    <!-- AppointmentPayment -->
+    <string name="date_ant_time">Дата и время</string>
+    <string name="oferta">Я принимаю условия оказания услуг</string>
+    <string name="cost_of_consultation">Стоимость консультации</string>
+    <string name="example_cost">45 000 sum</string>
+    <string name="payment_type">Способ оплаты:   Новой картой онлайн</string>
+    <string name="cash">С наличными</string>
+    <string name="uzcard">UZCARD</string>
+    <string name="add_card">Добавить карту</string>
+    <string name="pay">Оплатить</string>
+
+
+
 </resources>

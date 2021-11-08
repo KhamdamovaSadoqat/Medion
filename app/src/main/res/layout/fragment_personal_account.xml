@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="16dp"
-                android:background="@drawable/bg_menu"
+                android:background="@drawable/bg_solitude_8"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
@@ -103,7 +103,7 @@
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_menu"
+                android:background="@drawable/bg_solitude_8"
                 app:layout_constraintTop_toBottomOf="@id/cl1">
 
                 <TextView
@@ -135,7 +135,7 @@
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_menu"
+                android:background="@drawable/bg_solitude_8"
                 app:layout_constraintTop_toBottomOf="@id/cl2">
 
                 <TextView
@@ -167,7 +167,7 @@
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_menu"
+                android:background="@drawable/bg_solitude_8"
                 app:layout_constraintTop_toBottomOf="@id/cl3">
 
                 <TextView
@@ -199,7 +199,7 @@
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_menu"
+                android:background="@drawable/bg_solitude_8"
                 app:layout_constraintTop_toBottomOf="@id/cl4">
 
                 <TextView
@@ -231,7 +231,7 @@
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_menu"
+                android:background="@drawable/bg_solitude_8"
                 app:layout_constraintTop_toBottomOf="@id/cl5">
 
                 <TextView
@@ -263,7 +263,7 @@
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_menu"
+                android:background="@drawable/bg_solitude_8"
                 app:layout_constraintTop_toBottomOf="@id/cl6">
 
                 <TextView

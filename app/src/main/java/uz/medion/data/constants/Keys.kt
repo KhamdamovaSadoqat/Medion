@@ -20,6 +20,10 @@ object Keys {
 
     const val BUNDLE_SPA_TYPE = "bundle_spa_type"
     const val BUNDLE_APPOINTMENT_TYPE = "bundle_appointment_type"
+    const val BUNDLE_APPOINTMENT_DOCTOR_NAME = "bundle_appointment_doctor_name"
+    const val BUNDLE_APPOINTMENT_DATE = "bundle_appointment_date"
+    const val BUNDLE_APPOINTMENT_TIME = "bundle_appointment_time"
+
 
 
 }

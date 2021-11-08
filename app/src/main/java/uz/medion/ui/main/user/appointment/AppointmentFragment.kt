@@ -1,15 +1,10 @@
 package uz.medion.ui.main.user.appointment
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import uz.medion.R
 import uz.medion.data.constants.Keys
-import uz.medion.databinding.DialogAppointmentBinding
 import uz.medion.databinding.FragmentAppointmentBinding
 import uz.medion.ui.base.BaseFragment
 import uz.medion.utils.gone
@@ -18,20 +13,26 @@ import uz.medion.utils.visible
 class AppointmentFragment : BaseFragment<FragmentAppointmentBinding, AppointmentVM>() {
 
     private var type: String = ""
+    private var doctorName: String = ""
 
     override fun onBound() {
         setUp()
+        val args = arguments
+        if (args!!.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
+            doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+        }
         binding.btnSubmit.setOnClickListener {
             findNavController().navigate(
                 R.id.action_appointmentFragment_to_aboutDoctorFragment, bundleOf(
-                    Pair(Keys.BUNDLE_APPOINTMENT_TYPE, type)
+                    Pair(Keys.BUNDLE_APPOINTMENT_TYPE, type),
+                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName)
                 )
             )
         }
     }
 
     fun setUp() {
-
+        type = binding.tvOption1.text.toString()
         binding.clOption1.setOnClickListener {
             binding.ivOption1.visible()
             binding.ivOption2.gone()
@@ -50,11 +51,7 @@ class AppointmentFragment : BaseFragment<FragmentAppointmentBinding, Appointment
             binding.ivOption3.visible()
             type = binding.tvOption3.text.toString()
         }
-
-
     }
-
-
 
     override fun getLayoutResId() = R.layout.fragment_appointment
     override val vm: AppointmentVM

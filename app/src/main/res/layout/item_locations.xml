@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="204dp"
         android:layout_marginVertical="8dp"
-        android:background="@drawable/bg_edittext">
+        android:background="@drawable/bg_transparent_8">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_item"

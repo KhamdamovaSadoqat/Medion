@@ -202,6 +202,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivHeart)
                 ViewUtils.fadeOut(binding.ivMedion)
             }
+            //here goes AppointmentEnrollFragment, AppointmentFragment
+            if (destination.id == R.id.appointmentEnrollFragment || destination.id == R.id.appointmentFragment) {
+                binding.tvMain.setText(R.string.constultation)
+                ViewUtils.fadeIn(binding.ivBackArrow)
+                ViewUtils.fadeIn(binding.tvMain)
+                ViewUtils.fadeIn(binding.ivNotification)
+                ViewUtils.fadeOut(binding.ivSearch)
+                ViewUtils.fadeOut(binding.ivHeart)
+                ViewUtils.fadeOut(binding.ivMedion)
+            }
 
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
@@ -251,7 +261,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             navController.popBackStack(R.id.adressAndContactsFragment, false)
         } else if (navController.currentDestination!!.id == R.id.spaMedicineDetailsFragment) {
             navController.popBackStack(R.id.spaMedicineFragment, false)
-        }else {
+        } else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)
             } else super.onBackPressed()

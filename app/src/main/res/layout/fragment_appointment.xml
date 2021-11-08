@@ -151,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_submit_top"
+            android:background="@drawable/bg_red_top_8"
             android:text="@string/submit"
             android:textColor="@color/white"
             android:textSize="16sp"

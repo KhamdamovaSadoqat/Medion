@@ -1,7 +1,6 @@
 package uz.medion.ui.main.user.aboutDoctor
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,48 +18,61 @@ import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
 import uz.medion.data.model.AboutDoctorCommentItem
 import uz.medion.data.model.AboutDoctorItems
+import uz.medion.data.model.AppointmentTimeItem
 import uz.medion.databinding.DialogAppointmentBinding
 import uz.medion.databinding.DialogAppointmentTimeBinding
 import uz.medion.databinding.FragmentAboutDoctorBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.main.user.appointment.AppointmentTimeAdapter
 import uz.medion.utils.DateTimeUtils
-import uz.medion.utils.invisible
-import uz.medion.utils.visible
 import java.util.*
 
 
-class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>(),
-    View.OnClickListener {
+class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
 
-    private lateinit var aboutDoctorSertificateAdapter: AboutDoctorSertificateAdapter
+    private lateinit var aboutDoctorCertificateAdapter: AboutDoctorCertificateAdapter
     private lateinit var aboutDoctorWorkCurrentAdapter: AboutDoctorWorkAdapter
     private lateinit var aboutDoctorCommentAdapter: AboutDoctorCommentAdapter
     private lateinit var aboutDoctorWorkPastAdapter: AboutDoctorWorkAdapter
     private lateinit var aboutDoctorItemAdapter: AboutDoctorAdapter
+    private lateinit var appointmentTimeAdapter: AppointmentTimeAdapter
     private lateinit var dialogBinding: DialogAppointmentBinding
     private lateinit var dialogTimeBinding: DialogAppointmentTimeBinding
     private lateinit var data: ArrayList<AboutDoctorItems>
+    private lateinit var appointmentTime: ArrayList<AppointmentTimeItem>
     private var resultDialog: BottomSheetDialog? = null
     private var resultTimeDialog: BottomSheetDialog? = null
     private var reyting: Int = 1
     private var date = Date()
     private var time: String = "hh:mm dd.mm.yyyy"
+    private var appointmentTimeBundle: String = "08:30"
+    private var appointmentDateBundle: String = ""
+    private var doctorName: String = ""
+    private var type: String = ""
+
 
     override fun onBound() {
+        loadAboutDoctor()
+        loadDialog()
         setUp()
     }
 
     fun setUp() {
-        loadAboutDoctor()
-        loadDialog()
         val args = arguments
-        if (args != null) {
-            requireArguments().get(Keys.BUNDLE_APPOINTMENT_TYPE)
+        if (args!!.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
+            type = args.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
+            doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
             showCalendarDialog()
+        } else if (args.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
+            doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
         }
-
         binding.btnSubmit.setOnClickListener {
-            findNavController().navigate(R.id.appointmentFragment)
+            findNavController().navigate(
+                R.id.appointmentFragment,
+                bundleOf(
+                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName)
+                )
+            )
         }
         lifecycle.addObserver(binding.youtubePlayerView)
     }
@@ -94,21 +106,52 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         )
         calendarState.commit()
         dialogBinding.cvCalendar.setOnDateChangedListener { widget, date, selected ->
+            loadResultTimeDialog(date)
             dismissCalendarDialog()
-            loadResultTimeDialog(date, this)
         }
     }
 
-    private fun loadResultTimeDialog(date: CalendarDay, v: View.OnClickListener) {
+    private fun loadResultTimeDialog(date: CalendarDay) {
         dialogTimeBinding =
             DialogAppointmentTimeBinding.inflate(LayoutInflater.from(requireContext()))
 
-//        dialogTimeBinding.tv830.setOnClickListener {
-//            dialogTimeBinding.tv830.background =
-//                ContextCompat.getDrawable(requireContext(), R.drawable.bg_sign_up)
-//        }
-//        v.onClick(dialogTimeBinding.root)
-        showTimeDialog(this)
+        appointmentTime = Constants.getAppointmentTime()
+        appointmentTimeAdapter = AppointmentTimeAdapter { position, lastPosition ->
+            appointmentTimeBundle = requireContext().getString(appointmentTime[position].time)
+
+            if (position != lastPosition) {
+                appointmentTime[position] =
+                    AppointmentTimeItem(
+                        R.drawable.bg_blue_lighter_8, appointmentTime[position].time, R.color.white
+                    )
+                appointmentTime[lastPosition] =
+                    AppointmentTimeItem(
+                        R.drawable.bg_transparent_4,
+                        appointmentTime[lastPosition].time,
+                        R.color.tangaroa_900
+                    )
+                appointmentTimeAdapter.setData(appointmentTime)
+            }
+        }
+        appointmentTimeAdapter.setData(appointmentTime)
+        dialogTimeBinding.rvTime.adapter = appointmentTimeAdapter
+        dialogTimeBinding.rvTime.layoutManager = GridLayoutManager(requireContext(), 4)
+
+        appointmentDateBundle = "${date.day}.${date.month}.${date.year}"
+        dialogTimeBinding.btnSubmit.setOnClickListener {
+            dismissResultTimeDialog()
+            dismissCalendarDialog()
+            findNavController().navigate(
+                R.id.action_aboutDoctorFragment_to_appointmentEnrollFragment,
+                bundleOf(
+                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName),
+                    Pair(Keys.BUNDLE_APPOINTMENT_TIME, appointmentTimeBundle),
+                    Pair(Keys.BUNDLE_APPOINTMENT_DATE, appointmentDateBundle),
+                    Pair(Keys.BUNDLE_APPOINTMENT_TYPE, type)
+                )
+            )
+        }
+        showTimeDialog()
     }
 
     private fun loadAboutDoctor() {
@@ -403,15 +446,15 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     private fun loadCertificate() {
         //certificate
-        aboutDoctorSertificateAdapter = AboutDoctorSertificateAdapter {
+        aboutDoctorCertificateAdapter = AboutDoctorCertificateAdapter {
             findNavController().navigate(
                 R.id.action_aboutDoctorFragment_to_certificateFragment, bundleOf(
                     Keys.BUNDLE_CERTIFICATE to it
                 )
             )
         }
-        aboutDoctorSertificateAdapter.setData(Constants.getSertificate())
-        binding.rvSertificate.adapter = aboutDoctorSertificateAdapter
+        aboutDoctorCertificateAdapter.setData(Constants.getSertificate())
+        binding.rvSertificate.adapter = aboutDoctorCertificateAdapter
         binding.rvSertificate.layoutManager = GridLayoutManager(requireContext(), 2)
 
     }
@@ -453,15 +496,13 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         reyting = 1
     }
 
-
     private fun showCalendarDialog() {
         resultDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
         resultDialog!!.setContentView(dialogBinding.root)
         resultDialog!!.show()
     }
 
-    private fun showTimeDialog(v: View.OnClickListener) {
-        v.onClick(dialogTimeBinding.root)
+    private fun showTimeDialog() {
         resultTimeDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
         resultTimeDialog!!.setContentView(dialogTimeBinding.root)
         resultTimeDialog!!.show()
@@ -469,20 +510,16 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     private fun dismissCalendarDialog() {
         if (resultDialog!!.isShowing) {
-            resultDialog!!.dismissWithAnimation
+            resultDialog!!.dismiss()
         }
+        resultDialog!!.dismiss()
     }
 
     private fun dismissResultTimeDialog() {
         if (resultTimeDialog!!.isShowing) {
-            resultTimeDialog!!.dismissWithAnimation
+            resultTimeDialog!!.dismiss()
         }
-    }
-
-    override fun onClick(v: View?) {
-        Log.d("--------", "onClick: view: ${v!!.id.toString()}")
-        if (v!!.id == dialogTimeBinding.tv830.id) dialogTimeBinding.tv830.background =
-            ContextCompat.getDrawable(requireContext(), R.drawable.bg_sign_up)
+        resultTimeDialog!!.dismiss()
     }
 
     override fun getLayoutResId() = R.layout.fragment_about_doctor

@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_aboutDoctorFragment_to_appointmentFragment"
             app:destination="@id/appointmentFragment" />
+        <action
+            android:id="@+id/action_aboutDoctorFragment_to_appointmentEnrollFragment"
+            app:destination="@id/appointmentEnrollFragment" />
     </fragment>
     <fragment
         android:id="@+id/certificateFragment"
@@ -155,6 +158,11 @@
             android:id="@+id/action_appointmentFragment_to_aboutDoctorFragment"
             app:destination="@id/aboutDoctorFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/appointmentEnrollFragment"
+        android:name="uz.medion.ui.main.user.appointment.AppointmentEnrollFragment"
+        android:label="AppointmentEnrollFragment"
+        tools:layout="@layout/fragment_appointment_enroll"/>
 
 
 </navigation>

@@ -26,8 +26,8 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
         binding.rvMyDoctors.adapter = myDoctorsAdapter
         
         binding.tvFavourites.setOnClickListener { 
-            binding.tvFavourites.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_my_doctors_blue)
-            binding.tvAll.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_menu)
+            binding.tvFavourites.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_blue_8)
+            binding.tvAll.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_solitude_8)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 binding.tvAll.setTextColor(requireContext().getColor(R.color.tangaroa_900))
                 binding.tvFavourites.setTextColor(requireContext().getColor(R.color.white))
@@ -39,8 +39,8 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
         }
 
         binding.tvAll.setOnClickListener {
-            binding.tvFavourites.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_menu)
-            binding.tvAll.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_my_doctors_blue)
+            binding.tvFavourites.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_solitude_8)
+            binding.tvAll.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_blue_8)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 binding.tvAll.setTextColor(requireContext().getColor(R.color.white))
                 binding.tvFavourites.setTextColor(requireContext().getColor(R.color.tangaroa_900))

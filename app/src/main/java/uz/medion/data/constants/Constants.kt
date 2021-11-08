@@ -463,4 +463,24 @@ object Constants {
         )
     }
 
+    fun getAppointmentTime(): ArrayList<AppointmentTimeItem>{
+        return  arrayListOf(
+            AppointmentTimeItem(R.drawable.bg_blue_lighter_8, R.string.t_8_30, R.color.white),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_9_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_9_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_10_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_10_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_11_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_11_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_12_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_14_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_14_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_15_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_15_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_16_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_16_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_17_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_17_30, R.color.tangaroa_900),
+        )
+    }
 }

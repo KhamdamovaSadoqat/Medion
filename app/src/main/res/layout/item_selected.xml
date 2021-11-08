@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:background="@drawable/bg_menu"
+        android:background="@drawable/bg_solitude_8"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
