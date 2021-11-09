@@ -25,7 +25,8 @@
         tools:ignore="AllowBackup,UnusedAttribute">
         <activity
             android:name=".ui.main.MainActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

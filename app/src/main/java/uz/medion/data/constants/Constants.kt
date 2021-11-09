@@ -357,7 +357,7 @@ object Constants {
                 "Шайхантахурский район, ул. Зульфияханум 18",
                 "+998 78 140 00 44",
 
-            ),
+                ),
             AdressAndContactsItem(
                 R.drawable.center_photo_2,
                 "Mедицинский центр MEDION INNOVATION",
@@ -373,23 +373,27 @@ object Constants {
         )
     }
 
-    fun getLocations(): ArrayList<Location>{
+    fun getLocations(): ArrayList<Location> {
         return arrayListOf(
-            Location(R.drawable.center_photo_1,"41.3303657", "69.2572476"),
-            Location(R.drawable.center_photo_2,"41.323868", "69.2519953"),
-            Location(R.drawable.center_photo_3,"41.3261357", "69.1859201")
+            Location(R.drawable.center_photo_1, "41.3303657", "69.2572476"),
+            Location(R.drawable.center_photo_2, "41.323868", "69.2519953"),
+            Location(R.drawable.center_photo_3, "41.3261357", "69.1859201")
         )
     }
 
     fun getEsteticMedicine_categories(): ArrayList<AboutDoctorItems> {
         return arrayListOf<AboutDoctorItems>(
             AboutDoctorItems(R.string.estetic_medicine_5, R.color.nile_blue_900, R.color.white),
-            AboutDoctorItems(R.string.estetic_medicine_6, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(
+                R.string.estetic_medicine_6,
+                R.color.solitude_50,
+                R.color.tangaroa_900
+            ),
             AboutDoctorItems(R.string.estetic_medicine_7, R.color.solitude_50, R.color.tangaroa_900)
         )
     }
 
-    fun getSpaHeaders(): ArrayList<Int>{
+    fun getSpaHeaders(): ArrayList<Int> {
         return arrayListOf(
             R.string.massage,
             R.string.medicine_in_bath,
@@ -405,7 +409,7 @@ object Constants {
         )
     }
 
-    fun getSpaMassageDetails(): ArrayList<Int>{
+    fun getSpaMassageDetails(): ArrayList<Int> {
         return arrayListOf(
             R.string.massage1,
             R.string.massage2,
@@ -434,7 +438,7 @@ object Constants {
         )
     }
 
-    fun getSpaMassageTimeDetails(): ArrayList<Int>{
+    fun getSpaMassageTimeDetails(): ArrayList<Int> {
         return arrayListOf(
             R.string.massage1_1,
             R.string.massage1_1,
@@ -460,6 +464,41 @@ object Constants {
             R.string.massage1_6,
             R.string.massage1_6,
             R.string.massage1_6
+        )
+    }
+
+    fun getMyAccount(): ArrayList<DoctorCategoryItem> {
+        return arrayListOf(
+            DoctorCategoryItem(R.string.change_mobile_phone_number),
+            DoctorCategoryItem(R.string.change_password),
+            DoctorCategoryItem(R.string.personal_information),
+            DoctorCategoryItem(R.string.my_documents),
+            DoctorCategoryItem(R.string.my_doctors),
+            DoctorCategoryItem(R.string.languages)
+
+        )
+
+    }
+
+    fun getMyMain():ArrayList<DoctorCategoryItem>{
+
+        return arrayListOf(
+            DoctorCategoryItem(R.string.our_doctors),
+            DoctorCategoryItem(R.string.estethic_medicine),
+            DoctorCategoryItem(R.string.spa_medicine),
+            DoctorCategoryItem(R.string.adress_contact),
+            DoctorCategoryItem(R.string.my_account)
+        )
+    }
+
+    fun getMyDoctorsItem():ArrayList<DoctorsItem>{
+
+        return arrayListOf(
+            DoctorsItem(R.drawable.doc_sevara,R.string.dc_sevara,R.string.vrach_uzi),
+            DoctorsItem(R.drawable.doc_pic,R.string.dc_botir,R.string.detskiy_ortoped),
+            DoctorsItem(R.drawable.doctor_img,R.string.dc_alisher,R.string.traumatology),
+            DoctorsItem(R.drawable.doc_sevara,R.string.dc_elena,R.string.pediatr)
+
         )
     }
 

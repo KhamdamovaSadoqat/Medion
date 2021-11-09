@@ -100,6 +100,7 @@ class BottomNavController(
                     ViewUtils.fadeIn(view2, 200)
 //                    navController.popBackStack(R.id.ratingFragment, false)
 //                    navController.navigate(R.id.ratingFragment, bundleOf(), navOptions)
+                    navController.navigate(R.id.searchViewFragment, bundleOf(),navOptions)
                     return@apply
                 }
                 2 -> {

@@ -229,4 +229,28 @@
     <string name="lbl_choose_from_gallery">Choose from gallery</string>
     <string name="personal_room">Personal room</string>
     <string name="on_back_pressed">Press twice</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- search -->
+    <string name="services">Услуги</string>
+    <string name="cabinet">Кабинет</string>
+
+
+
+    <!-- ourDoctorName -->
+    <string name="dc_sevara">Эргашева Севара Рустамовна</string>
+    <string name="dc_botir">Ширмухамедов Батыр Турсунпулатович</string>
+    <string name="dc_alisher">Маматходжаев Алишер Насырович</string>
+    <string name="dc_elena">Мустафина Елена Рафиковна	</string>
+
+ <!-- ourDoctorJob -->
+    <string name="vrach_uzi">Врач УЗИ</string>
+    <string name="detskiy_ortoped">Детский ортопед </string>
+
+    <!-- searchView-->
+    <string name="searchview">SearchView</string>
+
+
 </resources>

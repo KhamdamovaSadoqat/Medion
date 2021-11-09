@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/alice_blue_50">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_search_view_card"
+            android:layout_width="match_parent"
+            android:elevation="10dp"
+            android:layout_marginTop="1dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_name_ginekalogiya"
+                android:layout_width="328dp"
+                android:layout_height="28dp"
+                android:text="@string/ginecology"
+                android:textColor="@color/tangaroa_900"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
