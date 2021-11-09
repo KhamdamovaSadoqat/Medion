@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="uz.medion.ui.base.BaseVM" />
@@ -14,15 +15,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <include-->
-<!--            layout="@layout/app_bar_main"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent" />-->
+        <!--        <include-->
+        <!--            layout="@layout/app_bar_main"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.main.MainActivity">
+
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/app_bar"
@@ -36,38 +38,65 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+
                     <ImageView
                         android:id="@+id/iv_back_arrow"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:visibility="gone"
-                        app:srcCompat="@drawable/ic_arrow_back"
                         android:layout_marginStart="16dp"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/icon"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        android:contentDescription="@string/icon" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
+                    <ImageView
+                        android:id="@+id/iv_back_arrow_search"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="16dp"
+                        android:contentDescription="@string/icon"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
+                    <ImageView
+                        android:id="@+id/iv_back_arrow_mainsearch"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="16dp"
+                        android:contentDescription="@string/icon"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
 
                     <TextView
                         android:id="@+id/tv_main"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="60dp"
                         android:textColor="@color/white"
                         android:textSize="16sp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/iv_notification"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginEnd="16dp"
-                        app:srcCompat="@drawable/ic_notification"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/icon"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        android:contentDescription="@string/icon" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_notification" />
+
 
                     <ImageView
                         android:id="@+id/iv_search"
@@ -75,40 +104,61 @@
                         android:layout_height="24dp"
                         android:layout_marginEnd="16dp"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/ic_search_white"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        android:contentDescription="@string/icon" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_search_white"
+                        tools:ignore="ContentDescription" />
+
+
+                    <!--                        <EditText-->
+                    <!--                            android:id="@+id/edit_search"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_marginStart="60dp"-->
+                    <!--                            android:layout_marginEnd="60dp"-->
+                    <!--                            android:hint="Search"-->
+                    <!--                            android:inputType="textFilter"-->
+                    <!--                            android:text=""-->
+                    <!--                            android:textColor="@color/white"-->
+                    <!--                            android:textColorHint="@color/alice_blue_50"-->
+                    <!--                            android:visibility="gone"-->
+                    <!--                            app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--                            app:layout_constraintRight_toRightOf="parent"-->
+                    <!--                            app:layout_constraintTop_toTopOf="parent"-->
+                    <!--                            app:layout_constraintWidth_default="spread"-->
+                    <!--                            tools:ignore="Autofill" />-->
+
 
                     <ImageView
                         android:id="@+id/iv_heart"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/icon"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/ic_heart"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        android:contentDescription="@string/icon" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_heart" />
 
                     <ImageView
                         android:id="@+id/iv_medion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
                         android:layout_marginVertical="8dp"
-                        app:srcCompat="@drawable/medion_white"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:contentDescription="@string/icon"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        android:contentDescription="@string/icon" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/medion_white" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.appbar.AppBarLayout>
+
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/main_nav_controller"
@@ -116,9 +166,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/main"
                 app:layout_constraintBottom_toTopOf="@id/partial_bottom_nav"
-                app:layout_constraintTop_toBottomOf="@id/app_bar" />
+                app:layout_constraintTop_toBottomOf="@id/app_bar"
+                app:navGraph="@navigation/main" />
 
             <include
                 android:id="@+id/partial_bottom_nav"

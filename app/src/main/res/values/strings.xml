@@ -170,7 +170,6 @@
     <string name="estetic_medicine_6">Маммопластика</string>
     <string name="estetic_medicine_7">Пластика живота</string>
 
-    <!-- spa medicine -->
     <string name="spa_tv_1">Клиника MEDION предлагает Вам широкий выбор SPA-услуг, оказывающих благотворный физиотерапевтический и релаксирующий эффект на организм.</string>
     <string name="spa_tv_2">Мы предоставляем процедуры:</string>
     <string name="short_discription">Краткое описание</string>
@@ -269,5 +268,21 @@
     <string name="thanks">Спасибо!</string>
     <string name="payment_competed">Оплата прошла УСПЕШНО</string>
 
+    <!-- search -->
+    <string name="services">Услуги</string>
+    <string name="cabinet">Кабинет</string>
+
+    <!-- ourDoctorName -->
+    <string name="dc_sevara">Эргашева Севара Рустамовна</string>
+    <string name="dc_botir">Ширмухамедов Батыр Турсунпулатович</string>
+    <string name="dc_alisher">Маматходжаев Алишер Насырович</string>
+    <string name="dc_elena">Мустафина Елена Рафиковна	</string>
+
+    <!-- ourDoctorJob -->
+    <string name="vrach_uzi">Врач УЗИ</string>
+    <string name="detskiy_ortoped">Детский ортопед </string>
+
+    <!-- searchView-->
+    <string name="searchview">SearchView</string>
 
 </resources>

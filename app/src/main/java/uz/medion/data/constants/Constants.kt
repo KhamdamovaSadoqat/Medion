@@ -374,11 +374,11 @@ object Constants {
         )
     }
 
-    fun getLocations(): ArrayList<Location>{
+    fun getLocations(): ArrayList<Location> {
         return arrayListOf(
-            Location(R.drawable.center_photo_1,"41.3303657", "69.2572476"),
-            Location(R.drawable.center_photo_2,"41.323868", "69.2519953"),
-            Location(R.drawable.center_photo_3,"41.3261357", "69.1859201")
+            Location(R.drawable.center_photo_1, "41.3303657", "69.2572476"),
+            Location(R.drawable.center_photo_2, "41.323868", "69.2519953"),
+            Location(R.drawable.center_photo_3, "41.3261357", "69.1859201")
         )
     }
 
@@ -484,4 +484,35 @@ object Constants {
             AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_17_30, R.color.tangaroa_900),
         )
     }
+    fun getMyAccount(): ArrayList<DoctorCategoryItem> {
+        return arrayListOf(
+            DoctorCategoryItem(R.string.change_mobile_phone_number),
+            DoctorCategoryItem(R.string.change_password),
+            DoctorCategoryItem(R.string.personal_information),
+            DoctorCategoryItem(R.string.my_documents),
+            DoctorCategoryItem(R.string.my_doctors),
+            DoctorCategoryItem(R.string.languages)
+        )
+    }
+
+    fun getMyMain():ArrayList<DoctorCategoryItem>{
+        return arrayListOf(
+            DoctorCategoryItem(R.string.our_doctors),
+            DoctorCategoryItem(R.string.estethic_medicine),
+            DoctorCategoryItem(R.string.spa_medicine),
+            DoctorCategoryItem(R.string.adress_contact),
+            DoctorCategoryItem(R.string.my_account)
+        )
+    }
+
+    fun getMyDoctorsItem():ArrayList<DoctorsItem>{
+        return arrayListOf(
+            DoctorsItem(R.drawable.doc_sevara,R.string.dc_sevara,R.string.vrach_uzi),
+            DoctorsItem(R.drawable.doc_pic,R.string.dc_botir,R.string.detskiy_ortoped),
+            DoctorsItem(R.drawable.doctor_img,R.string.dc_alisher,R.string.traumatology),
+            DoctorsItem(R.drawable.doc_sevara,R.string.dc_elena,R.string.pediatr)
+
+        )
+    }
+
 }

@@ -17,7 +17,6 @@ class ChangeNumberFragment : BaseFragment<FragmentChangeNumberBinding, ChangeNum
                 R.id.verificationFragment2,
                 bundleOf(Keys.BUNDLE_CHANGE_PHONE_NUMBER to "changing")
             ) }
-
     }
 
 
