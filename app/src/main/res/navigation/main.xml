@@ -166,16 +166,15 @@
         <action
             android:id="@+id/action_appointmentEnrollFragment_to_addCardFragment"
             app:destination="@id/addCardFragment" />
+        <action
+            android:id="@+id/action_appointmentEnrollFragment_to_payment_complete"
+            app:destination="@id/paymentCompleteFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCardFragment"
         android:name="uz.medion.ui.main.user.payment.AddCardFragment"
         android:label="AddCardFragment"
-        tools:layout="@layout/fragment_add_card">
-        <action
-            android:id="@+id/action_addCardFragment_to_paymentCompleteFragment"
-            app:destination="@id/paymentCompleteFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_card"/>
     <fragment
         android:id="@+id/paymentCompleteFragment"
         android:name="uz.medion.ui.main.user.payment.PaymentCompleteFragment"

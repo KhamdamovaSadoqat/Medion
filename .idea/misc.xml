@@ -55,7 +55,7 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_add_card.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_adress.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_adress_and_contacts.xml" value="0.23278985507246377" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_appointment.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_appointment.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_appointment_enroll.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_certificate.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_change_number.xml" value="0.23278985507246377" />
@@ -72,7 +72,11 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_spa_medicine_details.xml" value="0.13020833333333334" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_appointment_time.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_my_documents.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_profile.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_selected.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_video.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_work_details.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

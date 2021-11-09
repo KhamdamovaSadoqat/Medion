@@ -14,8 +14,8 @@ import com.google.gson.Gson
 import uz.medion.data.local.PrefsHelper
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseVM> : Fragment(), BaseMethods {
-    private val gson = Gson()
-    private lateinit var prefs: PrefsHelper
+    val gson = Gson()
+    lateinit var prefs: PrefsHelper
 
     @LayoutRes
     abstract fun getLayoutResId(): Int

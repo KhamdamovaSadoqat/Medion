@@ -58,29 +58,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:text="@string/expire_date"
-                app:layout_constraintBottom_toBottomOf="@id/tv_mm_yy"
+                app:layout_constraintBottom_toBottomOf="@id/etl_mm_yy"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_mm_yy" />
+                app:layout_constraintTop_toTopOf="@id/etl_mm_yy" />
 
-            <TextView
-                android:id="@+id/tv_mm_yy"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_mm_yy"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="32dp"
-                android:background="@drawable/bg_solitude_8"
-                android:gravity="center"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp"
-                android:text="@string/mm_yy"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintTextAppearance="@style/inactive"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/tv_expire_date"
-                app:layout_constraintTop_toBottomOf="@id/etl_card_number" />
+                app:layout_constraintTop_toBottomOf="@id/etl_card_number">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_mm_yy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_solitude_8"
+                    android:hint="@string/mm_yy"
+                    android:inputType="number"
+                    android:digits="12345/67890"
+                    android:maxLength="5"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"

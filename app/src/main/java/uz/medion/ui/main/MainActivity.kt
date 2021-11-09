@@ -261,6 +261,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             navController.popBackStack(R.id.adressAndContactsFragment, false)
         } else if (navController.currentDestination!!.id == R.id.spaMedicineDetailsFragment) {
             navController.popBackStack(R.id.spaMedicineFragment, false)
+        } else if (navController.currentDestination!!.id == R.id.appointmentFragment ||
+            navController.currentDestination!!.id == R.id.appointmentEnrollFragment ||
+            navController.currentDestination!!.id == R.id.paymentCompleteFragment
+        ) { navController.popBackStack(R.id.aboutDoctorFragment, false)
+        } else if (navController.currentDestination!!.id == R.id.addCardFragment) {
+            navController.popBackStack(R.id.appointmentEnrollFragment, false)
         } else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)
