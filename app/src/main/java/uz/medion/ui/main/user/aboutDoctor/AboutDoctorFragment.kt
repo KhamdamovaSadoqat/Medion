@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
@@ -23,12 +24,13 @@ import uz.medion.databinding.DialogAppointmentBinding
 import uz.medion.databinding.DialogAppointmentTimeBinding
 import uz.medion.databinding.FragmentAboutDoctorBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.main.user.IOnBackPressed
 import uz.medion.ui.main.user.appointment.AppointmentTimeAdapter
 import uz.medion.utils.DateTimeUtils
 import java.util.*
 
 
-class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
+class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>(){
 
     private lateinit var aboutDoctorCertificateAdapter: AboutDoctorCertificateAdapter
     private lateinit var aboutDoctorWorkCurrentAdapter: AboutDoctorWorkAdapter
@@ -77,6 +79,21 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             )
         }
         lifecycle.addObserver(binding.youtubePlayerView)
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(this, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d("----------", "Fragment back pressed invoked")
+                    if(args!!.containsKey(Keys.BUNDLE_SEARCH_VIEW_TO_ABOUT_DOCTOR))
+                        findNavController().popBackStack(R.id.searchViewFragment, false)
+                    if (isEnabled) {
+                        isEnabled = false
+                        requireActivity().onBackPressed()
+                    }
+                }
+            }
+            )
     }
 
     @SuppressLint("SetTextI18n")

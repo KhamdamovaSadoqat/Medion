@@ -374,11 +374,11 @@ object Constants {
         )
     }
 
-    fun getLocations(): ArrayList<Location> {
+    fun getLocations(): ArrayList<Location>{
         return arrayListOf(
-            Location(R.drawable.center_photo_1, "41.3303657", "69.2572476"),
-            Location(R.drawable.center_photo_2, "41.323868", "69.2519953"),
-            Location(R.drawable.center_photo_3, "41.3261357", "69.1859201")
+            Location(R.drawable.center_photo_1,"41.3303657", "69.2572476"),
+            Location(R.drawable.center_photo_2,"41.323868", "69.2519953"),
+            Location(R.drawable.center_photo_3,"41.3261357", "69.1859201")
         )
     }
 
@@ -390,7 +390,7 @@ object Constants {
         )
     }
 
-    fun getSpaHeaders(): ArrayList<Int>{
+    fun getSpaHeaders(): ArrayList<Int> {
         return arrayListOf(
             R.string.massage,
             R.string.medicine_in_bath,
@@ -406,7 +406,7 @@ object Constants {
         )
     }
 
-    fun getSpaMassageDetails(): ArrayList<Int>{
+    fun getSpaMassageDetails(): ArrayList<Int> {
         return arrayListOf(
             R.string.massage1,
             R.string.massage2,
@@ -435,7 +435,7 @@ object Constants {
         )
     }
 
-    fun getSpaMassageTimeDetails(): ArrayList<Int>{
+    fun getSpaMassageTimeDetails(): ArrayList<Int> {
         return arrayListOf(
             R.string.massage1_1,
             R.string.massage1_1,
@@ -511,7 +511,6 @@ object Constants {
             DoctorsItem(R.drawable.doc_pic,R.string.dc_botir,R.string.detskiy_ortoped),
             DoctorsItem(R.drawable.doctor_img,R.string.dc_alisher,R.string.traumatology),
             DoctorsItem(R.drawable.doc_sevara,R.string.dc_elena,R.string.pediatr)
-
         )
     }
 
