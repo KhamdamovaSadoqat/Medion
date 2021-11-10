@@ -59,7 +59,6 @@ class AppointmentEnrollFragment : BaseFragment<FragmentAppointmentEnrollBinding,
             if (binding.chbCard.isChecked)
                 findNavController().navigate(R.id.action_appointmentEnrollFragment_to_payment_complete)
         }
-
     }
 
     override fun getLayoutResId() = R.layout.fragment_appointment_enroll
