@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/alice_blue_50">
+        android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_search_view_card"
+        <TextView
+            android:id="@+id/tv_name_sv"
             android:layout_width="match_parent"
-            android:elevation="10dp"
-            android:layout_marginTop="1dp"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="12dp"
+            android:text="@string/ginecology"
+            android:textColor="@color/tangaroa_900"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_name_ginekalogiya"
-                android:layout_width="328dp"
-                android:layout_height="28dp"
-                android:text="@string/ginecology"
-                android:textColor="@color/tangaroa_900"
-                android:textSize="16sp"
-                android:layout_gravity="center_vertical"
-                />
-        </androidx.cardview.widget.CardView>
+        <View
+            android:id="@+id/v_divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/solitude_50"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_sv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

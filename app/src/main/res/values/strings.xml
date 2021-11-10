@@ -289,21 +289,4 @@
     <string name="thanks">Спасибо!</string>
     <string name="payment_competed">Оплата прошла УСПЕШНО</string>
 
-    <!-- search -->
-    <string name="services">Услуги</string>
-    <string name="cabinet">Кабинет</string>
-
-    <!-- ourDoctorName -->
-    <string name="dc_sevara">Эргашева Севара Рустамовна</string>
-    <string name="dc_botir">Ширмухамедов Батыр Турсунпулатович</string>
-    <string name="dc_alisher">Маматходжаев Алишер Насырович</string>
-    <string name="dc_elena">Мустафина Елена Рафиковна	</string>
-
-    <!-- ourDoctorJob -->
-    <string name="vrach_uzi">Врач УЗИ</string>
-    <string name="detskiy_ortoped">Детский ортопед </string>
-
-    <!-- searchView-->
-    <string name="searchview">SearchView</string>
-
 </resources>

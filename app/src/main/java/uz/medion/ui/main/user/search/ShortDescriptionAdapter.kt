@@ -44,7 +44,7 @@ class ShortDescriptionAdapter(private var itemCliCklistener: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(category: Int) {
             binding.apply {
-                tvNameGinekalogiya.text = context.getText(category)
+                tvNameSv.text = context.getText(category)
             }
         }
     }

@@ -48,7 +48,7 @@ class MainAdapter(private val itemCliCkListener: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(category: DoctorCategoryItem) {
             binding.apply {
-                tvNameGinekalogiya.text = context.getString(category.categoryName)
+                tvNameSv.text = context.getString(category.categoryName)
             }
         }
     }
