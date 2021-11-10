@@ -1,5 +1,6 @@
-package uz.medion.ui.main.user.searchView
+package uz.medion.ui.main.user.search
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,11 +15,11 @@ class ServiceAdapter(private val itemClickListener: (Int) -> Unit) :
 
     private var listItem = listOf<DoctorCategoryItem>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(mlistItem: ArrayList<DoctorCategoryItem>) {
         this.listItem = mlistItem
         notifyDataSetChanged()
     }
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -44,15 +45,12 @@ class ServiceAdapter(private val itemClickListener: (Int) -> Unit) :
 
     override fun getItemCount() = listItem.size
 
-
     class ItemViewHolder(private val binding: ItemSearchViewBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(category: DoctorCategoryItem) {
             binding.apply {
                 tvNameGinekalogiya.text =context.getString(category.categoryName)
-
             }
         }
     }
-
 }

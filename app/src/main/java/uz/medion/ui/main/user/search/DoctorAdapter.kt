@@ -1,5 +1,6 @@
-package uz.medion.ui.main.user.searchView
+package uz.medion.ui.main.user.search
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,9 +14,9 @@ import uz.medion.databinding.ItemDoctorSearchBinding
 class DoctorAdapter(private var itemClickListener: (Int) -> Unit) :
     RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
 
-
     private var arrayList = arrayListOf<DoctorsItem>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(lists: ArrayList<DoctorsItem>) {
         this.arrayList = lists
         notifyDataSetChanged()

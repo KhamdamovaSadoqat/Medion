@@ -12,8 +12,6 @@ import uz.medion.R
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.ui.base.BaseActivity
 import uz.medion.utils.ViewUtils
-import uz.medion.utils.gone
-import uz.medion.utils.visible
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
@@ -27,8 +25,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
     private fun setUp() {
         val navHost = supportFragmentManager.findFragmentById(R.id.main_nav_controller)
-
-
         if (navHost != null) {
             navController = navHost.findNavController()
         }
@@ -103,6 +99,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             }
         }
 
+        binding.ivSearch.setOnClickListener{ navController.navigate(R.id.searchViewFragment)}
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
 
         binding.nvNavigationDrawer.setNavigationItemSelectedListener { menuItem ->
@@ -133,8 +130,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 //        val navigationOptions =
 //            NavOptions.Builder().setPopUpTo(navController.currentDestination!!.id, true).build()
 //        navController.navigate(R.id.olympiadFragment, null, navigationOptions)
-        if (navController.currentDestination!!.id == R.id.paymentCompleteFragment
-        ) { navController.popBackStack(R.id.aboutDoctorFragment, false)
+        if (navController.currentDestination!!.id == R.id.paymentCompleteFragment) {
+            navController.popBackStack(R.id.aboutDoctorFragment, false)
         } else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)

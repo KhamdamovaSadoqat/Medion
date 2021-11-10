@@ -189,7 +189,7 @@
         tools:layout="@layout/fragment_payment_complete"/>
     <fragment
         android:id="@+id/searchViewFragment"
-        android:name="uz.medion.ui.main.user.searchView.SearchViewFragment"
+        android:name="uz.medion.ui.main.user.search.SearchViewFragment"
         android:label="fragment_search_view"
         tools:layout="@layout/fragment_search_view" >
         <action

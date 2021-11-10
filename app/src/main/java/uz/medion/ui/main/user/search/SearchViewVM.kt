@@ -1,4 +1,4 @@
-package uz.medion.ui.main.user.searchView
+package uz.medion.ui.main.user.search
 
 import uz.medion.ui.base.BaseVM
 

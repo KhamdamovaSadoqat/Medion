@@ -1,5 +1,6 @@
-package uz.medion.ui.main.user.searchView
+package uz.medion.ui.main.user.search
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,21 +10,21 @@ import uz.medion.R
 import uz.medion.data.model.DoctorCategoryItem
 import uz.medion.databinding.ItemSearchViewBinding
 
-class CabinetAdapter(private val itemClickListener: (Int) -> Unit) :
-    RecyclerView.Adapter<CabinetAdapter.CabinetViewHolder>() {
+class MainAdapter(private val itemCliCkListener: (Int) -> Unit) :
+    RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
+    private var arrayList = listOf<DoctorCategoryItem>()
 
-    private var lists = listOf<DoctorCategoryItem>()
-
-    fun setData(mlist: ArrayList<DoctorCategoryItem>) {
-        this.lists = mlist
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(lists: ArrayList<DoctorCategoryItem>) {
+        this.arrayList = lists
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CabinetViewHolder {
+    ): MainViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<ItemSearchViewBinding>(
             inflater,
@@ -31,31 +32,24 @@ class CabinetAdapter(private val itemClickListener: (Int) -> Unit) :
             parent,
             false
         )
-        return CabinetViewHolder(binding,parent.context)
+        return MainViewHolder(binding, parent.context)
     }
 
-    override fun onBindViewHolder(
-        holder: CabinetViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemCliCkListener.invoke(position)
         }
-        holder.onBind(lists[position])
-
+        holder.onBind(arrayList[position])
     }
 
-    override fun getItemCount() = lists.size
+    override fun getItemCount() = arrayList.size
 
-
-    class CabinetViewHolder(private val binding: ItemSearchViewBinding, val context: Context) :
+    class MainViewHolder(private var binding: ItemSearchViewBinding, val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(category: DoctorCategoryItem) {
             binding.apply {
-                tvNameGinekalogiya.text=context.getString(category.categoryName)
+                tvNameGinekalogiya.text = context.getString(category.categoryName)
             }
         }
-
-
     }
 }
