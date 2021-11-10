@@ -155,10 +155,10 @@
         android:name="uz.medion.ui.main.user.appointment.AppointmentFragment"
         android:label="AppointmentFragment"
         tools:layout="@layout/fragment_appointment">
-        <argument
-            android:name="typeOfAppointment"
-            app:argType="string"
-            android:defaultValue="@null" />
+<!--        <argument-->
+<!--            android:name="typeOfAppointment"-->
+<!--            app:argType="string"-->
+<!--            android:defaultValue="@null" />-->
         <action
             android:id="@+id/action_appointmentFragment_to_aboutDoctorFragment"
             app:destination="@id/aboutDoctorFragment" />
@@ -185,7 +185,6 @@
         android:name="uz.medion.ui.main.user.payment.PaymentCompleteFragment"
         android:label="PaymentCompleteFragment"
         tools:layout="@layout/fragment_payment_complete"/>
-        tools:layout="@layout/fragment_spa_medicine_details"/>
     <fragment
         android:id="@+id/searchViewFragment"
         android:name="uz.medion.ui.main.user.searchView.SearchViewFragment"
@@ -229,8 +228,6 @@
             app:destination="@id/personalAccountFragment" />
         <action
             android:id="@+id/action_searchViewFragment_to_spaMedicineDetailsFragment"
-            app:destination="@id/spaMedicineDetailsFragment" />
+            app:destination="@id/spaMedicineDetailsFragment"/>
     </fragment>
-
-
 </navigation>

@@ -1,5 +1,7 @@
 package uz.medion.ui.main
 
+import android.annotation.SuppressLint
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
@@ -11,6 +13,7 @@ import androidx.navigation.ui.navigateUp
 import uz.medion.R
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.ui.base.BaseActivity
+import uz.medion.ui.main.user.IOnBackPressed
 import uz.medion.utils.ViewUtils
 import uz.medion.utils.gone
 import uz.medion.utils.visible
@@ -107,31 +110,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 ViewUtils.fadeOut(binding.ivMedion)
                 ViewUtils.fadeOut(binding.ivSearch)
                 binding.partialBottomNav.bottomNavigationViewHome.visible()
-            }
-
-            if (destination.id == R.id.searchViewFragment ||
-                destination.id == R.id.spaMedicineFragment
-            ) {
-                ViewUtils.fadeIn(binding.ivBackArrowSearch)
-                ViewUtils.fadeOut(binding.ivBackArrow)
-                ViewUtils.fadeOut(binding.ivBackArrowMainsearch)
-
-
             } else if (destination.id == R.id.personalAccountFragment ||
                 destination.id == R.id.ourDoctorsFragment ||
                 destination.id == R.id.esteticMedicineFragment ||
                 destination.id == R.id.adressAndContactsFragment
             ) {
-
                 ViewUtils.fadeIn(binding.ivBackArrow)
-                ViewUtils.fadeOut(binding.ivBackArrowMainsearch)
-                ViewUtils.fadeOut(binding.ivBackArrowSearch)
-
             } else if (destination.id == R.id.spaMedicineFragment) {
-                ViewUtils.fadeIn(binding.ivBackArrowMainsearch)
                 ViewUtils.fadeOut(binding.ivBackArrow)
-                ViewUtils.fadeOut(binding.ivBackArrowSearch)
-
             }
 
             //here goes AboutDoctorsFragment
@@ -291,8 +277,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
         }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
-        binding.ivBackArrowSearch.setOnClickListener { onBackPressedSearch() }
-        binding.ivBackArrowMainsearch.setOnClickListener { onBackPressedMain() }
 
         binding.nvNavigationDrawer.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -306,102 +290,56 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             binding.dlMenu.closeDrawer(GravityCompat.START)
             true
         }
-
-
     }
-
 
     @LayoutRes
     override fun getLayoutResId() = R.layout.activity_main
     override val vm: MainVM by viewModels()
 
-    override fun setStatusBarBackgroundHeight(statusBarBackground: View) {
-
-    }
+    override fun setStatusBarBackgroundHeight(statusBarBackground: View) {}
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    @SuppressLint("LogConditional")
     override fun onBackPressed() {
 //        val navigationOptions =
 //            NavOptions.Builder().setPopUpTo(navController.currentDestination!!.id, true).build()
-        if (navController.currentDestination!!.id == R.id.changeNumberFragment ||
-            navController.currentDestination!!.id == R.id.changePasswordFragment ||
-            navController.currentDestination!!.id == R.id.chooseLanguageFragment ||
-            navController.currentDestination!!.id == R.id.personalDateFragment ||
-            navController.currentDestination!!.id == R.id.myDoctorsFragment ||
-            navController.currentDestination!!.id == R.id.myDocumentsFragment
-        ) {
-            navController.popBackStack(R.id.personalAccountFragment, false)
-            // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
-        } else if (navController.currentDestination!!.id == R.id.addressFragment) {
-            navController.popBackStack(R.id.adressAndContactsFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.spaMedicineDetailsFragment) {
-            navController.popBackStack(R.id.spaMedicineFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.ourDoctorsFragment) {
-            navController.popBackStack(R.id.homeFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.aboutDoctorFragment) {
-            navController.popBackStack(R.id.ourDoctorsFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.esteticMedicineFragment) {
-            navController.popBackStack(R.id.homeFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.adressAndContactsFragment) {
-            navController.popBackStack(R.id.homeFragment, false)
 
-        } else if (navController.currentDestination!!.id == R.id.spaMedicineFragment) {
-            navController.popBackStack(R.id.homeFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.appointmentFragment ||
+//        if (navController.currentDestination!!.id == R.id.changeNumberFragment ||
+//            navController.currentDestination!!.id == R.id.changePasswordFragment ||
+//            navController.currentDestination!!.id == R.id.chooseLanguageFragment ||
+//            navController.currentDestination!!.id == R.id.personalDateFragment ||
+//            navController.currentDestination!!.id == R.id.myDoctorsFragment ||
+//            navController.currentDestination!!.id == R.id.myDocumentsFragment
+//        ) {
+//            navController.popBackStack(R.id.personalAccountFragment, false)
+        // navController.navigate(R.id.olympiadFragment, null, navigationOptions)
+//        } else if (navController.currentDestination!!.id == R.id.addressFragment ||
+//            navController.currentDestination!!.id == R.id.spaMedicineDetailsFragment ||
+//            navController.currentDestination!!.id == R.id.ourDoctorsFragment ||
+//            navController.currentDestination!!.id == R.id.aboutDoctorFragment ||
+//            navController.currentDestination!!.id == R.id.esteticMedicineFragment ||
+//            navController.currentDestination!!.id == R.id.adressAndContactsFragment ||
+//            navController.currentDestination!!.id == R.id.spaMedicineFragment
+//        ) {
+//            navController.popBackStack()
+//        } else
+        if (navController.currentDestination!!.id == R.id.appointmentFragment ||
             navController.currentDestination!!.id == R.id.appointmentEnrollFragment ||
             navController.currentDestination!!.id == R.id.paymentCompleteFragment
-        ) { navController.popBackStack(R.id.aboutDoctorFragment, false)
+        ) {
+            navController.popBackStack(R.id.aboutDoctorFragment, false)
         } else if (navController.currentDestination!!.id == R.id.addCardFragment) {
             navController.popBackStack(R.id.appointmentEnrollFragment, false)
         } else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)
-            } else super.onBackPressed()
-            if (!bottomNavController.onBackPressed()) {
+            } else if (!bottomNavController.onBackPressed())
                 bottomNavController.onBackPressed()
-                super.onBackPressed()
-            }
+            super.onBackPressed()
         }
     }
 
-    fun onBackPressedSearch() {
-        if (navController.currentDestination!!.id == R.id.changeNumberFragment ||
-            navController.currentDestination!!.id == R.id.changePasswordFragment ||
-            navController.currentDestination!!.id == R.id.chooseLanguageFragment ||
-            navController.currentDestination!!.id == R.id.personalDateFragment ||
-            navController.currentDestination!!.id == R.id.myDoctorsFragment ||
-            navController.currentDestination!!.id == R.id.myDocumentsFragment
-        ) {
-            navController.popBackStack(R.id.searchViewFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.searchViewFragment) {
-            navController.popBackStack(R.id.ourDoctorsFragment, false)
-            navController.popBackStack(R.id.homeFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.ourDoctorsFragment) {
-            navController.popBackStack(R.id.homeFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.aboutDoctorFragment) {
-            navController.popBackStack(R.id.searchViewFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.esteticMedicineFragment) {
-            navController.popBackStack(R.id.searchViewFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.adressAndContactsFragment) {
-            navController.popBackStack(R.id.searchViewFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.spaMedicineFragment) {
-            navController.popBackStack(R.id.searchViewFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.addressFragment) {
-            navController.popBackStack(R.id.adressAndContactsFragment, false)
-        } else if (navController.currentDestination!!.id == R.id.spaMedicineDetailsFragment) {
-            navController.popBackStack(R.id.searchViewFragment, false)
-        }
-
-    }
-
-    fun onBackPressedMain() {
-        if (navController.currentDestination!!.id == R.id.spaMedicineDetailsFragment) {
-            navController.popBackStack(R.id.spaMedicineFragment, false)
-        }else if (navController.currentDestination!!.id == R.id.spaMedicineFragment) {
-            navController.popBackStack(R.id.homeFragment, false)
-        }
-    }
 }

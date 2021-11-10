@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
@@ -23,12 +24,13 @@ import uz.medion.databinding.DialogAppointmentBinding
 import uz.medion.databinding.DialogAppointmentTimeBinding
 import uz.medion.databinding.FragmentAboutDoctorBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.main.user.IOnBackPressed
 import uz.medion.ui.main.user.appointment.AppointmentTimeAdapter
 import uz.medion.utils.DateTimeUtils
 import java.util.*
 
 
-class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
+class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>(){
 
     private lateinit var aboutDoctorCertificateAdapter: AboutDoctorCertificateAdapter
     private lateinit var aboutDoctorWorkCurrentAdapter: AboutDoctorWorkAdapter
@@ -59,12 +61,14 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     fun setUp() {
         val args = arguments
-        if (args!!.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
-            type = args.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
-            doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
-            showCalendarDialog()
-        } else if (args.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
-            doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+        if (args != null) {
+            if (args.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
+                type = args.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
+                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+                showCalendarDialog()
+            } else if (args.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
+                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+            }
         }
         binding.btnSubmit.setOnClickListener {
             findNavController().navigate(
@@ -75,6 +79,21 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             )
         }
         lifecycle.addObserver(binding.youtubePlayerView)
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(this, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d("----------", "Fragment back pressed invoked")
+                    if(args!!.containsKey(Keys.BUNDLE_SEARCH_VIEW_TO_ABOUT_DOCTOR))
+                        findNavController().popBackStack(R.id.searchViewFragment, false)
+                    if (isEnabled) {
+                        isEnabled = false
+                        requireActivity().onBackPressed()
+                    }
+                }
+            }
+            )
     }
 
     @SuppressLint("SetTextI18n")
@@ -142,7 +161,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             dismissResultTimeDialog()
             dismissCalendarDialog()
             findNavController().navigate(
-                R.id.action_aboutDoctorFragment_to_appointmentEnrollFragment,
+                R.id.appointmentEnrollFragment,
                 bundleOf(
                     Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName),
                     Pair(Keys.BUNDLE_APPOINTMENT_TIME, appointmentTimeBundle),
@@ -525,4 +544,5 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     override fun getLayoutResId() = R.layout.fragment_about_doctor
     override val vm: AboutDoctorVM
         get() = ViewModelProvider(this).get(AboutDoctorVM::class.java)
+
 }

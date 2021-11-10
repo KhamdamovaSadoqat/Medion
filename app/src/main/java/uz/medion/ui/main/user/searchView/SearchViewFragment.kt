@@ -1,12 +1,14 @@
 package uz.medion.ui.main.user.searchView
 
 
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.constants.Constants
+import uz.medion.data.constants.Keys
 import uz.medion.databinding.FragmentSearchViewBinding
 import uz.medion.ui.base.BaseFragment
 
@@ -25,15 +27,14 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
     private fun setUp() {
 
         doctorAdapter = DoctorAdapter {
-            findNavController().navigate(R.id.action_searchViewFragment_to_aboutDoctorFragment)
+            findNavController().navigate(
+                R.id.action_searchViewFragment_to_aboutDoctorFragment,
+                bundleOf(Pair(Keys.BUNDLE_SEARCH_VIEW_TO_ABOUT_DOCTOR, it))
+            )
         }
-
         doctorAdapter.setData(Constants.getMyDoctorsItem())
-
         serviceAdapter = ServiceAdapter { }
         serviceAdapter.setData(Constants.getOurDoctorCategory())
-
-
 
         cabinetAdapter = CabinetAdapter {
             when (it) {
@@ -41,9 +42,8 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
                     findNavController().navigate(R.id.action_searchViewFragment_to_changeNumberFragment)
                 }
                 1 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_changePasswordFragment
-                    )}
-
+                    findNavController().navigate(R.id.action_searchViewFragment_to_changePasswordFragment)
+                }
                 2 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_personalDateFragment)
                 }
@@ -54,7 +54,7 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
                     findNavController().navigate(R.id.action_searchViewFragment_to_myDoctorsFragment)
                 }
                 5 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_chooseLanguageFragment )
+                    findNavController().navigate(R.id.action_searchViewFragment_to_chooseLanguageFragment)
                 }
             }
         }
@@ -67,20 +67,15 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
                 }
                 1 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_esteticMedicineFragment)
-
                 }
-
                 2 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineFragment)
-
                 }
                 3 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_adressAndContactsFragment)
-
                 }
                 4 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_personalAccountFragment)
-
                 }
 
             }
@@ -96,45 +91,33 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
                 }
                 1 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
-
                 2 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
                 3 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
                 4 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
-
                 5 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
                 }
                 6 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
-
                 7 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
                 8 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
                 9 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
                 10 -> {
                     findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
-
                 }
 
             }
@@ -164,7 +147,7 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
             LinearLayoutManager(requireActivity(), RecyclerView.VERTICAL, false)
         binding.rvDescripionSearch.adapter = shortDescriptionAdapter
 
- }
+    }
 
     override fun getLayoutResId() = R.layout.fragment_search_view
 

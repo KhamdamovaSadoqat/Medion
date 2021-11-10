@@ -1,5 +1,7 @@
 package uz.medion.data.constants
 
+import uz.medion.R
+
 object Keys {
     const val IS_REGISTERED = "is_registered"
     const val PASSWORD = "password"
@@ -26,7 +28,17 @@ object Keys {
     const val BUNDLE_APPOINTMENT_TIME = "bundle_appointment_time"
     const val BUNDLE_APPOINTMENT_CARD_NUMBER = "bundle_appointment_card_number"
 
-
-
-
+    const val BUNDLE_SEARCH_VIEW_TO_ABOUT_DOCTOR = "bundle_search_view_to_about_doctor"
+    const val BUNDLE_SEARCH_VIEW_TO_OUR_DOCTOR = "bundle_search_view_to_our_doctor"
+    const val BUNDLE_SEARCH_VIEW_TO_CHANGE_NUMBER = "bundle_search_view_to_change_number"
+    const val BUNDLE_SEARCH_VIEW_TO_CHANGE_PASSWORD = "bundle_search_view_to_change_password"
+    const val BUNDLE_SEARCH_VIEW_TO_CHOOSE_LANGUAGE = "bundle_search_view_to_choose_language"
+    const val BUNDLE_SEARCH_VIEW_TO_PERSONAL_DATA = "bundle_search_view_to_personal_data"
+    const val BUNDLE_SEARCH_VIEW_TO_MY_DOCTORS = "bundle_search_view_to_my_doctors"
+    const val BUNDLE_SEARCH_VIEW_TO_MY_DOCUMENTS = "bundle_search_view_to_my_documents"
+    const val BUNDLE_SEARCH_VIEW_TO_ESTETIC_MEDICINE = "bundle_search_view_to_estetic_medicine"
+    const val BUNDLE_SEARCH_VIEW_TO_ADDRESS_AND_CONTACTS = "bundle_search_view_to_address_and_contacts"
+    const val BUNDLE_SEARCH_VIEW_TO_SPA_MEDICINE = "bundle_search_view_to_spa_medicine"
+    const val BUNDLE_SEARCH_VIEW_TO_ADDRESS = "bundle_search_view_to_address"
+    const val BUNDLE_SEARCH_VIEW_TO_SPA_MEDICINE_DETAILS = "bundle_search_view_to_spa_medicine_details"
 }
