@@ -1,90 +1,163 @@
 package uz.medion.ui.main.user.aboutDoctor
 
+import android.annotation.SuppressLint
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
 import uz.medion.data.model.AboutDoctorCommentItem
 import uz.medion.data.model.AboutDoctorItems
+import uz.medion.data.model.AppointmentTimeItem
+import uz.medion.databinding.DialogAppointmentBinding
+import uz.medion.databinding.DialogAppointmentTimeBinding
 import uz.medion.databinding.FragmentAboutDoctorBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.main.user.appointment.AppointmentTimeAdapter
 import uz.medion.utils.DateTimeUtils
-import uz.medion.utils.ViewUtils
 import java.util.*
 
 
 class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
 
-    private lateinit var aboutDoctorSertificateAdapter: AboutDoctorSertificateAdapter
+    private lateinit var aboutDoctorCertificateAdapter: AboutDoctorCertificateAdapter
     private lateinit var aboutDoctorWorkCurrentAdapter: AboutDoctorWorkAdapter
+    private lateinit var aboutDoctorCommentAdapter: AboutDoctorCommentAdapter
     private lateinit var aboutDoctorWorkPastAdapter: AboutDoctorWorkAdapter
     private lateinit var aboutDoctorItemAdapter: AboutDoctorAdapter
-    private lateinit var aboutDoctorCommentAdapter: AboutDoctorCommentAdapter
+    private lateinit var appointmentTimeAdapter: AppointmentTimeAdapter
+    private lateinit var dialogBinding: DialogAppointmentBinding
+    private lateinit var dialogTimeBinding: DialogAppointmentTimeBinding
     private lateinit var data: ArrayList<AboutDoctorItems>
+    private lateinit var appointmentTime: ArrayList<AppointmentTimeItem>
+    private var resultDialog: BottomSheetDialog? = null
+    private var resultTimeDialog: BottomSheetDialog? = null
     private var reyting: Int = 1
     private var date = Date()
     private var time: String = "hh:mm dd.mm.yyyy"
+    private var appointmentTimeBundle: String = "08:30"
+    private var appointmentDateBundle: String = ""
+    private var doctorName: String = ""
+    private var type: String = ""
+
 
     override fun onBound() {
+        loadAboutDoctor()
+        loadDialog()
         setUp()
     }
 
     fun setUp() {
-//        setScreenDemention()
-        loadAboutDoctor()
-
-
-
+        val args = arguments
+        if (args!!.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
+            type = args.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
+            doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+            showCalendarDialog()
+        } else if (args.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
+            doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+        }
+        binding.btnSubmit.setOnClickListener {
+            findNavController().navigate(
+                R.id.appointmentFragment,
+                bundleOf(
+                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName)
+                )
+            )
+        }
         lifecycle.addObserver(binding.youtubePlayerView)
-/*
-        binding.yt_about_center.initialize(
-            Constants.YOUTUBE_API,
-            object : YouTubePlayer.OnInitializedListener {
-                override fun onInitializationSuccess(
-                    provider: YouTubePlayer.Provider,
-                    youTubePlayer: YouTubePlayer, b: Boolean
-                ) {
-                    if(b){
-                        youTubePlayer.cueVideo(Constants.YOUTUBE_API)
-                    }
-                  //  youTubePlayer.loadVideo("")
-                    youTubePlayer.play()
-                }
-
-                override fun onInitializationFailure(
-                    provider: YouTubePlayer.Provider,
-                    youTubeInitializationResult: YouTubeInitializationResult
-                ) {
-                    Toast.makeText(
-                        requireContext(), "something went wrong", Toast.LENGTH_SHORT
-                    ).show()
-                }
-            })
-
-*/
-
-
-
-
-
     }
 
-    fun loadAboutDoctor() {
+    @SuppressLint("SetTextI18n")
+    private fun loadDialog() {
+        dialogBinding = DialogAppointmentBinding.inflate(LayoutInflater.from(requireContext()))
+        val currentDate = CalendarDay.today()
+        val calendarState = dialogBinding.cvCalendar.state().edit()
+        calendarState.setMinimumDate(
+            CalendarDay.from(
+                currentDate.year,
+                currentDate.month,
+                currentDate.day
+            )
+        )
+        if (currentDate.month == 12)
+            calendarState.setMaximumDate(
+                CalendarDay.from(
+                    currentDate.year + 1,
+                    0,
+                    currentDate.day
+                )
+            )
+        calendarState.setMaximumDate(
+            CalendarDay.from(
+                currentDate.year,
+                currentDate.month + 1,
+                currentDate.day
+            )
+        )
+        calendarState.commit()
+        dialogBinding.cvCalendar.setOnDateChangedListener { widget, date, selected ->
+            loadResultTimeDialog(date)
+            dismissCalendarDialog()
+        }
+    }
+
+    private fun loadResultTimeDialog(date: CalendarDay) {
+        dialogTimeBinding =
+            DialogAppointmentTimeBinding.inflate(LayoutInflater.from(requireContext()))
+
+        appointmentTime = Constants.getAppointmentTime()
+        appointmentTimeAdapter = AppointmentTimeAdapter { position, lastPosition ->
+            appointmentTimeBundle = requireContext().getString(appointmentTime[position].time)
+
+            if (position != lastPosition) {
+                appointmentTime[position] =
+                    AppointmentTimeItem(
+                        R.drawable.bg_blue_lighter_8, appointmentTime[position].time, R.color.white
+                    )
+                appointmentTime[lastPosition] =
+                    AppointmentTimeItem(
+                        R.drawable.bg_transparent_4,
+                        appointmentTime[lastPosition].time,
+                        R.color.tangaroa_900
+                    )
+                appointmentTimeAdapter.setData(appointmentTime)
+            }
+        }
+        appointmentTimeAdapter.setData(appointmentTime)
+        dialogTimeBinding.rvTime.adapter = appointmentTimeAdapter
+        dialogTimeBinding.rvTime.layoutManager = GridLayoutManager(requireContext(), 4)
+
+        appointmentDateBundle = "${date.day}.${date.month}.${date.year}"
+        dialogTimeBinding.btnSubmit.setOnClickListener {
+            dismissResultTimeDialog()
+            dismissCalendarDialog()
+            findNavController().navigate(
+                R.id.action_aboutDoctorFragment_to_appointmentEnrollFragment,
+                bundleOf(
+                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName),
+                    Pair(Keys.BUNDLE_APPOINTMENT_TIME, appointmentTimeBundle),
+                    Pair(Keys.BUNDLE_APPOINTMENT_DATE, appointmentDateBundle),
+                    Pair(Keys.BUNDLE_APPOINTMENT_TYPE, type)
+                )
+            )
+        }
+        showTimeDialog()
+    }
+
+    private fun loadAboutDoctor() {
         // setting history of doctor
         data = Constants.getAboutDoctorItems()
         aboutDoctorItemAdapter = AboutDoctorAdapter { position, lastPosition ->
-            Log.d("-------------", "setUp: $lastPosition")
-            Log.d("-------------", "setUp: $position")
             if (position != lastPosition) {
                 data[position] =
                     AboutDoctorItems(
@@ -133,19 +206,18 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                         binding.clWork.visibility = View.GONE
                         binding.clComment.visibility = View.GONE
                         binding.clSertificate.visibility = View.VISIBLE
-
                     }
                 }
-
             }
         }
         aboutDoctorItemAdapter.setData(data)
         binding.rvDoctorAboutDetails.adapter = aboutDoctorItemAdapter
         binding.rvDoctorAboutDetails.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
     }
 
-    fun loadWork() {
+    private fun loadWork() {
         //workCurrent
         aboutDoctorWorkCurrentAdapter = AboutDoctorWorkAdapter()
         aboutDoctorWorkCurrentAdapter.setData(Constants.getCurrentWork())
@@ -162,7 +234,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     }
 
-    fun loadComment() {
+    private fun loadComment() {
         //generating comments from constant date
         aboutDoctorCommentAdapter = AboutDoctorCommentAdapter { }
         aboutDoctorCommentAdapter.setData(Constants.getComments())
@@ -372,22 +444,22 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     }
 
-    fun loadCertificate() {
+    private fun loadCertificate() {
         //certificate
-        aboutDoctorSertificateAdapter = AboutDoctorSertificateAdapter {
+        aboutDoctorCertificateAdapter = AboutDoctorCertificateAdapter {
             findNavController().navigate(
                 R.id.action_aboutDoctorFragment_to_certificateFragment, bundleOf(
                     Keys.BUNDLE_CERTIFICATE to it
                 )
             )
         }
-        aboutDoctorSertificateAdapter.setData(Constants.getSertificate())
-        binding.rvSertificate.adapter = aboutDoctorSertificateAdapter
+        aboutDoctorCertificateAdapter.setData(Constants.getSertificate())
+        binding.rvSertificate.adapter = aboutDoctorCertificateAdapter
         binding.rvSertificate.layoutManager = GridLayoutManager(requireContext(), 2)
 
     }
 
-    fun reloadLayout() {
+    private fun reloadLayout() {
         binding.etUserComment.setText("")
         binding.apply {
             ivStar1.setImageDrawable(
@@ -424,37 +496,33 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         reyting = 1
     }
 
-    fun setScreenDemention() {
-        val screenDimension = ViewUtils.screenDimention(requireContext())
-//        val constraintLayout: ConstraintLayout.LayoutParams = binding.clMain.layoutParams as ConstraintLayout.LayoutParams
-//        constraintLayout.height = screenDimension[1]
-//        constraintLayout.width = screenDimension[0]
-//        binding.clMain.layoutParams = constraintLayout
+    private fun showCalendarDialog() {
+        resultDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
+        resultDialog!!.setContentView(dialogBinding.root)
+        resultDialog!!.show()
+    }
 
-        val layout = ConstraintLayout.LayoutParams(
-            50000,
-            50000
-        )
+    private fun showTimeDialog() {
+        resultTimeDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
+        resultTimeDialog!!.setContentView(dialogTimeBinding.root)
+        resultTimeDialog!!.show()
+    }
 
-        val constraintSet1 = NestedScrollView(requireContext())
-        constraintSet1.layoutParams = layout
+    private fun dismissCalendarDialog() {
+        if (resultDialog!!.isShowing) {
+            resultDialog!!.dismiss()
+        }
+        resultDialog!!.dismiss()
+    }
 
-
-        Log.d("-------------", "setScreenDemention: screen: $screenDimension")
-
-//        constraintSet1.constrainWidth(R.id.cl_main, screenDimension[0])
-//        constraintSet1.constrainHeight(R.id.cl_main, screenDimension[1])
-//
-//        constraintSet1.applyTo(binding.clMain)
-
-
-//        layout.width = screenDimension[0]
-//        layout.height = screenDimension[1]
-//        binding.nsvMain.layoutParams = layout
+    private fun dismissResultTimeDialog() {
+        if (resultTimeDialog!!.isShowing) {
+            resultTimeDialog!!.dismiss()
+        }
+        resultTimeDialog!!.dismiss()
     }
 
     override fun getLayoutResId() = R.layout.fragment_about_doctor
     override val vm: AboutDoctorVM
         get() = ViewModelProvider(this).get(AboutDoctorVM::class.java)
-
 }

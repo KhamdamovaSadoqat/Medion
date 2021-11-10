@@ -1,5 +1,6 @@
 package uz.medion.ui.main.user.ourDoctors
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,11 +14,12 @@ import uz.medion.databinding.ItemDoctorDetailsBinding
 import uz.medion.databinding.ItemHomeBinding
 import uz.medion.ui.main.user.home.HomeAdapter
 
-class OurDoctorsDetailsAdapter(private val itemClickListener: (Int) -> Unit) :
+class OurDoctorsDetailsAdapter(private val itemClickListener: (DoctorDetailItem) -> Unit) :
     RecyclerView.Adapter<OurDoctorsDetailsAdapter.VH>() {
 
     private var listItem = listOf<DoctorDetailItem>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(listItem: List<DoctorDetailItem>) {
         this.listItem = listItem
         notifyDataSetChanged()
@@ -30,13 +32,18 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (Int) -> Unit) :
     ): VH {
         val inflater = LayoutInflater.from(parent.context)
         val binding =
-            DataBindingUtil.inflate<ItemDoctorDetailsBinding>(inflater, R.layout.item_doctor_details, parent, false)
+            DataBindingUtil.inflate<ItemDoctorDetailsBinding>(
+                inflater,
+                R.layout.item_doctor_details,
+                parent,
+                false
+            )
         return VH(binding, parent.context)
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(listItem[position])
         }
         holder.onBind(listItem[position])
     }
@@ -47,12 +54,12 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(doctorDetailItem: DoctorDetailItem) {
             binding.apply {
-                tvFullName.setText(doctorDetailItem.doctorName)
-                tvCategoryOfDoctor.setText(doctorDetailItem.doctorCategory)
-//                tvExperience.setText(doctorDetailItem.experience)
-//                tvComments.setText(doctorDetailItem.comment)
-//                tvClinicName.setText(doctorDetailItem.clinicName)
-//                tvDetail.setText(doctorDetailItem.details)
+                tvFullName.text = context.getString(doctorDetailItem.doctorName)
+                tvCategoryOfDoctor.text = context.getString(doctorDetailItem.doctorCategory)
+//                tvExperience.text = context.getString(doctorDetailItem.experience)
+//                tvComments.text = context.getString(doctorDetailItem.comment)
+//                tvClinicName.text = context.getString(doctorDetailItem.clinicName)
+//                tvDetail.text = context.getString(doctorDetailItem.details)
             }
         }
     }

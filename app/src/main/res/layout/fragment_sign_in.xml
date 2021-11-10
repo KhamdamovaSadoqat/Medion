@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -10,10 +11,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:contentDescription="@string/logo"
-            app:srcCompat="@drawable/medion_black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/medion_black" />
 
         <TextView
             android:id="@+id/tv_login"
@@ -34,7 +35,7 @@
             android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/bg_edittext"
+            android:background="@drawable/bg_transparent_8"
             app:layout_constraintTop_toBottomOf="@id/tv_login">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -48,17 +49,18 @@
                     android:layout_height="match_parent"
                     android:background="#00FFFFFF"
                     android:hint="@string/login"
-                    android:maxLines="1"/>
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="12dp"
-                app:srcCompat="@drawable/ic_eye"
+                android:contentDescription="@string/icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_eye" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -80,7 +82,7 @@
             android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/bg_edittext"
+            android:background="@drawable/bg_transparent_8"
             app:layout_constraintTop_toBottomOf="@id/tv_parol">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -101,10 +103,11 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="12dp"
-                app:srcCompat="@drawable/ic_eye_slash"
+                android:contentDescription="@string/icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_eye_slash" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -118,20 +121,20 @@
                 android:id="@+id/cb_remember_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/remember_me"
-                android:textSize="12sp"
-                android:textColor="@color/steel_grey_800"
                 android:fontFamily="@font/roboto_regular"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/remember_me"
+                android:textColor="@color/steel_grey_800"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/cb_remember_me"/>
+                app:layout_constraintLeft_toRightOf="@id/cb_remember_me"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -139,22 +142,22 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_margin="16dp"
+            android:background="@drawable/bg_red_8"
+            android:gravity="center"
             android:text="@string/sign_in"
             android:textColor="@color/white"
-            android:background="@drawable/bg_sign_in"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@id/btn_sign_up"/>
+            app:layout_constraintBottom_toTopOf="@id/btn_sign_up" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_margin="16dp"
+            android:background="@drawable/bg_blue_lighter_8"
+            android:gravity="center"
             android:text="@string/sign_up"
             android:textColor="@color/white"
-            android:background="@drawable/bg_sign_up"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@id/cl_sign_up_with"/>
+            app:layout_constraintBottom_toTopOf="@id/cl_sign_up_with" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_sign_up_with"
@@ -168,35 +171,37 @@
                 android:id="@+id/tv_sign_up_with"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
                 android:text="@string/sign_up_with"
                 android:textColor="@color/steel_grey_800"
                 android:textSize="12sp"
-                android:fontFamily="@font/roboto_regular"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_sign_up_with"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_sign_up_with">
 
                 <ImageView
                     android:id="@+id/img_google"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_google"/>
+                    android:contentDescription="@string/icon"
+                    app:srcCompat="@drawable/ic_google" />
 
                 <ImageView
                     android:id="@+id/img_facebook"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_facebook"/>
+                    android:contentDescription="@string/icon"
+                    app:srcCompat="@drawable/ic_facebook" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

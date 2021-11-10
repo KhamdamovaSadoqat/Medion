@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_menu">
+        android:background="@drawable/bg_solitude_8">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/card_profile_avater"

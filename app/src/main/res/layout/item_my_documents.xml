@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="106dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/bg_menu"
+        android:background="@drawable/bg_solitude_8"
         app:layout_constraintTop_toBottomOf="@id/tv_date">
 
         <ImageView

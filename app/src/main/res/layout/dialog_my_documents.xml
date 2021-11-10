@@ -75,7 +75,7 @@
             android:text="@string/cancel"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:background="@drawable/bg_my_doctors_blue"
+            android:background="@drawable/bg_blue_8"
             app:layout_constraintTop_toBottomOf="@id/cl_types"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
