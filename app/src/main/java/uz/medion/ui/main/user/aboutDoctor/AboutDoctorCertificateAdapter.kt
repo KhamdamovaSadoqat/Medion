@@ -1,9 +1,9 @@
 package uz.medion.ui.main.user.aboutDoctor
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
@@ -11,11 +11,12 @@ import uz.medion.data.model.AboutDoctorSertificateItem
 import uz.medion.databinding.ItemSertificateBinding
 import uz.medion.utils.ImageDownloader
 
-class AboutDoctorSertificateAdapter(private val itemClickListener: (Int) -> Unit) :
-    RecyclerView.Adapter<AboutDoctorSertificateAdapter.VH>() {
+class AboutDoctorCertificateAdapter(private val itemClickListener: (Int) -> Unit) :
+    RecyclerView.Adapter<AboutDoctorCertificateAdapter.VH>() {
 
     private var listItem = listOf<AboutDoctorSertificateItem>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(listItem: List<AboutDoctorSertificateItem>) {
         this.listItem = listItem
         notifyDataSetChanged()
@@ -46,7 +47,7 @@ class AboutDoctorSertificateAdapter(private val itemClickListener: (Int) -> Unit
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(certificate: AboutDoctorSertificateItem) {
             binding.apply {
-                if (!certificate.image.isNullOrEmpty()) {
+                if (certificate.image.isNotEmpty()) {
                     certificate.image.let {
                         ImageDownloader.loadImage(
                             context,

@@ -15,6 +15,7 @@ object Constants {
 
     var token = ""
     var language = ""
+    var cardNumber = "UZCARD"
     private val unAuthorized = MutableLiveData<Boolean>()
 
     fun setUnAuthorized(isUnAuthorized: Boolean) {
@@ -357,7 +358,7 @@ object Constants {
                 "Шайхантахурский район, ул. Зульфияханум 18",
                 "+998 78 140 00 44",
 
-                ),
+            ),
             AdressAndContactsItem(
                 R.drawable.center_photo_2,
                 "Mедицинский центр MEDION INNOVATION",
@@ -467,6 +468,26 @@ object Constants {
         )
     }
 
+    fun getAppointmentTime(): ArrayList<AppointmentTimeItem>{
+        return  arrayListOf(
+            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_8_30, R.color.white),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_9_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_9_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_10_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_10_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_11_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_11_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_12_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_14_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_14_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_15_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_15_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_16_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_16_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_17_00, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_17_30, R.color.tangaroa_900),
+        )
+    }
     fun getMyAccount(): ArrayList<DoctorCategoryItem> {
         return arrayListOf(
             DoctorCategoryItem(R.string.change_mobile_phone_number),
@@ -475,13 +496,10 @@ object Constants {
             DoctorCategoryItem(R.string.my_documents),
             DoctorCategoryItem(R.string.my_doctors),
             DoctorCategoryItem(R.string.languages)
-
         )
-
     }
 
     fun getMyMain():ArrayList<DoctorCategoryItem>{
-
         return arrayListOf(
             DoctorCategoryItem(R.string.our_doctors),
             DoctorCategoryItem(R.string.estethic_medicine),
@@ -492,13 +510,11 @@ object Constants {
     }
 
     fun getMyDoctorsItem():ArrayList<DoctorsItem>{
-
         return arrayListOf(
             DoctorsItem(R.drawable.doc_sevara,R.string.dc_sevara,R.string.vrach_uzi),
             DoctorsItem(R.drawable.doc_pic,R.string.dc_botir,R.string.detskiy_ortoped),
             DoctorsItem(R.drawable.doctor_img,R.string.dc_alisher,R.string.traumatology),
             DoctorsItem(R.drawable.doc_sevara,R.string.dc_elena,R.string.pediatr)
-
         )
     }
 

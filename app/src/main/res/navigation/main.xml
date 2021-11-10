@@ -40,7 +40,11 @@
         android:id="@+id/certificateFragment"
         android:name="uz.medion.ui.main.user.aboutDoctor.CertificateFragment"
         android:label="CertificateFragment"
-        tools:layout="@layout/fragment_certificate" />
+        tools:layout="@layout/fragment_certificate" >
+        <action
+            android:id="@+id/action_certificateFragment_to_aboutDoctorFragment"
+            app:destination="@id/aboutDoctorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/personalAccountFragment"
         android:name="uz.medion.ui.main.user.personalAccount.PersonalAccountFragment"
@@ -88,12 +92,12 @@
         android:id="@+id/chooseLanguageFragment"
         android:name="uz.medion.ui.main.user.chooseLanguage.ChooseLanguageFragment"
         android:label="ChooseLanguageFragment"
-        tools:layout="@layout/fragment_choose_language"/>
+        tools:layout="@layout/fragment_choose_language" />
     <fragment
         android:id="@+id/personalDateFragment"
         android:name="uz.medion.ui.main.user.personalDate.PersonalDateFragment"
         android:label="PersonalDateFragment"
-        tools:layout="@layout/fragment_personal_date"/>
+        tools:layout="@layout/fragment_personal_date" />
     <fragment
         android:id="@+id/myDoctorsFragment"
         android:name="uz.medion.ui.main.user.myDoctors.MyDoctorsFragment"
@@ -125,13 +129,13 @@
         android:id="@+id/addressFragment"
         android:name="uz.medion.ui.main.user.adressAndContacts.AddressFragment"
         android:label="AddressFragment"
-        tools:layout="@layout/fragment_adress"/>
+        tools:layout="@layout/fragment_adress" />
 
     <fragment
         android:id="@+id/esteticMedicineFragment"
         android:name="uz.medion.ui.main.user.esteticMedicine.EsteticMedicineFragment"
         android:label="EsteticMedicineFragment"
-        tools:layout="@layout/fragment_estetic_medicine"/>
+        tools:layout="@layout/fragment_estetic_medicine" />
     <fragment
         android:id="@+id/spaMedicineFragment"
         android:name="uz.medion.ui.main.user.spaMedicine.SpaMedicineFragment"
@@ -145,6 +149,42 @@
         android:id="@+id/spaMedicineDetailsFragment"
         android:name="uz.medion.ui.main.user.spaMedicine.SpaMedicineDetailsFragment"
         android:label="SpaMedicineDetailsFragment"
+        tools:layout="@layout/fragment_spa_medicine_details" />
+    <fragment
+        android:id="@+id/appointmentFragment"
+        android:name="uz.medion.ui.main.user.appointment.AppointmentFragment"
+        android:label="AppointmentFragment"
+        tools:layout="@layout/fragment_appointment">
+        <argument
+            android:name="typeOfAppointment"
+            app:argType="string"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_appointmentFragment_to_aboutDoctorFragment"
+            app:destination="@id/aboutDoctorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentEnrollFragment"
+        android:name="uz.medion.ui.main.user.appointment.AppointmentEnrollFragment"
+        android:label="AppointmentEnrollFragment"
+        tools:layout="@layout/fragment_appointment_enroll">
+        <action
+            android:id="@+id/action_appointmentEnrollFragment_to_addCardFragment"
+            app:destination="@id/addCardFragment" />
+        <action
+            android:id="@+id/action_appointmentEnrollFragment_to_payment_complete"
+            app:destination="@id/paymentCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCardFragment"
+        android:name="uz.medion.ui.main.user.payment.AddCardFragment"
+        android:label="AddCardFragment"
+        tools:layout="@layout/fragment_add_card"/>
+    <fragment
+        android:id="@+id/paymentCompleteFragment"
+        android:name="uz.medion.ui.main.user.payment.PaymentCompleteFragment"
+        android:label="PaymentCompleteFragment"
+        tools:layout="@layout/fragment_payment_complete"/>
         tools:layout="@layout/fragment_spa_medicine_details"/>
     <fragment
         android:id="@+id/searchViewFragment"

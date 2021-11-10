@@ -41,5 +41,8 @@ class PrefsHelper(
         get() = preferences.getLong(Keys.LAST_UPDATE_PROMPT, 0)
         set(value) = preferences.put(Keys.LAST_UPDATE_PROMPT, value)
 
+    var cardNumber: String?
+        get() = preferences.getString(Keys.CARD_NUMBER, null)
+        set(value) = preferences.put(Keys.CARD_NUMBER, value)
 
 }

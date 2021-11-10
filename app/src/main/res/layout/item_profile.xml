@@ -11,7 +11,7 @@
         android:id="@+id/frame_2044"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_menu"
+        android:background="@drawable/bg_solitude_8"
         android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingTop="12dp"
@@ -29,18 +29,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="7"
-            android:gravity="left"
-            android:text="личные данные"
+            android:gravity="start"
+            android:text="@string/personal_information"
             android:textSize="16sp" />
 
         <ImageView
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:id="@+id/vector"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_fi_arrow_right" />
+            app:srcCompat="@drawable/ic_fi_arrow_right"
+            android:contentDescription="@string/icon"/>
 
     </LinearLayout>
 

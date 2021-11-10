@@ -16,6 +16,7 @@
     <color name="fire_brick_900_40">#66B82828</color> //main red color
     <color name="alice_blue_50">#F2F6FE</color> //home item card color
     <color name="solitude_50">#E9EAED</color> //doctor category card color
+    <color name="gainsboro_200">#E7E7E7</color>
     <color name="wood_bark_900">#201918</color> //calendar color
 
 
