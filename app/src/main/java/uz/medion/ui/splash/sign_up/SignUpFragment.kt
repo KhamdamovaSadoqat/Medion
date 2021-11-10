@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import uz.medion.R
 import uz.medion.databinding.FragmentSignUpBinding
 import uz.medion.ui.base.BaseFragment
@@ -18,16 +19,10 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
 
 
     override fun onBound() {
-//        binding.btnSignIn.setOnClickListener {
-//            val intent = Intent(requireContext(), MainActivity::class.java)
-//            startActivity(intent)
-//            requireActivity().finish()
-//        }
-//        binding.btnSignUp.setOnClickListener {
-//            val intent = Intent(requireContext(), MainActivity::class.java)
-//            startActivity(intent)
-//            requireActivity().finish()
-//        }
+        binding.btnSubmit.setOnClickListener {
+            findNavController().navigate(R.id.verificationFragment)
+        }
+
     }
 
     override fun getLayoutResId() = R.layout.fragment_sign_up

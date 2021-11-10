@@ -23,9 +23,6 @@
         <action
             android:id="@+id/action_ourDoctorsFragment_to_aboutDoctorFragment"
             app:destination="@id/aboutDoctorFragment" />
-        <action
-            android:id="@+id/action_ourDoctorsFragment_to_searchViewFragment"
-            app:destination="@id/searchViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutDoctorFragment"
@@ -46,7 +43,7 @@
         android:id="@+id/certificateFragment"
         android:name="uz.medion.ui.main.user.aboutDoctor.CertificateFragment"
         android:label="CertificateFragment"
-        tools:layout="@layout/fragment_certificate" >
+        tools:layout="@layout/fragment_certificate">
         <action
             android:id="@+id/action_certificateFragment_to_aboutDoctorFragment"
             app:destination="@id/aboutDoctorFragment" />
@@ -108,20 +105,12 @@
         android:id="@+id/myDoctorsFragment"
         android:name="uz.medion.ui.main.user.myDoctors.MyDoctorsFragment"
         android:label="MyDoctorsFragment"
-        tools:layout="@layout/fragment_my_doctors">
-        <action
-            android:id="@+id/action_myDoctorsFragment_to_searchViewFragment"
-            app:destination="@id/searchViewFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_my_doctors" />
     <fragment
         android:id="@+id/myDocumentsFragment"
         android:name="uz.medion.ui.main.user.myDocuments.MyDocumentsFragment"
         android:label="MyDocumentsFragment"
-        tools:layout="@layout/fragment_my_documents">
-        <action
-            android:id="@+id/action_myDocumentsFragment_to_searchViewFragment"
-            app:destination="@id/searchViewFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_my_documents" />
     <fragment
         android:id="@+id/adressAndContactsFragment"
         android:name="uz.medion.ui.main.user.adressAndContacts.AddressAndContactsFragment"
@@ -181,55 +170,15 @@
         android:id="@+id/addCardFragment"
         android:name="uz.medion.ui.main.user.payment.AddCardFragment"
         android:label="AddCardFragment"
-        tools:layout="@layout/fragment_add_card"/>
+        tools:layout="@layout/fragment_add_card" />
     <fragment
         android:id="@+id/paymentCompleteFragment"
         android:name="uz.medion.ui.main.user.payment.PaymentCompleteFragment"
         android:label="PaymentCompleteFragment"
-        tools:layout="@layout/fragment_payment_complete"/>
+        tools:layout="@layout/fragment_payment_complete" />
     <fragment
         android:id="@+id/searchViewFragment"
         android:name="uz.medion.ui.main.user.search.SearchViewFragment"
         android:label="fragment_search_view"
-        tools:layout="@layout/fragment_search_view" >
-        <action
-            android:id="@+id/action_searchViewFragment_to_aboutDoctorFragment"
-            app:destination="@id/aboutDoctorFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_changeNumberFragment"
-            app:destination="@id/changeNumberFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_changePasswordFragment"
-            app:destination="@id/changePasswordFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_personalDateFragment"
-            app:destination="@id/personalDateFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_myDocumentsFragment"
-            app:destination="@id/myDocumentsFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_myDoctorsFragment"
-            app:destination="@id/myDoctorsFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_chooseLanguageFragment"
-            app:destination="@id/chooseLanguageFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_ourDoctorsFragment"
-            app:destination="@id/ourDoctorsFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_esteticMedicineFragment"
-            app:destination="@id/esteticMedicineFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_spaMedicineFragment"
-            app:destination="@id/spaMedicineFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_adressAndContactsFragment"
-            app:destination="@id/adressAndContactsFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_personalAccountFragment"
-            app:destination="@id/personalAccountFragment" />
-        <action
-            android:id="@+id/action_searchViewFragment_to_spaMedicineDetailsFragment"
-            app:destination="@id/spaMedicineDetailsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_search_view" />
 </navigation>

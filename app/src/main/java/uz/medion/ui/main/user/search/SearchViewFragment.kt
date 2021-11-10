@@ -28,9 +28,8 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
 
         doctorAdapter = DoctorAdapter {
             findNavController().navigate(
-                R.id.action_searchViewFragment_to_aboutDoctorFragment,
-                bundleOf(Pair(Keys.BUNDLE_SEARCH_VIEW_TO_ABOUT_DOCTOR, it))
-            )
+                R.id.aboutDoctorFragment)
+
         }
         doctorAdapter.setData(Constants.getMyDoctorsItem())
         serviceAdapter = ServiceAdapter { }
@@ -39,22 +38,22 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
         cabinetAdapter = CabinetAdapter {
             when (it) {
                 0 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_changeNumberFragment)
+                    findNavController().navigate(R.id.changeNumberFragment)
                 }
                 1 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_changePasswordFragment)
+                    findNavController().navigate(R.id.changePasswordFragment)
                 }
                 2 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_personalDateFragment)
+                    findNavController().navigate(R.id.personalDateFragment)
                 }
                 3 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_myDocumentsFragment)
+                    findNavController().navigate(R.id.myDocumentsFragment)
                 }
                 4 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_myDoctorsFragment)
+                    findNavController().navigate(R.id.myDoctorsFragment)
                 }
                 5 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_chooseLanguageFragment)
+                    findNavController().navigate(R.id.chooseLanguageFragment)
                 }
             }
         }
@@ -63,19 +62,19 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
         mainAdapter = MainAdapter {
             when (it) {
                 0 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_ourDoctorsFragment)
+                    findNavController().navigate(R.id.ourDoctorsFragment)
                 }
                 1 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_esteticMedicineFragment)
+                    findNavController().navigate(R.id.esteticMedicineFragment)
                 }
                 2 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineFragment)
+                    findNavController().navigate(R.id.spaMedicineFragment)
                 }
                 3 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_adressAndContactsFragment)
+                    findNavController().navigate(R.id.adressAndContactsFragment)
                 }
                 4 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_personalAccountFragment)
+                    findNavController().navigate(R.id.personalAccountFragment)
                 }
 
             }
@@ -87,37 +86,37 @@ class SearchViewFragment : BaseFragment<FragmentSearchViewBinding, SearchViewVM>
         shortDescriptionAdapter = ShortDescriptionAdapter {
             when (it) {
                 0 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 1 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 2 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 3 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 4 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 5 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 6 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 7 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 8 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 9 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
                 10 -> {
-                    findNavController().navigate(R.id.action_searchViewFragment_to_spaMedicineDetailsFragment)
+                    findNavController().navigate(R.id.spaMedicineDetailsFragment)
                 }
 
             }

@@ -3,23 +3,23 @@
 
     <string name="icon" translatable="false">icon</string>
     <string name="image" translatable="false">image</string>
-    <string name="clinic_photo" translatable="false">clinic photo</string>
-    <string name="msg_no_network" translatable="false">Internetga ulanib bo\'lmayapti.</string>
-    <string name="msg_unknown_error" translatable="false">Noma\'lum xatolik.</string>
-    <string name="action_ok" translatable="false">OK</string>
-    <string name="msg_cannot_connect_to_server" translatable="false">Bizning serverlarimiz texnik va profilaktik xizmatdan o\\\'tmoqda. Iltimos, birozdan keyin qayta urining.</string>
-    <string name="login" translatable="false">Login</string>
     <string name="logo" translatable="false">logo</string>
-    <string name="parol" translatable="false">Parol</string>
-    <string name="remember_me" translatable="false">Remember me</string>
-    <string name="sign_in" translatable="false">Sign in</string>
-    <string name="sign_up" translatable="false">Sign up</string>
-    <string name="sign_up_with" translatable="false">Sign up with</string>
+    <string name="clinic_photo" translatable="false">clinic photo</string>
 
+    <string name="msg_no_network">Невозможно подключиться к Интернету</string>
+    <string name="msg_unknown_error">Неизвестная ошибка.</string>
+    <string name="action_ok">OK</string>
+    <string name="msg_cannot_connect_to_server">Наши серверы проходят техническое обслуживание и ремонт. Пожалуйста, попробуйте позже.</string>
 
-    <string name="sms_send" translatable="false">An SMS with an access code was sent to your specified number +998 (90) 548 58 55</string>
-    <string name="resend_code" translatable="false">Resend code in 1:00</string>
-
+    <!-- registration -->
+    <string name="sign_in">Войти</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="login">Логин</string>
+    <string name="parol">Пароль</string>
+    <string name="remember_me">Запомнить меня</string>
+    <string name="sign_up_with">Войти с помощью</string>
+    <string name="sms_send">На указанный вами номер +998 (90) 548 58 55 отправлено SMS с кодом доступа</string>
+    <string name="resend_code">Отправить код повторно через 1:09</string>
 
     <!-- home -->
     <string name="medical_service">Медицинские услуги</string>

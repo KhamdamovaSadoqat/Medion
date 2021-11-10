@@ -69,9 +69,10 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_personal_date.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_search_view.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_sign_in.xml" value="0.1" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_sign_up.xml" value="0.128" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_spa_medicine.xml" value="0.13020833333333334" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_spa_medicine_details.xml" value="0.13020833333333334" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_verification.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_appointment_time.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_details.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_search.xml" value="0.4" />

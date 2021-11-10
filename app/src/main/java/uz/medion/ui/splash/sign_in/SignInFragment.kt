@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import uz.medion.R
 import uz.medion.databinding.FragmentSignInBinding
 import uz.medion.ui.base.BaseFragment
@@ -24,9 +25,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
             requireActivity().finish()
         }
         binding.btnSignUp.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            findNavController().navigate(R.id.signUpFragment)
         }
     }
 
