@@ -44,9 +44,6 @@
         android:name="uz.medion.ui.main.user.aboutDoctor.CertificateFragment"
         android:label="CertificateFragment"
         tools:layout="@layout/fragment_certificate" >
-        <action
-            android:id="@+id/action_certificateFragment_to_aboutDoctorFragment"
-            app:destination="@id/aboutDoctorFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalAccountFragment"
