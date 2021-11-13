@@ -3,10 +3,7 @@ package uz.medion.utils
 import androidx.appcompat.app.AppCompatActivity
 import android.app.Dialog
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.Point
+import android.graphics.*
 import android.os.Build
 import android.util.Base64
 import android.view.*
@@ -15,7 +12,9 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
+import androidx.annotation.Px
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
@@ -44,7 +43,11 @@ object ViewUtils {
      * @param activity
      * @param color is new color which set for background if [StatusBar]
      */
-    fun clearLightStatusBar(activity: AppCompatActivity, @ColorRes colorRes: Int? = null, color:Int? = null) {
+    fun clearLightStatusBar(
+        activity: AppCompatActivity,
+        @ColorRes colorRes: Int? = null,
+        color: Int? = null
+    ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val window: Window = activity.window
             var flags: Int = window.decorView.getSystemUiVisibility()

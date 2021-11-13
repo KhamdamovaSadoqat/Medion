@@ -61,7 +61,6 @@ object Constants {
 
     fun getHomeItems(): ArrayList<HomeItem> {
         return arrayListOf(
-            HomeItem(R.drawable.ic_lor, R.string.lor),
             HomeItem(R.drawable.ic_ginecology, R.string.ginecology),
             HomeItem(R.drawable.ic_pediatr, R.string.pediatr),
             HomeItem(R.drawable.ic_neurolog, R.string.neuralogy),
@@ -358,7 +357,7 @@ object Constants {
                 "Шайхантахурский район, ул. Зульфияханум 18",
                 "+998 78 140 00 44",
 
-            ),
+                ),
             AdressAndContactsItem(
                 R.drawable.center_photo_2,
                 "Mедицинский центр MEDION INNOVATION",
@@ -374,18 +373,22 @@ object Constants {
         )
     }
 
-    fun getLocations(): ArrayList<Location>{
+    fun getLocations(): ArrayList<Location> {
         return arrayListOf(
-            Location(R.drawable.center_photo_1,"41.3303657", "69.2572476"),
-            Location(R.drawable.center_photo_2,"41.323868", "69.2519953"),
-            Location(R.drawable.center_photo_3,"41.3261357", "69.1859201")
+            Location(R.drawable.center_photo_1, "41.3303657", "69.2572476"),
+            Location(R.drawable.center_photo_2, "41.323868", "69.2519953"),
+            Location(R.drawable.center_photo_3, "41.3261357", "69.1859201")
         )
     }
 
     fun getEsteticMedicine_categories(): ArrayList<AboutDoctorItems> {
         return arrayListOf<AboutDoctorItems>(
             AboutDoctorItems(R.string.estetic_medicine_5, R.color.nile_blue_900, R.color.white),
-            AboutDoctorItems(R.string.estetic_medicine_6, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(
+                R.string.estetic_medicine_6,
+                R.color.solitude_50,
+                R.color.tangaroa_900
+            ),
             AboutDoctorItems(R.string.estetic_medicine_7, R.color.solitude_50, R.color.tangaroa_900)
         )
     }
@@ -464,26 +467,79 @@ object Constants {
         )
     }
 
-    fun getAppointmentTime(): ArrayList<AppointmentTimeItem>{
-        return  arrayListOf(
+    fun getAppointmentTime(): ArrayList<AppointmentTimeItem> {
+        return arrayListOf(
             AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_8_30, R.color.white),
             AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_9_00, R.color.tangaroa_900),
             AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_9_30, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_10_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_10_30, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_11_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_11_30, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_12_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_14_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_14_30, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_15_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_15_30, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_16_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_16_30, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_17_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_17_30, R.color.tangaroa_900),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_10_00,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_10_30,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_11_00,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_11_30,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_12_00,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_14_00,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_14_30,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_15_00,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_15_30,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_16_00,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_16_30,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_17_00,
+                R.color.tangaroa_900
+            ),
+            AppointmentTimeItem(
+                R.drawable.bg_transparent_4,
+                R.string.t_17_30,
+                R.color.tangaroa_900
+            ),
         )
     }
+
     fun getMyAccount(): ArrayList<DoctorCategoryItem> {
         return arrayListOf(
             DoctorCategoryItem(R.string.change_mobile_phone_number),
@@ -495,7 +551,7 @@ object Constants {
         )
     }
 
-    fun getMyMain():ArrayList<DoctorCategoryItem>{
+    fun getMyMain(): ArrayList<DoctorCategoryItem> {
         return arrayListOf(
             DoctorCategoryItem(R.string.our_doctors),
             DoctorCategoryItem(R.string.estethic_medicine),
@@ -505,12 +561,12 @@ object Constants {
         )
     }
 
-    fun getMyDoctorsItem():ArrayList<DoctorsItem>{
+    fun getMyDoctorsItem(): ArrayList<DoctorsItem> {
         return arrayListOf(
-            DoctorsItem(R.drawable.doc_sevara,R.string.dc_sevara,R.string.vrach_uzi),
-            DoctorsItem(R.drawable.doc_pic,R.string.dc_botir,R.string.detskiy_ortoped),
-            DoctorsItem(R.drawable.doctor_img,R.string.dc_alisher,R.string.traumatology),
-            DoctorsItem(R.drawable.doc_sevara,R.string.dc_elena,R.string.pediatr)
+            DoctorsItem(R.drawable.doc_sevara, R.string.dc_sevara, R.string.vrach_uzi),
+            DoctorsItem(R.drawable.doc_pic, R.string.dc_botir, R.string.detskiy_ortoped),
+            DoctorsItem(R.drawable.doctor_img, R.string.dc_alisher, R.string.traumatology),
+            DoctorsItem(R.drawable.doc_sevara, R.string.dc_elena, R.string.pediatr)
         )
     }
 
