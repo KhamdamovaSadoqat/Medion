@@ -34,7 +34,6 @@ class VerificationFragment : BaseFragment<FragmentVerificationBinding, Verificat
                 }
 
                 override fun onOTPComplete(otp: String) {
-                    Log.d("----------", "onOTPComplete: $otp")
                     // fired when user has entered the OTP fully.
                 }
             }

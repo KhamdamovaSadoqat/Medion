@@ -3,12 +3,17 @@ package uz.medion.ui.splash.sign_up
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import java.lang.String
 
 object EditTextListenerPhoneNumber : TextWatcher {
-    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        Log.d("----------", "beforeTextChanged: ")
+    }
 
-    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        Log.d("----------", "onTextChanged: ")
+    }
 
     override fun afterTextChanged(s: Editable?) {
         // max length: "998 90 975 95 47" = 17

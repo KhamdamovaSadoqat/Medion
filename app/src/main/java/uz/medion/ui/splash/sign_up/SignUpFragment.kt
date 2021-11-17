@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import uz.medion.R
+import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentSignUpBinding
 import uz.medion.ui.base.BaseFragment
-import uz.medion.ui.main.user.appointment.EditTextListenerCardNumber
-import uz.medion.ui.main.user.appointment.EditTextListenerExpireDate
 
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>(), View.OnFocusChangeListener {
 
     private val args: SignUpFragmentArgs by navArgs()
 
+    @SuppressLint("LogConditional")
     override fun onBound() {
 
         if(arguments != null){
@@ -26,7 +26,24 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>(), View.OnF
         binding.etNumber.addTextChangedListener(EditTextListenerPhoneNumber)
         binding.etNumber.onFocusChangeListener = this
 
+        //checking wether user is register or not
+        //throwing error as "number already taken" is user is registered
         binding.btnSubmit.setOnClickListener {
+            Log.d("----------", "onBound: number: ${binding.etNumber}")
+            vm.getIsRegistrationFlowAvailable(binding.etNumber.toString()).observe(this) { response ->
+                when (response.status) {
+                    Status.LOADING -> {
+                    }
+                    Status.SUCCESS -> {
+                        Log.d("----------", "onBound: username is available")
+                    }
+                    Status.ERROR -> {
+                        Log.e("----------", "error: ${response.message}")
+                        binding.etNumber.error = requireContext().getText(R.string.already_taken)
+                        response.throwable?.let { handleError(it) }
+                    }
+                }
+            }
             findNavController().navigate(R.id.verificationFragment)
         }
 

@@ -20,6 +20,7 @@
     <string name="sign_up_with">Войти с помощью</string>
     <string name="sms_send">На указанный вами номер %s отправлено SMS с кодом доступа</string>
     <string name="resend_code">Отправить код повторно через %s</string>
+    <string name="already_taken">Этот номер уже зарегистрирован </string>
 
     <!-- home -->
     <string name="medical_service">Медицинские услуги</string>

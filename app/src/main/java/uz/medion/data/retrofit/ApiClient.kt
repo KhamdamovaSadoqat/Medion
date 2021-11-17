@@ -30,16 +30,16 @@ class ApiClient {
                         addHeader("language", Constants.language)
                     }.build()
 
-                    Log.d(
-                        "--------------",
-                        "getApiClient: ${request.body()?.let { bodyToString(it) }}"
-                    )
-
-                    Log.d(
-                        "--------------",
-                        "intercept: ${request.url()}   ${request.body().toString()}" +
-                                request.headers().toString()
-                    )
+//                    Log.d(
+//                        "--------------",
+//                        "getApiClient: ${request.body()?.let { bodyToString(it) }}"
+//                    )
+//
+//                    Log.d(
+//                        "--------------",
+//                        "intercept: ${request.url()}   ${request.body().toString()}" +
+//                                request.headers().toString()
+//                    )
                     chain.proceed(request)
                 }
                 .build()

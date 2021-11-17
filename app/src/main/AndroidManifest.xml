@@ -22,13 +22,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Medion"
+        android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
 
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
             android:screenOrientation="fullSensor"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name=".ui.splash.SplashActivity"

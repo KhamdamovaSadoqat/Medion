@@ -1,10 +1,8 @@
 package uz.medion.data.retrofit
 
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
+import uz.medion.data.model.IsRegistrationFlowAvailable
 import uz.medion.data.model.SUCCESSTEST
 
 interface ApiInterface {
@@ -12,12 +10,23 @@ interface ApiInterface {
     //Get
     //post
 
+//    @GET
+//    fun getHuquqiyBilimlarSinovi(
+//        @Url url: String,
+//        @Header("Authorization") token: String
+//    ): Observable<HuquqiyBilimlarSinovi>
+
     @FormUrlEncoded
     @POST("HERE SHOULD BE URL")
     fun sendComment(
         @Field("SOME FIELD") id: Int,
-        @Field("SOME FIELS") answer: String, @Header("Authorization") token: String
+        @Field("SOME FIELS") answer: String,
+        @Header("Authorization") token: String
     ): Observable<SUCCESSTEST>
 
+    @GET("http://45.137.148.124:8080/api/v1/registration/admin@admin.com")
+    fun isRegistrationFlowAvailable(
+        @Header("username") userName: String
+    ): Observable<IsRegistrationFlowAvailable>
 
 }
