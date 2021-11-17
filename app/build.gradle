@@ -7,7 +7,8 @@ plugins {
 
 android {
     compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    //noinspection GradleDependency
+    buildToolsVersion "30.0.1"
 
     defaultConfig {
         applicationId "uz.medion"
@@ -123,6 +124,11 @@ dependencies {
     //SafeArgs
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0-alpha01'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-alpha01'
+
+    //otp
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2'
+
 
 
 }

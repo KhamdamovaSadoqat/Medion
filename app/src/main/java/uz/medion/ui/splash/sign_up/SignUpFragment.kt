@@ -23,8 +23,8 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>(), View.OnF
             binding.etSurname.setText(args.userSurname)
         }
 
-        binding.tietNumber.addTextChangedListener(EditTextListenerPhoneNumber)
-        binding.tietNumber.onFocusChangeListener = this
+        binding.etNumber.addTextChangedListener(EditTextListenerPhoneNumber)
+        binding.etNumber.onFocusChangeListener = this
 
         binding.btnSubmit.setOnClickListener {
             findNavController().navigate(R.id.verificationFragment)
@@ -39,7 +39,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>(), View.OnF
     @SuppressLint("SetTextI18n")
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         if (hasFocus) {
-            binding.tietNumber.setText("+998 ")
+            binding.etNumber.setText("+998 ")
         }
     }
 

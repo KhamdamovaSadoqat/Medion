@@ -128,7 +128,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_phone_number">
 
             <EditText
-                android:id="@+id/tiet_number"
+                android:id="@+id/et_number"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="#00FFFFFF"

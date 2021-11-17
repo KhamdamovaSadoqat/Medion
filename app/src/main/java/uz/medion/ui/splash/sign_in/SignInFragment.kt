@@ -1,8 +1,14 @@
 package uz.medion.ui.splash.sign_in
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.registerForActivityResult
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import uz.medion.R
@@ -22,8 +28,7 @@ import uz.medion.data.constants.Keys
 class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
-    private val RC_SIGN_IN = 9001
-
+    var isShowing: Boolean = false
 
     override fun onBound() {
 
@@ -37,7 +42,28 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
         binding.imgGoogle.setOnClickListener {
             signIn()
         }
-
+        binding.ivShowPassword.setOnClickListener {
+            if (isShowing) {
+                binding.ivShowPassword.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_eye_slash
+                    )
+                )
+                binding.etPassword.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+                isShowing = false
+            } else {
+                binding.ivShowPassword.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_eye
+                    )
+                )
+                binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                isShowing = true
+            }
+        }
         binding.btnSignIn.setOnClickListener {
             val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)
@@ -50,9 +76,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
 
     private fun signIn() {
         val signInIntent = mGoogleSignInClient.signInIntent
-        startActivityForResult(
-            signInIntent, RC_SIGN_IN
-        )
+        startActivityForResult(signInIntent, Keys.REQUEST_CODE_SIGN_IN)
     }
 
     private fun signOut() {
@@ -69,14 +93,12 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
             }
     }
 
-    @SuppressLint("LogConditional")
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(
                 ApiException::class.java
             )
             // Signed in successfully
-
             val action = SignInFragmentDirections.actionSignInFragmentToSignUpFragment(
                 account.givenName,
                 account.familyName,
@@ -100,6 +122,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
         if (requestCode == Keys.REQUEST_CODE_SIGN_IN) {
             val task =
                 GoogleSignIn.getSignedInAccountFromIntent(data)

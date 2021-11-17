@@ -18,8 +18,8 @@
     <string name="parol">Пароль</string>
     <string name="remember_me">Запомнить меня</string>
     <string name="sign_up_with">Войти с помощью</string>
-    <string name="sms_send">На указанный вами номер +998 (90) 548 58 55 отправлено SMS с кодом доступа</string>
-    <string name="resend_code">Отправить код повторно через 1:09</string>
+    <string name="sms_send">На указанный вами номер %s отправлено SMS с кодом доступа</string>
+    <string name="resend_code">Отправить код повторно через %s</string>
 
     <!-- home -->
     <string name="medical_service">Медицинские услуги</string>

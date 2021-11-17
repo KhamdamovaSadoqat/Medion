@@ -7,7 +7,11 @@ import uz.medion.R
 import uz.medion.data.constants.Keys
 import uz.medion.databinding.FragmentVerificationBinding
 import uz.medion.ui.base.BaseFragment
+
+import `in`.aabhasjindal.otptextview.OTPListener
+import android.util.Log
 import uz.medion.ui.main.MainActivity
+
 
 class VerificationFragment : BaseFragment<FragmentVerificationBinding, VerificationVM>() {
 
@@ -22,6 +26,30 @@ class VerificationFragment : BaseFragment<FragmentVerificationBinding, Verificat
                 }
             }
         } else {
+
+            binding.otpView.otpListener = object : OTPListener {
+                override fun onInteractionListener() {
+                    // fired when user types something in the Otpbox
+                    Log.d("----------", "onInteractionListener: ")
+                }
+
+                override fun onOTPComplete(otp: String) {
+                    Log.d("----------", "onOTPComplete: $otp")
+                    // fired when user has entered the OTP fully.
+                }
+            }
+
+
+//            private OtpView otpView;
+//            otpView = findViewById(R.id.otp_view);
+//            otpView.setListener(new OnOtpCompletionListener() {
+//                @Override public void onOtpCompleted(String otp) {
+//
+//                    // do Stuff
+//                    Log.d("onOtpCompleted=>", otp);
+//                }
+//            });
+
             binding.btnSubmit.setOnClickListener {
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
