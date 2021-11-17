@@ -41,4 +41,6 @@ object Keys {
     const val BUNDLE_SEARCH_VIEW_TO_SPA_MEDICINE = "bundle_search_view_to_spa_medicine"
     const val BUNDLE_SEARCH_VIEW_TO_ADDRESS = "bundle_search_view_to_address"
     const val BUNDLE_SEARCH_VIEW_TO_SPA_MEDICINE_DETAILS = "bundle_search_view_to_spa_medicine_details"
+
+    const val REQUEST_CODE_SIGN_IN = 9001
 }

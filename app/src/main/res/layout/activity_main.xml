@@ -126,6 +126,12 @@
                 layout="@layout/partial_bottom_navigation"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
+            <include
+                android:id="@+id/partial_bottom_nav_doc"
+                android:visibility="gone"
+                layout="@layout/partial_bottom_navigation_doctors"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.navigation.NavigationView

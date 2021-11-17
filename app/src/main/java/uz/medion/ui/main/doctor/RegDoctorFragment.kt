@@ -1,4 +1,4 @@
-package uz.medion.doctor
+package uz.medion.ui.main.doctor
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

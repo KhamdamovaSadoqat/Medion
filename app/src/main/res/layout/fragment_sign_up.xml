@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.splash.sign_up.SignUpFragment">
@@ -11,24 +12,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            app:srcCompat="@drawable/medion_black"
-            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/image"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:contentDescription="@string/image"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/medion_black" />
 
         <TextView
             android:id="@+id/tv_enter_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="38dp"
+            android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:text="@string/enter_phone"
-            android:textSize="18sp"
             android:textColor="@color/tangaroa_900"
-            android:fontFamily="@font/roboto_regular"
-            android:layout_marginTop="38dp"
-            android:layout_marginHorizontal="30dp"
-            app:layout_constraintTop_toBottomOf="@id/iv_logo"/>
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -46,25 +47,25 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_name"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_transparent_8"
             app:layout_constraintTop_toBottomOf="@id/tv_name">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
+                android:background="#00FFFFFF"
+                android:hint="@string/name"
+                android:maxLines="1"
+                android:paddingHorizontal="16dp"
+                android:textSize="16sp"
                 app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                app:boxStrokeWidthFocused="0dp"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00FFFFFF"
-                    android:hint="@string/name"
-                    android:maxLines="1"/>
-            </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -83,25 +84,25 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_surname"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_transparent_8"
             app:layout_constraintTop_toBottomOf="@id/tv_surname">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/et_surname"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
+                android:background="#00FFFFFF"
+                android:hint="@string/surname"
+                android:maxLines="1"
+                android:paddingHorizontal="16dp"
+                android:textSize="16sp"
                 app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                app:boxStrokeWidthFocused="0dp"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00FFFFFF"
-                    android:hint="@string/surname"
-                    android:maxLines="1"/>
-            </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -120,40 +121,40 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_phone_number"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_transparent_8"
             app:layout_constraintTop_toBottomOf="@id/tv_phone_number">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/tiet_number"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
+                android:background="#00FFFFFF"
+                android:digits="+12345 67890"
+                android:hint="@string/fill_phone_numeber"
+                android:inputType="number"
+                android:maxLength="17"
+                android:maxLines="1"
+                android:paddingHorizontal="16dp"
+                android:textSize="16sp"
                 app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00FFFFFF"
-                    android:hint="@string/fill_phone_numeber"
-                    android:maxLines="1"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                app:boxStrokeWidthFocused="0dp"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/bg_red_8"
             android:text="@string/submit"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

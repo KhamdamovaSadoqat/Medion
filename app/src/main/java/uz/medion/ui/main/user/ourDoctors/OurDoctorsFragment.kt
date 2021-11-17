@@ -1,6 +1,11 @@
 package uz.medion.ui.main.user.ourDoctors
 
+import android.graphics.Point
+import android.os.Build
 import android.util.Log
+import android.view.Display
+import android.view.SurfaceView
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider

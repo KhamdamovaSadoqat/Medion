@@ -1,24 +1,31 @@
 package uz.medion.ui.splash.sign_up
 
-import android.content.Intent
-import android.os.Bundle
+import android.annotation.SuppressLint
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import uz.medion.R
 import uz.medion.databinding.FragmentSignUpBinding
 import uz.medion.ui.base.BaseFragment
-import uz.medion.ui.main.MainActivity
+import uz.medion.ui.main.user.appointment.EditTextListenerCardNumber
+import uz.medion.ui.main.user.appointment.EditTextListenerExpireDate
 
+class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>(), View.OnFocusChangeListener {
 
-class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
-
+    private val args: SignUpFragmentArgs by navArgs()
 
     override fun onBound() {
+
+        if(arguments != null){
+            binding.etName.setText(args.userName)
+            binding.etSurname.setText(args.userSurname)
+        }
+
+        binding.tietNumber.addTextChangedListener(EditTextListenerPhoneNumber)
+        binding.tietNumber.onFocusChangeListener = this
+
         binding.btnSubmit.setOnClickListener {
             findNavController().navigate(R.id.verificationFragment)
         }
@@ -28,5 +35,12 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
     override fun getLayoutResId() = R.layout.fragment_sign_up
     override val vm: SignUpVM
         get() = ViewModelProvider(this).get(SignUpVM::class.java)
+
+    @SuppressLint("SetTextI18n")
+    override fun onFocusChange(v: View?, hasFocus: Boolean) {
+        if (hasFocus) {
+            binding.tietNumber.setText("+998 ")
+        }
+    }
 
 }
