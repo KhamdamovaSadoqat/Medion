@@ -129,6 +129,8 @@ dependencies {
     implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
     implementation 'com.github.aabhasr1:OtpView:v1.1.2'
 
+    //mask
+    implementation 'ru.egslava:MaskedEditText:1.0.5'
 
 
 }

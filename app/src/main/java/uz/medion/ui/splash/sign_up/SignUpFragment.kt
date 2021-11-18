@@ -22,8 +22,8 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>(), View.OnF
             binding.etName.setText(args.userName)
             binding.etSurname.setText(args.userSurname)
         }
-
-        binding.etNumber.addTextChangedListener(EditTextListenerPhoneNumber)
+//        binding.etNumber.setText("+998 ")
+//        binding.etNumber.addTextChangedListener(EditTextListenerPhoneNumber)
         binding.etNumber.onFocusChangeListener = this
 
         //checking wether user is register or not
@@ -56,7 +56,10 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>(), View.OnF
     @SuppressLint("SetTextI18n")
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         if (hasFocus) {
-            binding.etNumber.setText("+998 ")
+
+//            if(binding.etNumber.text.length == 17){
+//                Log.d("----------", "onFocusChange: working")
+//            }
         }
     }
 
