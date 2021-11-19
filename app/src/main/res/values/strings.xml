@@ -21,6 +21,9 @@
     <string name="sms_send">На указанный вами номер %s отправлено SMS с кодом доступа</string>
     <string name="resend_code">Отправить код повторно через %s</string>
     <string name="already_taken">Этот номер уже зарегистрирован </string>
+    <string name="required_field">Это поле обязательно к заполнению</string>
+    <string name="invalid_phone_number">Неправильный номер телефона</string>
+    <string name="invalid_email">Неверный адрес электронной почты</string>
 
     <!-- home -->
     <string name="medical_service">Медицинские услуги</string>
@@ -289,5 +292,6 @@
     <string name="payment_competed">Оплата прошла УСПЕШНО</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
 
 </resources>

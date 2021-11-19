@@ -8,6 +8,7 @@ import io.reactivex.schedulers.Schedulers
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.AboutDoctorCommentItem
 import uz.medion.data.model.IsRegistrationFlowAvailable
+import uz.medion.data.model.ResponseOfRequestEmail
 import uz.medion.data.model.SUCCESSTEST
 import uz.medion.data.model.remote.Resource
 import uz.medion.data.model.remote.Status
@@ -45,6 +46,33 @@ class Repository {
                     override fun onComplete() {}
                 })
         )
+    }
+
+    fun responseOfRequestEmail(
+        email: String,
+        response: MutableLiveData<Resource<ResponseOfRequestEmail>>
+    ) {
+        compositeDisposable.add(
+            apiClient.requestMail(email)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<ResponseOfRequestEmail>() {
+                    override fun onNext(t: ResponseOfRequestEmail) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
     }
 
     fun getIsRegistrationFlowAvailable(
