@@ -58,7 +58,6 @@
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
                 android:paddingHorizontal="8dp"
-                app:items_visible="three"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 tools:listitem="@layout/item_home"
