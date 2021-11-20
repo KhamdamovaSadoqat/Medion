@@ -1,5 +1,6 @@
 package uz.medion.data.retrofit
 
+import android.annotation.SuppressLint
 import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
@@ -20,6 +21,7 @@ class ApiClient {
             retrofit = null
         }
 
+        @SuppressLint("LogConditional")
         fun getApiClient(): ApiInterface {
 
             val okHttpClient = OkHttpClient.Builder()
@@ -30,16 +32,16 @@ class ApiClient {
                         addHeader("language", Constants.language)
                     }.build()
 
-                    Log.d(
-                        "--------------",
-                        "getApiClient: ${request.body()?.let { bodyToString(it) }}"
-                    )
-
-                    Log.d(
-                        "--------------",
-                        "intercept: ${request.url()}   ${request.body().toString()}" +
-                                request.headers().toString()
-                    )
+//                    Log.d(
+//                        "--------------",
+//                        "getApiClient: ${request.listbody()?.let { bodyToString(it) }}"
+//                    )
+//
+//                    Log.d(
+//                        "--------------",
+//                        "intercept: ${request.url()}   ${request.body().toString()}" +
+//                                request.headers().toString()
+//                    )
                     chain.proceed(request)
                 }
                 .build()

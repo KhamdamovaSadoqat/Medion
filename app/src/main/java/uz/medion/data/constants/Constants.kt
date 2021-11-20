@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import uz.medion.R
 import uz.medion.data.local.PrefsHelper
 import uz.medion.data.model.*
+import uz.medion.data.model.doctor.MyPatientsItem
 
 object Constants {
 
@@ -343,7 +344,7 @@ object Constants {
     fun getMyDoctorDocumentsType(): ArrayList<AboutDoctorItems> {
         return arrayListOf(
             AboutDoctorItems(R.string.analyzes, R.color.nile_blue_900, R.color.white),
-            AboutDoctorItems(R.string.reformence, R.color.solitude_50, R.color.tangaroa_900),
+            AboutDoctorItems(R.string.reference, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.appointment, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.recipe, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.ehc, R.color.solitude_50, R.color.tangaroa_900)
@@ -513,5 +514,16 @@ object Constants {
             DoctorsItem(R.drawable.doc_sevara,R.string.dc_elena,R.string.pediatr)
         )
     }
-
+    fun getMyPatients():ArrayList<MyPatientsItem>{
+        return arrayListOf(
+            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
+            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
+            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
+            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
+            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
+            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
+            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
+            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true)
+        )
+    }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/personalAreaFragment">
+
+
+
+    <fragment
+        android:id="@+id/changeProfileDoctorFragment"
+        tools:layout="@layout/fragment_change_profile_doctor"
+        android:name="uz.medion.ui.doctor.profileDoctor.ChangeProfileDoctorFragment"
+        android:label="ChangeProfileDoctorFragment" />
+    <fragment
+        android:id="@+id/personalDateFragment2"
+        android:name="uz.medion.ui.main.user.personalDate.PersonalDateFragment"
+        android:label="PersonalDateFragment" />
+    <fragment
+        android:id="@+id/myPtientFragment"
+        android:name="uz.medion.ui.doctor.myPatient.MyPatientFragment"
+        android:label="fragment_my_ptient"
+        tools:layout="@layout/fragment_my_ptient" />
+    <fragment
+        android:id="@+id/todayPatientFragment"
+        android:name="uz.medion.ui.doctor.todayPatient.TodayPatientFragment"
+        android:label="fragment_today_patient"
+        tools:layout="@layout/fragment_today_patient" />
+    <fragment
+        android:id="@+id/patientInfoFragment"
+        android:name="uz.medion.ui.doctor.patientInfo.PatientInfoFragment"
+        android:label="fragment_patient_info"
+        tools:layout="@layout/fragment_patient_info" />
+    <fragment
+        android:id="@+id/personalDataFragment"
+        android:name="uz.medion.ui.doctor.personalData.PersonalDataFragment"
+        android:label="fragment_personal_data"
+        tools:layout="@layout/fragment_personal_data" />
+    <fragment
+        android:id="@+id/personalAreaFragment"
+        android:name="uz.medion.ui.doctor.personalArea.PersonalAreaFragment"
+        android:label="fragment_personal_area"
+        tools:layout="@layout/fragment_personal_area" />
+    <fragment
+        tools:layout="@layout/fragment_choose_language"
+        android:id="@+id/chooseLanguageFragment2"
+        android:name="uz.medion.ui.main.user.chooseLanguage.ChooseLanguageFragment"
+        android:label="ChooseLanguageFragment" />
+    <fragment
+        android:id="@+id/chatDoctorFragment"
+        android:name="uz.medion.ui.doctor.chat.ChatDoctorFragment"
+        android:label="chat_doctor_fragment"
+        tools:layout="@layout/chat_doctor_fragment" />
+    <fragment
+        android:id="@+id/searchViewFragment2"
+        android:name="uz.medion.ui.main.user.search.SearchViewFragment"
+        android:label="SearchViewFragment" />
+</navigation>
