@@ -1,5 +1,6 @@
 package uz.medion.ui.main.user.myDoctors
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ class MyDoctorsAdapter(private val itemClickListener: (Int) -> Unit) :
 
     private var listItem = listOf<MyDoctorsItem>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(listItem: List<MyDoctorsItem>) {
         this.listItem = listItem
         notifyDataSetChanged()

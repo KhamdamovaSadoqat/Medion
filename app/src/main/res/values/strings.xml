@@ -115,7 +115,7 @@
     <string name="favourites">Избранное</string>
     <string name="results">Результаты клинического анализа крови</string>
     <string name="analyzes">Анализы</string>
-    <string name="reformence">Справка</string>
+    <string name="reference">Справка</string>
     <string name="appointment">Назначение</string>
     <string name="recipe">Рецепт</string>
     <string name="ehc">ЕКГ</string>
@@ -237,20 +237,18 @@
     <string name="cabinet">Кабинет</string>
 
 
-
     <!-- ourDoctorName -->
     <string name="dc_sevara">Эргашева Севара Рустамовна</string>
     <string name="dc_botir">Ширмухамедов Батыр Турсунпулатович</string>
     <string name="dc_alisher">Маматходжаев Алишер Насырович</string>
     <string name="dc_elena">Мустафина Елена Рафиковна	</string>
 
- <!-- ourDoctorJob -->
+    <!-- ourDoctorJob -->
     <string name="vrach_uzi">Врач УЗИ</string>
     <string name="detskiy_ortoped">Детский ортопед </string>
 
     <!-- searchView-->
     <string name="searchview">SearchView</string>
-
 
 
     <!-- Calendar -->
@@ -288,5 +286,14 @@
     <string name="add">Добавить</string>
     <string name="thanks">Спасибо!</string>
     <string name="payment_competed">Оплата прошла УСПЕШНО</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="personal_data">Личные данные</string>
+    <string name="my_patients">Mои пациенты</string>
+    <string name="today_patients">Сегодняшние пациенты</string>
+    <string name="language">Языки</string>
+    <string name="log_out">Выход</string>
+    <string name="phone_number_mobil">+998906274859</string>
+    <string name="todo">TODO</string>
 
 </resources>

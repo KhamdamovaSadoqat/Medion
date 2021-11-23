@@ -30,6 +30,10 @@
         android:name="uz.medion.ui.splash.verification.VerificationFragment"
         android:label="VerificationFragment"
         tools:layout="@layout/fragment_verification"/>
+    <activity
+        android:id="@+id/doctorActivity3"
+        android:name="uz.medion.ui.doctor.DoctorActivity"
+        android:label="DoctorActivity" />
 
 
 </navigation>

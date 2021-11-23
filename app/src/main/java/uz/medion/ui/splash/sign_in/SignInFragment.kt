@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import uz.medion.R
 import uz.medion.databinding.FragmentSignInBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.doctor.DoctorActivity
 import uz.medion.ui.main.MainActivity
 
 class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
@@ -20,7 +21,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
         Log.d("-------------", "onBound: dgshjiokfbognjvncfmsd")
 
         binding.btnSignIn.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)
+            val intent = Intent(requireContext(), DoctorActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
         }
