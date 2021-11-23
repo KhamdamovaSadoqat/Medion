@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.todayPatient
+package uz.medion.ui.main.doctor.todayPatient
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -13,9 +13,9 @@ import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.doctor.MyPatientsItem
 import uz.medion.databinding.FragmentTodayPatientBinding
-import uz.medion.ui.doctor.myPatient.MyPatientAdapter
+import uz.medion.ui.main.doctor.myPatient.MyPatientAdapter
 
-class TodayPatientFragment : Fragment(),MyPatientAdapter.PatientItemListener {
+class TodayPatientFragment : Fragment(), MyPatientAdapter.PatientItemListener {
 
    private lateinit var binding:FragmentTodayPatientBinding
    private lateinit var adapter: MyPatientAdapter

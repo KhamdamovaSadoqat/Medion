@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.personalArea
+package uz.medion.ui.main.doctor.personalArea
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

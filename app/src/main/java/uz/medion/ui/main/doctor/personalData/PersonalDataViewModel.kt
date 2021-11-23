@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.personalData
+package uz.medion.ui.main.doctor.personalData
 
 import androidx.lifecycle.ViewModel
 

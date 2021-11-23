@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_verification"/>
     <activity
         android:id="@+id/doctorActivity3"
-        android:name="uz.medion.ui.doctor.DoctorActivity"
+        android:name="uz.medion.ui.main.doctor.DoctorActivity"
         android:label="DoctorActivity" />
 
 

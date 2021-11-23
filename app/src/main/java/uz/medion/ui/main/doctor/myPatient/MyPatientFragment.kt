@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.myPatient
+package uz.medion.ui.main.doctor.myPatient
 
 import android.os.Build
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +19,7 @@ import uz.medion.data.model.doctor.MyPatientsItem
 import uz.medion.databinding.ActivityDoctorBinding.inflate
 import uz.medion.databinding.FragmentMyPtientBinding
 
-class MyPatientFragment : Fragment(),MyPatientAdapter.PatientItemListener {
+class MyPatientFragment : Fragment(), MyPatientAdapter.PatientItemListener {
     private lateinit var binding:FragmentMyPtientBinding
     private lateinit var adapter: MyPatientAdapter
 

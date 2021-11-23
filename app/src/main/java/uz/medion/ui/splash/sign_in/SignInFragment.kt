@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import uz.medion.R
 import uz.medion.databinding.FragmentSignInBinding
 import uz.medion.ui.base.BaseFragment
-import uz.medion.ui.doctor.DoctorActivity
+import uz.medion.ui.main.doctor.DoctorActivity
 import uz.medion.ui.main.MainActivity
 
 class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {

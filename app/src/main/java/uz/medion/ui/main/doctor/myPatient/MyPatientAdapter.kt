@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.myPatient
+package uz.medion.ui.main.doctor.myPatient
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -25,14 +25,14 @@ class MyPatientAdapter(private val listener: PatientItemListener) :
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPatientAdapter.VH {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val inflater = LayoutInflater.from(parent.context)
         val binding: ItemSelectedBinding =
             DataBindingUtil.inflate(inflater, R.layout.item_selected, parent, false)
         return VH(binding, parent.context)
     }
 
-    override fun onBindViewHolder(holder: MyPatientAdapter.VH, position: Int) {
+    override fun onBindViewHolder(holder: VH, position: Int) {
         holder.itemView.setOnClickListener {
             listener.onClickPatient(list[position])
         }

@@ -23,7 +23,7 @@
         android:theme="@style/Theme.Medion"
         tools:ignore="AllowBackup,UnusedAttribute">
         <activity
-            android:name=".ui.doctor.DoctorActivity"
+            android:name=".ui.main.doctor.DoctorActivity"
             android:exported="true"
             android:screenOrientation="fullSensor"
             tools:ignore="LockedOrientationActivity" />

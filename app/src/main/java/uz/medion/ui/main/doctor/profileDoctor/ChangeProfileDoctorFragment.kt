@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.profileDoctor
+package uz.medion.ui.main.doctor.profileDoctor
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog

@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor
+package uz.medion.ui.main.doctor
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
