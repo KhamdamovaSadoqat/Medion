@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.doctor.myPatient.MyPatientFragment">
+        tools:context=".ui.main.doctor.myPatient.MyPatientFragment">
 
         <LinearLayout
             android:id="@+id/linear_my_patient"

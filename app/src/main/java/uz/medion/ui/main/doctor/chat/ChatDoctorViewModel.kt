@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.chat
+package uz.medion.ui.main.doctor.chat
 
 import androidx.lifecycle.ViewModel
 

@@ -1,6 +1,5 @@
-package uz.medion.ui.doctor.todayPatient
+package uz.medion.ui.main.doctor.todayPatient
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +12,7 @@ import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.doctor.MyPatientsItem
 import uz.medion.databinding.FragmentTodayPatientBinding
-import uz.medion.ui.doctor.myPatient.MyPatientAdapter
+import uz.medion.ui.main.doctor.myPatient.MyPatientAdapter
 
 class TodayPatientFragment : Fragment(),MyPatientAdapter.PatientItemListener {
 

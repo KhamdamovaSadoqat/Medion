@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.todayPatient
+package uz.medion.ui.main.doctor.todayPatient
 
 import androidx.lifecycle.ViewModel
 

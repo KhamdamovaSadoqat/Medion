@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.myPatient
+package uz.medion.ui.main.doctor.myPatient
 
 import android.os.Build
 import androidx.lifecycle.ViewModelProvider
@@ -7,16 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.common.util.DataUtils
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.doctor.MyPatientsItem
-import uz.medion.databinding.ActivityDoctorBinding.inflate
 import uz.medion.databinding.FragmentMyPtientBinding
 
 class MyPatientFragment : Fragment(),MyPatientAdapter.PatientItemListener {

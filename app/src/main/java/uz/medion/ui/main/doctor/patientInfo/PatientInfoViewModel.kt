@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.patientInfo
+package uz.medion.ui.main.doctor.patientInfo
 
 import androidx.lifecycle.ViewModel
 

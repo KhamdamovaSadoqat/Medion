@@ -1,4 +1,4 @@
-package uz.medion.ui.doctor.myPatient
+package uz.medion.ui.main.doctor.myPatient
 
 import android.content.Context
 import android.view.LayoutInflater

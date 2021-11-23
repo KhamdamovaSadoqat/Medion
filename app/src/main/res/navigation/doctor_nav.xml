@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/changeProfileDoctorFragment"
         tools:layout="@layout/fragment_change_profile_doctor"
-        android:name="uz.medion.ui.doctor.profileDoctor.ChangeProfileDoctorFragment"
+        android:name="uz.medion.ui.main.doctor.profileDoctor.ChangeProfileDoctorFragment"
         android:label="ChangeProfileDoctorFragment" />
     <fragment
         android:id="@+id/personalDateFragment2"
@@ -18,27 +18,27 @@
         android:label="PersonalDateFragment" />
     <fragment
         android:id="@+id/myPtientFragment"
-        android:name="uz.medion.ui.doctor.myPatient.MyPatientFragment"
+        android:name="uz.medion.ui.main.doctor.myPatient.MyPatientFragment"
         android:label="fragment_my_ptient"
         tools:layout="@layout/fragment_my_ptient" />
     <fragment
         android:id="@+id/todayPatientFragment"
-        android:name="uz.medion.ui.doctor.todayPatient.TodayPatientFragment"
+        android:name="uz.medion.ui.main.doctor.todayPatient.TodayPatientFragment"
         android:label="fragment_today_patient"
         tools:layout="@layout/fragment_today_patient" />
     <fragment
         android:id="@+id/patientInfoFragment"
-        android:name="uz.medion.ui.doctor.patientInfo.PatientInfoFragment"
+        android:name="uz.medion.ui.main.doctor.patientInfo.PatientInfoFragment"
         android:label="fragment_patient_info"
         tools:layout="@layout/fragment_patient_info" />
     <fragment
         android:id="@+id/personalDataFragment"
-        android:name="uz.medion.ui.doctor.personalData.PersonalDataFragment"
+        android:name="uz.medion.ui.main.doctor.personalData.PersonalDataFragment"
         android:label="fragment_personal_data"
         tools:layout="@layout/fragment_personal_data" />
     <fragment
         android:id="@+id/personalAreaFragment"
-        android:name="uz.medion.ui.doctor.personalArea.PersonalAreaFragment"
+        android:name="uz.medion.ui.main.doctor.personalArea.PersonalAreaFragment"
         android:label="fragment_personal_area"
         tools:layout="@layout/fragment_personal_area" />
     <fragment
@@ -48,7 +48,7 @@
         android:label="ChooseLanguageFragment" />
     <fragment
         android:id="@+id/chatDoctorFragment"
-        android:name="uz.medion.ui.doctor.chat.ChatDoctorFragment"
+        android:name="uz.medion.ui.main.doctor.chat.ChatDoctorFragment"
         android:label="chat_doctor_fragment"
         tools:layout="@layout/chat_doctor_fragment" />
     <fragment
