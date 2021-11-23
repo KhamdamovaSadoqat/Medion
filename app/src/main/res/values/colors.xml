@@ -19,5 +19,5 @@
     <color name="gainsboro_200">#E7E7E7</color>
     <color name="wood_bark_900">#201918</color> //calendar color
 
-
+<dimen name="corousel_spacing">16dp</dimen>
 </resources>
