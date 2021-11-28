@@ -53,7 +53,7 @@
                         android:id="@+id/tv_main"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
+                        android:layout_marginStart="70dp"
                         android:textColor="@color/white"
                         android:textIsSelectable="false"
                         android:textSize="16sp"
@@ -83,6 +83,21 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_search_white"
                         app:tint="@color/white" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/profile_admin"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:visibility="gone"
+                        android:padding="2dp"
+                        android:src="@drawable/doc_pic"
+                        android:layout_marginStart="40dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                        app:strokeColor="@android:color/darker_gray"
+                         />
 
                     <ImageView
                         android:id="@+id/iv_heart"

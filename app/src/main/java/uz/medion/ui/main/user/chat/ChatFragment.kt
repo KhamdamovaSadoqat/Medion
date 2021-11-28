@@ -62,10 +62,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatVM>()  {
                         uz.medion.utils.ViewUtils.fadeIn(binding.ivSend)
 
                         binding.ivSend.setOnClickListener {
-//                            chatAdapter=ChatAdapter()
-//                            binding.rvChat.layoutManager =
-//                                LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-//                            binding.rvChat.adapter = chatAdapter
+                            chatAdapter=ChatAdapter()
+                            binding.rvChat.layoutManager =
+                                LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                            binding.rvChat.adapter = chatAdapter
 
                         }
                     }else{

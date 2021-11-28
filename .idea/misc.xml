@@ -11,6 +11,8 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_send.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/activity_main.xml" value="0.14855072463768115" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/bg_send_message.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/chat_doctor_fragment.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_about_doctor.xml" value="0.15625" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_chat.xml" value="0.203125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_home.xml" value="0.203125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_received_message.xml" value="0.15625" />

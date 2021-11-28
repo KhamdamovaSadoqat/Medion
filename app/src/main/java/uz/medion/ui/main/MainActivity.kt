@@ -83,6 +83,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             else ViewUtils.fadeOut(binding.ivHeart)
             //where call icon should be displayed
             if (destination.id == R.id.chatFragment) {
+                ViewUtils.fadeIn(binding.profileAdmin)
                 ViewUtils.fadeIn(binding.ivCall)
                 binding.ivCall.setOnClickListener {
                     val number = "+998936285220"
@@ -92,6 +93,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 }
             } else {
                 ViewUtils.fadeOut(binding.ivCall)
+                ViewUtils.fadeOut(binding.profileAdmin)
+
             }
 
             when (destination.id) {
@@ -112,6 +115,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 R.id.myDoctorsFragment -> binding.tvMain.setText(R.string.my_doctors)
                 R.id.addressFragment -> binding.tvMain.setText(R.string.adress)
                 R.id.addCardFragment -> binding.tvMain.setText(R.string.add_card)
+                R.id.chatFragment -> binding.tvMain.setText(R.string.anastasiya)
             }
         }
 
