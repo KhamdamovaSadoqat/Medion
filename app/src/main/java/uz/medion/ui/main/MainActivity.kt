@@ -1,6 +1,9 @@
 package uz.medion.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import androidx.core.view.GravityCompat
@@ -40,7 +43,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 destination.id == R.id.chooseLanguageFragment ||
                 destination.id == R.id.myDocumentsFragment ||
                 destination.id == R.id.personalDateFragment ||
-                destination.id == R.id.esteticMedicineFragment
+                destination.id == R.id.esteticMedicineFragment ||
+                destination.id == R.id.chatFragment
             ) ViewUtils.fadeOut(binding.partialBottomNav.root)
             else ViewUtils.fadeIn(binding.partialBottomNav.root)
 
@@ -77,6 +81,18 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             //where heart should be displayed
             if (destination.id == R.id.aboutDoctorFragment) ViewUtils.fadeIn(binding.ivHeart)
             else ViewUtils.fadeOut(binding.ivHeart)
+            //where call icon should be displayed
+            if (destination.id == R.id.chatFragment) {
+                ViewUtils.fadeIn(binding.ivCall)
+                binding.ivCall.setOnClickListener {
+                    val number = "+998936285220"
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = (Uri.fromParts("tel", number, null))
+                    startActivity(intent)
+                }
+            } else {
+                ViewUtils.fadeOut(binding.ivCall)
+            }
 
             when (destination.id) {
                 R.id.adressAndContactsFragment -> binding.tvMain.setText(R.string.adress_contact)
@@ -99,7 +115,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             }
         }
 
-        binding.ivSearch.setOnClickListener{ navController.navigate(R.id.searchViewFragment)}
+        binding.ivSearch.setOnClickListener { navController.navigate(R.id.searchViewFragment) }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
 
         binding.nvNavigationDrawer.setNavigationItemSelectedListener { menuItem ->
@@ -132,7 +148,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 //        navController.navigate(R.id.olympiadFragment, null, navigationOptions)
         if (navController.currentDestination!!.id == R.id.paymentCompleteFragment) {
             navController.popBackStack(R.id.aboutDoctorFragment, false)
-        } else {
+        } else{
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)
             } else if (!bottomNavController.onBackPressed())

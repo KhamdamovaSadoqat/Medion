@@ -181,4 +181,9 @@
         android:name="uz.medion.ui.main.user.search.SearchViewFragment"
         android:label="fragment_search_view"
         tools:layout="@layout/fragment_search_view" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="uz.medion.ui.main.user.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>

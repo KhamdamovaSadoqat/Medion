@@ -298,4 +298,8 @@
     <string name="phone_number_mobil">+998906274859</string>
     <string name="todo">TODO</string>
 
+    <!-- EditText hint-->
+    <string name="write_mess">Напиши сообщение…</string>
+
+
 </resources>

@@ -58,6 +58,11 @@ object Constants {
     const val DENSITY_MDPI = 1.0
     const val DENSITY_LDPI = 0.75
 
+    const val SELECT_IMAGE = 111
+
+    const val VIEW_TYPE_SENT=1
+    const val VIEW_TYPE_RECEIVED=2
+
     const val MIN_HOURS_TO_SHOW_NEW_UPDATE_PROMPT: Int = 8
 
     fun getHomeItems(): ArrayList<HomeItem> {
@@ -570,16 +575,17 @@ object Constants {
             DoctorsItem(R.drawable.doc_sevara, R.string.dc_elena, R.string.pediatr)
         )
     }
-    fun getMyPatients():ArrayList<MyPatientsItem>{
+
+    fun getMyPatients(): ArrayList<MyPatientsItem> {
         return arrayListOf(
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true)
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, false),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, false),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, false),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true)
         )
     }
 }
