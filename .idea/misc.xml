@@ -55,12 +55,13 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_chat.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_eye.xml" value="0.21296296296296297" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_eye_slash.xml" value="0.21296296296296297" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_image_placeholder.xml" value="0.2703125" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_profile.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_search_grey.xml" value="0.2703125" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_selected.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_symbol.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_vector.xml" value="0.1" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment_time.xml" value="0.23731884057971014" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_my_documents.xml" value="0.23278985507246377" />
@@ -95,13 +96,14 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_details.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_search.xml" value="0.4" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_foto.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_home.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_my_documents.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_profile.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_search_view.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_selected.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_video.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_work_details.xml" value="0.25416666666666665" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/partial_bottom_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/partial_bottom_navigation.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/partial_bottom_navigation_doctors.xml" value="0.25416666666666665" />
       </map>
     </option>
