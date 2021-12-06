@@ -60,10 +60,12 @@ object Constants {
 
     const val SELECT_IMAGE = 111
 
-    const val VIEW_TYPE_SENT=1
-    const val VIEW_TYPE_RECEIVED=2
+    const val VIEW_TYPE_SENT = 1
+    const val VIEW_TYPE_RECEIVED = 2
 
     const val MIN_HOURS_TO_SHOW_NEW_UPDATE_PROMPT: Int = 8
+
+    const val ADMIN_PHONE_NUMBER = "+998936285220"
 
     fun getHomeItems(): ArrayList<HomeItem> {
         return arrayListOf(

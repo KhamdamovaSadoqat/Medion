@@ -14,14 +14,10 @@ import uz.medion.databinding.ItemSendMessageBinding
 
 class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-
     private  var chatMessage:List<ChatMessageItem> =ArrayList()
     private lateinit var senderId:String
 
-
-
     class SentMessageVH(
-
         private val binding: ItemSendMessageBinding,
         private val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -43,7 +39,6 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == Constants.VIEW_TYPE_SENT) {
             val inflater = LayoutInflater.from(parent.context)
@@ -63,7 +58,6 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
                 false
             )
             return ReceivedVH(dataBinding, parent.context)
-
         }
     }
 

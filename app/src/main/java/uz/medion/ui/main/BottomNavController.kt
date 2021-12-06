@@ -21,13 +21,11 @@ class BottomNavController(
     private val binding: PartialBottomNavigationBinding,
     private val activity: AppCompatActivity,
     private val navController: NavController
-){
-
+) {
     private var oldClickedItemPos = 0
     private var lastClickedItemPos = 0
     private lateinit var navOptions: NavOptions
     private var lastBackClickTime = 0L
-
 
     init {
         controlBottomNav()
@@ -36,22 +34,16 @@ class BottomNavController(
     private fun controlBottomNav() {
         binding.apply {
             cl1.setOnClickListener {
-
                 lastClickedItemPos = 0
                 handleClick()
-
             }
             cl2.setOnClickListener {
-
                 lastClickedItemPos = 1
                 handleClick()
-
             }
             cl3.setOnClickListener {
-
                 lastClickedItemPos = 2
                 handleClick()
-
             }
         }
     }
@@ -64,18 +56,11 @@ class BottomNavController(
     private fun makeDefaultItem() {
         binding.apply {
             when (oldClickedItemPos) {
-                0 -> {
-                    ViewUtils.fadeOut(view1, 200)
-                }
-                1 -> {
-                    ViewUtils.fadeOut(view2, 200)
-                }
-                2 -> {
-                    ViewUtils.fadeOut(view3, 200)
-                }
+                0 -> ViewUtils.fadeOut(view1, 200)
+                1 -> ViewUtils.fadeOut(view2, 200)
+                2 -> ViewUtils.fadeOut(view3, 200)
             }
         }
-
     }
 
     @SuppressLint("RtlHardcoded")
@@ -100,7 +85,7 @@ class BottomNavController(
                     ViewUtils.fadeIn(view2, 200)
 //                    navController.popBackStack(R.id.ratingFragment, false)
 //                    navController.navigate(R.id.ratingFragment, bundleOf(), navOptions)
-                    navController.navigate(R.id.searchViewFragment, bundleOf(),navOptions)
+                    navController.navigate(R.id.searchViewFragment, bundleOf(), navOptions)
                     return@apply
                 }
                 2 -> {
@@ -109,7 +94,9 @@ class BottomNavController(
                         .setPopUpTo(R.id.nv_navigation_drawer, true)
                         .build()
                     ViewUtils.fadeIn(view3, 200)
-                    if(!bindingActivity.dlMenu.isDrawerOpen(Gravity.LEFT)) bindingActivity.dlMenu.openDrawer(Gravity.LEFT)
+                    if (!bindingActivity.dlMenu.isDrawerOpen(Gravity.LEFT)) bindingActivity.dlMenu.openDrawer(
+                        Gravity.LEFT
+                    )
                     else bindingActivity.dlMenu.closeDrawer(Gravity.RIGHT)
                     return@apply
                 }
@@ -134,6 +121,4 @@ class BottomNavController(
         }
         return false
     }
-
-
 }

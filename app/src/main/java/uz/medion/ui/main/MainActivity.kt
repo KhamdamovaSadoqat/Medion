@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import uz.medion.R
+import uz.medion.data.constants.Constants.ADMIN_PHONE_NUMBER
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.ui.base.BaseActivity
 import uz.medion.utils.ViewUtils
@@ -81,20 +82,19 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             //where heart should be displayed
             if (destination.id == R.id.aboutDoctorFragment) ViewUtils.fadeIn(binding.ivHeart)
             else ViewUtils.fadeOut(binding.ivHeart)
+
             //where call icon should be displayed
             if (destination.id == R.id.chatFragment) {
                 ViewUtils.fadeIn(binding.profileAdmin)
                 ViewUtils.fadeIn(binding.ivCall)
                 binding.ivCall.setOnClickListener {
-                    val number = "+998936285220"
                     val intent = Intent(Intent.ACTION_DIAL)
-                    intent.data = (Uri.fromParts("tel", number, null))
+                    intent.data = (Uri.fromParts("tel", ADMIN_PHONE_NUMBER, null))
                     startActivity(intent)
                 }
             } else {
                 ViewUtils.fadeOut(binding.ivCall)
                 ViewUtils.fadeOut(binding.profileAdmin)
-
             }
 
             when (destination.id) {
