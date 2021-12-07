@@ -82,31 +82,31 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     @SuppressLint("SetTextI18n")
     private fun loadDialog() {
         dialogBinding = DialogAppointmentBinding.inflate(LayoutInflater.from(requireContext()))
-        val currentDate = CalendarDay.today()
-        val calendarState = dialogBinding.cvCalendar.state().edit()
-        calendarState.setMinimumDate(
-            CalendarDay.from(
-                currentDate.year,
-                currentDate.month,
-                currentDate.day
-            )
-        )
-        if (currentDate.month == 12)
-            calendarState.setMaximumDate(
-                CalendarDay.from(
-                    currentDate.year + 1,
-                    0,
-                    currentDate.day
-                )
-            )
-        calendarState.setMaximumDate(
-            CalendarDay.from(
-                currentDate.year,
-                currentDate.month + 1,
-                currentDate.day
-            )
-        )
-        calendarState.commit()
+//        val currentDate = CalendarDay.today()
+//        val calendarState = dialogBinding.cvCalendar.state().edit()
+//        calendarState.setMinimumDate(
+//            CalendarDay.from(
+//                currentDate.year,
+//                currentDate.month,
+//                currentDate.day
+//            )
+//        )
+//        if (currentDate.month == 12)
+//            calendarState.setMaximumDate(
+//                CalendarDay.from(
+//                    currentDate.year + 1,
+//                    0,
+//                    currentDate.day
+//                )
+//            )
+//        calendarState.setMaximumDate(
+//            CalendarDay.from(
+//                currentDate.year,
+//                currentDate.month + 1,
+//                currentDate.day
+//            )
+//        )
+//        calendarState.commit()
         dialogBinding.cvCalendar.setOnDateChangedListener { widget, date, selected ->
             loadResultTimeDialog(date)
             dismissCalendarDialog()

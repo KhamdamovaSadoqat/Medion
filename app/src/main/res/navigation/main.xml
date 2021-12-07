@@ -186,4 +186,8 @@
         android:name="uz.medion.ui.main.user.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="uz.medion.ui.main.user.calendar.CalendarFragment"
+        android:label="CalendarFragment" />
 </navigation>
