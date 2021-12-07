@@ -23,22 +23,24 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
+import uz.medion.data.model.remote.Status
 
-
+//login
 class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
     var isShowing: Boolean = false
 
     override fun onBound() {
-
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(Constants.GOOGLE_OAUTH)
             .requestEmail()
             .build()
-
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
+        setUp()
+    }
 
+    private fun setUp() {
         binding.imgGoogle.setOnClickListener {
             signIn()
         }
@@ -64,14 +66,35 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                 isShowing = true
             }
         }
+        //login
         binding.btnSignIn.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            if (checkAllFields()){
+                Log.d("----------", "onBound: clicking")
+                vm.login(binding.etLogin.toString(), binding.etPassword.toString()).observe(this){response ->
+                    when (response.status) {
+                        Status.LOADING -> {
+                            Log.d("----------", "setUp: loading")
+                        }
+                        Status.SUCCESS -> {
+                            Log.d("----------", "onBound: logged in successfully")
+                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+                        }
+                        Status.ERROR -> {
+                            Log.e("----------", "error: ${response.message}")
+                        }
+                    }
+                }
+            }
+
+
         }
+        //regstration
         binding.btnSignUp.setOnClickListener {
             findNavController().navigate(R.id.signUpFragment)
         }
+
     }
 
     private fun signIn() {
@@ -112,13 +135,24 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
 //            val googleProfilePicURL = account?.photoUrl.toString()
 //            val googleIdToken = account?.idToken ?: ""
 
-
         } catch (e: ApiException) {
             // Sign in was unsuccessful
             Log.e(
                 "failed code=", e.statusCode.toString()
             )
         }
+    }
+
+    private fun checkAllFields(): Boolean {
+        if (binding.etLogin.length() == 0) {
+            binding.etLogin.error = requireContext().getString(R.string.required_field)
+            return false
+        } else binding.etLogin.error = null
+        if(binding.etPassword.length() == 0){
+            binding.etPassword.error = requireContext().getString(R.string.required_field)
+            return false
+        } else binding.etPassword.error = null
+        return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

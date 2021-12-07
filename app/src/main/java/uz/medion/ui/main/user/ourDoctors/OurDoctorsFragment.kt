@@ -101,8 +101,8 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             )
         )
         if (currentDate.month == 12)
-            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 0, currentDate.day))
-        calendarState.setMaximumDate(
+            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 1, currentDate.day))
+        else calendarState.setMaximumDate(
             CalendarDay.from(
                 currentDate.year,
                 currentDate.month + 1,

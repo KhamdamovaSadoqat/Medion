@@ -8,7 +8,7 @@ import uz.medion.R
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentSignUpBinding
 import uz.medion.ui.base.BaseFragment
-
+//registration
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
 
     private val args: SignUpFragmentArgs by navArgs()
