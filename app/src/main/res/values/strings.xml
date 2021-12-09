@@ -18,8 +18,13 @@
     <string name="parol">Пароль</string>
     <string name="remember_me">Запомнить меня</string>
     <string name="sign_up_with">Войти с помощью</string>
-    <string name="sms_send">На указанный вами номер +998 (90) 548 58 55 отправлено SMS с кодом доступа</string>
-    <string name="resend_code">Отправить код повторно через 1:09</string>
+    <string name="sms_send">На указанный вами номер %s отправлено SMS с кодом доступа</string>
+    <string name="resend_code">Отправить код повторно через %s</string>
+    <string name="already_taken">Этот номер уже зарегистрирован </string>
+    <string name="required_field">Это поле обязательно к заполнению</string>
+    <string name="invalid_phone_number">Неправильный номер телефона</string>
+    <string name="invalid_email">Неверный адрес электронной почты</string>
+    <string name="confirm">Подтвердить</string>
 
     <!-- home -->
     <string name="medical_service">Медицинские услуги</string>
@@ -136,7 +141,7 @@
     <string name="name">Имя</string>
     <string name="surname">Фамилия</string>
     <string name="middle_name">Отчество</string>
-    <string name="fill_phone_numeber">+998(__) ___-__-__</string>
+    <string name="fill_phone_numeber">_________</string>
     <string name="blood_group">Группа крови</string>
     <string name="dob">Дата рождения</string>
     <string name="submit">Записаться</string>
@@ -286,9 +291,8 @@
     <string name="add">Добавить</string>
     <string name="thanks">Спасибо!</string>
     <string name="payment_competed">Оплата прошла УСПЕШНО</string>
+    <string name="email">Email</string>
 
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="personal_data">Личные данные</string>
     <string name="my_patients">Mои пациенты</string>

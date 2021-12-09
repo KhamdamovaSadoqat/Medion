@@ -20,6 +20,7 @@ object Keys {
     const val BUNDLE_CHANGE_PHONE_NUMBER = "bundle_change_phone_number"
     const val BUNDLE_LOCATION_POSITION = "bundle_location_position"
     const val BUNDLE_MAPVIEW = "bundle_mapview"
+    const val BUNDLE_REQUEST_ID = "bundle_request_id"
 
     const val BUNDLE_SPA_TYPE = "bundle_spa_type"
     const val BUNDLE_APPOINTMENT_TYPE = "bundle_appointment_type"
@@ -27,4 +28,7 @@ object Keys {
     const val BUNDLE_APPOINTMENT_DATE = "bundle_appointment_date"
     const val BUNDLE_APPOINTMENT_TIME = "bundle_appointment_time"
     const val BUNDLE_APPOINTMENT_CARD_NUMBER = "bundle_appointment_card_number"
+
+
+    const val REQUEST_CODE_SIGN_IN = 9001
 }
