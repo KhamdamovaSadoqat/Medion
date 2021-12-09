@@ -3,6 +3,7 @@ package uz.medion.data.retrofit
 import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
+import okhttp3.logging.HttpLoggingInterceptor
 import okio.Buffer
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -10,6 +11,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import uz.medion.data.constants.Constants
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+import okhttp3.Interceptor
+import okhttp3.Request
+
 
 class ApiClient {
     companion object {
@@ -22,26 +26,18 @@ class ApiClient {
 
         fun getApiClient(): ApiInterface {
 
+            val logging = HttpLoggingInterceptor()
+            logging.level = HttpLoggingInterceptor.Level.BODY
+
             val okHttpClient = OkHttpClient.Builder()
                 .readTimeout(100, TimeUnit.SECONDS)
                 .connectTimeout(100, TimeUnit.SECONDS)
                 .addInterceptor { chain ->
                     val request = chain.request().newBuilder().apply {
-                        addHeader("language", Constants.language)
+                        addHeader("Content-Type", "application/json")
                     }.build()
-
-//                    Log.d(
-//                        "--------------",
-//                        "getApiClient: ${request.body()?.let { bodyToString(it) }}"
-//                    )
-//
-//                    Log.d(
-//                        "--------------",
-//                        "intercept: ${request.url()}   ${request.body().toString()}" +
-//                                request.headers().toString()
-//                    )
                     chain.proceed(request)
-                }
+                }.addInterceptor(logging)
                 .build()
             if (retrofit == null) {
                 retrofit = Retrofit.Builder()

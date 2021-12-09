@@ -24,6 +24,7 @@
     <string name="required_field">Это поле обязательно к заполнению</string>
     <string name="invalid_phone_number">Неправильный номер телефона</string>
     <string name="invalid_email">Неверный адрес электронной почты</string>
+    <string name="confirm">Подтвердить</string>
 
     <!-- home -->
     <string name="medical_service">Медицинские услуги</string>

@@ -3,11 +3,14 @@ package uz.medion.ui.splash.sign_up
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import uz.medion.R
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentSignUpBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.splash.sign_in.SignInFragmentDirections
+
 //registration
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
 
@@ -27,43 +30,49 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
         binding.btnSubmit.setOnClickListener {
             // checking where user complete all fields correctly
             if (checkAllFields()) {
-                vm.getIsRegistrationFlowAvailable(binding.etNumber.rawText)
+//                vm.getIsRegistrationFlowAvailable(binding.etNumber.rawText)
+//                    .observe(this) { response ->
+//                        when (response.status) {
+//                            Status.LOADING -> {
+//                            }
+//                            Status.SUCCESS -> {
+//                                Log.d("----------", "onBound: username is available")
+//                            }
+//                            Status.ERROR -> {
+//                                Log.e("----------", "error: ${response.message}")
+//                                binding.etNumber.error =
+//                                    requireContext().getText(R.string.already_taken)
+//                            }
+//                        }
+//                    }
+
+
+                vm.getResponseOfRequestEmail(binding.etEmail.text.toString())
                     .observe(this) { response ->
                         when (response.status) {
                             Status.LOADING -> {
                             }
                             Status.SUCCESS -> {
                                 Log.d("----------", "onBound: username is available")
+                                Log.d("----------", "onBound: response.data: ${response.data}")
+                                Log.d("----------", "onBound: response.message: ${response.message}")
+                                Log.d("----------", "onBound: response.status: ${response.status}")
+
+                                val action =
+                                    SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment(
+                                        response.data!!.id,
+                                        binding.etName.text.toString(),
+                                        binding.etEmail.text.toString(),
+                                        binding.etNumber.text.toString()
+                                    )
+                                findNavController().navigate(action)
+
                             }
                             Status.ERROR -> {
-                                Log.e("----------", "error: ${response.message}")
-                                binding.etNumber.error =
-                                    requireContext().getText(R.string.already_taken)
-                                response.throwable?.let { handleError(it) }
+                                Log.e("----------", "error email: ${response.message}")
                             }
                         }
                     }
-
-                vm.getResponseOfRequestEmail(binding.etEmail.toString()).observe(this) { response ->
-                    when (response.status) {
-                        Status.LOADING -> {
-                        }
-                        Status.SUCCESS -> {
-                            Log.d("----------", "onBound: username is available")
-                            Log.d("----------", "onBound: response.data: ${response.data}")
-                            Log.d("----------", "onBound: response.message: ${response.message}")
-                            Log.d("----------", "onBound: response.status: ${response.status}")
-                            Log.d(
-                                "----------",
-                                "onBound: response.throwable: ${response.throwable}"
-                            )
-                        }
-                        Status.ERROR -> {
-                            Log.e("----------", "error email: ${response.message}")
-//                        response.throwable?.let { handleError(it) }
-                        }
-                    }
-                }
             }
         }
     }

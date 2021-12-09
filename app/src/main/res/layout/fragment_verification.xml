@@ -10,7 +10,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_submit"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -63,7 +63,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/bg_red_dark_8"
-            android:text="@string/submit"
+            android:text="@string/confirm"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent" />

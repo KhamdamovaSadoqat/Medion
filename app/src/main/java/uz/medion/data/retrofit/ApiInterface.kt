@@ -6,15 +6,6 @@ import uz.medion.data.model.*
 
 interface ApiInterface {
 
-    //Get
-    //post
-
-//    @GET
-//    fun getHuquqiyBilimlarSinovi(
-//        @Url url: String,
-//        @Header("Authorization") token: String
-//    ): Observable<HuquqiyBilimlarSinovi>
-
     @FormUrlEncoded
     @POST("HERE SHOULD BE URL")
     fun sendComment(
@@ -23,22 +14,32 @@ interface ApiInterface {
         @Header("Authorization") token: String
     ): Observable<SUCCESSTEST>
 
-    @GET("http://45.137.148.124:8080/api/v1/registration/admin@admin.com")
+    @GET("/api/v1/registration")
     fun isRegistrationFlowAvailable(
         @Header("username") userName: String
     ): Observable<IsRegistrationFlowAvailable>
 
     @FormUrlEncoded
-    @POST("http://45.137.148.124:8080/api/v1/registration/request")
+    @POST("/api/v1/registration/request")
     fun requestMail(
-        @Field("email")email: String
+        @Query("username") userName: String, // email
+        @Field("email") email: String
     ): Observable<ResponseOfRequestEmail>
 
+
     @FormUrlEncoded
-    @POST("http://45.137.148.124:8080/api/v1/auth/login")
+    @POST("/api/v1/auth/login")
     fun login(
-        @Field("password")password: String,
-        @Field("username")userName: String
+        @Field("password") password: String,
+        @Field("username") userName: String
     ): Observable<UserLogin>
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/registration/{requestId}")
+    fun verifyAndRegisterUser(
+        @Path("requestId") requestId: String,
+        @Query("code") code: String,
+        @Body registrationRequest: RegistrationRequest
+    ): Observable<RegistrationResponse>
 
 }

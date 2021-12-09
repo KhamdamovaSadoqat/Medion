@@ -35,7 +35,24 @@
         tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_verificationFragment"
-            app:destination="@id/verificationFragment" />
+            app:destination="@id/verificationFragment" >
+            <argument
+                android:name="requestId"
+                app:argType="string"
+                app:nullable="true" />
+            <argument
+                android:name="userName"
+                app:argType="string"
+                app:nullable="true" />
+            <argument
+                android:name="userSurname"
+                app:argType="string"
+                app:nullable="true" />
+            <argument
+                android:name="phoneNumber"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
         <argument
             android:name="userName"
             android:defaultValue="@null"
@@ -57,7 +74,28 @@
         android:id="@+id/verificationFragment"
         android:name="uz.medion.ui.splash.verification.VerificationFragment"
         android:label="VerificationFragment"
-        tools:layout="@layout/fragment_verification" />
+        tools:layout="@layout/fragment_verification">
+        <argument
+            android:name="requestId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true"/>
+        <argument
+            android:name="userName"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="userSurname"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="phoneNumber"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 
 
 </navigation>

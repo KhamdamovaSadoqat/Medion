@@ -50,7 +50,7 @@ class Repository {
         response: MutableLiveData<Resource<ResponseOfRequestEmail>>
     ) {
         compositeDisposable.add(
-            apiClient.requestMail(email)
+            apiClient.requestMail(email, email)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<ResponseOfRequestEmail>() {
@@ -82,6 +82,36 @@ class Repository {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<IsRegistrationFlowAvailable>() {
                     override fun onNext(t: IsRegistrationFlowAvailable) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+    fun verifyAndRegisterUser(
+        requestId: String,
+        code: String,
+        registrationRequest: RegistrationRequest,
+        response: MutableLiveData<Resource<RegistrationResponse>>
+    ){
+        compositeDisposable.add(
+            apiClient.verifyAndRegisterUser(
+                requestId,
+                code, registrationRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<RegistrationResponse>() {
+                    override fun onNext(t: RegistrationResponse) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
 
