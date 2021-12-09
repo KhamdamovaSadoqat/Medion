@@ -52,6 +52,14 @@
                 android:name="phoneNumber"
                 app:argType="string"
                 app:nullable="true" />
+            <argument
+                android:name="password"
+                app:argType="string"
+                app:nullable="true" />
+            <argument
+                android:name="email"
+                app:argType="string"
+                app:nullable="true" />
         </action>
         <argument
             android:name="userName"
@@ -92,6 +100,16 @@
             app:nullable="true" />
         <argument
             android:name="phoneNumber"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="password"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="email"
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />

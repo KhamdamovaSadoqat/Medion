@@ -9,7 +9,6 @@ import uz.medion.R
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentSignUpBinding
 import uz.medion.ui.base.BaseFragment
-import uz.medion.ui.splash.sign_in.SignInFragmentDirections
 
 //registration
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
@@ -53,23 +52,20 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
                             Status.LOADING -> {
                             }
                             Status.SUCCESS -> {
-                                Log.d("----------", "onBound: username is available")
-                                Log.d("----------", "onBound: response.data: ${response.data}")
-                                Log.d("----------", "onBound: response.message: ${response.message}")
-                                Log.d("----------", "onBound: response.status: ${response.status}")
-
                                 val action =
                                     SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment(
                                         response.data!!.id,
                                         binding.etName.text.toString(),
-                                        binding.etEmail.text.toString(),
-                                        binding.etNumber.text.toString()
+                                        binding.etSurname.text.toString(),
+                                        binding.etNumber.text.toString(),
+                                        binding.etPassword.text.toString(),
+                                        binding.etEmail.text.toString()
                                     )
                                 findNavController().navigate(action)
 
                             }
                             Status.ERROR -> {
-                                Log.e("----------", "error email: ${response.message}")
+                                Log.e("----------", "error: ${response.message}")
                             }
                         }
                     }

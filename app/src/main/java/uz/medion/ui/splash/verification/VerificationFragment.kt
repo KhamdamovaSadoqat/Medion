@@ -7,32 +7,23 @@ import uz.medion.R
 import uz.medion.data.constants.Keys
 import uz.medion.databinding.FragmentVerificationBinding
 import uz.medion.ui.base.BaseFragment
-
 import `in`.aabhasjindal.otptextview.OTPListener
-import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.RegistrationRequest
 import uz.medion.data.model.remote.Status
 import uz.medion.ui.main.MainActivity
-import uz.medion.ui.splash.sign_up.SignUpFragmentArgs
-
 
 class VerificationFragment : BaseFragment<FragmentVerificationBinding, VerificationVM>() {
 
     private var changingNumber: String? = null
     private var requestId: String? = null
     private var registrationRequest: RegistrationRequest? = null
-    private var verificationUrl: String = ""
     internal val args: VerificationFragmentArgs by navArgs()
 
     override fun onBound() {
         if (arguments != null) {
-            Log.d(
-                "----------",
-                "onBound: requestId: ${args.requestId}"
-            )
             if (requireArguments().containsKey(Keys.BUNDLE_CHANGE_PHONE_NUMBER)) {
                 changingNumber = requireArguments().getString(Keys.BUNDLE_CHANGE_PHONE_NUMBER)
                 binding.btnSubmit.setOnClickListener {
@@ -45,24 +36,21 @@ class VerificationFragment : BaseFragment<FragmentVerificationBinding, Verificat
                 binding.otpView.otpListener = object : OTPListener {
                     override fun onInteractionListener() {
                         // fired when user types something in the Otpbox
-                        Log.d("----------", "onInteractionListener: working")
                     }
                     override fun onOTPComplete(otp: String) {
                         // fired when user has entered the OTP fully.
-                        //here need to pass new password it is left undone//
-                        Log.d("----------", "onOTPComplete: working")
+
                         registrationRequest = RegistrationRequest(
-                            args.userSurname,
+                            args.email,
                             "${args.userName} ${args.userSurname}",
-                            "hello",
+                            args.password,
                             args.phoneNumber
                         )
-                        //url for verify given code from user side
+
                         vm.verifyAndRegisterUser(args.requestId!!, otp, registrationRequest!!)
                             .observe(this@VerificationFragment) { response ->
                                 when (response.status) {
-                                    Status.LOADING -> {
-                                    }
+                                    Status.LOADING -> { }
                                     Status.SUCCESS -> {
                                         Constants.accessToken =
                                             response.data!!.accessToken.toString()
@@ -76,11 +64,8 @@ class VerificationFragment : BaseFragment<FragmentVerificationBinding, Verificat
                                         startActivity(intent)
                                         requireActivity().finish()
                                     }
-                                    Status.ERROR -> {
-
-                                    }
+                                    Status.ERROR -> { }
                                 }
-
                             }
                     }
                 }
@@ -91,5 +76,4 @@ class VerificationFragment : BaseFragment<FragmentVerificationBinding, Verificat
     override fun getLayoutResId() = R.layout.fragment_verification
     override val vm: VerificationVM
         get() = ViewModelProvider(this).get(VerificationVM::class.java)
-
 }
