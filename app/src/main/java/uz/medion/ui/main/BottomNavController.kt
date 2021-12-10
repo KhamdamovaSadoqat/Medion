@@ -45,6 +45,10 @@ class BottomNavController(
                 lastClickedItemPos = 2
                 handleClick()
             }
+            cl4.setOnClickListener {
+                lastClickedItemPos = 3
+                handleClick()
+            }
         }
     }
 
@@ -59,6 +63,7 @@ class BottomNavController(
                 0 -> ViewUtils.fadeOut(view1, 200)
                 1 -> ViewUtils.fadeOut(view2, 200)
                 2 -> ViewUtils.fadeOut(view3, 200)
+                3 -> ViewUtils.fadeOut(view4, 200)
             }
         }
     }
@@ -91,15 +96,24 @@ class BottomNavController(
                 2 -> {
                     navOptions = NavOptions.Builder()
                         .setLaunchSingleTop(true)
-                        .setPopUpTo(R.id.nv_navigation_drawer, true)
                         .build()
                     ViewUtils.fadeIn(view3, 200)
+                    navController.navigate(R.id.calendarFragment, bundleOf(), navOptions)
+                    return@apply
+                }
+                  3 -> {
+                    navOptions = NavOptions.Builder()
+                        .setLaunchSingleTop(true)
+                        .setPopUpTo(R.id.nv_navigation_drawer, true)
+                        .build()
+                    ViewUtils.fadeIn(view4, 200)
                     if (!bindingActivity.dlMenu.isDrawerOpen(Gravity.LEFT)) bindingActivity.dlMenu.openDrawer(
                         Gravity.LEFT
                     )
                     else bindingActivity.dlMenu.closeDrawer(Gravity.RIGHT)
                     return@apply
                 }
+
             }
         }
         oldClickedItemPos = lastClickedItemPos

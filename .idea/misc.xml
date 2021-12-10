@@ -6,17 +6,36 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/bg_editext.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/bg_received_message.xml" value="0.365234375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/bg_sent_messeage.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/bg_solitude_16.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_calendar.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_ellipse_56.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_home.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_menu.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_micrphone.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_send.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/activity_main.xml" value="0.14855072463768115" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/bg_send_message.xml" value="0.203125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/chat_doctor_fragment.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/dialog_appointment_time.xml" value="0.203125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_about_doctor.xml" value="0.15625" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_appointment.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_appointment_enroll.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_calendar.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_certificate.xml" value="0.203125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_chat.xml" value="0.203125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_home.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_our_doctors.xml" value="0.1431159420289855" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_doctor_category.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_doctor_details.xml" value="0.129981884057971" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_home.xml" value="0.1480978260869565" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_received_message.xml" value="0.15625" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_send_message.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_sertificate.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_time_table.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_work_details.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/nav_header_main.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/partial_bottom_navigation.xml" value="0.14990942028985507" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/menu/drawer_menu.xml" value="0.203125" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_4.xml" value="0.240625" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_8.xml" value="0.240625" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_bottom_16.xml" value="0.240625" />
@@ -206,7 +225,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
