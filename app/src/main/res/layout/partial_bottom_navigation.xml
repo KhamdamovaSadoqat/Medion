@@ -16,13 +16,13 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl1"
-                android:layout_width="38dp"
+                android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_weight="1">
 
                 <View
                     android:id="@+id/view_1"
-                    android:layout_width="38dp"
+                    android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_solitude_16"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -43,13 +43,13 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl2"
-                android:layout_width="38dp"
+                android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_weight="1">
 
                 <View
                     android:id="@+id/view_2"
-                    android:layout_width="38dp"
+                    android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_solitude_16"
                     android:visibility="gone"
@@ -71,13 +71,13 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl3"
-                android:layout_width="38dp"
+                android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_weight="1">
 
                 <View
                     android:id="@+id/view_3"
-                    android:layout_width="38dp"
+                    android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_solitude_16"
                     android:visibility="gone"
@@ -100,13 +100,13 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl4"
-                android:layout_width="38dp"
+                android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_weight="1">
 
                 <View
                     android:id="@+id/view_4"
-                    android:layout_width="38dp"
+                    android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_solitude_16"
                     android:visibility="gone"

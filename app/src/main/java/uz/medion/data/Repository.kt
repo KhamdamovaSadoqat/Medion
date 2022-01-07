@@ -1,10 +1,14 @@
 package uz.medion.data
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.*
 import uz.medion.data.model.remote.Resource
@@ -18,7 +22,7 @@ class Repository {
 
     fun sendComment(
         commentItem: AboutDoctorCommentItem,
-        response: MutableLiveData<Resource<AboutDoctorCommentItem>>
+        response: MutableLiveData<Resource<AboutDoctorCommentItem>>,
     ) {
         compositeDisposable.add(
             apiClient.sendComment(1000, "HERE SHOULD BE SOMETHING", "TOKEN")
@@ -47,10 +51,10 @@ class Repository {
 
     fun responseOfRequestEmail(
         email: String,
-        response: MutableLiveData<Resource<ResponseOfRequestEmail>>
+        response: MutableLiveData<Resource<ResponseOfRequestEmail>>,
     ) {
         compositeDisposable.add(
-            apiClient.requestMail(email, email)
+            apiClient.requestMail(email)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<ResponseOfRequestEmail>() {
@@ -59,10 +63,20 @@ class Repository {
                     }
 
                     override fun onError(e: Throwable) {
-                        if (e.message?.contains("401", true) == true) {
-                            Constants.setUnAuthorized(true)
+                        if (e is HttpException) {
+                            val errorBody = e.response()?.errorBody()
+                            val error = Gson().fromJson<RegistrationErrorResponse>(errorBody!!.charStream(),
+                                object : TypeToken<RegistrationErrorResponse>() {}.type)
+                            response.value = Resource(Status.ERROR, null, error.message, e)
+                            Log.d("----------", "onError: $error")
                         }
-                        response.value = Resource(Status.ERROR, null, e.message, e)
+//                        if (e.message?.contains("401", true) == true) {
+//                            Constants.setUnAuthorized(true)
+//                        }
+//                        Log.d("----------", "onError: ${e.message}")
+//                        Log.d("----------", "onError: ${e.localizedMessage}")
+//                        Log.d("----------", "onError: ${e.cause?.message}")
+//                        response.value = Resource(Status.ERROR, null, e.message, e)
                     }
 
                     override fun onComplete() {}
@@ -74,7 +88,7 @@ class Repository {
 
     fun getIsRegistrationFlowAvailable(
         userName: String,
-        response: MutableLiveData<Resource<IsRegistrationFlowAvailable>>
+        response: MutableLiveData<Resource<IsRegistrationFlowAvailable>>,
     ) {
         compositeDisposable.add(
             apiClient.isRegistrationFlowAvailable(userName)
@@ -102,8 +116,8 @@ class Repository {
         requestId: String,
         code: String,
         registrationRequest: RegistrationRequest,
-        response: MutableLiveData<Resource<RegistrationResponse>>
-    ){
+        response: MutableLiveData<Resource<RegistrationResponse>>,
+    ) {
         compositeDisposable.add(
             apiClient.verifyAndRegisterUser(
                 requestId,
@@ -131,8 +145,8 @@ class Repository {
     fun login(
         password: String,
         userName: String,
-        response: MutableLiveData<Resource<UserLogin>>
-    ){
+        response: MutableLiveData<Resource<UserLogin>>,
+    ) {
         compositeDisposable.add(
             apiClient.login(password, userName)
                 .subscribeOn(Schedulers.io())
