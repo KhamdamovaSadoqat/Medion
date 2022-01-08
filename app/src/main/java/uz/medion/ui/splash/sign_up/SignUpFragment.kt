@@ -16,15 +16,6 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import com.google.gson.Gson
 
-
-
-
-
-
-
-
-
-
 //registration
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
 
@@ -68,6 +59,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
                                 Log.d("----------", "onBound: loading")
                             }
                             Status.SUCCESS -> {
+                                
                                 val action =
                                     SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment(
                                         response.data!!.id,
@@ -78,7 +70,6 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
                                         binding.etEmail.text.toString()
                                     )
                                 findNavController().navigate(action)
-
                             }
                             Status.ERROR -> {
                                 Log.d("----------", "onBound: ${response.message}")
@@ -90,8 +81,6 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
                                     if(response.data.id.toString() == requireContext().getString(R.string.user_is_registered))
                                         binding.etEmail.error = requireContext().getString(R.string.user_is_registered)
                                 }
-
-
                             }
                         }
                     }

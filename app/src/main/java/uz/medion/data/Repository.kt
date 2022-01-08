@@ -70,13 +70,6 @@ class Repository {
                             response.value = Resource(Status.ERROR, null, error.message, e)
                             Log.d("----------", "onError: $error")
                         }
-//                        if (e.message?.contains("401", true) == true) {
-//                            Constants.setUnAuthorized(true)
-//                        }
-//                        Log.d("----------", "onError: ${e.message}")
-//                        Log.d("----------", "onError: ${e.localizedMessage}")
-//                        Log.d("----------", "onError: ${e.cause?.message}")
-//                        response.value = Resource(Status.ERROR, null, e.message, e)
                     }
 
                     override fun onComplete() {}
@@ -143,12 +136,11 @@ class Repository {
     }
 
     fun login(
-        password: String,
-        userName: String,
+        login: Login,
         response: MutableLiveData<Resource<UserLogin>>,
     ) {
         compositeDisposable.add(
-            apiClient.login(password, userName)
+            apiClient.login(login)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<UserLogin>() {

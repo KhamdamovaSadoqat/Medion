@@ -1,13 +1,9 @@
 package uz.medion.ui.splash.sign_in
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -23,6 +19,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
+import uz.medion.data.model.Login
 import uz.medion.data.model.remote.Status
 
 //login
@@ -69,14 +66,16 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
         //login
         binding.btnSignIn.setOnClickListener {
             if (checkAllFields()){
-                Log.d("----------", "onBound: clicking")
-                vm.login(binding.etLogin.toString(), binding.etPassword.toString()).observe(this){response ->
+                vm.login(Login(binding.etPassword.text.toString(), binding.etLogin.text.toString())).observe(this){ response ->
                     when (response.status) {
                         Status.LOADING -> {
                             Log.d("----------", "setUp: loading")
                         }
                         Status.SUCCESS -> {
-                            Log.d("----------", "onBound: logged in successfully")
+                            prefs.accessToken = response.data?.accessToken
+                            prefs.refreshToken = response.data?.refreshToken
+
+                            // starting new activity and ending the login
                             val intent = Intent(requireContext(), MainActivity::class.java)
                             startActivity(intent)
                             requireActivity().finish()
@@ -87,10 +86,9 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                     }
                 }
             }
-
-
         }
-        //regstration
+
+        //registration
         binding.btnSignUp.setOnClickListener {
             findNavController().navigate(R.id.signUpFragment)
         }
@@ -128,12 +126,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                 account.id
             )
             findNavController().navigate(action)
-//            val googleId = account?.id ?: ""
-//            val googleFirstName = account?.givenName ?: ""
-//            val googleLastName = account?.familyName ?: ""
-//            val googleEmail = account?.email ?: ""
-//            val googleProfilePicURL = account?.photoUrl.toString()
-//            val googleIdToken = account?.idToken ?: ""
 
         } catch (e: ApiException) {
             // Sign in was unsuccessful
@@ -156,7 +148,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
         if (requestCode == Keys.REQUEST_CODE_SIGN_IN) {
             val task =
                 GoogleSignIn.getSignedInAccountFromIntent(data)

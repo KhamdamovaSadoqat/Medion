@@ -19,26 +19,10 @@ interface ApiInterface {
         @Header("username") userName: String
     ): Observable<IsRegistrationFlowAvailable>
 
-    //https://internal.nutq.uz/api/v1/cabinet/synthesize/?t=sinov uchun matn
-    //kotlin coroutines
-    @POST("/api/v1/cabinet/synthesize")
-    fun synthesize(
-        @Query("t") text: String
-    ){
-
-    }
-
-    @POST("/api/v1/registration/request")
+    @POST("/api/v1/registration/request") // createRegistrationRequest
     fun requestMail(
         @Query("username") userName: String // email
     ): Observable<ResponseOfRequestEmail>
-
-    @FormUrlEncoded
-    @POST("/api/v1/auth/login")
-    fun login(
-        @Field("password") password: String,
-        @Field("username") userName: String
-    ): Observable<UserLogin>
 
     @Headers("Content-Type: application/json")
     @POST("/api/v1/registration/{requestId}")
@@ -48,4 +32,9 @@ interface ApiInterface {
         @Body registrationRequest: RegistrationRequest
     ): Observable<RegistrationResponse>
 
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/auth/login")
+    fun login(
+        @Body login: Login
+    ): Observable<UserLogin>
 }
