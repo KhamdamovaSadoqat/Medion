@@ -136,8 +136,10 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
     }
 
     private fun checkAllFields(): Boolean {
-        if (binding.etLogin.length() == 0) {
-            binding.etLogin.error = requireContext().getString(R.string.required_field)
+        if (binding.etLogin.length() == 0 || android.util.Patterns.EMAIL_ADDRESS.matcher(binding.etLogin.toString())
+                .matches()
+        ) {
+            binding.etLogin.error = requireContext().getText(R.string.invalid_email)
             return false
         } else binding.etLogin.error = null
         if(binding.etPassword.length() == 0){

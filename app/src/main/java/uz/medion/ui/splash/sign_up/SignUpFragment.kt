@@ -51,7 +51,6 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
 //                        }
 //                    }
 
-
                 vm.getResponseOfRequestEmail(binding.etEmail.text.toString())
                     .observe(this) { response ->
                         when (response.status) {

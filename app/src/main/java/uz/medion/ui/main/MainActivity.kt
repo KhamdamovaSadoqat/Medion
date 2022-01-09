@@ -11,9 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import uz.medion.R
+import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Constants.ADMIN_PHONE_NUMBER
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.ui.base.BaseActivity
+import uz.medion.ui.splash.SplashActivity
 import uz.medion.utils.ViewUtils
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
@@ -21,6 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavController: BottomNavController
     private lateinit var navController: NavController
+    private var isFirstOpen = true
 
     override fun onBound() {
         setUp()
@@ -33,6 +36,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         }
         bottomNavController =
             BottomNavController(binding, binding.partialBottomNav, this, navController)
+        Constants.getUnAuthorized().observe(this) {
+            if (it && !isFirstOpen) {
+                val intent = Intent(this, SplashActivity::class.java)
+                prefs.isRegistered = false
+                startActivity(intent)
+                finish()
+            }
+        }
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             //where bottom navigation should be removed

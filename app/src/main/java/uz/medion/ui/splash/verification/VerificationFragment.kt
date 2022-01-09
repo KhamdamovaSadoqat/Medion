@@ -56,6 +56,7 @@ class VerificationFragment : BaseFragment<FragmentVerificationBinding, Verificat
                                             response.data!!.accessToken.toString()
                                         Constants.refreshToken =
                                             response.data.refreshToken.toString()
+
                                         binding.btnSubmit.background = ContextCompat.getDrawable(
                                             requireContext(),
                                             R.drawable.bg_red_8
