@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -9,116 +10,62 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toTopOf="@id/btn_submit"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_sms_send"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="@string/sms_send"
-                android:textSize="16sp"
-                android:textColor="@color/steel_grey_800"
                 android:fontFamily="@font/roboto_regular"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:text="@string/sms_send"
+                android:textColor="@color/steel_grey_800"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/ll_verification"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:orientation="horizontal"
+            <in.aabhasjindal.otptextview.OtpTextView
+                android:id="@+id/otp_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/tv_sms_send">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:background="@drawable/bg_transparent_8"
-                    app:boxStrokeWidth="0dp"
-                    app:boxStrokeWidthFocused="0dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00FFFFFF"
-                        android:maxLines="1"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:background="@drawable/bg_transparent_8"
-                    app:boxStrokeWidth="0dp"
-                    app:boxStrokeWidthFocused="0dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00FFFFFF"
-                        android:maxLines="1"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:background="@drawable/bg_transparent_8"
-                    app:boxStrokeWidth="0dp"
-                    app:boxStrokeWidthFocused="0dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00FFFFFF"
-                        android:maxLines="1"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:background="@drawable/bg_transparent_8"
-                    app:boxStrokeWidth="0dp"
-                    app:boxStrokeWidthFocused="0dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00FFFFFF"
-                        android:maxLines="1"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
+                android:textColor="@color/tangaroa_900"
+                app:bar_enabled="false"
+                app:bar_height="2dp"
+                app:box_margin_left="12dp"
+                app:box_margin_right="12dp"
+                app:height="64dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_sms_send"
+                app:length="4"
+                app:otp_box_background="@drawable/bg_transparent_8"
+                app:otp_text_size="24dp"
+                app:width="64dp" />
 
             <TextView
                 android:id="@+id/tv_resend_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
                 android:text="@string/resend_code"
                 android:textColor="@color/steel_grey_800"
                 android:textSize="16sp"
-                android:fontFamily="@font/roboto_bold"
-                app:layout_constraintTop_toBottomOf="@id/ll_verification"/>
+                app:layout_constraintTop_toBottomOf="@id/otp_view" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/bg_red_dark_8"
-            android:text="@string/submit"
-            android:textColor="@color/white"
-            android:textSize="16sp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-
+            android:background="@drawable/bg_red_dark_8"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -45,9 +45,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_solitude_8"
+                    android:digits="12345 67890"
                     android:hint="@string/card_number"
                     android:inputType="number"
-                    android:digits="12345 67890"
                     android:maxLength="19"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -81,9 +81,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_solitude_8"
+                    android:digits="12345/67890"
                     android:hint="@string/mm_yy"
                     android:inputType="number"
-                    android:digits="12345/67890"
                     android:maxLength="5"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>

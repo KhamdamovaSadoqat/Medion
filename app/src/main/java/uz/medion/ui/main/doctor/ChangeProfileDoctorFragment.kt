@@ -1,29 +1,22 @@
-package uz.medion.ui.main.doctor.profileDoctor
+package uz.medion.ui.main.doctor
 
-import android.annotation.SuppressLint
-import android.app.DatePickerDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.method.KeyListener
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.dhaval2404.imagepicker.ImagePicker
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import uz.medion.R
 import uz.medion.databinding.FragmentChangeProfileDoctorBinding
-import java.util.*
 
 
 private const val PROFILE_IMAGE_REQ_CODE = 101
@@ -36,16 +29,12 @@ class ChangeProfileDoctorFragment : Fragment() {
     private var mCameraUri: Uri? = null
     private var mGalleryUri: Uri? = null
     private var mProfileUri: Uri? = null
-    private var check = true
-    private lateinit var listener: KeyListener
-    private val calendar= Calendar.getInstance()
 
     interface PickerOptionListener {
         fun onTakeCameraSelected()
         fun onChooseGallerySelected()
     }
 
-    @SuppressLint("WrongConstant", "SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -69,56 +58,8 @@ class ChangeProfileDoctorFragment : Fragment() {
                 }
             })
         }
-
-
-        binding.name.setEndIconOnClickListener {
-            binding.name.isClickable
-            endIcon(binding.name,binding.nameEdit)
-
-        }
-        binding.editSurname.setEndIconOnClickListener {
-            endIcon(binding.editSurname,binding.surnameEdit)
-        }
-        binding.editMiddleName.setEndIconOnClickListener {
-            endIcon(binding.editMiddleName,binding.middleName)
-        }
-        binding.editBirthday.setEndIconOnClickListener {
-            val datePickerDialog = DatePickerDialog(
-                requireContext(),
-                R.style.MySpinnerDatePickerStyle,
-                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                    // Display Selected date in TextView
-                    binding.birthdayEdit.setText("$dayOfMonth.$monthOfYear.$year")
-                },
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            )
-            datePickerDialog.show()
-            datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
-                .setTextColor(ContextCompat.getColor(requireContext(), R.color.fire_brick_900))
-            datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)
-                .setTextColor(ContextCompat.getColor(requireContext(), R.color.tangaroa_900))
-
-        }
         binding.editPhone.setEndIconOnClickListener {
-
-            endIcon(binding.editPhone,binding.phoneEdit)
-        }
-        binding.editDoctor.setEndIconOnClickListener {
-            endIcon(binding.editDoctor,binding.doctorEdit)
-        }
-        binding.editStaj.setEndIconOnClickListener {
-            endIcon(binding.editStaj,binding.experienceEdit)
-        }
-        binding.editEducationInformation.setEndIconOnClickListener {
-            endIcon(binding.editEducationInformation,binding.education)
-        }
-        binding.editCurrent.setEndIconOnClickListener {
-            endIcon(binding.editCurrent,binding.currentEdit)
-        }
-        binding.previous.setEndIconOnClickListener {
-            endIcon(binding.previous,binding.previousEdit)
+            binding.editPhone.setEndIconDrawable(R.drawable.ic_fi_camera)
         }
 
         return binding.root
@@ -126,7 +67,6 @@ class ChangeProfileDoctorFragment : Fragment() {
     }
 
 
-    @SuppressLint("LogConditional")
     @Suppress("UNUSED_PARAMETER")
     fun pickProfileImage(view: View) {
         ImagePicker.with(this)
@@ -166,7 +106,6 @@ class ChangeProfileDoctorFragment : Fragment() {
     }
 
 
-    @SuppressLint("LogConditional")
     @Suppress("UNUSED_PARAMETER")
     fun pickCameraImage() {
         ImagePicker.with(this)
@@ -180,7 +119,6 @@ class ChangeProfileDoctorFragment : Fragment() {
                 Log.d("ImagePicker", "Dialog Dismiss")
             }
             .start(CAMERA_IMAGE_REQ_CODE)
-
     }
 
     private fun showImagePickerOptions(context: Context, listener: PickerOptionListener) {
@@ -202,6 +140,7 @@ class ChangeProfileDoctorFragment : Fragment() {
             }
         }
 
+        // create and show the alert dialog
         val dialog = builder.create()
         dialog.show()
     }
@@ -234,20 +173,6 @@ class ChangeProfileDoctorFragment : Fragment() {
             else -> {
                 Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
             }
-        }
-    }
-
-    private fun endIcon(bindingUi: TextInputLayout, bindingEdit: TextInputEditText) {
-        listener = bindingEdit.keyListener;
-        if (check) {
-            bindingEdit.keyListener = listener;
-            bindingUi.setEndIconDrawable(R.drawable.ic_check)
-            check = false
-
-        } else {
-            bindingEdit.keyListener = null
-            bindingUi.setEndIconDrawable(R.drawable.ic_edit)
-            check = true
         }
     }
 

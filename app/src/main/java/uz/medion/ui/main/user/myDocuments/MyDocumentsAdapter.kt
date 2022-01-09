@@ -20,6 +20,7 @@ class MyDocumentsAdapter: RecyclerView.Adapter<MyDocumentsAdapter.VH>() {
     }
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val inflater = LayoutInflater.from(parent.context)
         val binding =

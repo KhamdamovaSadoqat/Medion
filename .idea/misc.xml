@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/bg_editext.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/bg_received_message.xml" value="0.365234375" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/bg_sent_messeage.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_ellipse_56.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_micrphone.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/drawable/ic_send.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/activity_main.xml" value="0.14855072463768115" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/bg_send_message.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/chat_doctor_fragment.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_about_doctor.xml" value="0.15625" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_chat.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_home.xml" value="0.203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_received_message.xml" value="0.15625" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_send_message.xml" value="0.25" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_4.xml" value="0.240625" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_8.xml" value="0.240625" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_bottom_16.xml" value="0.240625" />
@@ -104,6 +118,7 @@
         <entry key="..\:/idrok/Medion/app/src/main/res/menu/doctor_bottom_nav.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/menu/drawer_menu.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/menu/menu_media.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_app.xml" value="0.1787037037037037" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_blue_4.xml" value="0.24722222222222223" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_blue_8.xml" value="0.24722222222222223" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_blue_bottom_16.xml" value="0.2462962962962963" />
@@ -119,6 +134,8 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_menu.xml" value="0.26615384615384613" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_my_doctors_blue.xml" value="0.26615384615384613" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_profile_image.xml" value="0.26615384615384613" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_red_8.xml" value="0.26615384615384613" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_red_dark_8.xml" value="0.26615384615384613" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_red_top_8.xml" value="0.2462962962962963" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_round_left.xml" value="0.26615384615384613" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_rv_grey.xml" value="0.26615384615384613" />
@@ -129,9 +146,21 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_submit_top.xml" value="0.26615384615384613" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_transparent_16.xml" value="0.24444444444444444" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_transparent_4.xml" value="0.2462962962962963" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_transparent_8.xml" value="0.2462962962962963" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_transparent_8.xml" value="0.26481481481481484" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_white.xml" value="0.26615384615384613" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_camere.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_cash.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_chat.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_eye.xml" value="0.21296296296296297" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_eye_slash.xml" value="0.21296296296296297" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_image_placeholder.xml" value="0.2703125" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_profile.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_search_grey.xml" value="0.2703125" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_selected.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_symbol.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_vector.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_doctor.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment_time.xml" value="0.23731884057971014" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_my_documents.xml" value="0.23278985507246377" />
@@ -144,27 +173,37 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_certificate.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_change_number.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_change_password.xml" value="0.23278985507246377" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_change_profile_doctor.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_choose_language.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_estetic_medicine.xml" value="0.13020833333333334" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_home.xml" value="0.13333333333333333" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_log_in.xml" value="0.2" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_our_doctors.xml" value="0.264" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_our_doctors.xml" value="0.136" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_payment_complete.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_personal_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_personal_account2.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_personal_date.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_profile_doc.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_reg_doctor.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_search_view.xml" value="0.264" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_sign_in.xml" value="0.1" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_sign_up.xml" value="0.128" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_spa_medicine.xml" value="0.13020833333333334" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_spa_medicine_details.xml" value="0.13020833333333334" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_verification.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_appointment_time.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_details.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_search.xml" value="0.4" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_foto.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_home.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_my_documents.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_profile.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_search_view.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_selected.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_video.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_work_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/partial_bottom_navigation.xml" value="0.264" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/partial_bottom_navigation_doctors.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

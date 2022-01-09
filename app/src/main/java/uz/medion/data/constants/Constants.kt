@@ -11,10 +11,12 @@ object Constants {
 
     lateinit var prefs: PrefsHelper
 
-    const val BASE_API_URL = "https://medion.uz/"
+    const val BASE_API_URL = "http://45.137.148.124:8081" // http://45.137.148.124:8081/api/v1/about/info
+    const val GOOGLE_OAUTH = "863067682476-vdh3ngnrj69u96d8j2i96c2958sf4u6j.apps.googleusercontent.com"
     const val YOUTUBE_API = "AIzaSyALAoQ1eIP7lM2STLmeRpKiDaSXqv84Ulc"
 
-    var token = ""
+    var accessToken = ""
+    var refreshToken = ""
     var language = ""
     var cardNumber = "UZCARD"
     private val unAuthorized = MutableLiveData<Boolean>()
@@ -58,7 +60,14 @@ object Constants {
     const val DENSITY_MDPI = 1.0
     const val DENSITY_LDPI = 0.75
 
+    const val SELECT_IMAGE = 111
+
+    const val VIEW_TYPE_SENT = 1
+    const val VIEW_TYPE_RECEIVED = 2
+
     const val MIN_HOURS_TO_SHOW_NEW_UPDATE_PROMPT: Int = 8
+
+    const val ADMIN_PHONE_NUMBER = "+998936285220"
 
     fun getHomeItems(): ArrayList<HomeItem> {
         return arrayListOf(
@@ -570,16 +579,17 @@ object Constants {
             DoctorsItem(R.drawable.doc_sevara, R.string.dc_elena, R.string.pediatr)
         )
     }
-    fun getMyPatients():ArrayList<MyPatientsItem>{
+
+    fun getMyPatients(): ArrayList<MyPatientsItem> {
         return arrayListOf(
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-            MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true)
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, false),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, false),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, false),
+            MyPatientsItem(R.string.ilyasov_Doniyor, R.string.date, true)
         )
     }
 }

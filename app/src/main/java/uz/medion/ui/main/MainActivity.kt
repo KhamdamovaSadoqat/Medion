@@ -1,5 +1,7 @@
 package uz.medion.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
@@ -9,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import uz.medion.R
+import uz.medion.data.constants.Constants.ADMIN_PHONE_NUMBER
 import uz.medion.databinding.ActivityMainBinding
 import uz.medion.ui.base.BaseActivity
 import uz.medion.utils.ViewUtils
@@ -40,12 +43,15 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 destination.id == R.id.chooseLanguageFragment ||
                 destination.id == R.id.myDocumentsFragment ||
                 destination.id == R.id.personalDateFragment ||
-                destination.id == R.id.esteticMedicineFragment
+                destination.id == R.id.esteticMedicineFragment ||
+                destination.id == R.id.chatFragment
             ) ViewUtils.fadeOut(binding.partialBottomNav.root)
             else ViewUtils.fadeIn(binding.partialBottomNav.root)
 
             //where arrow_back and text should be removed medion logo should be displayed
-            if (destination.id == R.id.homeFragment) {
+            if (destination.id == R.id.homeFragment ||
+                destination.id == R.id.calendarFragment
+            ) {
                 ViewUtils.fadeOut(binding.tvMain)
                 ViewUtils.fadeOut(binding.ivBackArrow)
                 ViewUtils.fadeIn(binding.ivMedion)
@@ -70,13 +76,28 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 destination.id == R.id.esteticMedicineFragment ||
                 destination.id == R.id.spaMedicineFragment ||
                 destination.id == R.id.appointmentEnrollFragment ||
-                destination.id == R.id.appointmentFragment
+                destination.id == R.id.appointmentFragment ||
+                destination.id == R.id.calendarFragment
             ) ViewUtils.fadeIn(binding.ivNotification)
             else ViewUtils.fadeOut(binding.ivNotification)
 
             //where heart should be displayed
             if (destination.id == R.id.aboutDoctorFragment) ViewUtils.fadeIn(binding.ivHeart)
             else ViewUtils.fadeOut(binding.ivHeart)
+
+            //where call icon should be displayed
+            if (destination.id == R.id.chatFragment) {
+                ViewUtils.fadeIn(binding.profileAdmin)
+                ViewUtils.fadeIn(binding.ivCall)
+                binding.ivCall.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = (Uri.fromParts("tel", ADMIN_PHONE_NUMBER, null))
+                    startActivity(intent)
+                }
+            } else {
+                ViewUtils.fadeOut(binding.ivCall)
+                ViewUtils.fadeOut(binding.profileAdmin)
+            }
 
             when (destination.id) {
                 R.id.adressAndContactsFragment -> binding.tvMain.setText(R.string.adress_contact)
@@ -96,10 +117,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 R.id.myDoctorsFragment -> binding.tvMain.setText(R.string.my_doctors)
                 R.id.addressFragment -> binding.tvMain.setText(R.string.adress)
                 R.id.addCardFragment -> binding.tvMain.setText(R.string.add_card)
+                R.id.chatFragment -> binding.tvMain.setText(R.string.anastasiya)
             }
         }
 
-        binding.ivSearch.setOnClickListener{ navController.navigate(R.id.searchViewFragment)}
+        binding.ivSearch.setOnClickListener { navController.navigate(R.id.searchViewFragment) }
         binding.ivBackArrow.setOnClickListener { onBackPressed() }
 
         binding.nvNavigationDrawer.setNavigationItemSelectedListener { menuItem ->

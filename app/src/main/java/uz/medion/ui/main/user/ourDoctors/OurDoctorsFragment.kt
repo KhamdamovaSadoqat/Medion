@@ -1,6 +1,11 @@
 package uz.medion.ui.main.user.ourDoctors
 
+import android.graphics.Point
+import android.os.Build
 import android.util.Log
+import android.view.Display
+import android.view.SurfaceView
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
@@ -96,8 +101,8 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             )
         )
         if (currentDate.month == 12)
-            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 0, currentDate.day))
-        calendarState.setMaximumDate(
+            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 1, currentDate.day))
+        else calendarState.setMaximumDate(
             CalendarDay.from(
                 currentDate.year,
                 currentDate.month + 1,

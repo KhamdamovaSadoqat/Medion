@@ -6,6 +6,10 @@
     <string name="logo" translatable="false">logo</string>
     <string name="clinic_photo" translatable="false">clinic photo</string>
 
+    <!-- https responses -->
+    <string name="user_is_registered">User is registrated</string>
+
+    <!-- all -->
     <string name="msg_no_network">Невозможно подключиться к Интернету</string>
     <string name="msg_unknown_error">Неизвестная ошибка.</string>
     <string name="action_ok">OK</string>
@@ -18,8 +22,13 @@
     <string name="parol">Пароль</string>
     <string name="remember_me">Запомнить меня</string>
     <string name="sign_up_with">Войти с помощью</string>
-    <string name="sms_send">На указанный вами номер +998 (90) 548 58 55 отправлено SMS с кодом доступа</string>
-    <string name="resend_code">Отправить код повторно через 1:09</string>
+    <string name="sms_send">На указанный вами номер %s отправлено SMS с кодом доступа</string>
+    <string name="resend_code">Отправить код повторно через %s</string>
+    <string name="already_taken">Этот номер уже зарегистрирован </string>
+    <string name="required_field">Это поле обязательно к заполнению</string>
+    <string name="invalid_phone_number">Неправильный номер телефона</string>
+    <string name="invalid_email">Неверный адрес электронной почты</string>
+    <string name="confirm">Подтвердить</string>
 
     <!-- home -->
     <string name="medical_service">Медицинские услуги</string>
@@ -136,7 +145,7 @@
     <string name="name">Имя</string>
     <string name="surname">Фамилия</string>
     <string name="middle_name">Отчество</string>
-    <string name="fill_phone_numeber">+998(__) ___-__-__</string>
+    <string name="fill_phone_numeber">_________</string>
     <string name="blood_group">Группа крови</string>
     <string name="dob">Дата рождения</string>
     <string name="submit">Записаться</string>
@@ -286,7 +295,8 @@
     <string name="add">Добавить</string>
     <string name="thanks">Спасибо!</string>
     <string name="payment_competed">Оплата прошла УСПЕШНО</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="email">Email</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="personal_data">Личные данные</string>
     <string name="my_patients">Mои пациенты</string>
@@ -295,5 +305,12 @@
     <string name="log_out">Выход</string>
     <string name="phone_number_mobil">+998906274859</string>
     <string name="todo">TODO</string>
+
+    <!-- EditText hint-->
+    <string name="write_mess">Напиши сообщение…</string>
+
+    <!-- Adminsistator name-->
+    <string name="anastasiya">Анастасия</string>
+
 
 </resources>

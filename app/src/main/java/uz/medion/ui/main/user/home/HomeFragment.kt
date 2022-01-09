@@ -1,5 +1,7 @@
 package uz.medion.ui.main.user.home
 
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -16,6 +18,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
 
     private lateinit var adapter: HomeAdapter
     private lateinit var adapter2: HomeAdapter
+    private lateinit var animationFab:Animation
     private var tvAll: Boolean = false
 
     override fun onBound() {
@@ -64,6 +67,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
                 tvAll = true
 
             }
+        }
+        animationFab=AnimationUtils.loadAnimation(context,R.anim.anim_fab_open)
+        binding.btnChat.setOnClickListener {
+            ViewUtils.fadeOut(binding.btnChat)
+            ViewUtils.fadeIn(binding.fab)
+            binding.fab.startAnimation(animationFab)
+
+            binding.fab.setOnClickListener {
+                when(it){
+                    it->findNavController().navigate(R.id.chatFragment)
+                }
+            }
+
         }
     }
 
