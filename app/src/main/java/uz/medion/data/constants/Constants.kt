@@ -15,8 +15,7 @@ object Constants {
     const val GOOGLE_OAUTH = "863067682476-vdh3ngnrj69u96d8j2i96c2958sf4u6j.apps.googleusercontent.com"
     const val YOUTUBE_API = "AIzaSyALAoQ1eIP7lM2STLmeRpKiDaSXqv84Ulc"
 
-    var accessToken = ""
-    var refreshToken = ""
+    var token = ""
     var language = ""
     var cardNumber = "UZCARD"
     private val unAuthorized = MutableLiveData<Boolean>()

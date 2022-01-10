@@ -58,7 +58,10 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
                                 Log.d("----------", "onBound: loading")
                             }
                             Status.SUCCESS -> {
-                                
+                                prefs.isRegistered = true
+                                prefs.password = binding.etPassword.text.toString().trim()
+                                prefs.phoneNumber = binding.etNumber.text.toString().trim()
+
                                 val action =
                                     SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment(
                                         response.data!!.id,

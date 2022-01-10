@@ -2,11 +2,13 @@ package uz.medion.ui.main
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -26,18 +28,23 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     private var isFirstOpen = true
 
     override fun onBound() {
+        if(prefs.accessToken != null) {
+            Constants.token = prefs.accessToken!!
+            isFirstOpen = false
+        } else {
+            Constants.token = ""
+            isFirstOpen = true
+        }
         setUp()
     }
 
     private fun setUp() {
-        val navHost = supportFragmentManager.findFragmentById(R.id.main_nav_controller)
-        if (navHost != null) {
-            navController = navHost.findNavController()
-        }
-        bottomNavController =
-            BottomNavController(binding, binding.partialBottomNav, this, navController)
+        val navHost =
+            supportFragmentManager.findFragmentById(R.id.main_nav_controller) as NavHostFragment
+        navController = navHost.navController
+        bottomNavController = BottomNavController(binding, binding.partialBottomNav, this, navController)
         Constants.getUnAuthorized().observe(this) {
-            if (it && !isFirstOpen) {
+            if (it && isFirstOpen) {
                 val intent = Intent(this, SplashActivity::class.java)
                 prefs.isRegistered = false
                 startActivity(intent)
@@ -157,6 +164,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     override fun onBackPressed() {

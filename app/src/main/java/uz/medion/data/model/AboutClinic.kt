@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class AboutClinic(
 
 	@field:SerializedName("urls")
-	val urls: List<String?>? = null,
+	val urls: List<String>,
 
 	@field:SerializedName("context")
 	val context: String? = null,

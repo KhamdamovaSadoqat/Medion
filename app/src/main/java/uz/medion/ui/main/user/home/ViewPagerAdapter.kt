@@ -1,35 +1,42 @@
 package uz.medion.ui.main.user.home
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
+import uz.medion.data.model.HomeItem
+import uz.medion.databinding.ItemCaruselBinding
+import uz.medion.databinding.ItemHomeBinding
+import uz.medion.utils.ImageDownloader
 
-class ViewPagerAdapter(var list: List<Int>, var ctx: Context) : PagerAdapter() {
+class ViewPagerAdapter(var list: List<String>, var context: Context) : PagerAdapter() {
 
-    lateinit var layoutInflater: LayoutInflater
-    lateinit var context: Context
     override fun getCount(): Int {
         return list.size
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view.equals(`object`)
+        return view == `object`
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        layoutInflater = LayoutInflater.from(ctx)
-        val view = layoutInflater.inflate(R.layout.item_carusel, container, false)
-        val img = view.findViewById<ImageView>(R.id.iv_carusel)
-        img.setImageResource(list[position])
-        container.addView(view, 0)
-        return view
+        val inflater = LayoutInflater.from(container.context)
+        val binding =
+            DataBindingUtil.inflate<ItemCaruselBinding>(inflater, R.layout.item_carusel, container, false)
+        ImageDownloader.loadImage(context, list[position], binding.ivCarusel)
+        container.addView(binding.root, 0)
+        return binding.root
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
     }
+
 }

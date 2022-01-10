@@ -161,4 +161,28 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
+    fun aboutClinic(response: MutableLiveData<Resource<AboutClinic>>){
+        compositeDisposable.add(
+            apiClient.aboutClinic("Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<AboutClinic>(){
+                    override fun onNext(t: AboutClinic) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
 }

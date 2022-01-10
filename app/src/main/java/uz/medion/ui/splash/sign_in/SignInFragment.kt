@@ -65,26 +65,30 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
         }
         //login
         binding.btnSignIn.setOnClickListener {
-            if (checkAllFields()){
-                vm.login(Login(binding.etPassword.text.toString(), binding.etLogin.text.toString())).observe(this){ response ->
-                    when (response.status) {
-                        Status.LOADING -> {
-                            Log.d("----------", "setUp: loading")
-                        }
-                        Status.SUCCESS -> {
-                            prefs.accessToken = response.data?.accessToken
-                            prefs.refreshToken = response.data?.refreshToken
+            if (checkAllFields()) {
+                vm.login(Login(binding.etPassword.text.toString(), binding.etLogin.text.toString()))
+                    .observe(this) { response ->
+                        when (response.status) {
+                            Status.LOADING -> {
+                                Log.d("----------", "setUp: loading")
+                            }
+                            Status.SUCCESS -> {
+                                prefs.isRegistered = true
+                                prefs.password = binding.etPassword.text.toString().trim()
+                                prefs.accessToken = response.data?.accessToken
+                                prefs.refreshToken = response.data?.refreshToken
+                                Constants.setUnAuthorized(false)
 
-                            // starting new activity and ending the login
-                            val intent = Intent(requireContext(), MainActivity::class.java)
-                            startActivity(intent)
-                            requireActivity().finish()
-                        }
-                        Status.ERROR -> {
-                            Log.e("----------", "error: ${response.message}")
+                                // starting new activity and ending the login
+                                val intent = Intent(requireContext(), MainActivity::class.java)
+                                startActivity(intent)
+                                requireActivity().finish()
+                            }
+                            Status.ERROR -> {
+                                Log.e("----------", "error: ${response.message}")
+                            }
                         }
                     }
-                }
             }
         }
 
@@ -142,7 +146,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
             binding.etLogin.error = requireContext().getText(R.string.invalid_email)
             return false
         } else binding.etLogin.error = null
-        if(binding.etPassword.length() == 0){
+        if (binding.etPassword.length() == 0) {
             binding.etPassword.error = requireContext().getString(R.string.required_field)
             return false
         } else binding.etPassword.error = null

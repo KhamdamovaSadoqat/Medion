@@ -52,10 +52,8 @@ class VerificationFragment : BaseFragment<FragmentVerificationBinding, Verificat
                                 when (response.status) {
                                     Status.LOADING -> { }
                                     Status.SUCCESS -> {
-                                        Constants.accessToken =
+                                        Constants.token =
                                             response.data!!.accessToken.toString()
-                                        Constants.refreshToken =
-                                            response.data.refreshToken.toString()
 
                                         binding.btnSubmit.background = ContextCompat.getDrawable(
                                             requireContext(),

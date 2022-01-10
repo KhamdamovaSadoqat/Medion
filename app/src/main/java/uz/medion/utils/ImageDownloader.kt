@@ -1,5 +1,6 @@
 package uz.medion.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -10,9 +11,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
-import uz.medion.R
+import android.util.Log
+
+
+
 
 object ImageDownloader {
+    @SuppressLint("CheckResult")
     fun loadImage(
         context: Context,
         url: String,
@@ -20,7 +25,7 @@ object ImageDownloader {
         @DrawableRes
         placeHolderRes: Int? = null,
         @DrawableRes
-        errorRes: Int? = null
+        errorRes: Int? = null,
     ) {
         val uri = Uri.parse(url)
         val separated = url.split(".")
@@ -32,7 +37,7 @@ object ImageDownloader {
                     if (placeHolderRes != null && errorRes != null)
                         setPlaceHolder(placeHolderRes, errorRes)
                     else
-                        setPlaceHolder(R.drawable.ic_image_placeholder, R.drawable.ic_loading_error)
+                        setPlaceHolder(uz.medion.R.drawable.ic_image_placeholder, uz.medion.R.drawable.ic_loading_error)
                     load(uri, imageView)
                 }
 
@@ -44,29 +49,27 @@ object ImageDownloader {
                     if (placeHolderRes != null)
                         placeholder(placeHolderRes)
                     else
-                        placeholder(R.drawable.ic_image_placeholder)
+                        placeholder(uz.medion.R.drawable.ic_image_placeholder)
                     if (errorRes != null)
                         error(errorRes)
                     else
-                        error(R.drawable.ic_loading_error)
+                        error(uz.medion.R.drawable.ic_loading_error)
                     into(imageView)
                 }
-
-
         }
     }
 
     fun getImage(
         context: Context,
         url: String,
-        onResponse: ((Bitmap) -> Unit)
+        onResponse: ((Bitmap) -> Unit),
     ) {
         val uri = Uri.parse(url)
         Glide.with(context)
             .asBitmap()
             .load(uri)
-            .placeholder(R.drawable.ic_image_placeholder)
-            .error(R.drawable.ic_loading_error)
+            .placeholder(uz.medion.R.drawable.ic_image_placeholder)
+            .error(uz.medion.R.drawable.ic_loading_error)
             .into(object : CustomTarget<Bitmap>() {
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                     onResponse.invoke(resource)
