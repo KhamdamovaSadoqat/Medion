@@ -2,7 +2,7 @@ package uz.medion.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class AboutClinic(
+data class AboutClinicResponse(
 
 	@field:SerializedName("urls")
 	val urls: List<String>,

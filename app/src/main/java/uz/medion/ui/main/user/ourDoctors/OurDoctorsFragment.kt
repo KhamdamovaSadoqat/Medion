@@ -1,47 +1,77 @@
 package uz.medion.ui.main.user.ourDoctors
 
-import android.graphics.Point
-import android.os.Build
-import android.util.Log
-import android.view.Display
-import android.view.SurfaceView
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.prolificinteractive.materialcalendarview.CalendarDay
-//import com.prolificinteractive.materialcalendarview.CalendarDay
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
+import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentOurDoctorsBinding
 import uz.medion.ui.base.BaseFragment
 import uz.medion.utils.gone
+import uz.medion.utils.invisible
 import uz.medion.utils.visible
 
 class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>() {
 
+    private val args: OurDoctorsFragmentArgs by navArgs()
     private lateinit var ourDoctorsCategoryAdapter: OurDoctorsCategoryAdapter
     private lateinit var ourDoctorsDetailsAdapter: OurDoctorsDetailsAdapter
     private var tvCategoryAll: Boolean = false
+    private var doctorsBySpecialityUrl: String = ""
 
     override fun onBound() {
+        setUpUI()
         setUp()
     }
 
     fun setUp() {
+        doctorsBySpecialityUrl =
+            "${Constants.BASE_API_URL}/api/v1/speciality/${args.specialityTypeId}/doctors"
+        vm.doctorBySpeciality(doctorsBySpecialityUrl).observe(this) { doctors ->
+            when (doctors.status) {
+                Status.LOADING -> {
+                    binding.progress.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progress.invisible()
+                    binding.rvDoctors.visible()
+                    ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter { item ->
+                        findNavController().navigate(
+                            R.id.aboutDoctorFragment
+                        )
+                    }
+                    ourDoctorsDetailsAdapter.setData(doctors.data!!)
+                    binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
+                    binding.rvDoctors.layoutManager =
+                        LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                }
+                Status.ERROR -> {
+                    binding.progress.invisible()
+                }
+            }
+        }
+
         ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter {}
         ourDoctorsCategoryAdapter.setData(Constants.getOurDoctorCategory())
         binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
         binding.rvDoctorsCategories.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
+
+
+    }
+
+    fun setUpUI() {
         binding.clShowAll.setOnClickListener {
             if (tvCategoryAll) {
                 binding.rvDoctorsCategories.layoutManager =
@@ -75,22 +105,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             }
         }
 
-        ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter { item ->
-            findNavController().navigate(
-                R.id.aboutDoctorFragment,
-                bundleOf(
-                    Pair(
-                        Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME,
-                        requireContext().getString(item.doctorName)
-                    )
-                )
-            )
-        }
-        ourDoctorsDetailsAdapter.setData(Constants.getOurDoctorDetail())
-        binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
-        binding.rvDoctors.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-
+        //calendar modifying
         val currentDate = CalendarDay.today()
         val calendarState = binding.cvCalendar.state().edit()
         calendarState.setMinimumDate(
@@ -111,7 +126,8 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         )
         calendarState.commit()
 
-
+        // this should be changed totally
+        // erase
         binding.clOption1.setOnClickListener {
             binding.ivOption1.visible()
             binding.ivOption2.gone()
@@ -127,7 +143,6 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             binding.ivOption2.gone()
             binding.ivOption3.visible()
         }
-
     }
 
     override fun getLayoutResId() = R.layout.fragment_our_doctors

@@ -3,20 +3,20 @@ package uz.medion.ui.main.user.home
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.model.HomeItem
+import uz.medion.data.model.SpecialityItemResponse
 import uz.medion.databinding.ItemHomeBinding
+import uz.medion.utils.ImageDownloader
 
 class HomeAdapter(private val itemClickListener: (Int) -> Unit) :
     RecyclerView.Adapter<HomeAdapter.VH>() {
 
-    private var listItem = listOf<HomeItem>()
+    private var listItem = listOf<SpecialityItemResponse>()
 
-    fun setData(listItem: List<HomeItem>) {
-        this.listItem = listItem
+    fun setData(listItemResponse: List<SpecialityItemResponse>) {
+        this.listItem = listItemResponse
         notifyDataSetChanged()
     }
 
@@ -39,10 +39,10 @@ class HomeAdapter(private val itemClickListener: (Int) -> Unit) :
     class VH(private val binding: ItemHomeBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(home: HomeItem) {
+        fun onBind(home: SpecialityItemResponse) {
             binding.apply {
-                imageItem.setImageDrawable(ContextCompat.getDrawable(context, home.icon))
-                textItem.setText(home.text)
+                ImageDownloader.loadImage(context, home.logo!!, imageItem)
+                textItem.text = home.name
             }
         }
 

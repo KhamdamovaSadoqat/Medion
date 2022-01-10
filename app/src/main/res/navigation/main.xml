@@ -12,7 +12,12 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_ourDoctorsFragment"
-            app:destination="@id/ourDoctorsFragment" />
+            app:destination="@id/ourDoctorsFragment">
+            <!-- giving arguments -->
+            <argument
+                android:name="specialityTypeId"
+                app:argType="integer"/>
+        </action>
     </fragment>
 
     <fragment
@@ -23,7 +28,12 @@
         <action
             android:id="@+id/action_ourDoctorsFragment_to_aboutDoctorFragment"
             app:destination="@id/aboutDoctorFragment" />
+        <!--receiving arguments-->
+        <argument
+            android:name="specialityTypeId"
+            app:argType="integer" />
     </fragment>
+
     <fragment
         android:id="@+id/aboutDoctorFragment"
         android:name="uz.medion.ui.main.user.aboutDoctor.AboutDoctorFragment"

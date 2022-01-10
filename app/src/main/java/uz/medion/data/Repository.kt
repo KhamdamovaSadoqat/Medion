@@ -161,13 +161,13 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
-    fun aboutClinic(response: MutableLiveData<Resource<AboutClinic>>){
+    fun aboutClinic(response: MutableLiveData<Resource<AboutClinicResponse>>){
         compositeDisposable.add(
             apiClient.aboutClinic("Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<AboutClinic>(){
-                    override fun onNext(t: AboutClinic) {
+                .subscribeWith(object : DisposableObserver<AboutClinicResponse>(){
+                    override fun onNext(t: AboutClinicResponse) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
 
@@ -184,5 +184,54 @@ class Repository {
         )
         response.value = Resource(Status.LOADING, null, null, null)
     }
+
+    fun speciality(response: MutableLiveData<Resource<List<SpecialityItemResponse>>>){
+        compositeDisposable.add(
+            apiClient.speciality("Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<SpecialityItemResponse>>(){
+                    override fun onNext(t: List<SpecialityItemResponse>) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+    fun doctorBySpeciality(url: String, response: MutableLiveData<Resource<List<DoctorResponse>>>){
+        compositeDisposable.add(
+            apiClient.doctorsBySpeciality(url, "Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<DoctorResponse>>(){
+                    override fun onNext(t: List<DoctorResponse>) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+
 
 }

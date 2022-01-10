@@ -38,11 +38,27 @@ interface ApiInterface {
         @Body login: Login
     ): Observable<UserLogin>
 
-
-    //Main page:: About clinic
+    //HomeFragment:: About clinic
     @Headers("Content-Type: application/json")
     @GET("/api/v1/about/info")
     fun aboutClinic(
         @Header("Authorization") token: String
-    ): Observable<AboutClinic>
+    ): Observable<AboutClinicResponse>
+
+    //HomeFragment:: Specialities
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/speciality/list")
+    fun speciality(
+        @Header("Authorization") token: String
+    ): Observable<List<SpecialityItemResponse>>
+
+    //OurDoctorsFragment:: Getting Doctors by Speciality
+    @Headers("Content-Type: application/json")
+    @GET
+    fun doctorsBySpeciality(
+        @Url url: String,
+        @Header("Authorization") token: String
+    ): Observable<List<DoctorResponse>>
+
+
 }

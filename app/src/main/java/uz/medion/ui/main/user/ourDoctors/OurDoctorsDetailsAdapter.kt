@@ -9,22 +9,23 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.model.DoctorDetailItem
+import uz.medion.data.model.DoctorResponse
 import uz.medion.data.model.HomeItem
 import uz.medion.databinding.ItemDoctorDetailsBinding
 import uz.medion.databinding.ItemHomeBinding
 import uz.medion.ui.main.user.home.HomeAdapter
+import uz.medion.utils.ImageDownloader
 
-class OurDoctorsDetailsAdapter(private val itemClickListener: (DoctorDetailItem) -> Unit) :
+class OurDoctorsDetailsAdapter(private val itemClickListener: (DoctorResponse) -> Unit) :
     RecyclerView.Adapter<OurDoctorsDetailsAdapter.VH>() {
 
-    private var listItem = listOf<DoctorDetailItem>()
+    private var listItem = listOf<DoctorResponse>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(listItem: List<DoctorDetailItem>) {
+    fun setData(listItem: List<DoctorResponse>) {
         this.listItem = listItem
         notifyDataSetChanged()
     }
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -52,14 +53,15 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (DoctorDetailItem)
 
     class VH(private val binding: ItemDoctorDetailsBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(doctorDetailItem: DoctorDetailItem) {
+        fun onBind(doctorDetailItem: DoctorResponse) {
             binding.apply {
-                tvFullName.text = context.getString(doctorDetailItem.doctorName)
-                tvCategoryOfDoctor.text = context.getString(doctorDetailItem.doctorCategory)
-//                tvExperience.text = context.getString(doctorDetailItem.experience)
-//                tvComments.text = context.getString(doctorDetailItem.comment)
-//                tvClinicName.text = context.getString(doctorDetailItem.clinicName)
-//                tvDetail.text = context.getString(doctorDetailItem.details)
+                ImageDownloader.loadImage(context, doctorDetailItem.image, sivProfilePicture)
+                tvFullName.text = doctorDetailItem.fullName
+                tvCategoryOfDoctor.text = doctorDetailItem.workInfoList[0].position
+                tvClinicName.text = doctorDetailItem.workInfoList[0].organization
+//                tvExperience.text
+//                tvComments.text
+//                tvDetail.text
             }
         }
     }

@@ -1,4 +1,4 @@
-package uz.medion.ui.main.user.recyclerview
+package uz.medion.ui.main.user.home
 
 import android.annotation.SuppressLint
 import android.content.Context
