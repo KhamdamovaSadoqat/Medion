@@ -43,17 +43,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
         binding.list.adapter = adapter
         binding.rvCategories2.adapter = adapter2
 
+        // viewPager
+        val imgs = listOf(R.drawable.doctor_img, R.drawable.doc_pic, R.drawable.doc_sevara)
+        val adapter = ViewPagerAdapter(imgs,requireContext())
+        binding.vpPictures.adapter = adapter
+
         binding.tvAll.setOnClickListener {
 
           if (tvAll)
             {
                 ViewUtils.fadeIn(binding.rvCategories2)
                 ViewUtils.fadeOut(binding.list)
-                ViewUtils.fadeOut(binding.cvItem)
+//                ViewUtils.fadeOut(binding.cvItem)
                 ViewUtils.fadeOut(binding.tvAboutOurCenter)
                 ViewUtils.fadeOut(binding.tvAboutOurCenterInfo)
 
                 binding.rvCategories2.layoutManager = GridLayoutManager(requireContext(), 3)
+
                 setMargins(binding.list, 50, 0, 0, 0)
                 tvAll = false
 
@@ -61,7 +67,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
             {
                 ViewUtils.fadeIn(binding.list)
                 ViewUtils.fadeOut(binding.rvCategories2)
-                ViewUtils.fadeIn(binding.cvItem)
+//                ViewUtils.fadeIn(binding.cvItem)
                 ViewUtils.fadeIn(binding.tvAboutOurCenter)
                 ViewUtils.fadeIn(binding.tvAboutOurCenterInfo)
                 tvAll = true

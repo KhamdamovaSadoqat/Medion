@@ -175,7 +175,7 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_change_profile_doctor.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_choose_language.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_estetic_medicine.xml" value="0.13020833333333334" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_home.xml" value="0.13333333333333333" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_home.xml" value="0.10546875" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_log_in.xml" value="0.2" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_our_doctors.xml" value="0.136" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_payment_complete.xml" value="0.25416666666666665" />
@@ -191,6 +191,7 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_spa_medicine_details.xml" value="0.13020833333333334" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_verification.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_appointment_time.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_carusel.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_details.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_doctor_search.xml" value="0.4" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_foto.xml" value="0.1" />

@@ -37,4 +37,11 @@ interface ApiInterface {
     fun login(
         @Body login: Login
     ): Observable<UserLogin>
+
+    //Main page:: About clinic
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/about/info")
+    fun aboutClinic(
+        @Header("Authorization") token: String
+    ): Observable<AboutClinic>
 }
