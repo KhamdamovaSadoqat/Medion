@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.CalendarMode
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
@@ -28,7 +29,14 @@ import uz.medion.utils.DateTimeUtils
 import java.util.*
 
 
-class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>(){
+import com.squareup.timessquare.CalendarPickerView
+import com.squareup.timessquare.CalendarCellDecorator
+
+import com.squareup.timessquare.DefaultDayViewAdapter
+import uz.medion.data.model.remote.Status
+
+
+class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
 
     private lateinit var aboutDoctorCertificateAdapter: AboutDoctorCertificateAdapter
     private lateinit var aboutDoctorWorkCurrentAdapter: AboutDoctorWorkAdapter
@@ -53,7 +61,6 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     override fun onBound() {
         loadAboutDoctor()
-        loadDialog()
         setUp()
     }
 
@@ -63,7 +70,8 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             if (args.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
                 type = args.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
                 doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
-                showCalendarDialog()
+                loadDialog()
+
             } else if (args.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
                 doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
             }
@@ -107,10 +115,55 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 //            )
 //        )
 //        calendarState.commit()
-        dialogBinding.cvCalendar.setOnDateChangedListener { widget, date, selected ->
-            loadResultTimeDialog(date)
-            dismissCalendarDialog()
+
+        val nextYear: Calendar = Calendar.getInstance()
+        val calendar = dialogBinding.calendarView
+//        calendar.setCustomDayView(DefaultDayViewAdapter())
+        val dates = ArrayList<Date>()
+
+        vm.monthlyDate(3).observe(this) { response ->
+            when (response.status) {
+                Status.LOADING -> {
+                }
+                Status.SUCCESS -> {
+                    Log.d("----------", "loadDialog: first")
+                    dialogBinding.calendarView.state().edit()
+                        .setMinimumDate(CalendarDay.from(2022, 1, 15))
+                        .setMaximumDate(CalendarDay.from(2022, 2, 23))
+                        .setCalendarDisplayMode(CalendarMode.WEEKS)
+                        .commit()
+                    showCalendarDialog()
+//                    nextYear.add(Calendar.DATE, response.data!!.size)
+//                    for(day in response.data.indices){
+//                        if(response.data[day].open == true){
+//                            val responseDate = response.data[day].localDate!!.split("-")
+//
+//
+//
+////                            val today = Calendar.getInstance()
+////                            today.set(responseDate[0].toInt(), responseDate[1].toInt()-1, responseDate[2].toInt())
+////                            Log.d("----------", "loadDialog: today: ${today.time}")
+////                            dates.add(today.time)
+//                        }
+//                    }
+
+//                    calendar.init(Date(), nextYear.time)
+//                        .inMode(CalendarPickerView.SelectionMode.SINGLE)
+//                        .withHighlightedDates(dates)
+
+                    Log.d("----------", "loadDialog: last")
+                }
+                Status.ERROR -> {
+                    Log.e("----------", "error: ${response.message}")
+                }
+            }
         }
+
+//        dialogBinding.calendarView.setOnDateSelectedListener()
+//        { widget, date, selected ->
+//            loadResultTimeDialog(date)
+//            dismissCalendarDialog()
+//        }
     }
 
     private fun loadResultTimeDialog(date: CalendarDay) {

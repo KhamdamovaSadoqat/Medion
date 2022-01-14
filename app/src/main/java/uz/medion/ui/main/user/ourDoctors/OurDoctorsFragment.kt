@@ -1,5 +1,6 @@
 package uz.medion.ui.main.user.ourDoctors
 
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
@@ -61,17 +62,31 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             }
         }
 
-        ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter {}
-        ourDoctorsCategoryAdapter.setData(Constants.getOurDoctorCategory())
-        binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
-        binding.rvDoctorsCategories.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        vm.speciality().observe(this) { speciality ->
+            when (speciality.status) {
+                Status.LOADING -> {
+                    binding.progressForRv.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progressForRv.invisible()
 
+                    ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter {}
+                    ourDoctorsCategoryAdapter.setData(speciality.data!!)
+                    binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
+                    binding.rvDoctorsCategories.layoutManager =
+                        LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+                }
+                Status.ERROR ->{
+                    binding.progressForRv.invisible()
+                }
+            }
+
+        }
 
 
     }
 
-    fun setUpUI() {
+    private fun setUpUI() {
         binding.clShowAll.setOnClickListener {
             if (tvCategoryAll) {
                 binding.rvDoctorsCategories.layoutManager =

@@ -65,8 +65,9 @@ class Repository {
                     override fun onError(e: Throwable) {
                         if (e is HttpException) {
                             val errorBody = e.response()?.errorBody()
-                            val error = Gson().fromJson<RegistrationErrorResponse>(errorBody!!.charStream(),
-                                object : TypeToken<RegistrationErrorResponse>() {}.type)
+                            val error =
+                                Gson().fromJson<RegistrationErrorResponse>(errorBody!!.charStream(),
+                                    object : TypeToken<RegistrationErrorResponse>() {}.type)
                             response.value = Resource(Status.ERROR, null, error.message, e)
                             Log.d("----------", "onError: $error")
                         }
@@ -161,12 +162,12 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
-    fun aboutClinic(response: MutableLiveData<Resource<AboutClinicResponse>>){
+    fun aboutClinic(response: MutableLiveData<Resource<AboutClinicResponse>>) {
         compositeDisposable.add(
             apiClient.aboutClinic("Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<AboutClinicResponse>(){
+                .subscribeWith(object : DisposableObserver<AboutClinicResponse>() {
                     override fun onNext(t: AboutClinicResponse) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
@@ -185,12 +186,12 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
-    fun speciality(response: MutableLiveData<Resource<List<SpecialityItemResponse>>>){
+    fun speciality(response: MutableLiveData<Resource<List<SpecialityItemResponse>>>) {
         compositeDisposable.add(
             apiClient.speciality("Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<List<SpecialityItemResponse>>(){
+                .subscribeWith(object : DisposableObserver<List<SpecialityItemResponse>>() {
                     override fun onNext(t: List<SpecialityItemResponse>) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
@@ -209,12 +210,12 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
-    fun doctorBySpeciality(url: String, response: MutableLiveData<Resource<List<DoctorResponse>>>){
+    fun doctorBySpeciality(url: String, response: MutableLiveData<Resource<List<DoctorResponse>>>) {
         compositeDisposable.add(
             apiClient.doctorsBySpeciality(url, "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<List<DoctorResponse>>(){
+                .subscribeWith(object : DisposableObserver<List<DoctorResponse>>() {
                     override fun onNext(t: List<DoctorResponse>) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
@@ -232,6 +233,27 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
+    fun monthlyDate(doctorId: Int, response: MutableLiveData<Resource<List<MonthlyDateResponse>>>) {
+        compositeDisposable.add(
+            apiClient.monthlyDate(doctorId, "Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<MonthlyDateResponse>>() {
+                    override fun onNext(t: List<MonthlyDateResponse>) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
 
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
 
 }

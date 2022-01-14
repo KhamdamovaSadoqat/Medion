@@ -60,5 +60,12 @@ interface ApiInterface {
         @Header("Authorization") token: String
     ): Observable<List<DoctorResponse>>
 
+    //AboutDoctor:: Booking
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/booking/date")
+    fun monthlyDate(
+        @Query("doctorId") doctorId: Int,
+        @Header("Authorization") token: String
+    ): Observable<List<MonthlyDateResponse>>
 
 }

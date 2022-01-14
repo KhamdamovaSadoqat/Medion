@@ -111,6 +111,11 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
 
+    implementation 'com.squareup:android-times-square:1.6.5@aar'
+
+    implementation "com.github.prolificinteractive:material-calendarview:${version}"
+
+
     //cardView
     implementation 'androidx.cardview:cardview:1.0.0'
 

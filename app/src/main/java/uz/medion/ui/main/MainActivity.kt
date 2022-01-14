@@ -28,6 +28,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     private var isFirstOpen = true
 
     override fun onBound() {
+        Log.d("----------", "onBound: isFirstOpen: $isFirstOpen")
+        Log.d("----------", "onBound: prefs: ${prefs.accessToken}")
         if(prefs.accessToken != null) {
             Constants.token = prefs.accessToken!!
             isFirstOpen = false
@@ -37,6 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         }
         setUp()
     }
+
 
     private fun setUp() {
         val navHost =
