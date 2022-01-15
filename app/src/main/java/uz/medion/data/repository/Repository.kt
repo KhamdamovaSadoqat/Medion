@@ -1,4 +1,4 @@
-package uz.medion.data
+package uz.medion.data.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
