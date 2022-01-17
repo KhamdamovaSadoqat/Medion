@@ -76,6 +76,9 @@ interface ApiInterface {
         @Header("Authorization") token: String
     ): Observable<MonthlyTimeResponse>
 
-
-
+    //Address and contacts
+    @GET("/api/v1/branch")
+    fun branch(
+        @Header("Authorization") token: String
+    ): Observable<List<BranchResponse>>
 }

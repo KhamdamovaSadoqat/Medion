@@ -8,13 +8,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.model.AdressAndContactsItem
+import uz.medion.data.model.BranchResponse
 import uz.medion.databinding.ItemLocationsBinding
+import uz.medion.utils.ImageDownloader
 
 class AddressAndContactsAdapter(private val itemClickListener: (Int) -> Unit) :
 RecyclerView.Adapter<AddressAndContactsAdapter.VH>() {
 
-    private var listItem = listOf<AdressAndContactsItem>()
-    fun setData(listItem: List<AdressAndContactsItem>) {
+    private var listItem = listOf<BranchResponse>()
+    fun setData(listItem: List<BranchResponse>) {
         this.listItem = listItem
         notifyDataSetChanged()
     }
@@ -43,14 +45,13 @@ RecyclerView.Adapter<AddressAndContactsAdapter.VH>() {
 
     class VH(private val binding: ItemLocationsBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: AdressAndContactsItem) {
+        fun onBind(item: BranchResponse) {
             binding.apply {
-                ivCenterPhoto.setImageDrawable(ContextCompat.getDrawable(context, item.image))
-                tvClinicName.text = item.name
-                tvLocation.text = item.location
+                ImageDownloader.loadImage(context, item.imgUrl!!, binding.ivCenterPhoto)
+                tvClinicName.text = item.title
+                tvLocation.text = item.address
                 tvMobilePhone.text = item.phone
             }
-
         }
     }
 }
