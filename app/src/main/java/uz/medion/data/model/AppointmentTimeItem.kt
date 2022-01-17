@@ -10,5 +10,7 @@ data class AppointmentTimeItem(
     @StringRes
     val time: Int,
     @ColorRes
-    val textColor: Int
+    val textColor: Int,
+    val clickable: Boolean,
+    val focusable: Boolean
 )

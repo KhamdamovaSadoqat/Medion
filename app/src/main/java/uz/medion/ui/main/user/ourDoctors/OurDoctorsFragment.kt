@@ -121,25 +121,25 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         }
 
         //calendar modifying
-        val currentDate = CalendarDay.today()
-        val calendarState = binding.cvCalendar.state().edit()
-        calendarState.setMinimumDate(
-            CalendarDay.from(
-                currentDate.year,
-                currentDate.month,
-                currentDate.day
-            )
-        )
-        if (currentDate.month == 12)
-            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 1, currentDate.day))
-        else calendarState.setMaximumDate(
-            CalendarDay.from(
-                currentDate.year,
-                currentDate.month + 1,
-                currentDate.day
-            )
-        )
-        calendarState.commit()
+//        val currentDate = CalendarDay.today()
+//        val calendarState = binding.cvCalendar.state().edit()
+//        calendarState.setMinimumDate(
+//            CalendarDay.from(
+//                currentDate.year,
+//                currentDate.month,
+//                currentDate.day
+//            )
+//        )
+//        if (currentDate.month == 12)
+//            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 1, currentDate.day))
+//        else calendarState.setMaximumDate(
+//            CalendarDay.from(
+//                currentDate.year,
+//                currentDate.month + 1,
+//                currentDate.day
+//            )
+//        )
+//        calendarState.commit()
 
         // this should be changed totally
         // erase

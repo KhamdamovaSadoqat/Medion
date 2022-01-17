@@ -11,8 +11,10 @@ object Constants {
 
     lateinit var prefs: PrefsHelper
 
-    const val BASE_API_URL = "http://45.137.148.124:8081" // http://45.137.148.124:8081/api/v1/about/info
-    const val GOOGLE_OAUTH = "863067682476-vdh3ngnrj69u96d8j2i96c2958sf4u6j.apps.googleusercontent.com"
+    const val BASE_API_URL =
+        "http://45.137.148.124:8081" // http://45.137.148.124:8081/api/v1/about/info
+    const val GOOGLE_OAUTH =
+        "863067682476-vdh3ngnrj69u96d8j2i96c2958sf4u6j.apps.googleusercontent.com"
     const val YOUTUBE_API = "AIzaSyALAoQ1eIP7lM2STLmeRpKiDaSXqv84Ulc"
 
     var token = ""
@@ -478,73 +480,111 @@ object Constants {
 
     fun getAppointmentTime(): ArrayList<AppointmentTimeItem> {
         return arrayListOf(
-            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_8_30, R.color.white),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_9_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_9_30, R.color.tangaroa_900),
+            AppointmentTimeItem(R.drawable.bg_blue_4,
+                R.string.t_8_30,
+                R.color.white,
+                clickable = false,
+                focusable = false),
+            AppointmentTimeItem(R.drawable.bg_transparent_4,
+                R.string.t_9_00,
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false),
+            AppointmentTimeItem(R.drawable.bg_transparent_4,
+                R.string.t_9_30,
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_10_00,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_10_30,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_11_00,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_11_30,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_12_00,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_14_00,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_14_30,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_15_00,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_15_30,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_16_00,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_16_30,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_17_00,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
             AppointmentTimeItem(
                 R.drawable.bg_transparent_4,
                 R.string.t_17_30,
-                R.color.tangaroa_900
+                R.color.tangaroa_900,
+                clickable = false,
+                focusable = false
             ),
         )
     }

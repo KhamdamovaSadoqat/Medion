@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.applandeo.materialcalendarview.utils.DateUtils
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.CalendarMode
@@ -27,13 +28,11 @@ import uz.medion.ui.base.BaseFragment
 import uz.medion.ui.main.user.appointment.AppointmentTimeAdapter
 import uz.medion.utils.DateTimeUtils
 import java.util.*
-
-
-import com.squareup.timessquare.CalendarPickerView
-import com.squareup.timessquare.CalendarCellDecorator
-
-import com.squareup.timessquare.DefaultDayViewAdapter
 import uz.medion.data.model.remote.Status
+import com.applandeo.materialcalendarview.EventDay
+
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener
+import uz.medion.data.model.MonthlyTimeResponse
 
 
 class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
@@ -90,86 +89,84 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     @SuppressLint("SetTextI18n")
     private fun loadDialog() {
         dialogBinding = DialogAppointmentBinding.inflate(LayoutInflater.from(requireContext()))
-//        val currentDate = CalendarDay.today()
-//        val calendarState = dialogBinding.cvCalendar.state().edit()
-//        calendarState.setMinimumDate(
-//            CalendarDay.from(
-//                currentDate.year,
-//                currentDate.month,
-//                currentDate.day
-//            )
-//        )
-//        if (currentDate.month == 12)
-//            calendarState.setMaximumDate(
-//                CalendarDay.from(
-//                    currentDate.year + 1,
-//                    0,
-//                    currentDate.day
-//                )
-//            )
-//        calendarState.setMaximumDate(
-//            CalendarDay.from(
-//                currentDate.year,
-//                currentDate.month + 1,
-//                currentDate.day
-//            )
-//        )
-//        calendarState.commit()
-
-        val nextYear: Calendar = Calendar.getInstance()
-        val calendar = dialogBinding.calendarView
-//        calendar.setCustomDayView(DefaultDayViewAdapter())
-        val dates = ArrayList<Date>()
-
         vm.monthlyDate(3).observe(this) { response ->
             when (response.status) {
                 Status.LOADING -> {
                 }
                 Status.SUCCESS -> {
-                    Log.d("----------", "loadDialog: first")
-                    dialogBinding.calendarView.state().edit()
-                        .setMinimumDate(CalendarDay.from(2022, 1, 15))
-                        .setMaximumDate(CalendarDay.from(2022, 2, 23))
-                        .setCalendarDisplayMode(CalendarMode.WEEKS)
-                        .commit()
+                    val responseDateFirst = response.data!![0].localDate!!.split("-")
+                    val responseDateLast =
+                        response.data[response.data.size - 1].localDate!!.split("-")
+                    val min = Calendar.getInstance()
+                    val max = Calendar.getInstance()
+                    min.set(responseDateFirst[0].toInt(),
+                        responseDateFirst[1].toInt() - 1,
+                        responseDateFirst[2].toInt() - 1)
+                    max.set(responseDateLast[0].toInt(),
+                        responseDateLast[1].toInt(),
+                        responseDateLast[2].toInt())
+
+                    dialogBinding.calendarView.setMinimumDate(min)
+                    dialogBinding.calendarView.setMaximumDate(max)
+                    val calendars: MutableList<Calendar> = ArrayList()
+                    for (day in response.data.indices) {
+                        if (response.data[day].open == true) {
+                            //2022-01-15
+                            val responseDate = response.data[day].localDate!!.split("-")
+                            val firstDisabled: Calendar = DateUtils.getCalendar()
+                            firstDisabled.set(responseDate[0].toInt(),
+                                responseDate[1].toInt() - 1,
+                                responseDate[2].toInt(),
+                                0,
+                                0,
+                                0)
+                            calendars.add(firstDisabled)
+                        }
+                    }
+                    dialogBinding.calendarView.setDisabledDays(calendars)
+                    //handle calendar day click
+                    dialogBinding.calendarView.setOnDayClickListener {
+                        val clickedDay: Calendar = DateUtils.getCalendar()
+                        clickedDay.timeInMillis = it.calendar.timeInMillis
+                        if (!calendars.contains(clickedDay)) {
+                            dismissCalendarDialog()
+                            loadResultTimeDialog()
+                            showTimeDialog()
+                        }
+                    }
                     showCalendarDialog()
-//                    nextYear.add(Calendar.DATE, response.data!!.size)
-//                    for(day in response.data.indices){
-//                        if(response.data[day].open == true){
-//                            val responseDate = response.data[day].localDate!!.split("-")
-//
-//
-//
-////                            val today = Calendar.getInstance()
-////                            today.set(responseDate[0].toInt(), responseDate[1].toInt()-1, responseDate[2].toInt())
-////                            Log.d("----------", "loadDialog: today: ${today.time}")
-////                            dates.add(today.time)
-//                        }
-//                    }
-
-//                    calendar.init(Date(), nextYear.time)
-//                        .inMode(CalendarPickerView.SelectionMode.SINGLE)
-//                        .withHighlightedDates(dates)
-
-                    Log.d("----------", "loadDialog: last")
                 }
                 Status.ERROR -> {
                     Log.e("----------", "error: ${response.message}")
                 }
             }
         }
-
-//        dialogBinding.calendarView.setOnDateSelectedListener()
-//        { widget, date, selected ->
-//            loadResultTimeDialog(date)
-//            dismissCalendarDialog()
-//        }
     }
 
-    private fun loadResultTimeDialog(date: CalendarDay) {
+    private fun loadResultTimeDialog() {
         dialogTimeBinding =
             DialogAppointmentTimeBinding.inflate(LayoutInflater.from(requireContext()))
+        vm.monthlyTime("2022-01-22", 3).observe(this) { time ->
+            when (time.status) {
+                Status.LOADING -> {
+                }
+                Status.SUCCESS -> {
+                    appointmentTime = Constants.getAppointmentTime()
 
+                    /////////////////////////////////////
+                    /////////////////////////////////////
+                    /////////////////////////////////////
+                    /////////////////////////////////////
+                    /////////////////////////////////////
+
+                    // here left undone
+
+
+                }
+                Status.ERROR -> {
+                }
+            }
+        }
         appointmentTime = Constants.getAppointmentTime()
         appointmentTimeAdapter = AppointmentTimeAdapter { position, lastPosition ->
             appointmentTimeBundle = requireContext().getString(appointmentTime[position].time)
@@ -177,13 +174,19 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             if (position != lastPosition) {
                 appointmentTime[position] =
                     AppointmentTimeItem(
-                        R.drawable.bg_blue_lighter_8, appointmentTime[position].time, R.color.white
+                        R.drawable.bg_blue_lighter_8,
+                        appointmentTime[position].time,
+                        R.color.white,
+                        clickable = false,
+                        focusable = false
                     )
                 appointmentTime[lastPosition] =
                     AppointmentTimeItem(
                         R.drawable.bg_transparent_4,
                         appointmentTime[lastPosition].time,
-                        R.color.tangaroa_900
+                        R.color.tangaroa_900,
+                        clickable = false,
+                        focusable = false
                     )
                 appointmentTimeAdapter.setData(appointmentTime)
             }
@@ -192,21 +195,20 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         dialogTimeBinding.rvTime.adapter = appointmentTimeAdapter
         dialogTimeBinding.rvTime.layoutManager = GridLayoutManager(requireContext(), 4)
 
-        appointmentDateBundle = "${date.day}.${date.month}.${date.year}"
+//        appointmentDateBundle = "${date.day}.${date.month}.${date.year}"
         dialogTimeBinding.btnSubmit.setOnClickListener {
             dismissResultTimeDialog()
             dismissCalendarDialog()
             findNavController().navigate(
                 R.id.appointmentEnrollFragment,
-                bundleOf(
-                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName),
-                    Pair(Keys.BUNDLE_APPOINTMENT_TIME, appointmentTimeBundle),
-                    Pair(Keys.BUNDLE_APPOINTMENT_DATE, appointmentDateBundle),
-                    Pair(Keys.BUNDLE_APPOINTMENT_TYPE, type)
-                )
+//                bundleOf(
+//                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName),
+//                    Pair(Keys.BUNDLE_APPOINTMENT_TIME, appointmentTimeBundle),
+//                    Pair(Keys.BUNDLE_APPOINTMENT_DATE, appointmentDateBundle),
+//                    Pair(Keys.BUNDLE_APPOINTMENT_TYPE, type)
+//                )
             )
         }
-        showTimeDialog()
     }
 
     private fun loadAboutDoctor() {
@@ -550,6 +552,8 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         }
         reyting = 1
     }
+
+
 
     private fun showCalendarDialog() {
         resultDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)

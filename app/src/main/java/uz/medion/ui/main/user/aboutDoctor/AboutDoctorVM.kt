@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import uz.medion.data.Repository
 import uz.medion.data.model.AboutDoctorCommentItem
 import uz.medion.data.model.MonthlyDateResponse
+import uz.medion.data.model.MonthlyTimeResponse
 import uz.medion.data.model.remote.Resource
 import uz.medion.ui.base.BaseVM
 
@@ -13,6 +14,7 @@ class AboutDoctorVM: BaseVM() {
     private val repo = Repository()
     private val aboutDoctorCommentItem = MutableLiveData<Resource<AboutDoctorCommentItem>>()
     private val monthlyDateResponse = MutableLiveData<Resource<List<MonthlyDateResponse>>>()
+    private val monthlyTimeResponse = MutableLiveData<Resource<MonthlyTimeResponse>>()
 
     fun sendComment(commentItem: AboutDoctorCommentItem){
         repo.sendComment(commentItem, aboutDoctorCommentItem)
@@ -25,6 +27,11 @@ class AboutDoctorVM: BaseVM() {
     fun monthlyDate(doctorId: Int): LiveData<Resource<List<MonthlyDateResponse>>>{
         repo.monthlyDate(doctorId, monthlyDateResponse)
         return monthlyDateResponse
+    }
+
+    fun monthlyTime(date: String, doctorId: Int): LiveData<Resource<MonthlyTimeResponse>>{
+        repo.monthlyTime(date, doctorId, monthlyTimeResponse)
+        return  monthlyTimeResponse
     }
 
 }
