@@ -37,4 +37,10 @@ interface ApiInterface {
     fun login(
         @Body login: Login
     ): Observable<UserLogin>
+
+    //Address and contacts
+    @GET("/api/v1/branch")
+    fun branch(
+        @Header("Authorization") token: String
+    ): Observable<List<BranchResponse>>
 }
