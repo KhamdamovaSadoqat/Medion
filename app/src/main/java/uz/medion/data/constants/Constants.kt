@@ -360,38 +360,6 @@ object Constants {
         )
     }
 
-    fun getAddressAndContact(): ArrayList<AdressAndContactsItem> {
-        return arrayListOf(
-            AdressAndContactsItem(
-                R.drawable.center_photo_1,
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "Шайхантахурский район, ул. Зульфияханум 18",
-                "+998 78 140 00 44",
-
-                ),
-            AdressAndContactsItem(
-                R.drawable.center_photo_2,
-                "Mедицинский центр MEDION INNOVATION",
-                "Шайхантахурский район, ул. Абдулла Кодирий 39",
-                "+998 78 140 00 44"
-            ),
-            AdressAndContactsItem(
-                R.drawable.center_photo_3,
-                "Медицинский центр MEDION FAMILY HOSPITAL",
-                "Шайхантахурский район, ул. Истирохат 258",
-                "+998 78 140 00 44"
-            )
-        )
-    }
-
-    fun getLocations(): ArrayList<Location> {
-        return arrayListOf(
-            Location(R.drawable.center_photo_1, "41.3303657", "69.2572476"),
-            Location(R.drawable.center_photo_2, "41.323868", "69.2519953"),
-            Location(R.drawable.center_photo_3, "41.3261357", "69.1859201")
-        )
-    }
-
     fun getEsteticMedicine_categories(): ArrayList<AboutDoctorItems> {
         return arrayListOf<AboutDoctorItems>(
             AboutDoctorItems(R.string.estetic_medicine_5, R.color.nile_blue_900, R.color.white),

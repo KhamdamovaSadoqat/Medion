@@ -281,7 +281,7 @@ class Repository {
 
     fun branch(response: MutableLiveData<Resource<List<BranchResponse>>>){
         compositeDisposable.add(
-            apiClient.branch("Bearer ${Constants.accessToken}")
+            apiClient.branch("Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<List<BranchResponse>>() {

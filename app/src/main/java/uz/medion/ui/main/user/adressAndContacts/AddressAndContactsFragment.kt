@@ -19,6 +19,7 @@ class AddressAndContactsFragment :
 
     lateinit var addressAndContactsAdapter: AddressAndContactsAdapter
 
+
     override fun onBound() {
         setUp()
 
@@ -40,12 +41,11 @@ class AddressAndContactsFragment :
             }
         }
 
-        addressAndContactsAdapter = AddressAndContactsAdapter { pos ->
-            findNavController().navigate(
-                R.id.action_adressAndContactsFragment_to_addressFragment, bundleOf(
-                    Pair(Keys.BUNDLE_LOCATION_POSITION, pos)
-                )
-            )
+        addressAndContactsAdapter = AddressAndContactsAdapter { branch ->
+            val action =
+                AddressAndContactsFragmentDirections.actionAdressAndContactsFragmentToAddressFragment(
+                    branch)
+            findNavController().navigate(action)
         }
         binding.rvAdressAndContacts.adapter = addressAndContactsAdapter
         binding.rvAdressAndContacts.layoutManager =

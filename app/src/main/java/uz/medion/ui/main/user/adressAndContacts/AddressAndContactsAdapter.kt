@@ -12,7 +12,7 @@ import uz.medion.data.model.BranchResponse
 import uz.medion.databinding.ItemLocationsBinding
 import uz.medion.utils.ImageDownloader
 
-class AddressAndContactsAdapter(private val itemClickListener: (Int) -> Unit) :
+class AddressAndContactsAdapter(private val itemClickListener: (BranchResponse) -> Unit) :
 RecyclerView.Adapter<AddressAndContactsAdapter.VH>() {
 
     private var listItem = listOf<BranchResponse>()
@@ -36,7 +36,7 @@ RecyclerView.Adapter<AddressAndContactsAdapter.VH>() {
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(listItem[position])
         }
         holder.onBind(listItem[position])
     }
