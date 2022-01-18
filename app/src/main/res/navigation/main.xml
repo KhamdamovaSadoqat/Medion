@@ -31,7 +31,8 @@
         <!--receiving arguments-->
         <argument
             android:name="specialityTypeId"
-            app:argType="integer" />
+            app:argType="integer"
+            android:defaultValue="0"/>
     </fragment>
 
     <fragment

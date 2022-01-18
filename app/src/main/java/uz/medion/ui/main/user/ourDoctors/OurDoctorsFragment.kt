@@ -36,8 +36,11 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     }
 
     fun setUp() {
-        doctorsBySpecialityUrl =
-            "${Constants.BASE_API_URL}/api/v1/speciality/${args.specialityTypeId}/doctors"
+        if (args.specialityTypeId == 0) {
+            //get all doctors that click has
+        } else
+            doctorsBySpecialityUrl =
+                "${Constants.BASE_API_URL}/api/v1/speciality/${args.specialityTypeId}/doctors"
         vm.doctorBySpeciality(doctorsBySpecialityUrl).observe(this) { doctors ->
             when (doctors.status) {
                 Status.LOADING -> {
@@ -76,7 +79,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                     binding.rvDoctorsCategories.layoutManager =
                         LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                 }
-                Status.ERROR ->{
+                Status.ERROR -> {
                     binding.progressForRv.invisible()
                 }
             }

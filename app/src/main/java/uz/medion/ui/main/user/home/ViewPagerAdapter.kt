@@ -1,19 +1,13 @@
 package uz.medion.ui.main.user.home
 
 import android.content.Context
-import android.util.Log
 import android.view.View
 import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.model.HomeItem
 import uz.medion.databinding.ItemCaruselBinding
-import uz.medion.databinding.ItemHomeBinding
 import uz.medion.utils.ImageDownloader
 
 class ViewPagerAdapter(var list: List<String>, var context: Context) : PagerAdapter() {

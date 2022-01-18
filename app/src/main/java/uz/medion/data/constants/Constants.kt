@@ -70,34 +70,6 @@ object Constants {
 
     const val ADMIN_PHONE_NUMBER = "+998936285220"
 
-    fun getHomeItems(): ArrayList<HomeItem> {
-        return arrayListOf(
-            HomeItem(R.drawable.ic_ginecology, R.string.ginecology),
-            HomeItem(R.drawable.ic_pediatr, R.string.pediatr),
-            HomeItem(R.drawable.ic_neurolog, R.string.neuralogy),
-            HomeItem(R.drawable.ic_traumatolog, R.string.traumatology),
-            HomeItem(R.drawable.ic_cardiolog, R.string.cardiology),
-            HomeItem(R.drawable.ic_eko, R.string.eko),
-            HomeItem(R.drawable.ic_cardio_operation, R.string.cardio_operation),
-            HomeItem(R.drawable.ic_urolog, R.string.urology),
-            HomeItem(R.drawable.ic_endocrinolog, R.string.endocrinology),
-            HomeItem(R.drawable.ic_allergolog, R.string.allergiology),
-            HomeItem(R.drawable.ic_mammolog, R.string.mammology),
-            HomeItem(R.drawable.ic_dermatolog, R.string.dermatology),
-            HomeItem(R.drawable.ic_psycology, R.string.psychology),
-            HomeItem(R.drawable.ic_pulmonolog, R.string.pulmonology),
-            HomeItem(R.drawable.ic_psychoterapy, R.string.psychoterapy),
-            HomeItem(R.drawable.ic_medicining, R.string.medicining),
-            HomeItem(R.drawable.ic_electro_smth, R.string.electro_encefalography),
-            HomeItem(R.drawable.ic_gastroentesy, R.string.gastroenterology),
-            HomeItem(R.drawable.ic_uzi, R.string.uzi),
-            HomeItem(R.drawable.ic_uzi_maternity, R.string.uzi_maternity),
-            HomeItem(R.drawable.ic_mrt, R.string.mrt),
-            HomeItem(R.drawable.ic_mckt, R.string.mskt),
-            HomeItem(R.drawable.ic_endoscopy, R.string.endoscopy)
-        )
-    }
-
     fun getOurDoctorCategory(): ArrayList<DoctorCategoryItem> {
         return arrayListOf(
             DoctorCategoryItem(R.string.lor),
@@ -127,138 +99,12 @@ object Constants {
         )
     }
 
-    fun getOurDoctorDetail(): ArrayList<DoctorDetailItem> {
-        return arrayListOf(
-            DoctorDetailItem(
-                R.string.ilyasov_Doniyor,
-                R.string.main_doctor_of_urology,
-                22,
-                64,
-                R.string.clinic_name,
-                R.string.doc_detail
-            ),
-            DoctorDetailItem(
-                R.string.nuridinov_hojiakbar,
-                R.string.main_doctor_of_urology,
-                22,
-                64,
-                R.string.clinic_name,
-                R.string.doc_detail
-            ),
-            DoctorDetailItem(
-                R.string.ilyasov_Doniyor,
-                R.string.main_doctor_of_urology,
-                22,
-                64,
-                R.string.clinic_name,
-                R.string.doc_detail
-            ),
-            DoctorDetailItem(
-                R.string.nuridinov_hojiakbar,
-                R.string.main_doctor_of_urology,
-                22,
-                64,
-                R.string.clinic_name,
-                R.string.doc_detail
-            )
-        )
-    }
-
     fun getAboutDoctorItems(): ArrayList<AboutDoctorItems> {
         return arrayListOf<AboutDoctorItems>(
             AboutDoctorItems(R.string.about_doctor, R.color.nile_blue_900, R.color.white),
             AboutDoctorItems(R.string.work, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.reyting, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.sertificate, R.color.solitude_50, R.color.tangaroa_900)
-        )
-    }
-
-    fun getComments(): ArrayList<AboutDoctorCommentItem> {
-        return arrayListOf<AboutDoctorCommentItem>(
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                4,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                2,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                1,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                4,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                5,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                3,
-                "22 august 2021"
-            ),
         )
     }
 
@@ -305,28 +151,6 @@ object Constants {
         return arrayListOf(
             R.string.male,
             R.string.female
-        )
-    }
-
-    fun getMyDoctors(): ArrayList<MyDoctorsItem> {
-        return arrayListOf(
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, false),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, false),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true)
-        )
-    }
-
-    fun getMyDoctorsFavourite(): ArrayList<MyDoctorsItem> {
-        return arrayListOf(
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doc_detail, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.about_doctor, true)
         )
     }
 

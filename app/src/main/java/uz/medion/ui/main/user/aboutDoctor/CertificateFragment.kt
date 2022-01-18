@@ -7,7 +7,6 @@ import uz.medion.data.constants.Keys
 import uz.medion.databinding.FragmentCertificateBinding
 import uz.medion.ui.base.BaseFragment
 import uz.medion.utils.ImageDownloader
-import uz.medion.utils.ZoomIn
 
 class CertificateFragment : BaseFragment<FragmentCertificateBinding, AboutDoctorVM>() {
 

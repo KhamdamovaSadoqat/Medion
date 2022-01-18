@@ -6,9 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.constants.Constants
+import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentMyDoctorsBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.utils.invisible
+import uz.medion.utils.visible
 
 class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() {
 
@@ -18,38 +20,98 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
         setUp()
     }
 
-    private fun setUp(){
-        myDoctorsAdapter = MyDoctorsAdapter { }
-        myDoctorsAdapter.setData(Constants.getMyDoctors())
+    private fun setUp() {
+        myDoctorsAdapter = MyDoctorsAdapter { doctor ->
+            setMyDoctorsFavourite(doctor.id)
+            getMyDoctors()
+        }
         binding.rvMyDoctors.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.rvMyDoctors.adapter = myDoctorsAdapter
-        
-        binding.tvFavourites.setOnClickListener { 
-            binding.tvFavourites.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_blue_8)
-            binding.tvAll.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_solitude_8)
+
+        getMyDoctors()
+
+        binding.tvFavourites.setOnClickListener {
+            binding.tvFavourites.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.bg_blue_8)
+            binding.tvAll.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.bg_solitude_8)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 binding.tvAll.setTextColor(requireContext().getColor(R.color.tangaroa_900))
                 binding.tvFavourites.setTextColor(requireContext().getColor(R.color.white))
-            } else{
+            } else {
                 binding.tvFavourites.setTextColor(resources.getColor(R.color.white))
                 binding.tvAll.setTextColor(resources.getColor(R.color.tangaroa_900))
             }
-            myDoctorsAdapter.setData(Constants.getMyDoctorsFavourite())
+            getMyDoctorsFavourite()
         }
 
         binding.tvAll.setOnClickListener {
-            binding.tvFavourites.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_solitude_8)
-            binding.tvAll.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_blue_8)
+            binding.tvFavourites.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.bg_solitude_8)
+            binding.tvAll.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.bg_blue_8)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 binding.tvAll.setTextColor(requireContext().getColor(R.color.white))
                 binding.tvFavourites.setTextColor(requireContext().getColor(R.color.tangaroa_900))
-            } else{
+            } else {
                 binding.tvFavourites.setTextColor(resources.getColor(R.color.tangaroa_900))
                 binding.tvAll.setTextColor(resources.getColor(R.color.white))
             }
+            getMyDoctors()
+        }
+    }
 
-            myDoctorsAdapter.setData(Constants.getMyDoctors())
+    private fun getMyDoctors(){
+        vm.myDoctors().observe(this) { myDoctors ->
+            when (myDoctors.status) {
+                Status.LOADING -> {
+                    binding.progress.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progress.invisible()
+                    binding.rvMyDoctors.visible()
+                    myDoctorsAdapter.setData(myDoctors.data!!)
+                }
+                Status.ERROR -> {
+                    binding.progress.invisible()
+                }
+            }
+        }
+    }
+
+    private fun getMyDoctorsFavourite(){
+        vm.myDoctorsFavourite().observe(this) { myDoctors ->
+            when (myDoctors.status) {
+                Status.LOADING -> {
+                    binding.progress.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progress.invisible()
+                    binding.rvMyDoctors.visible()
+                    myDoctorsAdapter.setData(myDoctors.data!!)
+                }
+                Status.ERROR -> {
+                    binding.progress.invisible()
+                }
+            }
+        }
+    }
+
+    private fun setMyDoctorsFavourite(doctorId: Int){
+        vm.setDoctorsFavourite(doctorId).observe(this) { myDoctors ->
+            when (myDoctors.status) {
+                Status.LOADING -> {
+                    binding.progress.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progress.invisible()
+                    binding.rvMyDoctors.visible()
+                }
+                Status.ERROR -> {
+                    binding.progress.invisible()
+                }
+            }
         }
     }
 

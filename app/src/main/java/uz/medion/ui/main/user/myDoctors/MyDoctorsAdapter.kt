@@ -2,27 +2,26 @@ package uz.medion.ui.main.user.myDoctors
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.model.MyDoctorsItem
+import uz.medion.data.model.DoctorResponse
 import uz.medion.databinding.ItemMyDoctorsBinding
 
-class MyDoctorsAdapter(private val itemClickListener: (Int) -> Unit) :
-    RecyclerView.Adapter<MyDoctorsAdapter.VH>() {
+class MyDoctorsAdapter(private val itemClickListener: (DoctorResponse) -> Unit) :
+    RecyclerView.Adapter<MyDoctorsAdapter.VH>(), View.OnClickListener {
 
-    private var listItem = listOf<MyDoctorsItem>()
+    private var listItem = listOf<DoctorResponse>()
+    private var position = 0
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(listItem: List<MyDoctorsItem>) {
+    fun setData(listItem: List<DoctorResponse>) {
         this.listItem = listItem
         notifyDataSetChanged()
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val inflater = LayoutInflater.from(parent.context)
@@ -37,8 +36,9 @@ class MyDoctorsAdapter(private val itemClickListener: (Int) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
+        this.position = holder.adapterPosition
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(listItem[position])
         }
         holder.onBind(listItem[position])
     }
@@ -47,24 +47,32 @@ class MyDoctorsAdapter(private val itemClickListener: (Int) -> Unit) :
 
     class VH(private val binding: ItemMyDoctorsBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(category: MyDoctorsItem) {
+        fun onBind(category: DoctorResponse) {
             binding.apply {
-                tvDoctorName.text = context.getString(category.Name)
-                tvDoctorSphere.text = context.getString(category.CategoryName)
-                if (category.isFavourite) ivFavourites.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        context,
-                        R.drawable.ic_heart_sign
-                    )
-                )
-                else ivFavourites.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        context,
-                        R.drawable.ic_heart_unsign
-                    )
-                )
+                tvDoctorName.text = category.username
+                tvDoctorSphere.text = category.workInfoList[0].position
+//                if (category.isFavourite) ivFavourites.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        context,
+//                        R.drawable.ic_heart_sign
+//                    )
+//                )
+//                else ivFavourites.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        context,
+//                        R.drawable.ic_heart_unsign
+//                    )
+//                )
             }
 
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            R.id.iv_favourites -> {
+                itemClickListener.invoke(listItem[position])
+            }
         }
     }
 }

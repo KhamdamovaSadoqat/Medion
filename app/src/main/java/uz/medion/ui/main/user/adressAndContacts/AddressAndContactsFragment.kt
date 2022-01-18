@@ -1,13 +1,10 @@
 package uz.medion.ui.main.user.adressAndContacts
 
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.constants.Constants
-import uz.medion.data.constants.Keys
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentAdressAndContactsBinding
 import uz.medion.ui.base.BaseFragment

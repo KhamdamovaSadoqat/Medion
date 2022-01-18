@@ -6,22 +6,14 @@ import uz.medion.data.model.*
 
 interface ApiInterface {
 
-    @FormUrlEncoded
-    @POST("HERE SHOULD BE URL")
-    fun sendComment(
-        @Field("SOME FIELD") id: Int,
-        @Field("SOME FIELS") answer: String,
-        @Header("Authorization") token: String
-    ): Observable<SUCCESSTEST>
-
     @GET("/api/v1/registration")
     fun isRegistrationFlowAvailable(
-        @Header("username") userName: String
+        @Header("username") userName: String,
     ): Observable<IsRegistrationFlowAvailable>
 
     @POST("/api/v1/registration/request") // createRegistrationRequest
     fun requestMail(
-        @Query("username") userName: String // email
+        @Query("username") userName: String, // email
     ): Observable<ResponseOfRequestEmail>
 
     @Headers("Content-Type: application/json")
@@ -29,27 +21,27 @@ interface ApiInterface {
     fun verifyAndRegisterUser(
         @Path("requestId") requestId: String,
         @Query("code") code: String,
-        @Body registrationRequest: RegistrationRequest
+        @Body registrationRequest: RegistrationRequest,
     ): Observable<RegistrationResponse>
 
     @Headers("Content-Type: application/json")
     @POST("/api/v1/auth/login")
     fun login(
-        @Body login: Login
+        @Body login: Login,
     ): Observable<UserLogin>
 
     //HomeFragment:: About clinic
     @Headers("Content-Type: application/json")
     @GET("/api/v1/about/info")
     fun aboutClinic(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
     ): Observable<AboutClinicResponse>
 
     //HomeFragment:: Specialities
     @Headers("Content-Type: application/json")
     @GET("/api/v1/speciality/list")
     fun speciality(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
     ): Observable<List<SpecialityItemResponse>>
 
     //OurDoctorsFragment:: Getting Doctors by Speciality
@@ -57,7 +49,7 @@ interface ApiInterface {
     @GET
     fun doctorsBySpeciality(
         @Url url: String,
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
     ): Observable<List<DoctorResponse>>
 
     //AboutDoctor:: Booking
@@ -65,7 +57,7 @@ interface ApiInterface {
     @GET("/api/v1/booking/date")
     fun monthlyDate(
         @Query("doctorId") doctorId: Int,
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
     ): Observable<List<MonthlyDateResponse>>
 
     @Headers("Content-Type: application/json")
@@ -73,12 +65,51 @@ interface ApiInterface {
     fun monthlyTime(
         @Query("date") date: String,
         @Query("doctorId") doctorId: Int,
-        @Header("Authorization") token: String
-    ): Observable<MonthlyTimeResponse>
+        @Header("Authorization") token: String,
+    ): Observable<DataResponse>
 
     //Address and contacts
+    @Headers("Content-Type: application/json")
     @GET("/api/v1/branch")
     fun branch(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
     ): Observable<List<BranchResponse>>
+
+    //About Doctor // comments
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/comment/{doctorId}")
+    fun comments(
+        @Path("doctorId") doctorId: Int,
+        @Header("Authorization") token: String,
+    ): Observable<List<CommentResponse>>
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/comment")
+    fun sendComment(
+        @Body comment: SendComment,
+        @Header("Authorization") token: String,
+    ): Observable<List<CommentResponse>>
+
+    //MyDoctor //favourites
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/user/mydoctors")
+    fun myDoctors(
+        @Query("name") userName: String,
+        @Header("Authorization") token: String,
+    ): Observable<List<DoctorResponse>>
+
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/user/getfavorite")
+    fun myDoctorsFavourite(
+        @Query("name") userName: String,
+        @Header("Authorization") token: String,
+    ): Observable<List<DoctorResponse>>
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/user/favorite/{doctorId}")
+    fun setDoctorFavourite(
+        @Path("doctorId") doctorId: Int,
+        @Header("Authorization") token: String,
+    ): Observable<Boolean>
+
 }
