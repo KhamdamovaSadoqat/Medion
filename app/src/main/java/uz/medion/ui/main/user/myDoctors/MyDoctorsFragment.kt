@@ -22,7 +22,7 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
 
     private fun setUp() {
         myDoctorsAdapter = MyDoctorsAdapter { doctor ->
-            setMyDoctorsFavourite(doctor.id)
+            setMyDoctorsFavourite(doctor.id!!)
             getMyDoctors()
         }
         binding.rvMyDoctors.layoutManager =

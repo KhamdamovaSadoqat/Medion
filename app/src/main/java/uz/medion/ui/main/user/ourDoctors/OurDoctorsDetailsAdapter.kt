@@ -13,7 +13,7 @@ import uz.medion.data.model.DoctorResponse
 import uz.medion.databinding.ItemDoctorDetailsBinding
 import uz.medion.utils.ImageDownloader
 
-class OurDoctorsDetailsAdapter(private val itemClickListener: (DoctorResponse) -> Unit) :
+class OurDoctorsDetailsAdapter(private val itemClickListener: (Int) -> Unit) :
     RecyclerView.Adapter<OurDoctorsDetailsAdapter.VH>(), View.OnClickListener {
 
     private var listItem = listOf<DoctorResponse>()
@@ -44,7 +44,7 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (DoctorResponse) -
         this.position = holder.adapterPosition
         holder.btnDoctorAppointment.setOnClickListener(this)
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(listItem[position])
+            itemClickListener.invoke(listItem[position].id!!)
         }
         holder.onBind(listItem[position])
     }
@@ -52,7 +52,7 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (DoctorResponse) -
     override fun onClick(v: View?) {
        when(v!!.id){
            R.id.btn_doctor_details_appointment -> {
-               itemClickListener.invoke(listItem[position])
+               itemClickListener.invoke(listItem[position].id!!)
            }
        }
     }
@@ -66,12 +66,12 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (DoctorResponse) -
 
         fun onBind(doctorDetailItem: DoctorResponse) {
             binding.apply {
-                ImageDownloader.loadImage(context, doctorDetailItem.image, sivProfilePicture)
+                ImageDownloader.loadImage(context, doctorDetailItem.image!!, sivProfilePicture)
                 tvFullName.text = doctorDetailItem.fullName
-                tvCategoryOfDoctor.text = doctorDetailItem.workInfoList[0].position
-                tvClinicName.text = doctorDetailItem.workInfoList[0].organization
-//                tvExperience.text
-//                tvComments.text
+                tvCategoryOfDoctor.text = doctorDetailItem.workInfoList!![0]!!.position
+                tvClinicName.text = doctorDetailItem.workInfoList[0]!!.organization
+                tvExperience.text = doctorDetailItem.workExperience
+                tvComments.text = doctorDetailItem.commentCount.toString()
 //                tvDetail.text
             }
         }

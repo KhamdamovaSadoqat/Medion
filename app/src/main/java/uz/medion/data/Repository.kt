@@ -204,6 +204,29 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
+    fun doctorsById(doctorId: Int, response: MutableLiveData<Resource<DoctorResponse>>) {
+        compositeDisposable.add(
+            apiClient.doctorById(doctorId, "Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<DoctorResponse>() {
+                    override fun onNext(t: DoctorResponse) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
     fun monthlyDate(doctorId: Int, response: MutableLiveData<Resource<List<MonthlyDateResponse>>>) {
         compositeDisposable.add(
             apiClient.monthlyDate(doctorId, "Bearer ${Constants.token}")
@@ -227,7 +250,11 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
-    fun monthlyTime(date: String, doctorId: Int, response: MutableLiveData<Resource<DataResponse>>) {
+    fun monthlyTime(
+        date: String,
+        doctorId: Int,
+        response: MutableLiveData<Resource<DataResponse>>,
+    ) {
         compositeDisposable.add(
             apiClient.monthlyTime(date, doctorId, "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
@@ -250,7 +277,7 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
-    fun branch(response: MutableLiveData<Resource<List<BranchResponse>>>){
+    fun branch(response: MutableLiveData<Resource<List<BranchResponse>>>) {
         compositeDisposable.add(
             apiClient.branch("Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
@@ -273,7 +300,7 @@ class Repository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
-    fun comments(doctorId: Int, response: MutableLiveData<Resource<List<CommentResponse>>>){
+    fun comments(doctorId: Int, response: MutableLiveData<Resource<List<CommentResponse>>>) {
         compositeDisposable.add(
             apiClient.comments(doctorId, "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
@@ -299,10 +326,10 @@ class Repository {
 
     fun sendComment(
         comment: SendComment,
-        response: MutableLiveData<Resource<List<CommentResponse>>>
+        response: MutableLiveData<Resource<List<CommentResponse>>>,
     ) {
         compositeDisposable.add(
-            apiClient.sendComment(comment,  "Bearer ${Constants.token}")
+            apiClient.sendComment(comment, "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<List<CommentResponse>>() {
@@ -324,8 +351,8 @@ class Repository {
     }
 
     fun myDoctors(
-        response: MutableLiveData<Resource<List<DoctorResponse>>>
-    ){
+        response: MutableLiveData<Resource<List<DoctorResponse>>>,
+    ) {
         compositeDisposable.add(
             apiClient.myDoctors("user@user.com", "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
@@ -349,8 +376,8 @@ class Repository {
     }
 
     fun myDoctorsFavourite(
-        response: MutableLiveData<Resource<List<DoctorResponse>>>
-    ){
+        response: MutableLiveData<Resource<List<DoctorResponse>>>,
+    ) {
         compositeDisposable.add(
             apiClient.myDoctorsFavourite("user@user.com", "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
@@ -375,8 +402,8 @@ class Repository {
 
     fun setDoctorsFavourite(
         doctorId: Int,
-        response: MutableLiveData<Resource<Boolean>>
-    ){
+        response: MutableLiveData<Resource<Boolean>>,
+    ) {
         compositeDisposable.add(
             apiClient.setDoctorFavourite(doctorId, "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())

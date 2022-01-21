@@ -16,7 +16,7 @@
             <!-- giving arguments -->
             <argument
                 android:name="specialityTypeId"
-                app:argType="integer"/>
+                app:argType="integer" />
         </action>
     </fragment>
 
@@ -27,12 +27,17 @@
         tools:layout="@layout/fragment_our_doctors">
         <action
             android:id="@+id/action_ourDoctorsFragment_to_aboutDoctorFragment"
-            app:destination="@id/aboutDoctorFragment" />
+            app:destination="@id/aboutDoctorFragment">
+            <!-- giving arguments -->
+            <argument
+                android:name="doctorId"
+                app:argType="integer" />
+        </action>
         <!--receiving arguments-->
         <argument
             android:name="specialityTypeId"
-            app:argType="integer"
-            android:defaultValue="0"/>
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -49,7 +54,12 @@
         <action
             android:id="@+id/action_aboutDoctorFragment_to_appointmentEnrollFragment"
             app:destination="@id/appointmentEnrollFragment" />
+        <argument
+            android:name="doctorId"
+            app:argType="integer"
+            android:defaultValue="0"/>
     </fragment>
+
     <fragment
         android:id="@+id/certificateFragment"
         android:name="uz.medion.ui.main.user.aboutDoctor.CertificateFragment"
@@ -129,18 +139,18 @@
         tools:layout="@layout/fragment_adress_and_contacts">
         <action
             android:id="@+id/action_adressAndContactsFragment_to_addressFragment"
-            app:destination="@id/addressFragment" >
+            app:destination="@id/addressFragment">
             <!-- giving arguments -->
             <argument
                 android:name="branch"
-                app:argType="uz.medion.data.model.BranchResponse"/>
+                app:argType="uz.medion.data.model.BranchResponse" />
         </action>
     </fragment>
     <fragment
         android:id="@+id/addressFragment"
         android:name="uz.medion.ui.main.user.adressAndContacts.AddressFragment"
         android:label="AddressFragment"
-        tools:layout="@layout/fragment_adress" >
+        tools:layout="@layout/fragment_adress">
         <argument
             android:name="branch"
             app:argType="uz.medion.data.model.BranchResponse"

@@ -26,17 +26,27 @@ import uz.medion.data.model.remote.Status
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.navArgs
+import uz.medion.data.model.DoctorResponse
+import uz.medion.utils.ImageDownloader
+import uz.medion.utils.invisible
+import uz.medion.utils.visible
+import android.os.Bundle
+import android.os.Parcelable
+import uz.medion.data.model.WorkInfoListItem
 
 
 class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
 
+    private val args: AboutDoctorFragmentArgs by navArgs()
 
     private lateinit var aboutDoctorItemAdapter: AboutDoctorAdapter
     private lateinit var appointmentTimeAdapter: AppointmentTimeAdapter
     private lateinit var dialogBinding: DialogAppointmentBinding
     private lateinit var dialogTimeBinding: DialogAppointmentTimeBinding
-    private lateinit var data: ArrayList<AboutDoctorItems>
+    private lateinit var aboutDoctorItems: ArrayList<AboutDoctorItems>
     private lateinit var appointmentTime: ArrayList<AppointmentTimeItem>
+    private lateinit var doctorData: DoctorResponse
     private var resultDialog: BottomSheetDialog? = null
     private var resultTimeDialog: BottomSheetDialog? = null
     private var appointmentTimeBundle: String = "08:30"
@@ -46,22 +56,29 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
 
     override fun onBound() {
-        loadAboutDoctor()
+        loadAboutDoctorItems()
         setUp()
     }
 
     fun setUp() {
-        val args = arguments
-        if (args != null) {
-            if (args.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
-                type = args.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
+        if (args.doctorId != 0) {
+            Log.d("----------", "setUp: doctorId: ${args.doctorId}")
+            getAboutDoctor(args.doctorId)
+        }
+
+        /// from here
+        val argsBundle = arguments
+        if (argsBundle != null) {
+            if (argsBundle.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
+                type = argsBundle.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
                 doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
                 loadDialog()
 
-            } else if (args.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
+            } else if (argsBundle.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
                 doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
             }
-        }
+        }   //// up to here need to change to safeArgs
+
         binding.btnSubmit.setOnClickListener {
             findNavController().navigate(
                 R.id.appointmentFragment,
@@ -71,26 +88,20 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             )
         }
 
-
-
-        val doctorDetailsFragment: Fragment = DoctorDetailsFragment()
-        val transaction: FragmentTransaction =
-            childFragmentManager.beginTransaction()
-        transaction.replace(binding.parentFragmentContainer.id, doctorDetailsFragment).commit()
     }
 
     //booking // dates
     @SuppressLint("SetTextI18n")
     private fun loadDialog() {
         dialogBinding = DialogAppointmentBinding.inflate(LayoutInflater.from(requireContext()))
-        vm.monthlyDate(3).observe(this) { response ->
-            when (response.status) {
+        vm.monthlyDate(3).observe(this) { availableDates ->
+            when (availableDates.status) {
                 Status.LOADING -> {
                 }
                 Status.SUCCESS -> {
-                    val responseDateFirst = response.data!![0].localDate!!.split("-")
+                    val responseDateFirst = availableDates.data!![0].localDate!!.split("-")
                     val responseDateLast =
-                        response.data[response.data.size - 1].localDate!!.split("-")
+                        availableDates.data[availableDates.data.size - 1].localDate!!.split("-")
                     val min = Calendar.getInstance()
                     val max = Calendar.getInstance()
                     min.set(responseDateFirst[0].toInt(),
@@ -103,10 +114,10 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                     dialogBinding.calendarView.setMinimumDate(min)
                     dialogBinding.calendarView.setMaximumDate(max)
                     val calendars: MutableList<Calendar> = ArrayList()
-                    for (day in response.data.indices) {
-                        if (response.data[day].open == true) {
+                    for (day in availableDates.data.indices) {
+                        if (availableDates.data[day].open == true) {
                             //2022-01-15
-                            val responseDate = response.data[day].localDate!!.split("-")
+                            val responseDate = availableDates.data[day].localDate!!.split("-")
                             val firstDisabled: Calendar = DateUtils.getCalendar()
                             firstDisabled.set(responseDate[0].toInt(),
                                 responseDate[1].toInt() - 1,
@@ -131,7 +142,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                     showCalendarDialog()
                 }
                 Status.ERROR -> {
-                    Log.e("----------", "error: ${response.message}")
+                    Log.e("----------", "error: ${availableDates.message}")
                 }
             }
         }
@@ -207,57 +218,104 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     }
 
     //fragments // details / work / comment / certificate
-    private fun loadAboutDoctor() {
-        data = Constants.getAboutDoctorItems()
+    private fun loadAboutDoctorItems() {
+        aboutDoctorItems = Constants.getAboutDoctorItems()
         aboutDoctorItemAdapter = AboutDoctorAdapter { position, lastPosition ->
             if (position != lastPosition) {
-                data[position] =
+                aboutDoctorItems[position] =
                     AboutDoctorItems(
-                        data[position].categoryName,
+                        aboutDoctorItems[position].categoryName,
                         R.color.nile_blue_900,
                         R.color.white
                     )
-                data[lastPosition] = AboutDoctorItems(
-                    data[lastPosition].categoryName,
+                aboutDoctorItems[lastPosition] = AboutDoctorItems(
+                    aboutDoctorItems[lastPosition].categoryName,
                     R.color.solitude_50,
                     R.color.tangaroa_900
                 )
-                aboutDoctorItemAdapter.setData(data)
+                aboutDoctorItemAdapter.setData(aboutDoctorItems)
 
                 when (position) {
                     0 -> {
-                        val doctorDetailsFragment: Fragment = DoctorDetailsFragment()
-                        val transaction: FragmentTransaction =
-                            childFragmentManager.beginTransaction()
-                        transaction.replace(binding.parentFragmentContainer.id, doctorDetailsFragment).commit()
+                      beginDoctorDetailsFragment()
                     }
                     1 -> {
                         val doctorWorkFragment: Fragment = DoctorWorkFragment()
                         val transaction: FragmentTransaction =
                             childFragmentManager.beginTransaction()
-                        transaction.replace(binding.parentFragmentContainer.id, doctorWorkFragment).commit()
+                        transaction.replace(binding.parentFragmentContainer.id, doctorWorkFragment)
+                            .commit()
                     }
                     2 -> {
                         val doctorCommentFragment: Fragment = DoctorCommentFragment()
                         val transaction: FragmentTransaction =
                             childFragmentManager.beginTransaction()
-                        transaction.replace(binding.parentFragmentContainer.id, doctorCommentFragment).commit()
+                        transaction.replace(binding.parentFragmentContainer.id,
+                            doctorCommentFragment).commit()
                     }
                     3 -> {
                         val doctorCertificateFragment: Fragment = DoctorCertificateFragment()
                         val transaction: FragmentTransaction =
                             childFragmentManager.beginTransaction()
-                        transaction.replace(binding.parentFragmentContainer.id, doctorCertificateFragment)
+                        transaction.replace(binding.parentFragmentContainer.id,
+                            doctorCertificateFragment)
                             .commit()
                     }
                 }
             }
         }
-        aboutDoctorItemAdapter.setData(data)
+        aboutDoctorItemAdapter.setData(aboutDoctorItems)
         binding.rvDoctorAboutDetails.adapter = aboutDoctorItemAdapter
         binding.rvDoctorAboutDetails.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
+    }
+
+    private fun getAboutDoctor(doctorId: Int) {
+        vm.doctorById(doctorId).observe(this) { doctorData ->
+            when (doctorData.status) {
+                Status.LOADING -> {
+                    binding.clTop.invisible()
+                }
+                Status.SUCCESS -> {
+                    binding.clTop.visible()
+                    this.doctorData = doctorData.data!!
+                    beginDoctorDetailsFragment()
+
+                    binding.tvFullName.text = doctorData.data.fullName
+                    binding.tvReyting.text = doctorData.data.averageRating
+                    binding.tvExperience.text = doctorData.data.workExperience
+                    binding.tvCategory.text = doctorData.data.workInfoList!![0]!!.position
+                    ImageDownloader.loadImage(requireContext(),
+                        doctorData.data.image!!,
+                        binding.cardProfileAvater)
+                }
+                Status.ERROR -> {
+                    binding.clTop.visible()
+                }
+            }
+
+        }
+    }
+
+    private fun beginDoctorDetailsFragment(){
+        val doctorDetailsFragment: Fragment = DoctorDetailsFragment()
+
+        //given arguments: about, url, university and faculty
+        val bundle = Bundle()
+
+        bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR_UNIVERSITY,
+            doctorData.educationInfoList!![0]!!.organization)
+        bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR_FACULTY,
+            doctorData.educationInfoList!![0]!!.faculty)
+        bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR_URL, doctorData.doctorVideoUrl)
+        bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR, doctorData.aboutDoctor)
+        doctorDetailsFragment.arguments = bundle
+
+        val transaction: FragmentTransaction =
+            childFragmentManager.beginTransaction()
+        transaction.replace(binding.parentFragmentContainer.id,
+            doctorDetailsFragment).commit()
     }
 
     private fun showCalendarDialog() {

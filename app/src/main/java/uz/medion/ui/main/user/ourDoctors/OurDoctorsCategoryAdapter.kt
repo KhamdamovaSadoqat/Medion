@@ -34,7 +34,7 @@ class OurDoctorsCategoryAdapter(private val itemClickListener: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(position+1)
         }
         holder.onBind(listItem[position])
     }

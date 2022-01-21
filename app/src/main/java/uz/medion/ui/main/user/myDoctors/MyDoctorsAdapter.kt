@@ -50,7 +50,7 @@ class MyDoctorsAdapter(private val itemClickListener: (DoctorResponse) -> Unit) 
         fun onBind(category: DoctorResponse) {
             binding.apply {
                 tvDoctorName.text = category.username
-                tvDoctorSphere.text = category.workInfoList[0].position
+                tvDoctorSphere.text = category.workInfoList!![0]!!.position
 //                if (category.isFavourite) ivFavourites.setImageDrawable(
 //                    ContextCompat.getDrawable(
 //                        context,

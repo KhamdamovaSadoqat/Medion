@@ -53,6 +53,12 @@ interface ApiInterface {
     ): Observable<List<DoctorResponse>>
 
     //AboutDoctor:: Booking
+    @GET("/api/v1/doctor/get/{id}")
+    fun doctorById(
+        @Path("id") id: Int,
+        @Header("Authorization") token: String
+    ): Observable<DoctorResponse>
+
     @Headers("Content-Type: application/json")
     @GET("/api/v1/booking/date")
     fun monthlyDate(
@@ -109,7 +115,7 @@ interface ApiInterface {
     @POST("/api/v1/user/favorite/{doctorId}")
     fun setDoctorFavourite(
         @Path("doctorId") doctorId: Int,
-        @Header("Authorization") token: String,
+        @Header("Authorization") token: String
     ): Observable<Boolean>
 
 }

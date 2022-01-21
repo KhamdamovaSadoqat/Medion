@@ -41,51 +41,8 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         } else
             doctorsBySpecialityUrl =
                 "${Constants.BASE_API_URL}/api/v1/speciality/${args.specialityTypeId}/doctors"
-        vm.doctorBySpeciality(doctorsBySpecialityUrl).observe(this) { doctors ->
-            when (doctors.status) {
-                Status.LOADING -> {
-                    binding.progress.visible()
-                }
-                Status.SUCCESS -> {
-                    binding.progress.invisible()
-                    binding.rvDoctors.visible()
-                    ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter { item ->
-                        findNavController().navigate(
-                            R.id.aboutDoctorFragment
-                        )
-                    }
-                    ourDoctorsDetailsAdapter.setData(doctors.data!!)
-                    binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
-                    binding.rvDoctors.layoutManager =
-                        LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-                }
-                Status.ERROR -> {
-                    binding.progress.invisible()
-                }
-            }
-        }
-
-        vm.speciality().observe(this) { speciality ->
-            when (speciality.status) {
-                Status.LOADING -> {
-                    binding.progressForRv.visible()
-                }
-                Status.SUCCESS -> {
-                    binding.progressForRv.invisible()
-
-                    ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter {}
-                    ourDoctorsCategoryAdapter.setData(speciality.data!!)
-                    binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
-                    binding.rvDoctorsCategories.layoutManager =
-                        LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-                }
-                Status.ERROR -> {
-                    binding.progressForRv.invisible()
-                }
-            }
-
-        }
-
+        getDoctors(doctorsBySpecialityUrl)
+        getSpecialities()
 
     }
 
@@ -160,6 +117,60 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             binding.ivOption1.gone()
             binding.ivOption2.gone()
             binding.ivOption3.visible()
+        }
+    }
+
+    private fun getSpecialities() {
+        vm.speciality().observe(this) { speciality ->
+            when (speciality.status) {
+                Status.LOADING -> {
+                    binding.progressForRv.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progressForRv.invisible()
+                    binding.rvDoctorsCategories.visible()
+
+                    ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter { specialityId ->
+                        doctorsBySpecialityUrl =
+                            "${Constants.BASE_API_URL}/api/v1/speciality/$specialityId/doctors"
+                        getDoctors(doctorsBySpecialityUrl)
+                    }
+                    ourDoctorsCategoryAdapter.setData(speciality.data!!)
+                    binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
+                    binding.rvDoctorsCategories.layoutManager =
+                        LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+                }
+                Status.ERROR -> {
+                    binding.progressForRv.invisible()
+                }
+            }
+        }
+    }
+
+    private fun getDoctors(url: String) {
+        vm.doctorBySpeciality(url).observe(this) { doctors ->
+            when (doctors.status) {
+                Status.LOADING -> {
+                    binding.progress.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progress.invisible()
+                    binding.rvDoctors.visible()
+                    ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter { doctorId ->
+                        val action =
+                            OurDoctorsFragmentDirections.actionOurDoctorsFragmentToAboutDoctorFragment(
+                                doctorId)
+                        findNavController().navigate(action)
+                    }
+                    ourDoctorsDetailsAdapter.setData(doctors.data!!)
+                    binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
+                    binding.rvDoctors.layoutManager =
+                        LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                }
+                Status.ERROR -> {
+                    binding.progress.invisible()
+                }
+            }
         }
     }
 

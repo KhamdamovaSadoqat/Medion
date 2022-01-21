@@ -13,7 +13,12 @@ class AboutDoctorVM: BaseVM() {
     private val monthlyDateResponse = MutableLiveData<Resource<List<MonthlyDateResponse>>>()
     private val monthlyTimeResponse = MutableLiveData<Resource<DataResponse>>()
     private val commentsResponse = MutableLiveData<Resource<List<CommentResponse>>>()
+    private val doctorByIdResponse = MutableLiveData<Resource<DoctorResponse>>()
 
+    fun doctorById(doctorId: Int): LiveData<Resource<DoctorResponse>>{
+        repo.doctorsById(doctorId, doctorByIdResponse)
+        return  doctorByIdResponse
+    }
 
     fun sendComment(comment: SendComment): LiveData<Resource<List<CommentResponse>>>{
         repo.sendComment(comment, commentsResponse)
