@@ -5,7 +5,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import uz.medion.data.constants.Constants
-import uz.medion.data.model.doctor.DoctorInfo
+import uz.medion.data.model.doctor.DocRegistration
+import uz.medion.data.model.doctor.DoctorResponse
 
 
 object Network {
@@ -18,9 +19,9 @@ object Network {
 
 interface RestApi {
     @GET("doctors-controller/getAllSpecialitiesUsingGET")
-    suspend fun getDoctor(@Query("id") id: Int): Response<DoctorInfo>
+    suspend fun getDoctor(@Query("id") id: Int): Response<DoctorResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/doctor/{id}")
-    suspend fun addDoctorInfo(@FieldMap docMap: HashMap<String,String>):Response<DoctorInfo>
+    suspend fun addDoctorInfo(@FieldMap docMap: HashMap<String,String>):Response<DoctorResponse>
 }

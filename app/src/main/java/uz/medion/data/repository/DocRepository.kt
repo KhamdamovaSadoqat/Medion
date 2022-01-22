@@ -2,7 +2,7 @@ package uz.medion.data.repository
 
 import android.annotation.SuppressLint
 import android.util.Log
-import uz.medion.data.model.doctor.DoctorInfo
+import uz.medion.data.model.doctor.DoctorResponse
 import uz.medion.data.network.RestApi
 import java.util.concurrent.Flow
 
@@ -15,7 +15,7 @@ class DocRepository( private val service: RestApi) {
 
 
     @SuppressLint("LogConditional")
-    suspend fun addDoctorInfo(map: HashMap<String, String>): ArrayList<DoctorInfo> {
+    suspend fun addDoctorInfo(map: HashMap<String, String>): ArrayList<DoctorResponse> {
         val response = service.addDoctorInfo(map)
         Log.d(TAG, "addDoctorInfo: ${response.code()}")
         if (response.isSuccessful && response.body() != null) {

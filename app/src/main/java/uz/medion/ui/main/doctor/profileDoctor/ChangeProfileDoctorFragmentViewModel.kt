@@ -7,18 +7,18 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import uz.medion.data.model.doctor.DoctorInfo
+import uz.medion.data.model.doctor.DoctorResponse
 import uz.medion.data.network.RestApi
 import uz.medion.data.repository.DocRepository
 
 class ChangeProfileDoctorFragmentViewModel(service: RestApi) : ViewModel() {
     private val repo = DocRepository( service)
-    private var result: LiveData<List<DoctorInfo>> = MutableLiveData()
-    private var resultPost=MutableLiveData<ArrayList<DoctorInfo>>()
+    private var result: LiveData<List<DoctorResponse>> = MutableLiveData()
+    private var resultPost=MutableLiveData<ArrayList<DoctorResponse>>()
 
 
 
-    fun addDoctorInfo(map:HashMap<String,String>):LiveData<ArrayList<DoctorInfo>>{
+    fun addDoctorInfo(map:HashMap<String,String>):LiveData<ArrayList<DoctorResponse>>{
         viewModelScope.launch {
             resultPost.value= withContext(Dispatchers.IO){
                 repo.addDoctorInfo(map)
