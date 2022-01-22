@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
+import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentAdressAndContactsBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.utils.invisible
+import uz.medion.utils.visible
 
 class AddressAndContactsFragment :
     BaseFragment<FragmentAdressAndContactsBinding, AddressAndContactsVM>() {
@@ -22,6 +25,21 @@ class AddressAndContactsFragment :
     }
 
     private fun setUp() {
+        vm.branch().observe(this) { branch ->
+            when (branch.status) {
+                Status.LOADING -> {
+                    binding.progress.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progress.invisible()
+                    binding.rvAdressAndContacts.visible()
+                    addressAndContactsAdapter.setData(branch.data!!)
+                }
+                Status.ERROR -> {
+                }
+            }
+        }
+
         addressAndContactsAdapter = AddressAndContactsAdapter { pos ->
             findNavController().navigate(
                 R.id.action_adressAndContactsFragment_to_addressFragment, bundleOf(
@@ -29,7 +47,6 @@ class AddressAndContactsFragment :
                 )
             )
         }
-        addressAndContactsAdapter.setData(Constants.getAddressAndContact())
         binding.rvAdressAndContacts.adapter = addressAndContactsAdapter
         binding.rvAdressAndContacts.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
