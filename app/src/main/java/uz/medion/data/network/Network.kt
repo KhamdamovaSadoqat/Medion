@@ -3,15 +3,14 @@ package uz.medion.data.network
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
+import uz.medion.data.constants.Constants
 import uz.medion.data.model.doctor.DoctorInfo
 
-const val BASE_URL = "http://45.137.148.124:8081/api/v1/swagger-ui/#/"
 
 object Network {
-    val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+    val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(Constants.BASE_API_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -20,4 +19,8 @@ object Network {
 interface RestApi {
     @GET("doctors-controller/getAllSpecialitiesUsingGET")
     suspend fun getDoctor(@Query("id") id: Int): Response<DoctorInfo>
+
+    @FormUrlEncoded
+    @POST("/api/v1/doctor/{id}")
+    suspend fun addDoctorInfo(@FieldMap docMap: HashMap<String,String>):Response<DoctorInfo>
 }

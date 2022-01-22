@@ -33,8 +33,8 @@ interface ApiInterface {
     ): Observable<RegistrationResponse>
 
     @Headers("Content-Type: application/json")
-    @POST("/api/v1/auth/login")
+            @POST("/api/v1/auth/login")
     fun login(
-        @Body login: Login
+        @Path ("role")role: String
     ): Observable<UserLogin>
 }

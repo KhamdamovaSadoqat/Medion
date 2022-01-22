@@ -8,10 +8,10 @@
 
     <item
         android:id="@+id/chatDoctorFragment"
-        android:icon="@drawable/ic_chat"
+        android:icon="@drawable/ic_chat11"
         android:title="" />
     <item
-        android:id="@+id/personalAreaFragment"
+        android:id="@+id/changeProfileDoctorFragment"
         android:icon="@drawable/ic_person"
         android:title="" />
 

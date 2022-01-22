@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import uz.medion.data.constants.Constants
 import java.util.concurrent.TimeUnit
 
 object CreateRetrofit {
@@ -24,7 +25,7 @@ object CreateRetrofit {
             .writeTimeout(15, TimeUnit.SECONDS)
             .build()
         retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.BASE_API_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

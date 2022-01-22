@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/bg_main"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
@@ -10,14 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"
-        app:cardCornerRadius="40dp"
+        app:cardCornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/patient"
             android:contentDescription="@string/todo" />
     </androidx.cardview.widget.CardView>
@@ -37,10 +38,11 @@
         />
 
     <LinearLayout
+        android:gravity="center"
         android:id="@+id/linear_personal_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
@@ -68,23 +70,6 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_chat2svg" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chat"
-                android:textSize="12sp" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -117,12 +102,15 @@
         app:layout_constraintTop_toBottomOf="@id/linear_personal_info" />
 
     <HorizontalScrollView
+        android:layout_marginTop="4dp"
         android:id="@+id/horizontal_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_chips">
+        app:layout_constraintTop_toBottomOf="@+id/view_chips"
+        app:layout_constraintBottom_toTopOf="@+id/view_chips_2"
+        >
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chips_group"
@@ -168,7 +156,7 @@
         android:id="@+id/view_chips_2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:background="#E9EAED"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

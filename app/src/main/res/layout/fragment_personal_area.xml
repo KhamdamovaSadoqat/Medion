@@ -8,8 +8,7 @@
     tools:context=".ui.main.doctor.personalArea.PersonalAreaFragment">
 
     <androidx.cardview.widget.CardView
-        android:layout_marginStart="16sp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="22sp"
         app:layout_constraintBottom_toTopOf="@id/linear_category"
         android:id="@+id/card_view_personal_area"
         android:layout_width="wrap_content"
@@ -26,7 +25,7 @@
 
     <LinearLayout
         app:layout_constraintStart_toEndOf="@+id/card_view_personal_area"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="95dp"
         app:layout_constraintBottom_toTopOf="@id/linear_category"
         android:id="@+id/linear_personal_Area_name"
