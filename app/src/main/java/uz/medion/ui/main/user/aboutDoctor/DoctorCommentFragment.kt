@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
+import uz.medion.data.constants.Keys
 import uz.medion.data.model.SendComment
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentDoctorCommentBinding
@@ -17,7 +18,8 @@ import java.util.*
 class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDoctorVM>() {
 
     private lateinit var aboutDoctorCommentAdapter: AboutDoctorCommentAdapter
-    private var reyting: Int = 1
+    private var doctorId: Int = 0
+    private var rating: Int = 1
     private var date = Date()
     private var time: String = "hh:mm dd.mm.yyyy"
 
@@ -27,6 +29,12 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
     }
 
     private fun loadComment() {
+        //get from bundle Doctor ID
+        val args = arguments
+        if (args != null) {
+            doctorId = args.getInt(Keys.BUNDLE_ABOUT_DOCTOR_ID)
+        }
+
         //initializing comment rv
         aboutDoctorCommentAdapter = AboutDoctorCommentAdapter { }
         binding.rvComments.adapter = aboutDoctorCommentAdapter
@@ -34,7 +42,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
         //get comment from backend
-        vm.comments(3).observe(this) { comments ->
+        vm.comments(doctorId).observe(this) { comments ->
             when (comments.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
@@ -58,7 +66,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
                 binding.etUserComment.error = "Write comment please!"
             } else {
                 vm.sendComment(
-                    SendComment(reyting, 3, binding.etUserComment.text.toString())
+                    SendComment(rating, doctorId, binding.etUserComment.text.toString())
                 ).observe(this) { comments ->
                     when (comments.status) {
                         Status.LOADING -> {
@@ -119,7 +127,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
                     )
                 )
             }
-            reyting = 1
+            rating = 1
         }
         binding.ivStar2.setOnClickListener {
             binding.apply {
@@ -154,7 +162,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
                     )
                 )
             }
-            reyting = 2
+            rating = 2
         }
         binding.ivStar3.setOnClickListener {
             binding.apply {
@@ -189,7 +197,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
                     )
                 )
             }
-            reyting = 3
+            rating = 3
         }
         binding.ivStar4.setOnClickListener {
             binding.apply {
@@ -224,7 +232,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
                     )
                 )
             }
-            reyting = 4
+            rating = 4
         }
         binding.ivStar5.setOnClickListener {
             binding.apply {
@@ -259,7 +267,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
                     )
                 )
             }
-            reyting = 5
+            rating = 5
         }
     }
 
@@ -297,7 +305,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
                 )
             )
         }
-        reyting = 1
+        rating = 1
     }
 
 

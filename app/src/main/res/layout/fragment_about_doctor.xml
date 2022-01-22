@@ -67,9 +67,11 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_items"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/v_divider"
                     app:layout_constraintTop_toBottomOf="@id/tv_category"
                     app:layout_constraintVertical_chainStyle="packed">
@@ -78,7 +80,7 @@
                         android:id="@+id/cl_reyting"
                         android:layout_width="120dp"
                         android:layout_height="42dp"
-                        android:layout_marginEnd="139dp"
+                        android:layout_marginEnd="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/cl_experience"
                         app:layout_constraintLeft_toLeftOf="parent">
@@ -125,6 +127,7 @@
                         android:id="@+id/cl_experience"
                         android:layout_width="120dp"
                         android:layout_height="42dp"
+                        android:layout_marginStart="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent">
 

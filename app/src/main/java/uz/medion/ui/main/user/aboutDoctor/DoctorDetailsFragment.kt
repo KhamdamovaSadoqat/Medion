@@ -10,6 +10,7 @@ import uz.medion.databinding.FragmentDoctorDetailsBinding
 import uz.medion.ui.base.BaseFragment
 import kotlin.math.log
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import uz.medion.data.model.WorkInfoListItem
 
 
 class DoctorDetailsFragment : BaseFragment<FragmentDoctorDetailsBinding, AboutDoctorVM>() {
@@ -23,6 +24,7 @@ class DoctorDetailsFragment : BaseFragment<FragmentDoctorDetailsBinding, AboutDo
             binding.tvEducation.text = args.getString(Keys.BUNDLE_ABOUT_DOCTOR_FACULTY)
             binding.tvGraduation.text = args.getString(Keys.BUNDLE_ABOUT_DOCTOR_UNIVERSITY)
             youtubeUrl = args.getString(Keys.BUNDLE_ABOUT_DOCTOR_URL)!!
+
         }
         lifecycle.addObserver(binding.youtubePlayerView)
         //giving youtube id for streaming

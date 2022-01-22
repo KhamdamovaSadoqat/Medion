@@ -108,37 +108,6 @@ object Constants {
         )
     }
 
-    fun getCurrentWork(): ArrayList<AboutDoctorWorkItem> {
-        return arrayListOf(
-            AboutDoctorWorkItem(
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "doctor of urology"
-            ),
-            AboutDoctorWorkItem(
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "doctor of urology"
-            ),
-            AboutDoctorWorkItem(
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "doctor of urology"
-            ),
-            AboutDoctorWorkItem(
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "doctor of urology"
-            )
-        )
-    }
-
-    fun getPastWork(): ArrayList<AboutDoctorWorkItem> {
-        return arrayListOf(
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-        )
-    }
-
     fun getSertificate(): ArrayList<AboutDoctorSertificateItem> {
         return arrayListOf(
             AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),

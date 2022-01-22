@@ -34,6 +34,7 @@ import uz.medion.utils.visible
 import android.os.Bundle
 import android.os.Parcelable
 import uz.medion.data.model.WorkInfoListItem
+import kotlin.collections.ArrayList
 
 
 class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
@@ -53,7 +54,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     private var appointmentDateBundle: String = ""
     private var doctorName: String = ""
     private var type: String = ""
-
+    val bundle = Bundle()
 
     override fun onBound() {
         loadAboutDoctorItems()
@@ -87,7 +88,6 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                 )
             )
         }
-
     }
 
     //booking // dates
@@ -237,21 +237,13 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
                 when (position) {
                     0 -> {
-                      beginDoctorDetailsFragment()
+                        beginDoctorDetailsFragment()
                     }
                     1 -> {
-                        val doctorWorkFragment: Fragment = DoctorWorkFragment()
-                        val transaction: FragmentTransaction =
-                            childFragmentManager.beginTransaction()
-                        transaction.replace(binding.parentFragmentContainer.id, doctorWorkFragment)
-                            .commit()
+                        beginDoctorWorkFragment()
                     }
                     2 -> {
-                        val doctorCommentFragment: Fragment = DoctorCommentFragment()
-                        val transaction: FragmentTransaction =
-                            childFragmentManager.beginTransaction()
-                        transaction.replace(binding.parentFragmentContainer.id,
-                            doctorCommentFragment).commit()
+                        beginDoctorCommentFragment()
                     }
                     3 -> {
                         val doctorCertificateFragment: Fragment = DoctorCertificateFragment()
@@ -298,12 +290,10 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         }
     }
 
-    private fun beginDoctorDetailsFragment(){
+    private fun beginDoctorDetailsFragment() {
         val doctorDetailsFragment: Fragment = DoctorDetailsFragment()
 
         //given arguments: about, url, university and faculty
-        val bundle = Bundle()
-
         bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR_UNIVERSITY,
             doctorData.educationInfoList!![0]!!.organization)
         bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR_FACULTY,
@@ -316,6 +306,33 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             childFragmentManager.beginTransaction()
         transaction.replace(binding.parentFragmentContainer.id,
             doctorDetailsFragment).commit()
+    }
+
+    private fun beginDoctorWorkFragment() {
+        val doctorWorkFragment: Fragment = DoctorWorkFragment()
+        val transaction: FragmentTransaction =
+            childFragmentManager.beginTransaction()
+
+        //give argument: list of work
+        bundle.putParcelableArrayList(Keys.BUNDLE_ABOUT_DOCTOR_WORK,
+            doctorData.workInfoList as ArrayList)
+        doctorWorkFragment.arguments = bundle
+
+        transaction.replace(binding.parentFragmentContainer.id, doctorWorkFragment)
+            .commit()
+    }
+
+    private fun beginDoctorCommentFragment() {
+        val doctorCommentFragment: Fragment = DoctorCommentFragment()
+        val transaction: FragmentTransaction =
+            childFragmentManager.beginTransaction()
+
+        //give argument: doctor ID
+        bundle.putInt(Keys.BUNDLE_ABOUT_DOCTOR_ID, args.doctorId)
+        doctorCommentFragment.arguments = bundle
+
+        transaction.replace(binding.parentFragmentContainer.id,
+            doctorCommentFragment).commit()
     }
 
     private fun showCalendarDialog() {

@@ -9,6 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
+import retrofit2.Response
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.*
 import uz.medion.data.model.remote.Resource
@@ -420,6 +421,27 @@ class Repository {
                         response.value = Resource(Status.ERROR, null, e.message, e)
                     }
 
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+    fun bookedEvent(response: MutableLiveData<Resource<List<BookingResponse>>>) {
+        compositeDisposable.add(
+            apiClient.bookedEvent("user@user.com", "Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<BookingResponse>>() {
+                    override fun onNext(t: List<BookingResponse>) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
                     override fun onComplete() {}
                 })
         )

@@ -32,6 +32,8 @@ object Keys {
     const val BUNDLE_ABOUT_DOCTOR_FACULTY = "bundle_about_doctor_faculty"
     const val BUNDLE_ABOUT_DOCTOR = "bundle_about_doctor"
     const val BUNDLE_ABOUT_DOCTOR_URL = "bundle_about_doctor_url"
+    const val BUNDLE_ABOUT_DOCTOR_WORK = "bundle_about_doctor_work"
+    const val BUNDLE_ABOUT_DOCTOR_ID = "bundle_about_doctor_id"
 
 
 

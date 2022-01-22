@@ -74,11 +74,18 @@ interface ApiInterface {
         @Header("Authorization") token: String,
     ): Observable<DataResponse>
 
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/booking/allBookings")
+    fun bookedEvent(
+        @Query("username") userName: String,
+        @Header("Authorization") token: String
+    ): Observable<List<BookingResponse>>
+
     //Address and contacts
     @Headers("Content-Type: application/json")
     @GET("/api/v1/branch")
     fun branch(
-        @Header("Authorization") token: String,
+        @Header("Authorization") token: String
     ): Observable<List<BranchResponse>>
 
     //About Doctor // comments

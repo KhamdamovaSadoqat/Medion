@@ -147,6 +147,14 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_transparent_4.xml" value="0.2462962962962963" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_transparent_8.xml" value="0.26481481481481484" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_white.xml" value="0.26615384615384613" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2351851851851852" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_down.xml" value="0.2351851851851852" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_down_right.xml" value="0.2351851851851852" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_left.xml" value="1.0583333333333333" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right.xml" value="1.0583333333333333" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right_2.xml" value="0.2351851851851852" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right_black.xml" value="0.2351851851851852" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right_red.xml" value="0.2351851851851852" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_camere.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_cash.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_chat.xml" value="0.1" />
@@ -158,10 +166,12 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_selected.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_symbol.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_vector.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/aaaaaa_progress.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/aaaaaaaa.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_doctor.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_splash.xml" value="0.2578125" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/chat_doctor_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment_time.xml" value="0.23731884057971014" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_my_documents.xml" value="0.23278985507246377" />
@@ -172,6 +182,7 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_adress_and_contacts.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_appointment.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_appointment_enroll.xml" value="0.264" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_calendar.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_certificate.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_change_number.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_change_password.xml" value="0.23278985507246377" />
@@ -212,6 +223,7 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_profile.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_search_view.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_selected.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_time_table.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_video.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_work_details.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/partial_bottom_navigation.xml" value="0.264" />

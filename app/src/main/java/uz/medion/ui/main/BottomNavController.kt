@@ -20,7 +20,7 @@ class BottomNavController(
     private val bindingActivity: ActivityMainBinding,
     private val binding: PartialBottomNavigationBinding,
     private val activity: AppCompatActivity,
-    private val navController: NavController
+    private val navController: NavController,
 ) {
     private var oldClickedItemPos = 0
     private var lastClickedItemPos = 0
@@ -101,7 +101,7 @@ class BottomNavController(
                     navController.navigate(R.id.calendarFragment, bundleOf(), navOptions)
                     return@apply
                 }
-                  3 -> {
+                3 -> {
                     navOptions = NavOptions.Builder()
                         .setLaunchSingleTop(true)
                         .setPopUpTo(R.id.nv_navigation_drawer, true)

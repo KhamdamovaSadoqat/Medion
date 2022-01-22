@@ -1,8 +1,6 @@
 package uz.medion.ui.main.user.ourDoctors
 
-import android.util.Log
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -11,10 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import uz.medion.R
 import uz.medion.data.constants.Constants
-import uz.medion.data.constants.Keys
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentOurDoctorsBinding
 import uz.medion.ui.base.BaseFragment

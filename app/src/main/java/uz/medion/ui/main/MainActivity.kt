@@ -55,7 +55,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             }
         }
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
             //where bottom navigation should be removed
             if (destination.id == R.id.aboutDoctorFragment ||
                 destination.id == R.id.verificationFragment2 ||
@@ -167,11 +166,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
     }
 
     override fun onBackPressed() {

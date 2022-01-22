@@ -83,7 +83,6 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.0"
 
     // Glide library //load svg
-
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation 'com.github.corouteam:GlideToVectorYou:v2.0.0'
@@ -108,12 +107,7 @@ dependencies {
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
     //calendar
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
-
     implementation 'com.applandeo:material-calendar-view:1.7.0'
-
-
 
     //cardView
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -142,6 +136,4 @@ dependencies {
 
     //mask
     implementation 'ru.egslava:MaskedEditText:1.0.5'
-
-
 }
