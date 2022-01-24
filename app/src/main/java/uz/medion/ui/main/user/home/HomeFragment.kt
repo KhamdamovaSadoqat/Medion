@@ -1,13 +1,12 @@
 package uz.medion.ui.main.user.home
 
+import android.util.Base64
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.*
 import com.google.android.flexbox.*
 import com.google.android.flexbox.FlexDirection.ROW
 import uz.medion.R
@@ -15,12 +14,14 @@ import uz.medion.data.constants.Constants
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentHomeBinding
 import uz.medion.ui.base.BaseFragment
-import uz.medion.ui.splash.sign_up.SignUpFragmentArgs
 import uz.medion.utils.ViewUtils
-import uz.medion.utils.ViewUtils.setMargins
 import uz.medion.utils.invisible
 import uz.medion.utils.visible
-
+import uz.medion.data.model.TokenDecoded
+import uz.medion.utils.JWTUtils
+import java.io.UnsupportedEncodingException
+import java.lang.Exception
+import java.nio.charset.Charset
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
 
@@ -46,13 +47,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
                     binding.list.visible()
 
                     //initializing adapters
-                    adapter = HomeAdapter {id ->
+                    adapter = HomeAdapter { id ->
                         // id = it +1
                         val action =
                             HomeFragmentDirections.actionHomeFragmentToOurDoctorsFragment(id + 1)
                         findNavController().navigate(action)
                     }
-                    adapter2 = HomeAdapter {id ->
+                    adapter2 = HomeAdapter { id ->
                         val action =
                             HomeFragmentDirections.actionHomeFragmentToOurDoctorsFragment(id + 1)
                         findNavController().navigate(action)

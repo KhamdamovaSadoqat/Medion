@@ -3,6 +3,7 @@ package uz.medion.ui.splash.sign_in
 import android.content.Intent
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Base64
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -20,12 +21,16 @@ import com.google.android.gms.tasks.Task
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
 import uz.medion.data.model.Login
+import uz.medion.data.model.TokenDecoded
 import uz.medion.data.model.remote.Status
+import uz.medion.utils.JWTUtils
+import java.io.UnsupportedEncodingException
 
 //login
 class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
+    private val jwtDecoded = JWTUtils()
     var isShowing: Boolean = false
 
     override fun onBound() {
@@ -79,9 +84,16 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                                 prefs.refreshToken = response.data?.refreshToken
                                 Constants.setUnAuthorized(false)
 
-                                // starting new activity and ending the login
-                                val intent = Intent(requireContext(), MainActivity::class.java)
-                                startActivity(intent)
+                                val decodedToken = gson.fromJson(jwtDecoded.decoded(response.data?.accessToken!!), TokenDecoded::class.java)
+                                if(decodedToken.roles[0] == "CLIENT"){
+                                    // starting new activity and ending the login
+                                    val intent = Intent(requireContext(), MainActivity::class.java)
+                                    startActivity(intent)
+                                }else if(decodedToken.roles[0] == "DOCTOR"){
+                                    //start doctor activity
+                                }else{
+                                   // case for admin too
+                                }
                                 requireActivity().finish()
                             }
                             Status.ERROR -> {
