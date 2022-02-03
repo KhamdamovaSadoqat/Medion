@@ -1,5 +1,6 @@
 package uz.medion.utils
 
+import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -51,8 +52,15 @@ object DateTimeUtils {
      *
      * @return String
      */
-    fun textToTextDate(dateText: String): String{
+    fun textToTextDate(dateText: String): String {
         val date = dateText.split(":")
         return "${date[0]}:${date[1]}"
+    }
+
+    fun timeMillsToTextDate(timeMills: Long): String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = timeMills
+        return if (calendar[Calendar.MONTH] < 10) "${calendar[Calendar.DAY_OF_MONTH]}.0${calendar[Calendar.MONTH]}.${calendar[Calendar.YEAR]}"
+        else "${calendar[Calendar.DAY_OF_MONTH]}.${calendar[Calendar.MONTH]}.${calendar[Calendar.YEAR]}"
     }
 }

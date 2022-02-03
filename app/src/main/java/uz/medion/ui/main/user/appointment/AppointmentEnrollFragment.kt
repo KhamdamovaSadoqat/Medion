@@ -9,6 +9,7 @@ import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
 import uz.medion.databinding.FragmentAppointmentEnrollBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.utils.DateTimeUtils
 import java.util.*
 
 class AppointmentEnrollFragment : BaseFragment<FragmentAppointmentEnrollBinding, AppointmentVM>() {
@@ -21,13 +22,10 @@ class AppointmentEnrollFragment : BaseFragment<FragmentAppointmentEnrollBinding,
     private var card: String = ""
 
     override fun onBound() {
-        val calendarDate = Calendar.getInstance()
-        calendarDate.timeInMillis = args.appointmentDate
         time = args.appointmentTime
         doctorName = args.doctorName
         type = args.appointmentType
-        date = calendarDate.time.toString() // need to give date in correct form
-
+        date = DateTimeUtils.timeMillsToTextDate(args.appointmentDate) // need to give date in correct form
         setUp()
 
     }
@@ -66,5 +64,5 @@ class AppointmentEnrollFragment : BaseFragment<FragmentAppointmentEnrollBinding,
 
     override fun getLayoutResId() = R.layout.fragment_appointment_enroll
     override val vm: AppointmentVM
-        get() = ViewModelProvider(this).get(AppointmentVM::class.java)
+        get() = ViewModelProvider(this)[AppointmentVM::class.java]
 }

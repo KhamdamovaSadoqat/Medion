@@ -240,22 +240,38 @@
             app:destination="@id/paymentCompleteFragment" />
         <argument
             android:name="doctorName"
+            android:defaultValue="null"
             app:argType="string" />
         <argument
             android:name="appointmentDate"
+            android:defaultValue="0L"
             app:argType="long" />
         <argument
             android:name="appointmentTime"
+            android:defaultValue="null"
             app:argType="string" />
         <argument
             android:name="appointmentType"
+            android:defaultValue="null"
+            app:argType="string" />
+        <argument
+            android:name="cardNumber"
+            android:defaultValue="null"
             app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addCardFragment"
         android:name="uz.medion.ui.main.user.payment.AddCardFragment"
         android:label="AddCardFragment"
-        tools:layout="@layout/fragment_add_card" />
+        tools:layout="@layout/fragment_add_card" >
+        <action
+            android:id="@+id/action_addCardFragment_to_appointmentEnrollFragment"
+            app:destination="@id/appointmentEnrollFragment">
+            <argument
+                android:name="cardNumber"
+                app:argType="string"/>
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/paymentCompleteFragment"
         android:name="uz.medion.ui.main.user.payment.PaymentCompleteFragment"
