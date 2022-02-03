@@ -254,14 +254,14 @@ class Repository {
     fun monthlyTime(
         date: String,
         doctorId: Int,
-        response: MutableLiveData<Resource<DataResponse>>,
+        response: MutableLiveData<Resource<List<MonthlyTimeResponse>>>,
     ) {
         compositeDisposable.add(
             apiClient.monthlyTime(date, doctorId, "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<DataResponse>() {
-                    override fun onNext(t: DataResponse) {
+                .subscribeWith(object : DisposableObserver<List<MonthlyTimeResponse>>() {
+                    override fun onNext(t: List<MonthlyTimeResponse>) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
 

@@ -42,4 +42,17 @@ object DateTimeUtils {
         } else
             null
     }
+
+    /**
+     * Formats the String formatted date to String format
+     *
+     * @param dateText date in the String format
+     * date array of [hh:mm:ss]
+     *
+     * @return String
+     */
+    fun textToTextDate(dateText: String): String{
+        val date = dateText.split(":")
+        return "${date[0]}:${date[1]}"
+    }
 }

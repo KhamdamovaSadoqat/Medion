@@ -18,8 +18,10 @@ class AppointmentFragment : BaseFragment<FragmentAppointmentBinding, Appointment
     override fun onBound() {
         setUp()
         val args = arguments
-        if (args!!.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
-            doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+        if (args != null) {
+            if (args.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
+                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+            }
         }
         binding.btnSubmit.setOnClickListener {
             findNavController().navigate(

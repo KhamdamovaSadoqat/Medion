@@ -11,7 +11,7 @@ class AboutDoctorVM: BaseVM() {
 
     private val repo = Repository()
     private val monthlyDateResponse = MutableLiveData<Resource<List<MonthlyDateResponse>>>()
-    private val monthlyTimeResponse = MutableLiveData<Resource<DataResponse>>()
+    private val monthlyTimeResponse = MutableLiveData<Resource<List<MonthlyTimeResponse>>>()
     private val commentsResponse = MutableLiveData<Resource<List<CommentResponse>>>()
     private val doctorByIdResponse = MutableLiveData<Resource<DoctorResponse>>()
 
@@ -35,7 +35,7 @@ class AboutDoctorVM: BaseVM() {
         return monthlyDateResponse
     }
 
-    fun monthlyTime(date: String, doctorId: Int): LiveData<Resource<DataResponse>>{
+    fun monthlyTime(date: String, doctorId: Int): LiveData<Resource<List<MonthlyTimeResponse>>>{
         repo.monthlyTime(date, doctorId, monthlyTimeResponse)
         return  monthlyTimeResponse
     }

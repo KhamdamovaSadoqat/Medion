@@ -15,7 +15,7 @@ import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
 import uz.medion.data.model.AboutDoctorItems
-import uz.medion.data.model.AppointmentTimeItem
+import uz.medion.data.model.AppointmentTimeItemIsClicked
 import uz.medion.databinding.DialogAppointmentBinding
 import uz.medion.databinding.DialogAppointmentTimeBinding
 import uz.medion.databinding.FragmentAboutDoctorBinding
@@ -32,8 +32,6 @@ import uz.medion.utils.ImageDownloader
 import uz.medion.utils.invisible
 import uz.medion.utils.visible
 import android.os.Bundle
-import android.os.Parcelable
-import uz.medion.data.model.WorkInfoListItem
 import kotlin.collections.ArrayList
 
 
@@ -46,14 +44,14 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     private lateinit var dialogBinding: DialogAppointmentBinding
     private lateinit var dialogTimeBinding: DialogAppointmentTimeBinding
     private lateinit var aboutDoctorItems: ArrayList<AboutDoctorItems>
-    private lateinit var appointmentTime: ArrayList<AppointmentTimeItem>
+    private lateinit var appointmentTimeIsClicked: ArrayList<AppointmentTimeItemIsClicked>
     private lateinit var doctorData: DoctorResponse
     private var resultDialog: BottomSheetDialog? = null
     private var resultTimeDialog: BottomSheetDialog? = null
-    private var appointmentTimeBundle: String = "08:30"
-    private var appointmentDateBundle: String = ""
-    private var doctorName: String = ""
-    private var type: String = ""
+    private var appointmentDoctorName: String = ""
+    private var appointmentDate: Long = 0
+    private var appointmentTime: String = ""
+    private var appointmentType: String = ""
     val bundle = Bundle()
 
     override fun onBound() {
@@ -71,21 +69,22 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         val argsBundle = arguments
         if (argsBundle != null) {
             if (argsBundle.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
-                type = argsBundle.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
-                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+//                type = argsBundle.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
+//                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
                 loadDialog()
 
             } else if (argsBundle.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
-                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
+//                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
             }
         }   //// up to here need to change to safeArgs
 
         binding.btnSubmit.setOnClickListener {
             findNavController().navigate(
-                R.id.appointmentFragment,
-                bundleOf(
-                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName)
-                )
+                R.id.appointmentFragment
+//                ,
+//                bundleOf(
+//                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName)
+//                )
             )
         }
     }
@@ -134,6 +133,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                         val clickedDay: Calendar = DateUtils.getCalendar()
                         clickedDay.timeInMillis = it.calendar.timeInMillis
                         if (!calendars.contains(clickedDay)) {
+                            appointmentDate = clickedDay.timeInMillis
                             dismissCalendarDialog()
                             loadResultTimeDialog()
                             showTimeDialog()
@@ -152,68 +152,38 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     private fun loadResultTimeDialog() {
         dialogTimeBinding =
             DialogAppointmentTimeBinding.inflate(LayoutInflater.from(requireContext()))
+        appointmentTimeAdapter = AppointmentTimeAdapter { time ->
+            appointmentTime = time.localTime.toString()
+        }
+        dialogTimeBinding.rvTime.adapter = appointmentTimeAdapter
+        dialogTimeBinding.rvTime.layoutManager = GridLayoutManager(requireContext(), 4)
+
         vm.monthlyTime("2022-01-24", 3).observe(this) { time ->
             when (time.status) {
                 Status.LOADING -> {
                 }
                 Status.SUCCESS -> {
-                    appointmentTime = Constants.getAppointmentTime()
-                    Log.d("----------", "loadResultTimeDialog: times: ${time.data!!.times}")
-                    /////////////////////////////////////
-                    /////////////////////////////////////
-                    /////////////////////////////////////
-                    /////////////////////////////////////
-                    /////////////////////////////////////
-
-                    // here left undone
-
-
+                    appointmentTimeIsClicked = arrayListOf()
+                    for (notCLicked in time.data!!.indices) {
+                        appointmentTimeIsClicked.add(AppointmentTimeItemIsClicked(false))
+                    }
+                    appointmentTimeAdapter.setData(time.data, appointmentTimeIsClicked)
                 }
                 Status.ERROR -> {
                 }
             }
         }
-        appointmentTime = Constants.getAppointmentTime()
-        appointmentTimeAdapter = AppointmentTimeAdapter { position, lastPosition ->
-            appointmentTimeBundle = requireContext().getString(appointmentTime[position].time)
 
-            if (position != lastPosition) {
-                appointmentTime[position] =
-                    AppointmentTimeItem(
-                        R.drawable.bg_blue_lighter_8,
-                        appointmentTime[position].time,
-                        R.color.white,
-                        clickable = false,
-                        focusable = false
-                    )
-                appointmentTime[lastPosition] =
-                    AppointmentTimeItem(
-                        R.drawable.bg_transparent_4,
-                        appointmentTime[lastPosition].time,
-                        R.color.tangaroa_900,
-                        clickable = false,
-                        focusable = false
-                    )
-                appointmentTimeAdapter.setData(appointmentTime)
-            }
-        }
-        appointmentTimeAdapter.setData(appointmentTime)
-        dialogTimeBinding.rvTime.adapter = appointmentTimeAdapter
-        dialogTimeBinding.rvTime.layoutManager = GridLayoutManager(requireContext(), 4)
-
-//        appointmentDateBundle = "${date.day}.${date.month}.${date.year}"
         dialogTimeBinding.btnSubmit.setOnClickListener {
             dismissResultTimeDialog()
             dismissCalendarDialog()
-            findNavController().navigate(
-                R.id.appointmentEnrollFragment,
-//                bundleOf(
-//                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName),
-//                    Pair(Keys.BUNDLE_APPOINTMENT_TIME, appointmentTimeBundle),
-//                    Pair(Keys.BUNDLE_APPOINTMENT_DATE, appointmentDateBundle),
-//                    Pair(Keys.BUNDLE_APPOINTMENT_TYPE, type)
-//                )
-            )
+            val action =
+                AboutDoctorFragmentDirections.actionAboutDoctorFragmentToAppointmentEnrollFragment(
+                    appointmentDoctorName,
+                    appointmentDate,
+                    appointmentTime,
+                    appointmentType)
+            findNavController().navigate(action)
         }
     }
 

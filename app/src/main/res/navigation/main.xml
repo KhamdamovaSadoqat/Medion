@@ -53,7 +53,20 @@
             app:destination="@id/appointmentFragment" />
         <action
             android:id="@+id/action_aboutDoctorFragment_to_appointmentEnrollFragment"
-            app:destination="@id/appointmentEnrollFragment" />
+            app:destination="@id/appointmentEnrollFragment" >
+            <argument
+                android:name="doctorName"
+                app:argType="string" />
+            <argument
+                android:name="appointmentDate"
+                app:argType="long" />
+            <argument
+                android:name="appointmentTime"
+                app:argType="string" />
+            <argument
+                android:name="appointmentType"
+                app:argType="string" />
+        </action>
         <argument
             android:name="doctorId"
             app:argType="integer"
@@ -196,6 +209,18 @@
         <action
             android:id="@+id/action_appointmentEnrollFragment_to_payment_complete"
             app:destination="@id/paymentCompleteFragment" />
+        <argument
+            android:name="doctorName"
+            app:argType="string" />
+        <argument
+            android:name="appointmentDate"
+            app:argType="long" />
+        <argument
+            android:name="appointmentTime"
+            app:argType="string" />
+        <argument
+            android:name="appointmentType"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addCardFragment"

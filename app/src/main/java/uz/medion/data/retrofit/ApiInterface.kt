@@ -72,7 +72,7 @@ interface ApiInterface {
         @Query("date") date: String,
         @Query("doctorId") doctorId: Int,
         @Header("Authorization") token: String,
-    ): Observable<DataResponse>
+    ): Observable<List<MonthlyTimeResponse>>
 
     @Headers("Content-Type: application/json")
     @GET("/api/v1/booking/allBookings")
