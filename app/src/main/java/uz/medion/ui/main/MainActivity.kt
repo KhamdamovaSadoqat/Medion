@@ -30,7 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     override fun onBound() {
         Log.d("----------", "onBound: isFirstOpen: $isFirstOpen")
         Log.d("----------", "onBound: prefs: ${prefs.accessToken}")
-        if(prefs.accessToken != null) {
+        if (prefs.accessToken != null) {
             Constants.token = prefs.accessToken!!
             isFirstOpen = false
         } else {
@@ -45,7 +45,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         val navHost =
             supportFragmentManager.findFragmentById(R.id.main_nav_controller) as NavHostFragment
         navController = navHost.navController
-        bottomNavController = BottomNavController(binding, binding.partialBottomNav, this, navController)
+        bottomNavController =
+            BottomNavController(binding, binding.partialBottomNav, this, navController)
         Constants.getUnAuthorized().observe(this) {
             if (it && isFirstOpen) {
                 val intent = Intent(this, SplashActivity::class.java)
@@ -172,8 +173,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 //        val navigationOptions =
 //            NavOptions.Builder().setPopUpTo(navController.currentDestination!!.id, true).build()
 //        navController.navigate(R.id.olympiadFragment, null, navigationOptions)
+        Log.d("----------", "onBackPressed: current: ${navController.currentDestination.toString()}")
         if (navController.currentDestination!!.id == R.id.paymentCompleteFragment) {
             navController.popBackStack(R.id.aboutDoctorFragment, false)
+        } else if (navController.currentDestination!!.id == R.id.appointmentEnrollFragment) {
+            navController.popBackStack(R.id.homeFragment, false)
+        } else if (navController.currentDestination!!.id == R.id.paymentCompleteFragment) {
+            Log.d("----------", "onBackPressed: current: ${navController.currentDestination.toString()}")
+            navController.popBackStack(R.id.homeFragment, false)
         } else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)

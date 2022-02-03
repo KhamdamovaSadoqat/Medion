@@ -50,7 +50,12 @@
             app:destination="@id/certificateFragment" />
         <action
             android:id="@+id/action_aboutDoctorFragment_to_appointmentFragment"
-            app:destination="@id/appointmentFragment" />
+            app:destination="@id/appointmentFragment">
+            <!-- giving arguments -->
+            <argument
+                android:name="appointmentDoctorName"
+                app:argType="string" />
+        </action>
         <action
             android:id="@+id/action_aboutDoctorFragment_to_appointmentEnrollFragment"
             app:destination="@id/appointmentEnrollFragment" >
@@ -67,10 +72,19 @@
                 android:name="appointmentType"
                 app:argType="string" />
         </action>
+        <!--receiving arguments-->
         <argument
             android:name="doctorId"
             app:argType="integer"
             android:defaultValue="0"/>
+        <argument
+            android:name="appointmentDoctorName"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="appointmentType"
+            app:argType="string"
+            android:defaultValue="null"/>
     </fragment>
 
     <fragment
@@ -184,11 +198,13 @@
             android:id="@+id/action_spaMedicineFragment_to_spaMedicineDetailsFragment"
             app:destination="@id/spaMedicineDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/spaMedicineDetailsFragment"
         android:name="uz.medion.ui.main.user.spaMedicine.SpaMedicineDetailsFragment"
         android:label="SpaMedicineDetailsFragment"
         tools:layout="@layout/fragment_spa_medicine_details" />
+
     <fragment
         android:id="@+id/appointmentFragment"
         android:name="uz.medion.ui.main.user.appointment.AppointmentFragment"
@@ -196,8 +212,21 @@
         tools:layout="@layout/fragment_appointment">
         <action
             android:id="@+id/action_appointmentFragment_to_aboutDoctorFragment"
-            app:destination="@id/aboutDoctorFragment" />
+            app:destination="@id/aboutDoctorFragment">
+            <argument
+                android:name="appointmentType"
+                app:argType="string" />
+            <argument
+                android:name="appointmentDoctorName"
+                app:argType="string" />
+        </action>
+        <!--receiving arguments-->
+        <argument
+            android:name="appointmentDoctorName"
+            app:argType="string" />
+
     </fragment>
+
     <fragment
         android:id="@+id/appointmentEnrollFragment"
         android:name="uz.medion.ui.main.user.appointment.AppointmentEnrollFragment"

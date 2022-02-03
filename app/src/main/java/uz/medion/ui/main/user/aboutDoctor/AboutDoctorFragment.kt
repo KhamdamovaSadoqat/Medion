@@ -3,7 +3,6 @@ package uz.medion.ui.main.user.aboutDoctor
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -23,7 +22,6 @@ import uz.medion.ui.base.BaseFragment
 import uz.medion.ui.main.user.appointment.AppointmentTimeAdapter
 import java.util.*
 import uz.medion.data.model.remote.Status
-
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.navArgs
@@ -65,27 +63,18 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             getAboutDoctor(args.doctorId)
         }
 
-        /// from here
-        val argsBundle = arguments
-        if (argsBundle != null) {
-            if (argsBundle.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
-//                type = argsBundle.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
-//                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
-                loadDialog()
+        appointmentType = args.appointmentType
+        appointmentDoctorName = args.appointmentDoctorName
 
-            } else if (argsBundle.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
-//                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
-            }
-        }   //// up to here need to change to safeArgs
+        if (appointmentType != "null") {
+            loadDialog()
+        }
 
         binding.btnSubmit.setOnClickListener {
-            findNavController().navigate(
-                R.id.appointmentFragment
-//                ,
-//                bundleOf(
-//                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName)
-//                )
-            )
+            val action =
+                AboutDoctorFragmentDirections.actionAboutDoctorFragmentToAppointmentFragment(
+                    appointmentDoctorName)
+            findNavController().navigate(action)
         }
     }
 
@@ -243,7 +232,6 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                     binding.clTop.visible()
                     this.doctorData = doctorData.data!!
                     beginDoctorDetailsFragment()
-
                     binding.tvFullName.text = doctorData.data.fullName
                     binding.tvReyting.text = doctorData.data.averageRating
                     binding.tvExperience.text = doctorData.data.workExperience
@@ -251,6 +239,8 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                     ImageDownloader.loadImage(requireContext(),
                         doctorData.data.image!!,
                         binding.cardProfileAvater)
+
+                    appointmentDoctorName = doctorData.data.fullName.toString()
                 }
                 Status.ERROR -> {
                     binding.clTop.visible()
