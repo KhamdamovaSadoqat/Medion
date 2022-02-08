@@ -13,10 +13,7 @@ import uz.medion.data.model.MonthlyTimeResponse
 import uz.medion.databinding.ItemAppointmentTimeBinding
 import uz.medion.utils.DateTimeUtils
 
-class AppointmentTimeAdapter(
-    private val itemClickListener: (MonthlyTimeResponse) -> Unit
-
-) :
+class AppointmentTimeAdapter(private val itemClickListener: (MonthlyTimeResponse) -> Unit) :
     RecyclerView.Adapter<AppointmentTimeAdapter.VH>() {
 
     private var listItem = listOf<MonthlyTimeResponse>()

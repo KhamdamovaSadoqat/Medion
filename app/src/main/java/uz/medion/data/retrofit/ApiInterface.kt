@@ -52,6 +52,23 @@ interface ApiInterface {
         @Header("Authorization") token: String,
     ): Observable<List<DoctorResponse>>
 
+    //Getting subSpeciality
+    @Headers("Content-Type: aplication/json")
+    @GET("/api/v1/sub-speciality/{specialityId}")
+    fun subSpeciality(
+        @Path("specialityId") specialityId: Int,
+        @Header("Authorization") token: String
+    ): Observable<List<SubSpecialityResponse>>
+
+    //Filtering doctors
+    @Headers("Content-Type: aplication/json")
+    @GET("/api/v1/booking/check")
+    fun filterDoctors(
+        @Query("date")date: String,
+        @Query("subSpecialityId") subSpecialityId: Int,
+        @Header("Authorization") token: String
+    ): Observable<List<DoctorResponse>>
+
     //AboutDoctor:: Booking
     @GET("/api/v1/doctor/get/{id}")
     fun doctorById(

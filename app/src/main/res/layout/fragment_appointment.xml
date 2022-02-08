@@ -9,7 +9,7 @@
         tools:context=".ui.main.user.appointment.AppointmentFragment">
 
         <TextView
-            android:id="@+id/tv_urology_costs"
+            android:id="@+id/tv_sub_category_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -29,7 +29,7 @@
             android:layout_marginTop="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="12dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_urology_costs"
+            app:layout_constraintTop_toBottomOf="@id/tv_sub_category_header"
             app:layout_constraintBottom_toTopOf="@id/devider1">
 
             <TextView

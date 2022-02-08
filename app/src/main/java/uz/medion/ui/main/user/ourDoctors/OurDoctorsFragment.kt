@@ -6,25 +6,38 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import uz.medion.R
 import uz.medion.data.constants.Constants
+import uz.medion.data.model.AppointmentTimeItemIsClicked
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentOurDoctorsBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.utils.DateTimeUtils
 import uz.medion.utils.gone
 import uz.medion.utils.invisible
 import uz.medion.utils.visible
+import java.util.*
 
 class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>() {
 
     private val args: OurDoctorsFragmentArgs by navArgs()
     private lateinit var ourDoctorsCategoryAdapter: OurDoctorsCategoryAdapter
     private lateinit var ourDoctorsDetailsAdapter: OurDoctorsDetailsAdapter
+    private lateinit var subSpecialityAdapter: OurDoctorsSubSpecialityAdapter
+    private lateinit var subSpecialityIsClicked: ArrayList<AppointmentTimeItemIsClicked>
     private var tvCategoryAll: Boolean = false
     private var doctorsBySpecialityUrl: String = ""
+    private var chosenDate: String = ""
+    private var subSpecialityId: Int = 1
+
+    //SpecialityId can be get by Arguments:  args.specialityTypeId
+    //SubSpecialityId default = 0
+    //dateFormat:  "yyyy-mm-dd"
+
 
     override fun onBound() {
         setUpUI()
@@ -39,16 +52,23 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 "${Constants.BASE_API_URL}/api/v1/speciality/${args.specialityTypeId}/doctors"
         getDoctors(doctorsBySpecialityUrl)
         getSpecialities()
+        getSubSpeciality(args.specialityTypeId)
 
     }
 
     private fun setUpUI() {
+        subSpecialityAdapter = OurDoctorsSubSpecialityAdapter { subSpecialityId ->
+            this.subSpecialityId = subSpecialityId+1
+        }
+        binding.rvSubSpeciality.adapter = subSpecialityAdapter
+
         binding.clShowAll.setOnClickListener {
             if (tvCategoryAll) {
                 binding.rvDoctorsCategories.layoutManager =
                     LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                 binding.clReason.gone()
                 binding.clCalendar.gone()
+                binding.rvSubSpeciality.gone()
                 binding.ivShowAll.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
@@ -65,6 +85,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 binding.rvDoctorsCategories.layoutManager = flexboxLayoutManager
                 binding.clReason.visible()
                 binding.clCalendar.visible()
+                binding.rvSubSpeciality.visible()
                 binding.ivShowAll.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
@@ -77,43 +98,24 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         }
 
         //calendar modifying
-//        val currentDate = CalendarDay.today()
-//        val calendarState = binding.cvCalendar.state().edit()
-//        calendarState.setMinimumDate(
-//            CalendarDay.from(
-//                currentDate.year,
-//                currentDate.month,
-//                currentDate.day
-//            )
-//        )
-//        if (currentDate.month == 12)
-//            calendarState.setMaximumDate(CalendarDay.from(currentDate.year + 1, 1, currentDate.day))
-//        else calendarState.setMaximumDate(
-//            CalendarDay.from(
-//                currentDate.year,
-//                currentDate.month + 1,
-//                currentDate.day
-//            )
-//        )
-//        calendarState.commit()
+        binding.calendarView.currentPageDate
+        binding.calendarView.setOnDayClickListener{ eventDay ->
+            if (eventDay.isEnabled && eventDay.calendar.get(Calendar.MONTH) == binding.calendarView.currentPageDate.get(
+                    Calendar.MONTH)
+            ) {
+                //Fri Feb 11 00:00:00 GMT+05:00 2022
+                chosenDate = DateTimeUtils.timeMillsToTextDate2(eventDay.calendar.timeInMillis)
+                getFilterDoctors(chosenDate, subSpecialityId)
+            }
+        }
+        val currentDate = Calendar.getInstance()
+        val min = Calendar.getInstance()
+        val max = Calendar.getInstance()
+        min.timeInMillis = currentDate.timeInMillis - 86400000
+        max.timeInMillis = currentDate.timeInMillis + 2592000000 // +1 month
+        binding.calendarView.setMinimumDate(min)
+        binding.calendarView.setMaximumDate(max)
 
-        // this should be changed totally
-        // erase
-        binding.clOption1.setOnClickListener {
-            binding.ivOption1.visible()
-            binding.ivOption2.gone()
-            binding.ivOption3.gone()
-        }
-        binding.clOption2.setOnClickListener {
-            binding.ivOption1.gone()
-            binding.ivOption2.visible()
-            binding.ivOption3.gone()
-        }
-        binding.clOption3.setOnClickListener {
-            binding.ivOption1.gone()
-            binding.ivOption2.gone()
-            binding.ivOption3.visible()
-        }
     }
 
     private fun getSpecialities() {
@@ -167,6 +169,42 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                     binding.progress.invisible()
                 }
             }
+        }
+    }
+
+    private fun getSubSpeciality(specialityId: Int) {
+        vm.subSpeciality(specialityId).observe(this) { subSpeciality ->
+            when (subSpeciality.status) {
+                Status.LOADING -> {
+                }
+                Status.SUCCESS -> {
+                    subSpecialityIsClicked = arrayListOf()
+                    for (notCLicked in subSpeciality.data!!.indices) {
+                        subSpecialityIsClicked.add(AppointmentTimeItemIsClicked(false))
+                    }
+                    subSpecialityIsClicked[0] = AppointmentTimeItemIsClicked(true)
+                    subSpecialityAdapter.items = subSpeciality.data
+                    subSpecialityAdapter.clickingItems = subSpecialityIsClicked
+                }
+                Status.ERROR -> {
+                }
+            }
+
+        }
+    }
+
+    private fun getFilterDoctors(date: String, subSpecialityId: Int) {
+        vm.filterDoctors(date, subSpecialityId).observe(this) { doctorList ->
+            when (doctorList.status) {
+                Status.LOADING -> {
+                }
+                Status.SUCCESS -> {
+                    ourDoctorsDetailsAdapter.setData(doctorList.data!!)
+                }
+                Status.ERROR -> {
+                }
+            }
+
         }
     }
 

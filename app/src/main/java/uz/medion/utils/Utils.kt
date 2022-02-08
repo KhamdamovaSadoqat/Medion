@@ -1,12 +1,8 @@
 package uz.medion.utils
 
-import android.content.Context
 import android.media.MediaPlayer
-import android.os.Build
-import android.text.Html
-import android.text.Spanned
-import androidx.annotation.RawRes
-import com.google.gson.Gson
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
@@ -53,8 +49,7 @@ object Utils {
      */
 
     fun show2DigitsAfterDecimal(number: Double): String {
-        val formattedNumber = DecimalFormat("##.##").format(number)
-        return formattedNumber
+        return DecimalFormat("##.##").format(number)
     }
 
     /**
@@ -67,96 +62,36 @@ object Utils {
      */
 
     fun show1DigitsAfterDecimal(number: Double): String {
-        val formattedNumber = DecimalFormat("##.#").format(number)
-        return formattedNumber
+        return DecimalFormat("##.#").format(number)
     }
 
 
-    fun htmlToText(string: String): Spanned? {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Html.fromHtml(string, Html.FROM_HTML_MODE_LEGACY)
-        } else {
-            Html.fromHtml(string)
-        }
-    }
 
-    fun changeHtmltoString(html: String): String {
-        return Html.fromHtml(html).toString()
-    }
 
-    fun toJson(data: Any): String {
-        val gson = Gson()
-        return gson.toJson(data)
-    }
 
-    inline fun <reified T> fromJson(data: String): T {
-        val gson = Gson()
-        return gson.fromJson(data, T::class.java)
-    }
 
-    fun getTime(min: Int, sec: Int): String {
-        var timeFormat = ""
-        timeFormat = if (min < 10) {
-            if (sec < 10) {
-                "0$min:0$sec"
-            } else {
-                "0$min:$sec"
-            }
-        } else {
-            if (sec < 10) {
-                "$min:0$sec"
-            } else {
-                "$min:$sec"
-            }
-        }
-        return timeFormat
-    }
-
-    fun playSound(
-        context: Context,
-        @RawRes resourse: Int,
-        playOrPause: Boolean = false,
-        progress: ((Int, Int) -> Unit)? = null
-    ) {
-        if (playOrPause && player != null) {
-            if (player!!.isPlaying) {
-                player!!.pause()
-                return
-            } else {
-                player!!.start()
-                return
-            }
-        }
-        player = MediaPlayer.create(context, resourse)
-        player!!.isLooping = false
-        player!!.start()
-
-        if (progress != null) {
-            timer = Timer()
-            getProgress(player!!, player!!.duration / 100L, progress)
-        }
-
-    }
-
-    fun removePLayer() {
-        player?.let {
-            it.stop()
-            it.release()
-        }
-        timer?.cancel()
-    }
-
-    private fun getProgress(player: MediaPlayer, duration: Long, progress: (Int, Int) -> Unit) {
-        timer!!.schedule(object : TimerTask() {
-            override fun run() {
-                val dur = player.duration
-                if (player.currentPosition != dur) {
-                    progress.invoke(dur, player.currentPosition)
-                    getProgress(player, duration, progress)
-                } else {
-                    progress.invoke(dur, player.currentPosition)
+    interface AutoUpdatableAdapter {
+        fun <T> RecyclerView.Adapter<*>.autoNotify(
+            oldList: List<T>,
+            newList: List<T>,
+            compare: (T, T) -> Boolean,
+        ) {
+            val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+                override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                    return compare(oldList[oldItemPosition], newList[newItemPosition])
                 }
-            }
-        }, 1000)
+
+                override fun areContentsTheSame(
+                    oldItemPosition: Int,
+                    newItemPosition: Int,
+                ): Boolean {
+                    return oldList[oldItemPosition] == newList[newItemPosition]
+                }
+
+                override fun getOldListSize() = oldList.size
+                override fun getNewListSize() = newList.size
+            })
+            diff.dispatchUpdatesTo(this)
+        }
     }
 }

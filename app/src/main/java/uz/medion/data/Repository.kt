@@ -9,7 +9,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
-import retrofit2.Response
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.*
 import uz.medion.data.model.remote.Resource
@@ -165,6 +164,60 @@ class Repository {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<List<SpecialityItemResponse>>() {
                     override fun onNext(t: List<SpecialityItemResponse>) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+    fun subSpeciality(
+        specialityId: Int,
+        response: MutableLiveData<Resource<List<SubSpecialityResponse>>>,
+    ) {
+        compositeDisposable.add(
+            apiClient.subSpeciality(specialityId, "Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<SubSpecialityResponse>>() {
+                    override fun onNext(t: List<SubSpecialityResponse>) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+    fun filterDoctors(
+        date: String,
+        subSpecialityId: Int,
+        response: MutableLiveData<Resource<List<DoctorResponse>>>,
+    ) {
+        compositeDisposable.add(
+            apiClient.filterDoctors(date, subSpecialityId, "Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<DoctorResponse>>() {
+                    override fun onNext(t: List<DoctorResponse>) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
 
@@ -436,12 +489,14 @@ class Repository {
                     override fun onNext(t: List<BookingResponse>) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
+
                     override fun onError(e: Throwable) {
                         if (e.message?.contains("401", true) == true) {
                             Constants.setUnAuthorized(true)
                         }
                         response.value = Resource(Status.ERROR, null, e.message, e)
                     }
+
                     override fun onComplete() {}
                 })
         )

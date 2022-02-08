@@ -25,6 +25,8 @@
                     android:id="@+id/calendarView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:pagesColor="@color/white"
+                    app:previousButtonSrc="@drawable/ic_arrow_left_2"
                     app:daysLabelsColor="@color/wood_bark_900"
                     app:forwardButtonSrc="@drawable/ic_arrow_right_2"
                     app:headerColor="@color/white"
@@ -32,7 +34,7 @@
                     app:highlightedDaysLabelsColor="@color/nile_blue_900"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:previousButtonSrc="@drawable/ic_arrow_left"
+                    app:swipeEnabled="true"
                     app:selectionColor="@color/cello_800"
                     app:todayLabelColor="@color/fire_brick_900" />
             </androidx.constraintlayout.widget.ConstraintLayout>

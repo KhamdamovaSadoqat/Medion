@@ -58,9 +58,21 @@ object DateTimeUtils {
     }
 
     fun timeMillsToTextDate(timeMills: Long): String {
+        //timeMills to dd.mm.yyyy
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = timeMills
         return if (calendar[Calendar.MONTH] < 10) "${calendar[Calendar.DAY_OF_MONTH]}.0${calendar[Calendar.MONTH]}.${calendar[Calendar.YEAR]}"
         else "${calendar[Calendar.DAY_OF_MONTH]}.${calendar[Calendar.MONTH]}.${calendar[Calendar.YEAR]}"
+    }
+
+    fun timeMillsToTextDate2(timeMills: Long): String{
+        //timeMills to yyyy-mm-dd
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = timeMills
+        return if (calendar[Calendar.MONTH] < 9 && calendar[Calendar.DAY_OF_MONTH] < 10) "${calendar[Calendar.YEAR]}-0${calendar[Calendar.MONTH]+1}-0${calendar[Calendar.DAY_OF_MONTH]}"
+        else if(calendar[Calendar.MONTH] < 9 && calendar[Calendar.DAY_OF_MONTH] >= 10) "${calendar[Calendar.YEAR]}-0${calendar[Calendar.MONTH]+1}-${calendar[Calendar.DAY_OF_MONTH]}"
+        else if(calendar[Calendar.MONTH] >= 9 && calendar[Calendar.DAY_OF_MONTH] >= 10) "${calendar[Calendar.YEAR]}-${calendar[Calendar.MONTH]+1}-${calendar[Calendar.DAY_OF_MONTH]}"
+        else if(calendar[Calendar.MONTH] >= 9 && calendar[Calendar.DAY_OF_MONTH] < 10) "${calendar[Calendar.YEAR]}-${calendar[Calendar.MONTH]+1}-0${calendar[Calendar.DAY_OF_MONTH]}"
+        else "${calendar[Calendar.YEAR]}-${calendar[Calendar.MONTH]+1}-${calendar[Calendar.DAY_OF_MONTH]}"
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,62 +28,20 @@
             android:textSize="16sp"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--        <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
-        <!--            android:id="@+id/cv_calendar"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginHorizontal="16dp"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:visibility="gone"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/tv_appointment"-->
-        <!--            app:mcv_allowClickDaysOutsideCurrentMonth="false"-->
-        <!--            app:mcv_calendarMode="month"-->
-        <!--            app:mcv_dateTextAppearance="@style/CalenderViewCustom"-->
-        <!--            app:mcv_firstDayOfWeek="monday"-->
-        <!--            app:mcv_headerTextAppearance="@style/CalenderViewCustom"-->
-        <!--            app:mcv_leftArrow="@drawable/ic_arrow_left"-->
-        <!--            app:mcv_rightArrow="@drawable/ic_arrow_right_2"-->
-        <!--            app:mcv_selectionColor="@color/nile_blue_900"-->
-        <!--            app:mcv_selectionMode="single"-->
-        <!--            app:mcv_showOtherDates="out_of_range" />-->
-
-        <!--        <com.squareup.timessquare.CalendarPickerView-->
-        <!--            android:id="@+id/calendar_view"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:background="@color/white"-->
-        <!--            android:visibility="gone"-->
-        <!--            android:clipToPadding="false"-->
-        <!--            android:paddingLeft="16dp"-->
-        <!--            android:paddingRight="16dp"-->
-        <!--            android:paddingBottom="16dp"-->
-        <!--            android:scrollbarStyle="outsideOverlay"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/tv_appointment"-->
-        <!--            app:tsquare_dayTextColor="@color/tangaroa_900"-->
-        <!--            app:tsquare_dividerColor="@color/transparent" />-->
-
-        <!--        <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
-        <!--            android:id="@+id/calendarView"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            app:mcv_showOtherDates="all"-->
-        <!--            app:mcv_selectionColor="#00F"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/tv_appointment"-->
-        <!--            />-->
-
         <com.applandeo.materialcalendarview.CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:daysLabelsColor="@color/wood_bark_900"
             app:headerColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:forwardButtonSrc="@drawable/ic_arrow_right_2"
+            app:headerLabelColor="@color/tangaroa_900"
             app:layout_constraintTop_toBottomOf="@id/tv_appointment"
             app:pagesColor="@color/white"
-            app:selectionColor="@color/cello_800" />
+            app:previousButtonSrc="@drawable/ic_arrow_left_2"
+            app:selectionColor="@color/cello_800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:swipeEnabled="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
