@@ -2,7 +2,6 @@ package uz.medion.ui.splash.sign_up
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -10,11 +9,6 @@ import uz.medion.R
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentSignUpBinding
 import uz.medion.ui.base.BaseFragment
-import org.json.JSONObject
-import com.google.gson.JsonElement
-
-import com.google.gson.JsonParser
-import com.google.gson.Gson
 
 //registration
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
@@ -50,8 +44,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
 //                            }
 //                        }
 //                    }
-
-                vm.getResponseOfRequestEmail(binding.etEmail.text.toString())
+                vm.registrationCreate("+998${binding.etNumber.rawText}")
                     .observe(this) { response ->
                         when (response.status) {
                             Status.LOADING -> {

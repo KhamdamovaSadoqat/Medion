@@ -20,12 +20,12 @@ class Repository {
     private val compositeDisposable = CompositeDisposable()
     private val apiClient = ApiClient.getApiClient()
 
-    fun responseOfRequestEmail(
-        email: String,
+    fun registationCreate(
+        phoneNumber: String,
         response: MutableLiveData<Resource<ResponseOfRequestEmail>>,
     ) {
         compositeDisposable.add(
-            apiClient.requestMail(email)
+            apiClient.requestMail(phoneNumber)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<ResponseOfRequestEmail>() {

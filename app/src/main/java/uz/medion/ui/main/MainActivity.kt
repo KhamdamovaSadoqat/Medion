@@ -9,7 +9,6 @@ import androidx.annotation.LayoutRes
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import uz.medion.R
@@ -28,8 +27,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     private var isFirstOpen = true
 
     override fun onBound() {
-        Log.d("----------", "onBound: isFirstOpen: $isFirstOpen")
-        Log.d("----------", "onBound: prefs: ${prefs.accessToken}")
+//        Log.d("----------", "onBound: isFirstOpen: $isFirstOpen")
+//        Log.d("----------", "onBound: prefs: ${prefs.accessToken}")
         if (prefs.accessToken != null) {
             Constants.token = prefs.accessToken!!
             isFirstOpen = false
@@ -173,7 +172,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 //        val navigationOptions =
 //            NavOptions.Builder().setPopUpTo(navController.currentDestination!!.id, true).build()
 //        navController.navigate(R.id.olympiadFragment, null, navigationOptions)
-        Log.d("----------", "onBackPressed: current: ${navController.currentDestination.toString()}")
+//        Log.d("----------", "onBackPressed: current: ${navController.currentDestination.toString()}")
         if (navController.currentDestination!!.id == R.id.paymentCompleteFragment) {
             navController.popBackStack(R.id.aboutDoctorFragment, false)
         } else if (navController.currentDestination!!.id == R.id.appointmentEnrollFragment) {

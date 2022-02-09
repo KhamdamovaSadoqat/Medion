@@ -13,7 +13,7 @@ interface ApiInterface {
 
     @POST("/api/v1/registration/request") // createRegistrationRequest
     fun requestMail(
-        @Query("username") userName: String, // email
+        @Body phoneNumber: String, // phone number
     ): Observable<ResponseOfRequestEmail>
 
     @Headers("Content-Type: application/json")
