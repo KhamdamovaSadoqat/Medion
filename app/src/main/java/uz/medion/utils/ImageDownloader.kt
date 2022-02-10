@@ -11,9 +11,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
-import android.util.Log
-
-
 
 
 object ImageDownloader {

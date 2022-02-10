@@ -21,7 +21,7 @@ class Repository {
     private val apiClient = ApiClient.getApiClient()
 
     fun registationCreate(
-        phoneNumber: String,
+        phoneNumber: RegistrationCreateRequest,
         response: MutableLiveData<Resource<ResponseOfRequestEmail>>,
     ) {
         compositeDisposable.add(

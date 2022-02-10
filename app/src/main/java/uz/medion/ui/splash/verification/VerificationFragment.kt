@@ -1,18 +1,19 @@
 package uz.medion.ui.splash.verification
 
+import `in`.aabhasjindal.otptextview.OTPListener
 import android.content.Intent
+import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import uz.medion.R
-import uz.medion.data.constants.Keys
-import uz.medion.databinding.FragmentVerificationBinding
-import uz.medion.ui.base.BaseFragment
-import `in`.aabhasjindal.otptextview.OTPListener
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
+import uz.medion.R
 import uz.medion.data.constants.Constants
+import uz.medion.data.constants.Keys
 import uz.medion.data.model.RegistrationRequest
 import uz.medion.data.model.remote.Status
+import uz.medion.databinding.FragmentVerificationBinding
+import uz.medion.ui.base.BaseFragment
 import uz.medion.ui.main.MainActivity
 
 class VerificationFragment : BaseFragment<FragmentVerificationBinding, VerificationVM>() {
@@ -41,38 +42,46 @@ class VerificationFragment : BaseFragment<FragmentVerificationBinding, Verificat
                         // fired when user has entered the OTP fully.
 
                         registrationRequest = RegistrationRequest(
-                            args.email,
+                            args.phoneNumber,
                             "${args.userName} ${args.userSurname}",
-                            args.password,
-                            args.phoneNumber
+                            args.password
+                        )
+                        binding.btnSubmit.background = ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.bg_red_8
                         )
 
-                        vm.verifyAndRegisterUser(args.requestId!!, otp, registrationRequest!!)
-                            .observe(this@VerificationFragment) { response ->
-                                when (response.status) {
-                                    Status.LOADING -> { }
-                                    Status.SUCCESS -> {
-                                        Constants.token =
-                                            response.data!!.accessToken.toString()
-
-                                        binding.btnSubmit.background = ContextCompat.getDrawable(
-                                            requireContext(),
-                                            R.drawable.bg_red_8
-                                        )
-                                        val intent = Intent(requireContext(), MainActivity::class.java)
-                                        startActivity(intent)
-                                        requireActivity().finish()
-                                    }
-                                    Status.ERROR -> { }
-                                }
-                            }
+                        binding.btnSubmit.setOnClickListener {
+                            getVerifyAndRegister(otp)
+                        }
                     }
                 }
             }
         }
     }
 
+    fun getVerifyAndRegister(otp: String){
+        vm.verifyAndRegisterUser(args.requestId!!, otp, registrationRequest!!)
+            .observe(this@VerificationFragment) { response ->
+                when (response.status) {
+                    Status.LOADING -> {
+                    }
+                    Status.SUCCESS -> {
+                        Constants.token =
+                            response.data!!.accessToken.toString()
+
+                        val intent =
+                            Intent(requireContext(), MainActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finish()
+                    }
+                    Status.ERROR -> {
+                    }
+                }
+            }
+    }
+
     override fun getLayoutResId() = R.layout.fragment_verification
     override val vm: VerificationVM
-        get() = ViewModelProvider(this).get(VerificationVM::class.java)
+        get() = ViewModelProvider(this)[VerificationVM::class.java]
 }
