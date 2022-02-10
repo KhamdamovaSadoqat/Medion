@@ -31,8 +31,8 @@ class OurDoctorsVM: BaseVM() {
         return subSpecialityResponse
     }
 
-    fun filterDoctors(date: String, subSpecialityId: Int):LiveData<Resource<List<DoctorResponse>>>{
-        repo.filterDoctors(date, subSpecialityId, filterDoctorsResponse)
+    fun filterDoctors(date: String,specialityId: Int, subSpecialityId: Int):LiveData<Resource<List<DoctorResponse>>>{
+        repo.filterDoctors(date, specialityId, subSpecialityId, filterDoctorsResponse)
         return filterDoctorsResponse
     }
 

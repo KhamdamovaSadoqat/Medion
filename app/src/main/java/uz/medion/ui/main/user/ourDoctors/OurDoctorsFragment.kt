@@ -1,5 +1,6 @@
 package uz.medion.ui.main.user.ourDoctors
 
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,7 @@ import com.google.android.flexbox.JustifyContent
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.model.AppointmentTimeItemIsClicked
+import uz.medion.data.model.DoctorResponse
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentOurDoctorsBinding
 import uz.medion.ui.base.BaseFragment
@@ -37,7 +39,6 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     //SubSpecialityId default = 0
     //dateFormat:  "yyyy-mm-dd"
 
-
     override fun onBound() {
         setUpUI()
         setUp()
@@ -52,7 +53,6 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         getDoctors(doctorsBySpecialityUrl)
         getSpecialities()
         getSubSpeciality(args.specialityTypeId)
-
     }
 
     private fun setUpUI() {
@@ -104,7 +104,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             ) {
                 //Fri Feb 11 00:00:00 GMT+05:00 2022
                 chosenDate = DateTimeUtils.timeMillsToTextDate2(eventDay.calendar.timeInMillis)
-                getFilterDoctors(chosenDate, subSpecialityId)
+                getFilterDoctors(chosenDate, args.specialityTypeId, subSpecialityId)
             }
         }
         val currentDate = Calendar.getInstance()
@@ -192,8 +192,9 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         }
     }
 
-    private fun getFilterDoctors(date: String, subSpecialityId: Int) {
-        vm.filterDoctors(date, subSpecialityId).observe(this) { doctorList ->
+    //{"code":1002,"message":"Doctor doesn't work in selected date","meta":null}
+    private fun getFilterDoctors(date: String, specialityId: Int, subSpecialityId: Int) {
+        vm.filterDoctors(date, specialityId, subSpecialityId).observe(this) { doctorList ->
             when (doctorList.status) {
                 Status.LOADING -> {
                 }
@@ -201,14 +202,18 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                     ourDoctorsDetailsAdapter.setData(doctorList.data!!)
                 }
                 Status.ERROR -> {
+                    if(doctorList.message == "Doctor doesn't work in selected date"){
+                        Log.d("----------", "getFilterDoctors: removing")
+                        val list = listOf<DoctorResponse>()
+                        ourDoctorsDetailsAdapter.setData(list)
+                    }
                 }
             }
-
         }
     }
 
     override fun getLayoutResId() = R.layout.fragment_our_doctors
     override val vm: OurDoctorsVM
-        get() = ViewModelProvider(this).get(OurDoctorsVM::class.java)
+        get() = ViewModelProvider(this)[OurDoctorsVM::class.java]
 
 }

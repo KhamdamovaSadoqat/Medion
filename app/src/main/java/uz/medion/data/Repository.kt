@@ -37,8 +37,8 @@ class Repository {
                         if (e is HttpException) {
                             val errorBody = e.response()?.errorBody()
                             val error =
-                                Gson().fromJson<RegistrationErrorResponse>(errorBody!!.charStream(),
-                                    object : TypeToken<RegistrationErrorResponse>() {}.type)
+                                Gson().fromJson<ErrorResponse>(errorBody!!.charStream(),
+                                    object : TypeToken<ErrorResponse>() {}.type)
                             response.value = Resource(Status.ERROR, null, error.message, e)
                             Log.d("----------", "onError: $error")
                         }
@@ -209,11 +209,12 @@ class Repository {
 
     fun filterDoctors(
         date: String,
+        specialityId: Int,
         subSpecialityId: Int,
         response: MutableLiveData<Resource<List<DoctorResponse>>>,
     ) {
         compositeDisposable.add(
-            apiClient.filterDoctors(date, subSpecialityId, "Bearer ${Constants.token}")
+            apiClient.filterDoctors(date, specialityId, subSpecialityId, "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<List<DoctorResponse>>() {
@@ -226,6 +227,14 @@ class Repository {
                             Constants.setUnAuthorized(true)
                         }
                         response.value = Resource(Status.ERROR, null, e.message, e)
+                        if (e is HttpException) {
+                            val errorBody = e.response()?.errorBody()
+                            val error =
+                                Gson().fromJson<ErrorResponse>(errorBody!!.charStream(),
+                                    object : TypeToken<ErrorResponse>() {}.type)
+                            response.value = Resource(Status.ERROR, null, error.message, e)
+                            Log.d("----------", "onError: $error")
+                        }
                     }
 
                     override fun onComplete() {}

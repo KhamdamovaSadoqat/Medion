@@ -16,7 +16,7 @@ import uz.medion.utils.ImageDownloader
 class OurDoctorsDetailsAdapter(private val itemClickListener: (Int) -> Unit) :
     RecyclerView.Adapter<OurDoctorsDetailsAdapter.VH>(), View.OnClickListener {
 
-    private var listItem = listOf<DoctorResponse>()
+    var listItem = listOf<DoctorResponse>()
     private var position = 0
 
     @SuppressLint("NotifyDataSetChanged")
@@ -27,7 +27,7 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (Int) -> Unit) :
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): VH {
         val inflater = LayoutInflater.from(parent.context)
         val binding =

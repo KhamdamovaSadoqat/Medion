@@ -65,6 +65,7 @@ interface ApiInterface {
     @GET("/api/v1/booking/check")
     fun filterDoctors(
         @Query("date")date: String,
+        @Query("specialityId") specialityId: Int,
         @Query("subSpecialityId") subSpecialityId: Int,
         @Header("Authorization") token: String
     ): Observable<List<DoctorResponse>>

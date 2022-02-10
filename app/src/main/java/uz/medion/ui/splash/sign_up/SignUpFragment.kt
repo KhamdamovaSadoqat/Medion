@@ -69,8 +69,6 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
                             }
                             Status.ERROR -> {
                                 Log.d("----------", "onBound: ${response.message}")
-                                Log.d("----------", "onBound: ${response.throwable}")
-                                Log.d("----------", "onBound: ${response.data}")
 
                                 if(response.message == requireContext().getString(R.string.user_is_registered)){
                                     Log.d("----------", "onBound: data: ${response.data}")
