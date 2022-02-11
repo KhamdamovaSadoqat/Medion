@@ -32,6 +32,9 @@
             <argument
                 android:name="doctorId"
                 app:argType="integer" />
+            <argument
+                android:name="specialityId"
+                app:argType="integer" />
         </action>
         <!--receiving arguments-->
         <argument
@@ -47,7 +50,11 @@
         tools:layout="@layout/fragment_about_doctor">
         <action
             android:id="@+id/action_aboutDoctorFragment_to_certificateFragment"
-            app:destination="@id/certificateFragment" />
+            app:destination="@id/certificateFragment" >
+            <argument
+                android:name="certificateUrl"
+                app:argType="string" />
+        </action>
         <action
             android:id="@+id/action_aboutDoctorFragment_to_appointmentFragment"
             app:destination="@id/appointmentFragment">
@@ -78,6 +85,10 @@
             app:argType="integer"
             android:defaultValue="0"/>
         <argument
+            android:name="specialityId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
             android:name="appointmentDoctorName"
             app:argType="string"
             android:defaultValue=""/>
@@ -89,12 +100,15 @@
 
     <fragment
         android:id="@+id/certificateFragment"
-        android:name="uz.medion.ui.main.user.aboutDoctor.CertificateFragment"
+        android:name="uz.medion.ui.main.user.aboutDoctor.certificate.CertificateFragment"
         android:label="CertificateFragment"
         tools:layout="@layout/fragment_certificate">
         <action
             android:id="@+id/action_certificateFragment_to_aboutDoctorFragment"
             app:destination="@id/aboutDoctorFragment" />
+        <argument
+            android:name="certificateUrl"
+            app:argType="string"/>
     </fragment>
     <fragment
         android:id="@+id/personalAccountFragment"

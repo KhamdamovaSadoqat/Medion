@@ -9,8 +9,16 @@
         app:layout_constraintBottom_toTopOf="@id/btn_submit"
         app:layout_constraintTop_toBottomOf="@id/cl_top">
 
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_sertificate"
+            android:id="@+id/rv_certificate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

@@ -155,7 +155,7 @@
             android:layout_height="wrap_content"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_comment_user" />
+            app:layout_constraintTop_toTopOf="@id/cl_comment_user" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

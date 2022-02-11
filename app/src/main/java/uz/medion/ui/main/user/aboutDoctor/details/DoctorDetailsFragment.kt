@@ -1,6 +1,5 @@
-package uz.medion.ui.main.user.aboutDoctor
+package uz.medion.ui.main.user.aboutDoctor.details
 
-import android.util.Log
 import androidx.annotation.NonNull
 import androidx.lifecycle.ViewModelProvider
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -8,9 +7,8 @@ import uz.medion.R
 import uz.medion.data.constants.Keys
 import uz.medion.databinding.FragmentDoctorDetailsBinding
 import uz.medion.ui.base.BaseFragment
-import kotlin.math.log
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import uz.medion.data.model.WorkInfoListItem
+import uz.medion.ui.main.user.aboutDoctor.AboutDoctorVM
 
 
 class DoctorDetailsFragment : BaseFragment<FragmentDoctorDetailsBinding, AboutDoctorVM>() {

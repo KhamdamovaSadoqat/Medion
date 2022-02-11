@@ -1,4 +1,4 @@
-package uz.medion.ui.main.user.aboutDoctor
+package uz.medion.ui.main.user.aboutDoctor.certificate
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.model.AboutDoctorSertificateItem
+import uz.medion.data.model.DoctorCertificateResponse
 import uz.medion.databinding.ItemSertificateBinding
 import uz.medion.utils.ImageDownloader
 
-class AboutDoctorCertificateAdapter(private val itemClickListener: (Int) -> Unit) :
+class AboutDoctorCertificateAdapter(private val itemClickListener: (String) -> Unit) :
     RecyclerView.Adapter<AboutDoctorCertificateAdapter.VH>() {
 
-    private var listItem = listOf<AboutDoctorSertificateItem>()
+    private var listItem = listOf<DoctorCertificateResponse>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(listItem: List<AboutDoctorSertificateItem>) {
+    fun setData(listItem: List<DoctorCertificateResponse>) {
         this.listItem = listItem
         notifyDataSetChanged()
     }
@@ -36,7 +36,7 @@ class AboutDoctorCertificateAdapter(private val itemClickListener: (Int) -> Unit
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(listItem[position].url)
         }
         holder.onBind(listItem[position])
     }
@@ -45,10 +45,10 @@ class AboutDoctorCertificateAdapter(private val itemClickListener: (Int) -> Unit
 
     class VH(private val binding: ItemSertificateBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(certificate: AboutDoctorSertificateItem) {
+        fun onBind(certificate: DoctorCertificateResponse) {
             binding.apply {
-                if (certificate.image.isNotEmpty()) {
-                    certificate.image.let {
+                if (certificate.url.isNotEmpty()) {
+                    certificate.url.let {
                         ImageDownloader.loadImage(
                             context,
                             it,

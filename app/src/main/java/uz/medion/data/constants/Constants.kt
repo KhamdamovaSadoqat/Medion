@@ -108,14 +108,6 @@ object Constants {
         )
     }
 
-    fun getSertificate(): ArrayList<AboutDoctorSertificateItem> {
-        return arrayListOf(
-            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),
-            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),
-            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg")
-        )
-    }
-
     fun getGender(): ArrayList<Int> {
         return arrayListOf(
             R.string.male,

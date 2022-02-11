@@ -20,7 +20,7 @@ class Repository {
     private val compositeDisposable = CompositeDisposable()
     private val apiClient = ApiClient.getApiClient()
 
-    fun registationCreate(
+    fun registrationCreate(
         phoneNumber: RegistrationCreateRequest,
         response: MutableLiveData<Resource<ResponseOfRequestEmail>>,
     ) {
@@ -405,6 +405,40 @@ class Repository {
                             Constants.setUnAuthorized(true)
                         }
                         response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+    fun getCertificates(
+        usermame: String,
+        response: MutableLiveData<Resource<List<DoctorCertificateResponse>>>,
+    ) {
+        compositeDisposable.add(
+            apiClient.getCertificate(usermame, "Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<DoctorCertificateResponse>>() {
+                    override fun onNext(t: List<DoctorCertificateResponse>) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                        if (e is HttpException) {
+                            val errorBody = e.response()?.errorBody()
+                            val error =
+                                Gson().fromJson<ErrorResponse>(errorBody!!.charStream(),
+                                    object : TypeToken<ErrorResponse>() {}.type)
+                            response.value = Resource(Status.ERROR, null, error.message, e)
+                            Log.d("----------", "onError: $error")
+                        }
                     }
 
                     override fun onComplete() {}

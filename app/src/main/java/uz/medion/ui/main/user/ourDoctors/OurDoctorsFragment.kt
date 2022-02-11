@@ -8,7 +8,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import uz.medion.R
 import uz.medion.data.constants.Constants
@@ -17,10 +16,7 @@ import uz.medion.data.model.DoctorResponse
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentOurDoctorsBinding
 import uz.medion.ui.base.BaseFragment
-import uz.medion.utils.DateTimeUtils
-import uz.medion.utils.gone
-import uz.medion.utils.invisible
-import uz.medion.utils.visible
+import uz.medion.utils.*
 import java.util.*
 
 class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>() {
@@ -33,6 +29,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     private var tvCategoryAll: Boolean = false
     private var doctorsBySpecialityUrl: String = ""
     private var chosenDate: String = ""
+    private var specialityId: Int = 0
     private var subSpecialityId: Int = 1
 
     //SpecialityId can be get by Arguments:  args.specialityTypeId
@@ -46,20 +43,44 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
 
     fun setUp() {
         if (args.specialityTypeId == 0) {
+            specialityId = 0
             //get all doctors that click has
-        } else
+        } else {
+            specialityId = args.specialityTypeId
             doctorsBySpecialityUrl =
                 "${Constants.BASE_API_URL}/api/v1/speciality/${args.specialityTypeId}/doctors"
+        }
+
         getDoctors(doctorsBySpecialityUrl)
         getSpecialities()
         getSubSpeciality(args.specialityTypeId)
     }
 
     private fun setUpUI() {
+        ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter { specialityId ->
+            this.specialityId = specialityId
+            doctorsBySpecialityUrl =
+                "${Constants.BASE_API_URL}/api/v1/speciality/$specialityId/doctors"
+            getDoctors(doctorsBySpecialityUrl)
+        }
+        binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
+        binding.rvDoctorsCategories.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
         subSpecialityAdapter = OurDoctorsSubSpecialityAdapter { subSpecialityId ->
-            this.subSpecialityId = subSpecialityId+1
+            this.subSpecialityId = subSpecialityId + 1
         }
         binding.rvSubSpeciality.adapter = subSpecialityAdapter
+
+        ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter { doctorId ->
+            val action =
+                OurDoctorsFragmentDirections.actionOurDoctorsFragmentToAboutDoctorFragment(
+                    doctorId, specialityId)
+            findNavController().navigate(action)
+        }
+        binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
+        binding.rvDoctors.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
         binding.clShowAll.setOnClickListener {
             if (tvCategoryAll) {
@@ -77,10 +98,11 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 binding.tvShowAll.setText(R.string.show_all)
                 tvCategoryAll = false
             } else {
-                val flexboxLayoutManager = FlexboxLayoutManager(context)
+                val flexboxLayoutManager = SafeFlexboxLayoutManager(requireContext())
                 flexboxLayoutManager.flexDirection = FlexDirection.ROW
                 flexboxLayoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
                 binding.rvDoctorsCategories.removeAllViews()
+                binding.rvDoctorsCategories.removeAllViewsInLayout()
                 binding.rvDoctorsCategories.layoutManager = flexboxLayoutManager
                 binding.clReason.visible()
                 binding.clCalendar.visible()
@@ -126,16 +148,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 Status.SUCCESS -> {
                     binding.progressForRv.invisible()
                     binding.rvDoctorsCategories.visible()
-
-                    ourDoctorsCategoryAdapter = OurDoctorsCategoryAdapter { specialityId ->
-                        doctorsBySpecialityUrl =
-                            "${Constants.BASE_API_URL}/api/v1/speciality/$specialityId/doctors"
-                        getDoctors(doctorsBySpecialityUrl)
-                    }
                     ourDoctorsCategoryAdapter.setData(speciality.data!!)
-                    binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
-                    binding.rvDoctorsCategories.layoutManager =
-                        LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                 }
                 Status.ERROR -> {
                     binding.progressForRv.invisible()
@@ -153,16 +166,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 Status.SUCCESS -> {
                     binding.progress.invisible()
                     binding.rvDoctors.visible()
-                    ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter { doctorId ->
-                        val action =
-                            OurDoctorsFragmentDirections.actionOurDoctorsFragmentToAboutDoctorFragment(
-                                doctorId)
-                        findNavController().navigate(action)
-                    }
                     ourDoctorsDetailsAdapter.setData(doctors.data!!)
-                    binding.rvDoctors.adapter = ourDoctorsDetailsAdapter
-                    binding.rvDoctors.layoutManager =
-                        LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
                 }
                 Status.ERROR -> {
                     binding.progress.invisible()

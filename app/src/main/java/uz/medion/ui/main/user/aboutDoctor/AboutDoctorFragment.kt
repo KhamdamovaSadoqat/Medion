@@ -30,6 +30,10 @@ import uz.medion.utils.ImageDownloader
 import uz.medion.utils.invisible
 import uz.medion.utils.visible
 import android.os.Bundle
+import uz.medion.ui.main.user.aboutDoctor.certificate.DoctorCertificateFragment
+import uz.medion.ui.main.user.aboutDoctor.comments.DoctorCommentFragment
+import uz.medion.ui.main.user.aboutDoctor.details.DoctorDetailsFragment
+import uz.medion.ui.main.user.aboutDoctor.work.DoctorWorkFragment
 import kotlin.collections.ArrayList
 
 
@@ -73,7 +77,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         binding.btnSubmit.setOnClickListener {
             val action =
                 AboutDoctorFragmentDirections.actionAboutDoctorFragmentToAppointmentFragment(
-                    appointmentDoctorName)
+                    appointmentDoctorName, )
             findNavController().navigate(action)
         }
     }
@@ -323,6 +327,6 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     override fun getLayoutResId() = R.layout.fragment_about_doctor
     override val vm: AboutDoctorVM
-        get() = ViewModelProvider(this).get(AboutDoctorVM::class.java)
+        get() = ViewModelProvider(this)[AboutDoctorVM::class.java]
 
 }

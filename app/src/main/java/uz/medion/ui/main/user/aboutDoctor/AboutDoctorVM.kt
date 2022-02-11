@@ -14,6 +14,7 @@ class AboutDoctorVM: BaseVM() {
     private val monthlyTimeResponse = MutableLiveData<Resource<List<MonthlyTimeResponse>>>()
     private val commentsResponse = MutableLiveData<Resource<List<CommentResponse>>>()
     private val doctorByIdResponse = MutableLiveData<Resource<DoctorResponse>>()
+    private val certificateResponse = MutableLiveData<Resource<List<DoctorCertificateResponse>>>()
 
     fun doctorById(doctorId: Int): LiveData<Resource<DoctorResponse>>{
         repo.doctorsById(doctorId, doctorByIdResponse)
@@ -38,6 +39,11 @@ class AboutDoctorVM: BaseVM() {
     fun monthlyTime(date: String, doctorId: Int): LiveData<Resource<List<MonthlyTimeResponse>>>{
         repo.monthlyTime(date, doctorId, monthlyTimeResponse)
         return  monthlyTimeResponse
+    }
+
+    fun getCertificate(username: String): LiveData<Resource<List<DoctorCertificateResponse>>> {
+        repo.getCertificates(username, certificateResponse)
+        return certificateResponse
     }
 
 }

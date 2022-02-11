@@ -10,17 +10,17 @@
         android:fillViewport="true"
         tools:context=".ui.main.user.aboutDoctor.AboutDoctorFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/cl_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/card_profile_avater"
@@ -195,27 +195,17 @@
             <FrameLayout
                 android:id="@+id/parent_fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/cl_top"
-                app:layout_constraintBottom_toTopOf="@id/btn_submit"
-                />
+                android:layout_height="wrap_content" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="0.1dp"
                 android:background="@drawable/bg_red_top_8"
                 android:text="@string/submit"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cl_top"
-                app:layout_constraintVertical_bias="1" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:textSize="16sp" />
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </layout>

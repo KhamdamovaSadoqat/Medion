@@ -1,15 +1,14 @@
-package uz.medion.ui.main.user.aboutDoctor
+package uz.medion.ui.main.user.aboutDoctor.work
 
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
 import uz.medion.data.model.WorkInfoListItem
 import uz.medion.databinding.FragmentDoctorWorkBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.main.user.aboutDoctor.AboutDoctorVM
 
 class DoctorWorkFragment : BaseFragment<FragmentDoctorWorkBinding, AboutDoctorVM>() {
 

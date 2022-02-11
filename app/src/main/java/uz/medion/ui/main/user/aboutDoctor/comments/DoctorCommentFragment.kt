@@ -1,4 +1,4 @@
-package uz.medion.ui.main.user.aboutDoctor
+package uz.medion.ui.main.user.aboutDoctor.comments
 
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +10,7 @@ import uz.medion.data.model.SendComment
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentDoctorCommentBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.main.user.aboutDoctor.AboutDoctorVM
 import uz.medion.utils.DateTimeUtils
 import uz.medion.utils.invisible
 import uz.medion.utils.visible
@@ -311,6 +312,6 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
 
     override fun getLayoutResId() = R.layout.fragment_doctor_comment
     override val vm: AboutDoctorVM
-        get() = ViewModelProvider(this).get(AboutDoctorVM::class.java)
+        get() = ViewModelProvider(this)[AboutDoctorVM::class.java]
 
 }

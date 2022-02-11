@@ -106,7 +106,6 @@ class BottomNavController(
                         .setLaunchSingleTop(true)
                         .setPopUpTo(R.id.nv_navigation_drawer, true)
                         .build()
-                    ViewUtils.fadeIn(view4, 200)
                     if (!bindingActivity.dlMenu.isDrawerOpen(Gravity.LEFT)) bindingActivity.dlMenu.openDrawer(
                         Gravity.LEFT
                     )

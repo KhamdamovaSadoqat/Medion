@@ -16,7 +16,6 @@ class AppointmentFragment : BaseFragment<FragmentAppointmentBinding, Appointment
     private var doctorName: String = ""
 
     override fun onBound() {
-        setUp()
         doctorName = args.appointmentDoctorName
 
         binding.btnSubmit.setOnClickListener {
@@ -24,28 +23,6 @@ class AppointmentFragment : BaseFragment<FragmentAppointmentBinding, Appointment
                 AppointmentFragmentDirections.actionAppointmentFragmentToAboutDoctorFragment(type,
                     doctorName)
             findNavController().navigate(action)
-        }
-    }
-
-    fun setUp() {
-        type = binding.tvOption1.text.toString()
-        binding.clOption1.setOnClickListener {
-            binding.ivOption1.visible()
-            binding.ivOption2.gone()
-            binding.ivOption3.gone()
-            type = binding.tvOption1.text.toString()
-        }
-        binding.clOption2.setOnClickListener {
-            binding.ivOption1.gone()
-            binding.ivOption2.visible()
-            binding.ivOption3.gone()
-            type = binding.tvOption2.text.toString()
-        }
-        binding.clOption3.setOnClickListener {
-            binding.ivOption1.gone()
-            binding.ivOption2.gone()
-            binding.ivOption3.visible()
-            type = binding.tvOption3.text.toString()
         }
     }
 

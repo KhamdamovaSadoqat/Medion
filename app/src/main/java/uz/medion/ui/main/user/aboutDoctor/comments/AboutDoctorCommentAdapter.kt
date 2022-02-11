@@ -1,5 +1,6 @@
-package uz.medion.ui.main.user.aboutDoctor
+package uz.medion.ui.main.user.aboutDoctor.comments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class AboutDoctorCommentAdapter(private val itemClickListener: (Int) -> Unit) :
 
     private var listItem = listOf<CommentResponse>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(listItem: List<CommentResponse>) {
         this.listItem = listItem
         notifyDataSetChanged()

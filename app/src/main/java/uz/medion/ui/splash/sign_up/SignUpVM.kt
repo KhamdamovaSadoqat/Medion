@@ -21,7 +21,7 @@ class SignUpVM : BaseVM() {
     }
 
     fun registrationCreate(phoneNumber: RegistrationCreateRequest): LiveData<Resource<ResponseOfRequestEmail>> {
-        repo.registationCreate(phoneNumber, registrationCreate)
+        repo.registrationCreate(phoneNumber, registrationCreate)
         return registrationCreate
     }
 }

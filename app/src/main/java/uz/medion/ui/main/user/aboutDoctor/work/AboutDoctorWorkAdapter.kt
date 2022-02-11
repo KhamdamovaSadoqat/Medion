@@ -1,5 +1,6 @@
-package uz.medion.ui.main.user.aboutDoctor
+package uz.medion.ui.main.user.aboutDoctor.work
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ class AboutDoctorWorkAdapter: RecyclerView.Adapter<AboutDoctorWorkAdapter.VH>() 
 
     private var listItem = listOf<WorkInfoListItem>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(listItem: ArrayList<WorkInfoListItem>) {
         this.listItem = listItem
         notifyDataSetChanged()
