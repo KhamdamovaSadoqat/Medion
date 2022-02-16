@@ -133,6 +133,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
     @LayoutRes
     override fun getLayoutResId(): Int = R.layout.fragment_home
     override val vm: HomeVM
-        get() = ViewModelProvider(this).get(HomeVM::class.java)
+        get() = ViewModelProvider(this)[HomeVM::class.java]
 
 }

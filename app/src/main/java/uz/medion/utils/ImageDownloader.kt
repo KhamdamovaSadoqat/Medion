@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
+import uz.medion.R
 
 
 object ImageDownloader {
@@ -24,8 +25,13 @@ object ImageDownloader {
         @DrawableRes
         errorRes: Int? = null,
     ) {
-        val uri = Uri.parse(url)
+        var newUrl = ""
+        if(!url.startsWith("http")) {
+            newUrl  = "http://$url"
+        }
+        val uri = Uri.parse(newUrl)
         val separated = url.split(".")
+
         if (separated.last() == "svg") {
             GlideToVectorYou
                 .init()
@@ -34,7 +40,7 @@ object ImageDownloader {
                     if (placeHolderRes != null && errorRes != null)
                         setPlaceHolder(placeHolderRes, errorRes)
                     else
-                        setPlaceHolder(uz.medion.R.drawable.ic_image_placeholder, uz.medion.R.drawable.ic_loading_error)
+                        setPlaceHolder(R.drawable.ic_image_placeholder, R.drawable.ic_loading_error)
                     load(uri, imageView)
                 }
 
@@ -46,11 +52,11 @@ object ImageDownloader {
                     if (placeHolderRes != null)
                         placeholder(placeHolderRes)
                     else
-                        placeholder(uz.medion.R.drawable.ic_image_placeholder)
+                        placeholder(R.drawable.ic_image_placeholder)
                     if (errorRes != null)
                         error(errorRes)
                     else
-                        error(uz.medion.R.drawable.ic_loading_error)
+                        error(R.drawable.ic_loading_error)
                     into(imageView)
                 }
         }

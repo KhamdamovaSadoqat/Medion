@@ -1,6 +1,7 @@
 package uz.medion.ui.main.user.home
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -41,6 +42,7 @@ class HomeAdapter(private val itemClickListener: (Int) -> Unit) :
 
         fun onBind(home: SpecialityItemResponse) {
             binding.apply {
+                Log.d("----------", "onBind: home url: ${home.logo}")
                 ImageDownloader.loadImage(context, home.logo!!, imageItem)
                 textItem.text = home.name
             }
