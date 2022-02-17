@@ -1,13 +1,10 @@
 package uz.medion.ui.main.user.adressAndContacts
 
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.constants.Constants
-import uz.medion.data.constants.Keys
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentAdressAndContactsBinding
 import uz.medion.ui.base.BaseFragment
@@ -18,6 +15,7 @@ class AddressAndContactsFragment :
     BaseFragment<FragmentAdressAndContactsBinding, AddressAndContactsVM>() {
 
     lateinit var addressAndContactsAdapter: AddressAndContactsAdapter
+
 
     override fun onBound() {
         setUp()
@@ -40,12 +38,11 @@ class AddressAndContactsFragment :
             }
         }
 
-        addressAndContactsAdapter = AddressAndContactsAdapter { pos ->
-            findNavController().navigate(
-                R.id.action_adressAndContactsFragment_to_addressFragment, bundleOf(
-                    Pair(Keys.BUNDLE_LOCATION_POSITION, pos)
-                )
-            )
+        addressAndContactsAdapter = AddressAndContactsAdapter { branch ->
+            val action =
+                AddressAndContactsFragmentDirections.actionAdressAndContactsFragmentToAddressFragment(
+                    branch)
+            findNavController().navigate(action)
         }
         binding.rvAdressAndContacts.adapter = addressAndContactsAdapter
         binding.rvAdressAndContacts.layoutManager =

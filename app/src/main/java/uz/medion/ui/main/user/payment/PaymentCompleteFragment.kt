@@ -13,5 +13,5 @@ class PaymentCompleteFragment : BaseFragment<FragmentPaymentCompleteBinding, Pay
 
     override fun getLayoutResId() = R.layout.fragment_payment_complete
     override val vm: PaymentVM
-        get() = ViewModelProvider(this).get(PaymentVM::class.java)
+        get() = ViewModelProvider(this)[PaymentVM::class.java]
 }

@@ -1,5 +1,6 @@
 package uz.medion.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -12,7 +13,9 @@ import com.bumptech.glide.request.transition.Transition
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import uz.medion.R
 
+
 object ImageDownloader {
+    @SuppressLint("CheckResult")
     fun loadImage(
         context: Context,
         url: String,
@@ -20,10 +23,15 @@ object ImageDownloader {
         @DrawableRes
         placeHolderRes: Int? = null,
         @DrawableRes
-        errorRes: Int? = null
+        errorRes: Int? = null,
     ) {
-        val uri = Uri.parse(url)
+        var newUrl = ""
+        if(!url.startsWith("http")) {
+            newUrl  = "http://$url"
+        }
+        val uri = Uri.parse(newUrl)
         val separated = url.split(".")
+
         if (separated.last() == "svg") {
             GlideToVectorYou
                 .init()
@@ -51,22 +59,20 @@ object ImageDownloader {
                         error(R.drawable.ic_loading_error)
                     into(imageView)
                 }
-
-
         }
     }
 
     fun getImage(
         context: Context,
         url: String,
-        onResponse: ((Bitmap) -> Unit)
+        onResponse: ((Bitmap) -> Unit),
     ) {
         val uri = Uri.parse(url)
         Glide.with(context)
             .asBitmap()
             .load(uri)
-            .placeholder(R.drawable.ic_image_placeholder)
-            .error(R.drawable.ic_loading_error)
+            .placeholder(uz.medion.R.drawable.ic_image_placeholder)
+            .error(uz.medion.R.drawable.ic_loading_error)
             .into(object : CustomTarget<Bitmap>() {
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                     onResponse.invoke(resource)

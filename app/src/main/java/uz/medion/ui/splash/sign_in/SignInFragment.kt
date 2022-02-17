@@ -7,25 +7,29 @@ import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import uz.medion.R
-import uz.medion.databinding.FragmentSignInBinding
-import uz.medion.ui.base.BaseFragment
-import uz.medion.ui.main.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
 import uz.medion.data.model.Login
+import uz.medion.data.model.TokenDecoded
 import uz.medion.data.model.remote.Status
+import uz.medion.databinding.FragmentSignInBinding
+import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.main.MainActivity
+import uz.medion.ui.main.doctor.DoctorActivity
+import uz.medion.utils.JWTUtils
 
 //login
 class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
+    private val jwtDecoded = JWTUtils()
     var isShowing: Boolean = false
 
     override fun onBound() {
@@ -65,26 +69,40 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
         }
         //login
         binding.btnSignIn.setOnClickListener {
-            if (checkAllFields()){
-                vm.login(Login(binding.etPassword.text.toString(), binding.etLogin.text.toString())).observe(this){ response ->
-                    when (response.status) {
-                        Status.LOADING -> {
-                            Log.d("----------", "setUp: loading")
-                        }
-                        Status.SUCCESS -> {
-                            prefs.accessToken = response.data?.accessToken
-                            prefs.refreshToken = response.data?.refreshToken
+            if (checkAllFields()) {
+                vm.login(Login(binding.etPassword.text.toString(),
+                    binding.etPhoneNumber.text.toString()))
+                    .observe(this) { response ->
+                        when (response.status) {
+                            Status.LOADING -> {
+                                Log.d("----------", "setUp: loading")
+                            }
+                            Status.SUCCESS -> {
+                                prefs.isRegistered = true
+                                prefs.password = binding.etPassword.text.toString().trim()
+                                prefs.accessToken = response.data?.accessToken
+                                prefs.refreshToken = response.data?.refreshToken
+                                Constants.setUnAuthorized(false)
 
-                            // starting new activity and ending the login
-                            val intent = Intent(requireContext(), MainActivity::class.java)
-                            startActivity(intent)
-                            requireActivity().finish()
-                        }
-                        Status.ERROR -> {
-                            Log.e("----------", "error: ${response.message}")
+                                val decodedToken = gson.fromJson(jwtDecoded.decoded(response.data?.accessToken!!), TokenDecoded::class.java)
+                                if(decodedToken.roles[0] == "CLIENT"){
+                                    // starting new activity and ending the login
+                                    val intent = Intent(requireContext(), MainActivity::class.java)
+                                    startActivity(intent)
+                                }else if(decodedToken.roles[0] == "DOCTOR"){
+                                    //start doctor activity
+                                    val intent = Intent(requireContext(), DoctorActivity::class.java)
+                                    startActivity(intent)
+                                }else{
+                                   // case for admin too
+                                }
+                                requireActivity().finish()
+                            }
+                            Status.ERROR -> {
+                                Log.e("----------", "error: ${response.message}")
+                            }
                         }
                     }
-                }
             }
         }
 
@@ -136,13 +154,14 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
     }
 
     private fun checkAllFields(): Boolean {
-        if (binding.etLogin.length() == 0 || android.util.Patterns.EMAIL_ADDRESS.matcher(binding.etLogin.toString())
+        if (binding.etPhoneNumber.length() == 0 || android.util.Patterns.EMAIL_ADDRESS.matcher(
+                binding.etPhoneNumber.toString())
                 .matches()
         ) {
-            binding.etLogin.error = requireContext().getText(R.string.invalid_email)
+            binding.etPhoneNumber.error = requireContext().getText(R.string.invalid_email)
             return false
-        } else binding.etLogin.error = null
-        if(binding.etPassword.length() == 0){
+        } else binding.etPhoneNumber.error = null
+        if (binding.etPassword.length() == 0) {
             binding.etPassword.error = requireContext().getString(R.string.required_field)
             return false
         } else binding.etPassword.error = null

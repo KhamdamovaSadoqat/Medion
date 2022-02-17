@@ -18,16 +18,20 @@ object Keys {
     const val EXTRA_UNAUTHORIZED = "extra_unAthorized"
     const val BUNDLE_CERTIFICATE = "bundle_certificate"
     const val BUNDLE_CHANGE_PHONE_NUMBER = "bundle_change_phone_number"
-    const val BUNDLE_LOCATION_POSITION = "bundle_location_position"
     const val BUNDLE_MAPVIEW = "bundle_mapview"
     const val BUNDLE_REQUEST_ID = "bundle_request_id"
 
     const val BUNDLE_SPA_TYPE = "bundle_spa_type"
-    const val BUNDLE_APPOINTMENT_TYPE = "bundle_appointment_type"
-    const val BUNDLE_APPOINTMENT_DOCTOR_NAME = "bundle_appointment_doctor_name"
-    const val BUNDLE_APPOINTMENT_DATE = "bundle_appointment_date"
-    const val BUNDLE_APPOINTMENT_TIME = "bundle_appointment_time"
     const val BUNDLE_APPOINTMENT_CARD_NUMBER = "bundle_appointment_card_number"
+
+    const val BUNDLE_ABOUT_DOCTOR_UNIVERSITY = "bundle_about_doctor_university"
+    const val BUNDLE_ABOUT_DOCTOR_FACULTY = "bundle_about_doctor_faculty"
+    const val BUNDLE_ABOUT_DOCTOR = "bundle_about_doctor"
+    const val BUNDLE_ABOUT_DOCTOR_URL = "bundle_about_doctor_url"
+    const val BUNDLE_ABOUT_DOCTOR_WORK = "bundle_about_doctor_work"
+    const val BUNDLE_ABOUT_DOCTOR_ID = "bundle_about_doctor_id"
+
+
 
 
     const val REQUEST_CODE_SIGN_IN = 9001
