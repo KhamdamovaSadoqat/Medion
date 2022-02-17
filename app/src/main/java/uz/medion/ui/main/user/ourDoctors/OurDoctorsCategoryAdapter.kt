@@ -7,15 +7,15 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.model.DoctorCategoryItem
+import uz.medion.data.model.SpecialityItemResponse
 import uz.medion.databinding.ItemDoctorCategoryBinding
 
 class OurDoctorsCategoryAdapter(private val itemClickListener: (Int) -> Unit) :
     RecyclerView.Adapter<OurDoctorsCategoryAdapter.VH>() {
 
-    private var listItem = listOf<DoctorCategoryItem>()
+    private var listItem = listOf<SpecialityItemResponse>()
 
-    fun setData(listItem: List<DoctorCategoryItem>) {
+    fun setData(listItem: List<SpecialityItemResponse>) {
         this.listItem = listItem
         notifyDataSetChanged()
     }
@@ -34,7 +34,7 @@ class OurDoctorsCategoryAdapter(private val itemClickListener: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(position+1)
         }
         holder.onBind(listItem[position])
     }
@@ -42,9 +42,9 @@ class OurDoctorsCategoryAdapter(private val itemClickListener: (Int) -> Unit) :
     override fun getItemCount() = listItem.size
     class VH(private val binding: ItemDoctorCategoryBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(category: DoctorCategoryItem) {
+        fun onBind(category: SpecialityItemResponse) {
             binding.apply {
-                tvCategory.setText(category.categoryName)
+                tvCategory.text = category.name
                 cvCard.setCardBackgroundColor(ContextCompat.getColor(context, R.color.solitude_50))
             }
         }

@@ -2,12 +2,13 @@ package uz.medion.ui.main
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import uz.medion.R
@@ -26,18 +27,27 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     private var isFirstOpen = true
 
     override fun onBound() {
+//        Log.d("----------", "onBound: isFirstOpen: $isFirstOpen")
+//        Log.d("----------", "onBound: prefs: ${prefs.accessToken}")
+        if (prefs.accessToken != null) {
+            Constants.token = prefs.accessToken!!
+            isFirstOpen = false
+        } else {
+            Constants.token = ""
+            isFirstOpen = true
+        }
         setUp()
     }
 
+
     private fun setUp() {
-        val navHost = supportFragmentManager.findFragmentById(R.id.main_nav_controller)
-        if (navHost != null) {
-            navController = navHost.findNavController()
-        }
+        val navHost =
+            supportFragmentManager.findFragmentById(R.id.main_nav_controller) as NavHostFragment
+        navController = navHost.navController
         bottomNavController =
             BottomNavController(binding, binding.partialBottomNav, this, navController)
         Constants.getUnAuthorized().observe(this) {
-            if (it && !isFirstOpen) {
+            if (it && isFirstOpen) {
                 val intent = Intent(this, SplashActivity::class.java)
                 prefs.isRegistered = false
                 startActivity(intent)
@@ -45,7 +55,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             }
         }
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
             //where bottom navigation should be removed
             if (destination.id == R.id.aboutDoctorFragment ||
                 destination.id == R.id.verificationFragment2 ||
@@ -163,8 +172,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 //        val navigationOptions =
 //            NavOptions.Builder().setPopUpTo(navController.currentDestination!!.id, true).build()
 //        navController.navigate(R.id.olympiadFragment, null, navigationOptions)
+//        Log.d("----------", "onBackPressed: current: ${navController.currentDestination.toString()}")
         if (navController.currentDestination!!.id == R.id.paymentCompleteFragment) {
             navController.popBackStack(R.id.aboutDoctorFragment, false)
+        } else if (navController.currentDestination!!.id == R.id.appointmentEnrollFragment) {
+            navController.popBackStack(R.id.homeFragment, false)
+        } else if (navController.currentDestination!!.id == R.id.paymentCompleteFragment) {
+            Log.d("----------", "onBackPressed: current: ${navController.currentDestination.toString()}")
+            navController.popBackStack(R.id.homeFragment, false)
         } else {
             if (binding.dlMenu.isDrawerOpen(GravityCompat.START)) {
                 binding.dlMenu.closeDrawer(GravityCompat.START)

@@ -2,19 +2,14 @@ package uz.medion.ui.splash.sign_up
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import uz.medion.R
+import uz.medion.data.model.RegistrationCreateRequest
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentSignUpBinding
 import uz.medion.ui.base.BaseFragment
-import org.json.JSONObject
-import com.google.gson.JsonElement
-
-import com.google.gson.JsonParser
-import com.google.gson.Gson
 
 //registration
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
@@ -50,21 +45,23 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
 //                            }
 //                        }
 //                    }
-
-                vm.getResponseOfRequestEmail(binding.etEmail.text.toString())
+                vm.registrationCreate(RegistrationCreateRequest("998${binding.etNumber.rawText}"))
                     .observe(this) { response ->
                         when (response.status) {
                             Status.LOADING -> {
                                 Log.d("----------", "onBound: loading")
                             }
                             Status.SUCCESS -> {
-                                
+                                prefs.isRegistered = true
+                                prefs.password = binding.etPassword.text.toString().trim()
+                                prefs.phoneNumber = binding.etNumber.text.toString().trim()
+
                                 val action =
                                     SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment(
                                         response.data!!.id,
                                         binding.etName.text.toString(),
                                         binding.etSurname.text.toString(),
-                                        binding.etNumber.text.toString(),
+                                        "998${binding.etNumber.rawText}",
                                         binding.etPassword.text.toString(),
                                         binding.etEmail.text.toString()
                                     )
@@ -72,13 +69,10 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpVM>() {
                             }
                             Status.ERROR -> {
                                 Log.d("----------", "onBound: ${response.message}")
-                                Log.d("----------", "onBound: ${response.throwable}")
-                                Log.d("----------", "onBound: ${response.data}")
 
-                                if(response.data!= null){
+                                if(response.message == requireContext().getString(R.string.user_is_registered)){
                                     Log.d("----------", "onBound: data: ${response.data}")
-                                    if(response.data.id.toString() == requireContext().getString(R.string.user_is_registered))
-                                        binding.etEmail.error = requireContext().getString(R.string.user_is_registered)
+                                        binding.etNumber.error = requireContext().getString(R.string.user_is_registered)
                                 }
                             }
                         }

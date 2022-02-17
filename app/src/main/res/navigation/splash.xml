@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment">
+            <!-- giving arguments -->
             <argument
                 android:name="userName"
                 app:argType="string"
@@ -36,6 +37,7 @@
         <action
             android:id="@+id/action_signUpFragment_to_verificationFragment"
             app:destination="@id/verificationFragment" >
+            <!-- giving arguments -->
             <argument
                 android:name="requestId"
                 app:argType="string"
@@ -61,6 +63,7 @@
                 app:argType="string"
                 app:nullable="true" />
         </action>
+        <!--receiving arguments-->
         <argument
             android:name="userName"
             android:defaultValue="@null"

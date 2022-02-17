@@ -32,7 +32,8 @@
 
     <!-- home -->
     <string name="medical_service">Медицинские услуги</string>
-    <string name="all">все</string>
+    <string name="all">Все</string>
+    <string name="hide_all">Скрыть все</string>
     <string name="about_our_center">О нашем центре</string>
     <string name="about_clinic">Медицинский Центр «MEDION», расположенный в самом центре города Ташкента, предлагает своим клиентам насладиться лучшими традициями гостеприимства, оценить качество наших услуг, ощутить чуткое отношение и индивидуальный подход. «MEDION» — это путь к гармонии души и тела, которую так трудно обрести в ритме большого города.</string>
     <string name="lor">ЛОР</string>
@@ -60,7 +61,6 @@
     <string name="mskt">МСКТ</string>
     <string name="endoscopy">Эндоскопия</string>
     <string name="show_all">Показать все</string>
-    <string name="hide_all">Скрыть все</string>
 
     <!-- ourDoctor -->
     <string name="main_doctor_of_urology">Главное врач Урология</string>

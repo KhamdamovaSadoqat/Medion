@@ -11,12 +11,13 @@ object Constants {
 
     lateinit var prefs: PrefsHelper
 
-    const val BASE_API_URL = "http://45.137.148.124:8081" // http://45.137.148.124:8081/api/v1/about/info
-    const val GOOGLE_OAUTH = "863067682476-vdh3ngnrj69u96d8j2i96c2958sf4u6j.apps.googleusercontent.com"
+    const val BASE_API_URL =
+        "http://45.137.148.124:8081" // http://45.137.148.124:8081/api/v1/about/info
+    const val GOOGLE_OAUTH =
+        "863067682476-vdh3ngnrj69u96d8j2i96c2958sf4u6j.apps.googleusercontent.com"
     const val YOUTUBE_API = "AIzaSyALAoQ1eIP7lM2STLmeRpKiDaSXqv84Ulc"
 
-    var accessToken = ""
-    var refreshToken = ""
+    var token = ""
     var language = ""
     var cardNumber = "UZCARD"
     private val unAuthorized = MutableLiveData<Boolean>()
@@ -69,34 +70,6 @@ object Constants {
 
     const val ADMIN_PHONE_NUMBER = "+998936285220"
 
-    fun getHomeItems(): ArrayList<HomeItem> {
-        return arrayListOf(
-            HomeItem(R.drawable.ic_ginecology, R.string.ginecology),
-            HomeItem(R.drawable.ic_pediatr, R.string.pediatr),
-            HomeItem(R.drawable.ic_neurolog, R.string.neuralogy),
-            HomeItem(R.drawable.ic_traumatolog, R.string.traumatology),
-            HomeItem(R.drawable.ic_cardiolog, R.string.cardiology),
-            HomeItem(R.drawable.ic_eko, R.string.eko),
-            HomeItem(R.drawable.ic_cardio_operation, R.string.cardio_operation),
-            HomeItem(R.drawable.ic_urolog, R.string.urology),
-            HomeItem(R.drawable.ic_endocrinolog, R.string.endocrinology),
-            HomeItem(R.drawable.ic_allergolog, R.string.allergiology),
-            HomeItem(R.drawable.ic_mammolog, R.string.mammology),
-            HomeItem(R.drawable.ic_dermatolog, R.string.dermatology),
-            HomeItem(R.drawable.ic_psycology, R.string.psychology),
-            HomeItem(R.drawable.ic_pulmonolog, R.string.pulmonology),
-            HomeItem(R.drawable.ic_psychoterapy, R.string.psychoterapy),
-            HomeItem(R.drawable.ic_medicining, R.string.medicining),
-            HomeItem(R.drawable.ic_electro_smth, R.string.electro_encefalography),
-            HomeItem(R.drawable.ic_gastroentesy, R.string.gastroenterology),
-            HomeItem(R.drawable.ic_uzi, R.string.uzi),
-            HomeItem(R.drawable.ic_uzi_maternity, R.string.uzi_maternity),
-            HomeItem(R.drawable.ic_mrt, R.string.mrt),
-            HomeItem(R.drawable.ic_mckt, R.string.mskt),
-            HomeItem(R.drawable.ic_endoscopy, R.string.endoscopy)
-        )
-    }
-
     fun getOurDoctorCategory(): ArrayList<DoctorCategoryItem> {
         return arrayListOf(
             DoctorCategoryItem(R.string.lor),
@@ -126,43 +99,6 @@ object Constants {
         )
     }
 
-    fun getOurDoctorDetail(): ArrayList<DoctorDetailItem> {
-        return arrayListOf(
-            DoctorDetailItem(
-                R.string.ilyasov_Doniyor,
-                R.string.main_doctor_of_urology,
-                22,
-                64,
-                R.string.clinic_name,
-                R.string.doc_detail
-            ),
-            DoctorDetailItem(
-                R.string.nuridinov_hojiakbar,
-                R.string.main_doctor_of_urology,
-                22,
-                64,
-                R.string.clinic_name,
-                R.string.doc_detail
-            ),
-            DoctorDetailItem(
-                R.string.ilyasov_Doniyor,
-                R.string.main_doctor_of_urology,
-                22,
-                64,
-                R.string.clinic_name,
-                R.string.doc_detail
-            ),
-            DoctorDetailItem(
-                R.string.nuridinov_hojiakbar,
-                R.string.main_doctor_of_urology,
-                22,
-                64,
-                R.string.clinic_name,
-                R.string.doc_detail
-            )
-        )
-    }
-
     fun getAboutDoctorItems(): ArrayList<AboutDoctorItems> {
         return arrayListOf<AboutDoctorItems>(
             AboutDoctorItems(R.string.about_doctor, R.color.nile_blue_900, R.color.white),
@@ -172,160 +108,10 @@ object Constants {
         )
     }
 
-    fun getComments(): ArrayList<AboutDoctorCommentItem> {
-        return arrayListOf<AboutDoctorCommentItem>(
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                4,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                2,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                1,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                4,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                5,
-                "22 august 2021"
-            ),
-            AboutDoctorCommentItem(
-                "Consults children and adults with medical conditions" +
-                        "        ENT organs. Before diagnosing and" +
-                        "        define a treatment plan, collects a detailed" +
-                        "        history and carefully examines patients with" +
-                        "        using high-precision safe" +
-                        "        equipment. With the help of objective and reliable" +
-                        "        testing methods reveals audiological and" +
-                        "        audiological problems in children. Conducts" +
-                        "        studies that help assess the degree" +
-                        "        hearing loss, to prevent its further development.",
-                3,
-                "22 august 2021"
-            ),
-        )
-    }
-
-    fun getCurrentWork(): ArrayList<AboutDoctorWorkItem> {
-        return arrayListOf(
-            AboutDoctorWorkItem(
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "doctor of urology"
-            ),
-            AboutDoctorWorkItem(
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "doctor of urology"
-            ),
-            AboutDoctorWorkItem(
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "doctor of urology"
-            ),
-            AboutDoctorWorkItem(
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "doctor of urology"
-            )
-        )
-    }
-
-    fun getPastWork(): ArrayList<AboutDoctorWorkItem> {
-        return arrayListOf(
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-            AboutDoctorWorkItem("CITY CLINICAL INFECTION HOSPITAL", "doctor of urology"),
-        )
-    }
-
-    fun getSertificate(): ArrayList<AboutDoctorSertificateItem> {
-        return arrayListOf(
-            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),
-            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg"),
-            AboutDoctorSertificateItem("https://yourielts.ru/images/ielts-test/ielts-certificate.jpg")
-        )
-    }
-
     fun getGender(): ArrayList<Int> {
         return arrayListOf(
             R.string.male,
             R.string.female
-        )
-    }
-
-    fun getMyDoctors(): ArrayList<MyDoctorsItem> {
-        return arrayListOf(
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, false),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, false),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true)
-        )
-    }
-
-    fun getMyDoctorsFavourite(): ArrayList<MyDoctorsItem> {
-        return arrayListOf(
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.main_doctor_of_urology, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doctor_s_appointment, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.doc_detail, true),
-            MyDoctorsItem(R.string.ilyasov_Doniyor, R.string.about_doctor, true)
         )
     }
 
@@ -356,38 +142,6 @@ object Constants {
             AboutDoctorItems(R.string.appointment, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.recipe, R.color.solitude_50, R.color.tangaroa_900),
             AboutDoctorItems(R.string.ehc, R.color.solitude_50, R.color.tangaroa_900)
-        )
-    }
-
-    fun getAddressAndContact(): ArrayList<AdressAndContactsItem> {
-        return arrayListOf(
-            AdressAndContactsItem(
-                R.drawable.center_photo_1,
-                "Medical Center MEDION CLINIC, AESTHETIC & SPA",
-                "Шайхантахурский район, ул. Зульфияханум 18",
-                "+998 78 140 00 44",
-
-                ),
-            AdressAndContactsItem(
-                R.drawable.center_photo_2,
-                "Mедицинский центр MEDION INNOVATION",
-                "Шайхантахурский район, ул. Абдулла Кодирий 39",
-                "+998 78 140 00 44"
-            ),
-            AdressAndContactsItem(
-                R.drawable.center_photo_3,
-                "Медицинский центр MEDION FAMILY HOSPITAL",
-                "Шайхантахурский район, ул. Истирохат 258",
-                "+998 78 140 00 44"
-            )
-        )
-    }
-
-    fun getLocations(): ArrayList<Location> {
-        return arrayListOf(
-            Location(R.drawable.center_photo_1, "41.3303657", "69.2572476"),
-            Location(R.drawable.center_photo_2, "41.323868", "69.2519953"),
-            Location(R.drawable.center_photo_3, "41.3261357", "69.1859201")
         )
     }
 
@@ -474,79 +228,6 @@ object Constants {
             R.string.massage1_6,
             R.string.massage1_6,
             R.string.massage1_6
-        )
-    }
-
-    fun getAppointmentTime(): ArrayList<AppointmentTimeItem> {
-        return arrayListOf(
-            AppointmentTimeItem(R.drawable.bg_blue_4, R.string.t_8_30, R.color.white),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_9_00, R.color.tangaroa_900),
-            AppointmentTimeItem(R.drawable.bg_transparent_4, R.string.t_9_30, R.color.tangaroa_900),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_10_00,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_10_30,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_11_00,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_11_30,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_12_00,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_14_00,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_14_30,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_15_00,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_15_30,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_16_00,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_16_30,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_17_00,
-                R.color.tangaroa_900
-            ),
-            AppointmentTimeItem(
-                R.drawable.bg_transparent_4,
-                R.string.t_17_30,
-                R.color.tangaroa_900
-            ),
         )
     }
 

@@ -3,499 +3,300 @@ package uz.medion.ui.main.user.aboutDoctor
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.applandeo.materialcalendarview.utils.DateUtils
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
-import uz.medion.data.model.AboutDoctorCommentItem
 import uz.medion.data.model.AboutDoctorItems
-import uz.medion.data.model.AppointmentTimeItem
+import uz.medion.data.model.AppointmentTimeItemIsClicked
 import uz.medion.databinding.DialogAppointmentBinding
 import uz.medion.databinding.DialogAppointmentTimeBinding
 import uz.medion.databinding.FragmentAboutDoctorBinding
 import uz.medion.ui.base.BaseFragment
 import uz.medion.ui.main.user.appointment.AppointmentTimeAdapter
-import uz.medion.utils.DateTimeUtils
 import java.util.*
+import uz.medion.data.model.remote.Status
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.navArgs
+import uz.medion.data.model.DoctorResponse
+import uz.medion.utils.ImageDownloader
+import uz.medion.utils.invisible
+import uz.medion.utils.visible
+import android.os.Bundle
+import uz.medion.ui.main.user.aboutDoctor.certificate.DoctorCertificateFragment
+import uz.medion.ui.main.user.aboutDoctor.comments.DoctorCommentFragment
+import uz.medion.ui.main.user.aboutDoctor.details.DoctorDetailsFragment
+import uz.medion.ui.main.user.aboutDoctor.work.DoctorWorkFragment
+import kotlin.collections.ArrayList
 
 
-class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>(){
+class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
 
-    private lateinit var aboutDoctorCertificateAdapter: AboutDoctorCertificateAdapter
-    private lateinit var aboutDoctorWorkCurrentAdapter: AboutDoctorWorkAdapter
-    private lateinit var aboutDoctorCommentAdapter: AboutDoctorCommentAdapter
-    private lateinit var aboutDoctorWorkPastAdapter: AboutDoctorWorkAdapter
+    private val args: AboutDoctorFragmentArgs by navArgs()
+
     private lateinit var aboutDoctorItemAdapter: AboutDoctorAdapter
     private lateinit var appointmentTimeAdapter: AppointmentTimeAdapter
     private lateinit var dialogBinding: DialogAppointmentBinding
     private lateinit var dialogTimeBinding: DialogAppointmentTimeBinding
-    private lateinit var data: ArrayList<AboutDoctorItems>
-    private lateinit var appointmentTime: ArrayList<AppointmentTimeItem>
+    private lateinit var aboutDoctorItems: ArrayList<AboutDoctorItems>
+    private lateinit var appointmentTimeIsClicked: ArrayList<AppointmentTimeItemIsClicked>
+    private lateinit var doctorData: DoctorResponse
     private var resultDialog: BottomSheetDialog? = null
     private var resultTimeDialog: BottomSheetDialog? = null
-    private var reyting: Int = 1
-    private var date = Date()
-    private var time: String = "hh:mm dd.mm.yyyy"
-    private var appointmentTimeBundle: String = "08:30"
-    private var appointmentDateBundle: String = ""
-    private var doctorName: String = ""
-    private var type: String = ""
-
+    private var appointmentDoctorName: String = ""
+    private var appointmentDate: Long = 0
+    private var appointmentTime: String = ""
+    private var appointmentType: String = ""
+    val bundle = Bundle()
 
     override fun onBound() {
-        loadAboutDoctor()
-        loadDialog()
+        loadAboutDoctorItems()
         setUp()
     }
 
     fun setUp() {
-        val args = arguments
-        if (args != null) {
-            if (args.containsKey(Keys.BUNDLE_APPOINTMENT_TYPE)) {
-                type = args.get(Keys.BUNDLE_APPOINTMENT_TYPE) as String
-                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
-                showCalendarDialog()
-            } else if (args.containsKey(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME)) {
-                doctorName = requireArguments().get(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME) as String
-            }
+        if (args.doctorId != 0) {
+            Log.d("----------", "setUp: doctorId: ${args.doctorId}")
+            getAboutDoctor(args.doctorId)
         }
+
+        appointmentType = args.appointmentType
+        appointmentDoctorName = args.appointmentDoctorName
+
+        if (appointmentType != "null") {
+            loadDialog()
+        }
+
         binding.btnSubmit.setOnClickListener {
-            findNavController().navigate(
-                R.id.appointmentFragment,
-                bundleOf(
-                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName)
-                )
-            )
+            val action =
+                AboutDoctorFragmentDirections.actionAboutDoctorFragmentToAppointmentFragment(
+                    appointmentDoctorName, )
+            findNavController().navigate(action)
         }
-        lifecycle.addObserver(binding.youtubePlayerView)
     }
 
+    //booking // dates
     @SuppressLint("SetTextI18n")
     private fun loadDialog() {
         dialogBinding = DialogAppointmentBinding.inflate(LayoutInflater.from(requireContext()))
-//        val currentDate = CalendarDay.today()
-//        val calendarState = dialogBinding.cvCalendar.state().edit()
-//        calendarState.setMinimumDate(
-//            CalendarDay.from(
-//                currentDate.year,
-//                currentDate.month,
-//                currentDate.day
-//            )
-//        )
-//        if (currentDate.month == 12)
-//            calendarState.setMaximumDate(
-//                CalendarDay.from(
-//                    currentDate.year + 1,
-//                    0,
-//                    currentDate.day
-//                )
-//            )
-//        calendarState.setMaximumDate(
-//            CalendarDay.from(
-//                currentDate.year,
-//                currentDate.month + 1,
-//                currentDate.day
-//            )
-//        )
-//        calendarState.commit()
-        dialogBinding.cvCalendar.setOnDateChangedListener { widget, date, selected ->
-            loadResultTimeDialog(date)
-            dismissCalendarDialog()
+        vm.monthlyDate(3).observe(this) { availableDates ->
+            when (availableDates.status) {
+                Status.LOADING -> {
+                }
+                Status.SUCCESS -> {
+                    val responseDateFirst = availableDates.data!![0].localDate!!.split("-")
+                    val responseDateLast =
+                        availableDates.data[availableDates.data.size - 1].localDate!!.split("-")
+                    val min = Calendar.getInstance()
+                    val max = Calendar.getInstance()
+                    min.set(responseDateFirst[0].toInt(),
+                        responseDateFirst[1].toInt() - 1,
+                        responseDateFirst[2].toInt() - 1)
+                    max.set(responseDateLast[0].toInt(),
+                        responseDateLast[1].toInt(),
+                        responseDateLast[2].toInt())
+
+                    dialogBinding.calendarView.setMinimumDate(min)
+                    dialogBinding.calendarView.setMaximumDate(max)
+                    val calendars: MutableList<Calendar> = ArrayList()
+                    for (day in availableDates.data.indices) {
+                        if (availableDates.data[day].open == true) {
+                            //2022-01-15
+                            val responseDate = availableDates.data[day].localDate!!.split("-")
+                            val firstDisabled: Calendar = DateUtils.getCalendar()
+                            firstDisabled.set(responseDate[0].toInt(),
+                                responseDate[1].toInt() - 1,
+                                responseDate[2].toInt(),
+                                0,
+                                0,
+                                0)
+                            calendars.add(firstDisabled)
+                        }
+                    }
+                    dialogBinding.calendarView.setDisabledDays(calendars)
+                    //handle calendar day click
+                    dialogBinding.calendarView.setOnDayClickListener {
+                        val clickedDay: Calendar = DateUtils.getCalendar()
+                        clickedDay.timeInMillis = it.calendar.timeInMillis
+                        if (!calendars.contains(clickedDay)) {
+                            appointmentDate = clickedDay.timeInMillis
+                            dismissCalendarDialog()
+                            loadResultTimeDialog()
+                            showTimeDialog()
+                        }
+                    }
+                    showCalendarDialog()
+                }
+                Status.ERROR -> {
+                    Log.e("----------", "error: ${availableDates.message}")
+                }
+            }
         }
     }
 
-    private fun loadResultTimeDialog(date: CalendarDay) {
+    //booking // times
+    private fun loadResultTimeDialog() {
         dialogTimeBinding =
             DialogAppointmentTimeBinding.inflate(LayoutInflater.from(requireContext()))
-
-        appointmentTime = Constants.getAppointmentTime()
-        appointmentTimeAdapter = AppointmentTimeAdapter { position, lastPosition ->
-            appointmentTimeBundle = requireContext().getString(appointmentTime[position].time)
-
-            if (position != lastPosition) {
-                appointmentTime[position] =
-                    AppointmentTimeItem(
-                        R.drawable.bg_blue_lighter_8, appointmentTime[position].time, R.color.white
-                    )
-                appointmentTime[lastPosition] =
-                    AppointmentTimeItem(
-                        R.drawable.bg_transparent_4,
-                        appointmentTime[lastPosition].time,
-                        R.color.tangaroa_900
-                    )
-                appointmentTimeAdapter.setData(appointmentTime)
-            }
+        appointmentTimeAdapter = AppointmentTimeAdapter { time ->
+            appointmentTime = time.localTime.toString()
         }
-        appointmentTimeAdapter.setData(appointmentTime)
         dialogTimeBinding.rvTime.adapter = appointmentTimeAdapter
         dialogTimeBinding.rvTime.layoutManager = GridLayoutManager(requireContext(), 4)
 
-        appointmentDateBundle = "${date.day}.${date.month}.${date.year}"
+        vm.monthlyTime("2022-01-24", 3).observe(this) { time ->
+            when (time.status) {
+                Status.LOADING -> {
+                }
+                Status.SUCCESS -> {
+                    appointmentTimeIsClicked = arrayListOf()
+                    for (notCLicked in time.data!!.indices) {
+                        appointmentTimeIsClicked.add(AppointmentTimeItemIsClicked(false))
+                    }
+                    appointmentTimeAdapter.setData(time.data, appointmentTimeIsClicked)
+                }
+                Status.ERROR -> {
+                }
+            }
+        }
+
         dialogTimeBinding.btnSubmit.setOnClickListener {
             dismissResultTimeDialog()
             dismissCalendarDialog()
-            findNavController().navigate(
-                R.id.appointmentEnrollFragment,
-                bundleOf(
-                    Pair(Keys.BUNDLE_APPOINTMENT_DOCTOR_NAME, doctorName),
-                    Pair(Keys.BUNDLE_APPOINTMENT_TIME, appointmentTimeBundle),
-                    Pair(Keys.BUNDLE_APPOINTMENT_DATE, appointmentDateBundle),
-                    Pair(Keys.BUNDLE_APPOINTMENT_TYPE, type)
-                )
-            )
+            val action =
+                AboutDoctorFragmentDirections.actionAboutDoctorFragmentToAppointmentEnrollFragment(
+                    appointmentDoctorName,
+                    appointmentDate,
+                    appointmentTime,
+                    appointmentType)
+            findNavController().navigate(action)
         }
-        showTimeDialog()
     }
 
-    private fun loadAboutDoctor() {
-        // setting history of doctor
-        data = Constants.getAboutDoctorItems()
+    //fragments // details / work / comment / certificate
+    private fun loadAboutDoctorItems() {
+        aboutDoctorItems = Constants.getAboutDoctorItems()
         aboutDoctorItemAdapter = AboutDoctorAdapter { position, lastPosition ->
             if (position != lastPosition) {
-                data[position] =
+                aboutDoctorItems[position] =
                     AboutDoctorItems(
-                        data[position].categoryName,
+                        aboutDoctorItems[position].categoryName,
                         R.color.nile_blue_900,
                         R.color.white
                     )
-                data[lastPosition] = AboutDoctorItems(
-                    data[lastPosition].categoryName,
+                aboutDoctorItems[lastPosition] = AboutDoctorItems(
+                    aboutDoctorItems[lastPosition].categoryName,
                     R.color.solitude_50,
                     R.color.tangaroa_900
                 )
-                aboutDoctorItemAdapter.setData(data)
-
-                aboutDoctorCommentAdapter = AboutDoctorCommentAdapter { }
-                val dataa = Constants.getComments()
-                Log.d("-------------", "setUp: size: ${dataa.size}")
-                aboutDoctorCommentAdapter.setData(dataa)
-                binding.rvComments.layoutManager =
-                    LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                aboutDoctorItemAdapter.setData(aboutDoctorItems)
 
                 when (position) {
                     0 -> {
-                        binding.clAboutDoctor.visibility = View.VISIBLE
-                        binding.clComment.visibility = View.GONE
-                        binding.clWork.visibility = View.GONE
-                        binding.clSertificate.visibility = View.GONE
+                        beginDoctorDetailsFragment()
                     }
                     1 -> {
-                        loadWork()
-                        binding.clAboutDoctor.visibility = View.GONE
-                        binding.clWork.visibility = View.VISIBLE
-                        binding.clComment.visibility = View.GONE
-                        binding.clSertificate.visibility = View.GONE
+                        beginDoctorWorkFragment()
                     }
                     2 -> {
-                        loadComment()
-                        binding.clAboutDoctor.visibility = View.GONE
-                        binding.clWork.visibility = View.GONE
-                        binding.clComment.visibility = View.VISIBLE
-                        binding.clSertificate.visibility = View.GONE
+                        beginDoctorCommentFragment()
                     }
                     3 -> {
-                        loadCertificate()
-                        binding.clAboutDoctor.visibility = View.GONE
-                        binding.clWork.visibility = View.GONE
-                        binding.clComment.visibility = View.GONE
-                        binding.clSertificate.visibility = View.VISIBLE
+                        val doctorCertificateFragment: Fragment = DoctorCertificateFragment()
+                        val transaction: FragmentTransaction =
+                            childFragmentManager.beginTransaction()
+                        transaction.replace(binding.parentFragmentContainer.id,
+                            doctorCertificateFragment)
+                            .commit()
                     }
                 }
             }
         }
-        aboutDoctorItemAdapter.setData(data)
+        aboutDoctorItemAdapter.setData(aboutDoctorItems)
         binding.rvDoctorAboutDetails.adapter = aboutDoctorItemAdapter
         binding.rvDoctorAboutDetails.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
     }
 
-    private fun loadWork() {
-        //workCurrent
-        aboutDoctorWorkCurrentAdapter = AboutDoctorWorkAdapter()
-        aboutDoctorWorkCurrentAdapter.setData(Constants.getCurrentWork())
-        binding.rvWorkCurrent.adapter = aboutDoctorWorkCurrentAdapter
-        binding.rvWorkCurrent.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+    private fun getAboutDoctor(doctorId: Int) {
+        vm.doctorById(doctorId).observe(this) { doctorData ->
+            when (doctorData.status) {
+                Status.LOADING -> {
+                    binding.clTop.invisible()
+                }
+                Status.SUCCESS -> {
+                    binding.clTop.visible()
+                    this.doctorData = doctorData.data!!
+                    beginDoctorDetailsFragment()
+                    binding.tvFullName.text = doctorData.data.fullName
+                    binding.tvReyting.text = doctorData.data.averageRating
+                    binding.tvExperience.text = doctorData.data.workExperience
+                    binding.tvCategory.text = doctorData.data.workInfoList!![0]!!.position
+                    ImageDownloader.loadImage(requireContext(),
+                        doctorData.data.image!!,
+                        binding.cardProfileAvater)
 
-        //workPast
-        aboutDoctorWorkPastAdapter = AboutDoctorWorkAdapter()
-        aboutDoctorWorkPastAdapter.setData(Constants.getPastWork())
-        binding.rvWorkPast.adapter = aboutDoctorWorkCurrentAdapter
-        binding.rvWorkPast.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                    appointmentDoctorName = doctorData.data.fullName.toString()
+                }
+                Status.ERROR -> {
+                    binding.clTop.visible()
+                }
+            }
 
+        }
     }
 
-    private fun loadComment() {
-        //generating comments from constant date
-        aboutDoctorCommentAdapter = AboutDoctorCommentAdapter { }
-        aboutDoctorCommentAdapter.setData(Constants.getComments())
-        binding.rvComments.adapter = aboutDoctorCommentAdapter
-        binding.rvComments.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+    private fun beginDoctorDetailsFragment() {
+        val doctorDetailsFragment: Fragment = DoctorDetailsFragment()
 
-        // rating the doctor
-        binding.ivStar1.setOnClickListener {
-            binding.apply {
-                ivStar1.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar2.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-                ivStar3.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-                ivStar4.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-                ivStar5.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-            }
-            reyting = 1
-        }
-        binding.ivStar2.setOnClickListener {
-            binding.apply {
-                ivStar1.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar2.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar3.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-                ivStar4.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-                ivStar5.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-            }
-            reyting = 2
-        }
-        binding.ivStar3.setOnClickListener {
-            binding.apply {
-                ivStar1.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar2.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar3.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar4.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-                ivStar5.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-            }
-            reyting = 3
-        }
-        binding.ivStar4.setOnClickListener {
-            binding.apply {
-                ivStar1.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar2.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar3.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar4.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar5.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star_grey
-                    )
-                )
-            }
-            reyting = 4
-        }
-        binding.ivStar5.setOnClickListener {
-            binding.apply {
-                ivStar1.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar2.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar3.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar4.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-                ivStar5.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_star
-                    )
-                )
-            }
-            reyting = 5
-        }
+        //given arguments: about, url, university and faculty
+        bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR_UNIVERSITY,
+            doctorData.educationInfoList!![0]!!.organization)
+        bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR_FACULTY,
+            doctorData.educationInfoList!![0]!!.faculty)
+        bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR_URL, doctorData.doctorVideoUrl)
+        bundle.putString(Keys.BUNDLE_ABOUT_DOCTOR, doctorData.aboutDoctor)
+        doctorDetailsFragment.arguments = bundle
 
-        //sending comment
-        binding.tvCommentSend.setOnClickListener {
-            date.time = System.currentTimeMillis()
-            time = DateTimeUtils.dateToText(date, "HH:mm yyyy-MM-dd").toString()
-            if (binding.etUserComment.text.isNullOrEmpty() || binding.etUserComment.text.isNullOrBlank()) {
-                binding.etUserComment.error = "Write comment please!"
-            } else {
-                vm.sendComment(
-                    AboutDoctorCommentItem(
-                        binding.etUserComment.text.toString(),
-                        reyting,
-                        time
-                    )
-                )
-                reloadLayout()
-            }
-        }
-
-        //undo comment
-        binding.tvCommentUndo.setOnClickListener {
-            reloadLayout()
-        }
-
+        val transaction: FragmentTransaction =
+            childFragmentManager.beginTransaction()
+        transaction.replace(binding.parentFragmentContainer.id,
+            doctorDetailsFragment).commit()
     }
 
-    private fun loadCertificate() {
-        //certificate
-        aboutDoctorCertificateAdapter = AboutDoctorCertificateAdapter {
-            findNavController().navigate(
-                R.id.action_aboutDoctorFragment_to_certificateFragment, bundleOf(
-                    Keys.BUNDLE_CERTIFICATE to it
-                )
-            )
-        }
-        aboutDoctorCertificateAdapter.setData(Constants.getSertificate())
-        binding.rvSertificate.adapter = aboutDoctorCertificateAdapter
-        binding.rvSertificate.layoutManager = GridLayoutManager(requireContext(), 2)
+    private fun beginDoctorWorkFragment() {
+        val doctorWorkFragment: Fragment = DoctorWorkFragment()
+        val transaction: FragmentTransaction =
+            childFragmentManager.beginTransaction()
 
+        //give argument: list of work
+        bundle.putParcelableArrayList(Keys.BUNDLE_ABOUT_DOCTOR_WORK,
+            doctorData.workInfoList as ArrayList)
+        doctorWorkFragment.arguments = bundle
+
+        transaction.replace(binding.parentFragmentContainer.id, doctorWorkFragment)
+            .commit()
     }
 
-    private fun reloadLayout() {
-        binding.etUserComment.setText("")
-        binding.apply {
-            ivStar1.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_star_grey
-                )
-            )
-            ivStar2.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_star_grey
-                )
-            )
-            ivStar3.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_star_grey
-                )
-            )
-            ivStar4.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_star_grey
-                )
-            )
-            ivStar5.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_star_grey
-                )
-            )
-        }
-        reyting = 1
+    private fun beginDoctorCommentFragment() {
+        val doctorCommentFragment: Fragment = DoctorCommentFragment()
+        val transaction: FragmentTransaction =
+            childFragmentManager.beginTransaction()
+
+        //give argument: doctor ID
+        bundle.putInt(Keys.BUNDLE_ABOUT_DOCTOR_ID, args.doctorId)
+        doctorCommentFragment.arguments = bundle
+
+        transaction.replace(binding.parentFragmentContainer.id,
+            doctorCommentFragment).commit()
     }
 
     private fun showCalendarDialog() {
@@ -526,6 +327,6 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
 
     override fun getLayoutResId() = R.layout.fragment_about_doctor
     override val vm: AboutDoctorVM
-        get() = ViewModelProvider(this).get(AboutDoctorVM::class.java)
+        get() = ViewModelProvider(this)[AboutDoctorVM::class.java]
 
 }

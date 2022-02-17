@@ -8,18 +8,22 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.model.AppointmentTimeItem
+import uz.medion.data.model.AppointmentTimeItemIsClicked
+import uz.medion.data.model.MonthlyTimeResponse
 import uz.medion.databinding.ItemAppointmentTimeBinding
+import uz.medion.utils.DateTimeUtils
 
-class AppointmentTimeAdapter(private val itemClickListener: (Int, Int) -> Unit) :
+class AppointmentTimeAdapter(private val itemClickListener: (MonthlyTimeResponse) -> Unit) :
     RecyclerView.Adapter<AppointmentTimeAdapter.VH>() {
 
-    private var listItem = listOf<AppointmentTimeItem>()
-    private var lastClickedPosition: Int = 0
+    private var listItem = listOf<MonthlyTimeResponse>()
+    private var clickingItems = listOf<AppointmentTimeItemIsClicked>()
+    private var selectedItemIndex = -1
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(listItem: List<AppointmentTimeItem>) {
+    fun setData(listItem: List<MonthlyTimeResponse>, clickingItemIsClickeds: List<AppointmentTimeItemIsClicked>) {
         this.listItem = listItem
+        this.clickingItems = clickingItemIsClickeds
         notifyDataSetChanged()
     }
 
@@ -37,9 +41,19 @@ class AppointmentTimeAdapter(private val itemClickListener: (Int, Int) -> Unit) 
 
 
     override fun onBindViewHolder(holder: VH, @SuppressLint("RecyclerView") position: Int) {
+        val clickingItem = clickingItems[position]
+        if (clickingItem.isSelected) {
+            holder.clicked()
+        } else {
+            holder.notCLicked()
+        }
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position, lastClickedPosition)
-            lastClickedPosition = position
+            itemClickListener.invoke(listItem[position])
+            clickingItem.isSelected = true
+            if (selectedItemIndex != -1)
+                clickingItems[selectedItemIndex].isSelected = false
+            selectedItemIndex = position
+            notifyDataSetChanged()
         }
         holder.onBind(listItem[position])
     }
@@ -48,14 +62,24 @@ class AppointmentTimeAdapter(private val itemClickListener: (Int, Int) -> Unit) 
 
     class VH(private val binding: ItemAppointmentTimeBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(appointment: AppointmentTimeItem) {
+        fun onBind(time: MonthlyTimeResponse) {
             binding.apply {
-                tvTime.background = ContextCompat.getDrawable(context, appointment.background)
-                tvTime.setTextColor(ContextCompat.getColor(context, appointment.textColor))
-                tvTime.text = context.getText(appointment.time)
+                tvTime.text = time.localTime?.let { DateTimeUtils.textToTextDate(it) }
+            }
+        }
+
+        fun clicked(){
+            binding.apply {
+                tvTime.setTextColor(ContextCompat.getColor(context, R.color.white))
+                tvTime.background = ContextCompat.getDrawable(context, R.drawable.bg_blue_lighter_8)
+            }
+        }
+
+        fun notCLicked(){
+            binding.apply {
+                tvTime.setTextColor(ContextCompat.getColor(context, R.color.tangaroa_900))
+                tvTime.background = ContextCompat.getDrawable(context, R.drawable.bg_transparent_4)
             }
         }
     }
-
-
 }

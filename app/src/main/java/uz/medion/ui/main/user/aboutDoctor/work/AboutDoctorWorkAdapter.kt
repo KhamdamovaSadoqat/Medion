@@ -1,20 +1,22 @@
-package uz.medion.ui.main.user.aboutDoctor
+package uz.medion.ui.main.user.aboutDoctor.work
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.model.AboutDoctorWorkItem
+import uz.medion.data.model.WorkInfoListItem
 import uz.medion.databinding.ItemWorkDetailsBinding
 
 class AboutDoctorWorkAdapter: RecyclerView.Adapter<AboutDoctorWorkAdapter.VH>() {
 
 
-    private var listItem = listOf<AboutDoctorWorkItem>()
+    private var listItem = listOf<WorkInfoListItem>()
 
-    fun setData(listItem: List<AboutDoctorWorkItem>) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(listItem: ArrayList<WorkInfoListItem>) {
         this.listItem = listItem
         notifyDataSetChanged()
     }
@@ -39,10 +41,10 @@ class AboutDoctorWorkAdapter: RecyclerView.Adapter<AboutDoctorWorkAdapter.VH>() 
 
     class VH(private val binding: ItemWorkDetailsBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(work: AboutDoctorWorkItem) {
+        fun onBind(work: WorkInfoListItem) {
             binding.apply {
-                tvClinicName.text = work.clinicName
-                tvSphere.text = work.sphere
+                tvClinicName.text = work.organization
+                tvSphere.text = work.position
             }
 
         }

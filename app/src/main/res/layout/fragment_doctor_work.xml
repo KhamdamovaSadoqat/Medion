@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_work"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btn_submit"
+        app:layout_constraintTop_toBottomOf="@id/cl_top">
+
+        <TextView
+            android:id="@+id/tv_current"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/current_job"
+            android:textColor="@color/steel_grey_800"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/cl_work_current"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_work_current"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@id/v_divider5"
+            app:layout_constraintTop_toBottomOf="@id/tv_current">
+
+            <ImageView
+                android:id="@+id/iv_dot"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                app:srcCompat="@drawable/ic_dot"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:contentDescription="@string/icon" />
+
+            <TextView
+                android:id="@+id/tv_clinic_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:text="@string/clinic_name"
+                android:textColor="@color/tangaroa_900"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_dot"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_sphere"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:text="@string/main_doctor_of_urology"
+                android:textColor="@color/steel_grey_800"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_dot"
+                app:layout_constraintTop_toBottomOf="@id/tv_clinic_name"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/v_divider5"
+            style="@style/Divider"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_work_current" />
+
+        <TextView
+            android:id="@+id/tv_past"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/past_job"
+            android:textColor="@color/steel_grey_800"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/rv_work_past"
+            app:layout_constraintTop_toBottomOf="@id/v_divider5" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_work_past"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_past" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
