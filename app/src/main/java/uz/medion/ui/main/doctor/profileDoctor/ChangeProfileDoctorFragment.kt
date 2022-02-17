@@ -23,6 +23,9 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import uz.medion.R
+import uz.medion.data.model.doctor.DoctorControllerPostResponses
+import uz.medion.data.model.doctor.DoctorsControllerPostBody
+import uz.medion.data.model.doctor.EduInfo
 import uz.medion.data.network.CreateRetrofit
 import uz.medion.data.network.NetworkInterceptor
 import uz.medion.data.network.RestApi
@@ -45,6 +48,7 @@ class ChangeProfileDoctorFragment : Fragment() {
     private lateinit var listener: KeyListener
     private val calendar= Calendar.getInstance()
     private lateinit var viewModel:ChangeProfileDoctorFragmentViewModel
+    private lateinit var request: DoctorsControllerPostBody
 
 
 
@@ -66,17 +70,25 @@ class ChangeProfileDoctorFragment : Fragment() {
             false
         )
         val interceptor = NetworkInterceptor(requireContext()   )
-        val service= CreateRetrofit.getRetrofit(interceptor).create(RestApi::class.java)
-        val factory = ChangeProfileDoctorFactory(service)
-        val params = HashMap<String, String>()
-        params["fullName"]="Kamolov Sultonxo'ja TavakkalXodjayevich"
-        params["phoneNumber"]="931234567"
-        params["username"]="doctor"
+//        val service= CreateRetrofit.getRetrofit(interceptor).create(RestApi::class.java)
+//        val factory = ChangeProfileDoctorFactory(service)
 
-        viewModel=ViewModelProvider(requireActivity(),factory).get(ChangeProfileDoctorFragmentViewModel::class.java)
+        request= DoctorsControllerPostBody(
+            binding.birthdayEdit.toString(),
+          listOf(),
+            binding.nameEdit.toString(),
+            "male",
+            "htt",
+            "1234",
+            binding.editPhone.toString(),
+            listOf(),
+            "kamalov",
+            listOf(),
+            )
 
-        viewModel.addDoctorInfo(params)
-        Log.d(TAG, "onCreateView: $params")
+        viewModel=ViewModelProvider(requireActivity()).get(ChangeProfileDoctorFragmentViewModel::class.java)
+
+        viewModel.doctorInfo(request)
         binding.imgPickImage.setOnClickListener {
             showImagePickerOptions(requireContext(), object : PickerOptionListener {
                 override fun onTakeCameraSelected() {

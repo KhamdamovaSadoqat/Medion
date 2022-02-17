@@ -35,6 +35,6 @@ interface ApiInterface {
     @Headers("Content-Type: application/json")
             @POST("/api/v1/auth/login")
     fun login(
-        @Path ("role")role: String
+        @Path ("login")login: Login
     ): Observable<UserLogin>
 }

@@ -67,6 +67,7 @@
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_change_number.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_change_password.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_change_profile_doctor.xml" value="0.23252496433666192" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_chat.xml" value="0.1" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_choose_language.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_estetic_medicine.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_home.xml" value="0.15208333333333332" />
@@ -119,7 +120,7 @@
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/partial_bottom_navigation_doctors.xml" value="0.182518115942029" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/today_patient_fragment.xml" value="0.2109375" />
         <entry key="..\:/idrok/Medion/app/src/main/res/menu/doctor_bottom_nav.xml" value="0.15208333333333332" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/menu/drawer_menu.xml" value="0.15208333333333332" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/menu/drawer_menu.xml" value="0.264" />
         <entry key="..\:/idrok/Medion/app/src/main/res/menu/menu_media.xml" value="0.1" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_blue_4.xml" value="0.24722222222222223" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/bg_blue_8.xml" value="0.24722222222222223" />

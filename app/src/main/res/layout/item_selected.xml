@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="patient"
+            type="uz.medion.data.model.doctor.DoctorMyPacientesResponseItem" />
+    </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -53,14 +58,14 @@
                     android:id="@+id/tv_name_patient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ilyasov_Doniyor"
+                    android:text="@{patient.fullName}"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_date_patient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/_21_12_1970" />
+                    />
             </LinearLayout>
 
             <LinearLayout

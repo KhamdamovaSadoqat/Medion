@@ -7,7 +7,7 @@ import uz.medion.data.network.RestApi
 class ChangeProfileDoctorFactory (private val service:RestApi):ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ChangeProfileDoctorFragmentViewModel::class.java)){
-            return ChangeProfileDoctorFragmentViewModel(service) as T
+            return ChangeProfileDoctorFragmentViewModel() as T
         } else {
             throw IllegalArgumentException("ChangeProfileDoctorViewModel not found")
         }
