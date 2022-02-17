@@ -9,11 +9,10 @@ import uz.medion.data.model.remote.Resource
 import uz.medion.data.network.RestApi
 import uz.medion.data.repository.DocRepository
 
-class ChangeProfileDoctorFragmentViewModel() : ViewModel() {
+class ChangeProfileDoctorFragmentViewModel : ViewModel() {
+
     private val repo = DocRepository( )
     private var resultPost=MutableLiveData<Resource<DoctorControllerPostResponses>>()
-
-
 
     fun doctorInfo(
         doctorsControllerPostBody: DoctorsControllerPostBody
@@ -24,6 +23,4 @@ class ChangeProfileDoctorFragmentViewModel() : ViewModel() {
         )
        return resultPost
         }
-
-
 }
