@@ -89,7 +89,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                                     // starting new activity and ending the login
                                     val intent = Intent(requireContext(), MainActivity::class.java)
                                     startActivity(intent)
-                                }else if(decodedToken.roles[0] == "DOCTOR"){
+                                }else if(decodedToken.roles[0] == "ADMIN"){
                                     //start doctor activity
                                     val intent = Intent(requireContext(), DoctorActivity::class.java)
                                     startActivity(intent)

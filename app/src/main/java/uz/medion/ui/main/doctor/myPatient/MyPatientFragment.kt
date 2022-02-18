@@ -7,16 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.common.util.DataUtils
 import uz.medion.R
 import uz.medion.data.constants.Constants
+import uz.medion.data.model.doctor.DoctorMyPacientesResponseItem
 import uz.medion.data.model.doctor.MyPatientsItem
-import uz.medion.databinding.ActivityDoctorBinding.inflate
 import uz.medion.databinding.FragmentMyPtientBinding
 
 class MyPatientFragment : Fragment(), MyPatientAdapter.PatientItemListener {
@@ -62,30 +60,16 @@ class MyPatientFragment : Fragment(), MyPatientAdapter.PatientItemListener {
 //            myDoctorsAdapter.setData(Constants.getMyDoctors())
 
         }
-        setRv()
         return binding.root
     }
 
-    private fun setRv() {
-        val list=Constants.getMyPatients()
+    private fun setRv(patient:List<DoctorMyPacientesResponseItem>) {
         adapter= MyPatientAdapter(this)
-        adapter.setData(list)
+        adapter.setData(patient)
         binding.rvMyPatient.layoutManager=
             LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
         binding.rvMyPatient.adapter=adapter
     }
-private fun getMyPatients():ArrayList<MyPatientsItem>{
-    return arrayListOf(
-        MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-        MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-        MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-        MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-        MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true),
-        MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-        MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,false),
-        MyPatientsItem(R.string.ilyasov_Doniyor,R.string.date,true)
-    )
-}
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MyPatientViewModel::class.java)
@@ -93,8 +77,8 @@ private fun getMyPatients():ArrayList<MyPatientsItem>{
         // TODO: Use the ViewModel
     }
 
-    override fun onClickPatient(patient: MyPatientsItem) {
-if (patient.isFavourite){
+    override fun onClickPatient(patient: DoctorMyPacientesResponseItem) {
+if (patient.isFavorite){
     binding.tvFavouritePatient.setOnClickListener {
         binding.tvFavouritePatient.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_blue_8)
         binding.tvAllPatients.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_solitude_8)

@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="patient"
+            type="uz.medion.data.model.doctor.DoctorMyPacientesResponseItem" />
+    </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="24dp">
+        android:padding="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/bg_solitude_8"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view"
-                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+
+                android:layout_marginStart="16dp"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 app:cardCornerRadius="32dp"
@@ -35,6 +43,7 @@
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
+                app:layout_goneMarginStart="8dp"
                 android:layout_marginStart="4dp"
                 android:id="@+id/linear_name"
                 android:layout_width="224dp"
@@ -49,18 +58,18 @@
                     android:id="@+id/tv_name_patient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ilyasov_Doniyor"
+                    android:text="@{patient.fullName}"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_date_patient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/_21_12_1970" />
+                    />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="16dp"
                 android:id="@+id/linear_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,6 +87,7 @@
                     app:srcCompat="@drawable/ic_selected" />
 
                 <ImageView
+                    android:layout_marginTop="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/icon"

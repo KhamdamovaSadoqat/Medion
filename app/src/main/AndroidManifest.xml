@@ -28,26 +28,26 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
         <activity
-            android:name=".ui.main.doctor.DoctorActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:screenOrientation="fullSensor"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.main.doctor.DoctorActivity"
             android:exported="true"
             android:screenOrientation="fullSensor"
-            tools:ignore="LockedOrientationActivity">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Medion"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity" >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

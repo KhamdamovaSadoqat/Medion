@@ -39,7 +39,7 @@ class DoctorAdapter(private var itemClickListener: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+             itemClickListener.invoke(position)
         }
         holder.onBind(arrayList[position])
     }

@@ -34,7 +34,9 @@ class PersonalAreaFragment : Fragment() {
         binding.language.setOnClickListener {
             findNavController().navigate(R.id.chooseLanguageFragment2)
         }
-
+        binding.logOut.setOnClickListener {
+            findNavController().navigate(R.id.patientInfoFragment)
+        }
 
         return binding.root
     }
