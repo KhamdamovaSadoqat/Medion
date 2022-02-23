@@ -1,32 +1,26 @@
 package uz.medion.ui.main.user.home
 
-import android.util.Base64
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.flexbox.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexDirection.ROW
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import uz.medion.R
-import uz.medion.data.constants.Constants
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentHomeBinding
 import uz.medion.ui.base.BaseFragment
 import uz.medion.utils.ViewUtils
 import uz.medion.utils.invisible
 import uz.medion.utils.visible
-import uz.medion.data.model.TokenDecoded
-import uz.medion.utils.JWTUtils
-import java.io.UnsupportedEncodingException
-import java.lang.Exception
-import java.nio.charset.Charset
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
 
     private lateinit var adapter: HomeAdapter
-    private lateinit var adapter2: HomeAdapter
     private lateinit var animationFab: Animation
     private var tvAll: Boolean = true
     private lateinit var viewPagerAdapter: ViewPagerAdapter
@@ -44,7 +38,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
                 }
                 Status.SUCCESS -> {
                     binding.progress.invisible()
-                    binding.list.visible()
 
                     //initializing adapters
                     adapter = HomeAdapter { id ->
@@ -53,18 +46,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
                             HomeFragmentDirections.actionHomeFragmentToOurDoctorsFragment(id + 1)
                         findNavController().navigate(action)
                     }
-                    adapter2 = HomeAdapter { id ->
-                        val action =
-                            HomeFragmentDirections.actionHomeFragmentToOurDoctorsFragment(id + 1)
-                        findNavController().navigate(action)
-                    }
-
-                    binding.list.enableViewScaling(true)
-                    binding.list.adapter = adapter
-                    binding.rvCategories2.adapter = adapter2
-
+                    binding.rvCategories.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                     adapter.setData(speciality.data!!)
-                    adapter2.setData(speciality.data)
+                    binding.rvCategories.adapter = adapter
                 }
                 Status.ERROR -> {
                     binding.progress.invisible()
@@ -83,9 +68,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
                     binding.vpPictures.visible()
                     binding.tvAboutOurCenter.visible()
                     binding.tvAboutOurCenterInfo.visible()
+                    binding.dotsIndicator.visible()
                     // viewPager
                     viewPagerAdapter = ViewPagerAdapter(aboutClinic.data!!.urls, requireContext())
                     binding.vpPictures.adapter = viewPagerAdapter
+
+                    val dotsIndicator = binding.dotsIndicator
+                    dotsIndicator.setViewPager(binding.vpPictures)
                     // text : about our center
                     binding.tvAboutOurCenterInfo.text = aboutClinic.data.context
                     binding.tvAboutOurCenter.text = aboutClinic.data.title
@@ -99,21 +88,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
         }
     }
 
-    fun setUpUI() {
+    private fun setUpUI() {
         binding.tvAll.setOnClickListener {
             if (tvAll) {
                 binding.tvAll.text = requireContext().getText(R.string.hide_all)
-                ViewUtils.fadeIn(binding.rvCategories2)
-                ViewUtils.fadeOut(binding.list)
                 val layoutManager = FlexboxLayoutManager(context)
                 layoutManager.flexDirection = ROW
                 layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
-                binding.rvCategories2.layoutManager = layoutManager
+                binding.rvCategories.layoutManager = layoutManager
                 tvAll = false
             } else {
                 binding.tvAll.text = requireContext().getText(R.string.all)
-                ViewUtils.fadeIn(binding.list)
-                ViewUtils.fadeOut(binding.rvCategories2)
+                binding.rvCategories.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 tvAll = true
             }
         }

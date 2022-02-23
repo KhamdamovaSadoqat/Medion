@@ -181,13 +181,15 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 Status.LOADING -> {
                 }
                 Status.SUCCESS -> {
-                    subSpecialityIsClicked = arrayListOf()
-                    for (notCLicked in subSpeciality.data!!.indices) {
-                        subSpecialityIsClicked.add(AppointmentTimeItemIsClicked(false))
+                    if(subSpeciality.data!!.isNotEmpty()){
+                        subSpecialityIsClicked = arrayListOf()
+                        for (notCLicked in subSpeciality.data.indices) {
+                            subSpecialityIsClicked.add(AppointmentTimeItemIsClicked(false))
+                        }
+                        subSpecialityIsClicked[0] = AppointmentTimeItemIsClicked(true)
+                        subSpecialityAdapter.items = subSpeciality.data
+                        subSpecialityAdapter.clickingItems = subSpecialityIsClicked
                     }
-                    subSpecialityIsClicked[0] = AppointmentTimeItemIsClicked(true)
-                    subSpecialityAdapter.items = subSpeciality.data
-                    subSpecialityAdapter.clickingItems = subSpecialityIsClicked
                 }
                 Status.ERROR -> {
                 }

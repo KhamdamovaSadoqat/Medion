@@ -1,13 +1,12 @@
 package uz.medion.ui.main.user.adressAndContacts
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
-import uz.medion.data.model.AdressAndContactsItem
 import uz.medion.data.model.BranchResponse
 import uz.medion.databinding.ItemLocationsBinding
 import uz.medion.utils.ImageDownloader
@@ -16,6 +15,7 @@ class AddressAndContactsAdapter(private val itemClickListener: (BranchResponse) 
 RecyclerView.Adapter<AddressAndContactsAdapter.VH>() {
 
     private var listItem = listOf<BranchResponse>()
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(listItem: List<BranchResponse>) {
         this.listItem = listItem
         notifyDataSetChanged()
