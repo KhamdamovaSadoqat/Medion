@@ -36,11 +36,9 @@ import uz.medion.ui.main.user.aboutDoctor.details.DoctorDetailsFragment
 import uz.medion.ui.main.user.aboutDoctor.work.DoctorWorkFragment
 import kotlin.collections.ArrayList
 
-
 class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
 
     private val args: AboutDoctorFragmentArgs by navArgs()
-
     private lateinit var aboutDoctorItemAdapter: AboutDoctorAdapter
     private lateinit var appointmentTimeAdapter: AppointmentTimeAdapter
     private lateinit var dialogBinding: DialogAppointmentBinding
@@ -86,7 +84,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     @SuppressLint("SetTextI18n")
     private fun loadDialog() {
         dialogBinding = DialogAppointmentBinding.inflate(LayoutInflater.from(requireContext()))
-        vm.monthlyDate(3).observe(this) { availableDates ->
+        vm.getMonthlyDate(3).observe(this) { availableDates ->
             when (availableDates.status) {
                 Status.LOADING -> {
                 }
@@ -151,7 +149,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         dialogTimeBinding.rvTime.adapter = appointmentTimeAdapter
         dialogTimeBinding.rvTime.layoutManager = GridLayoutManager(requireContext(), 4)
 
-        vm.monthlyTime("2022-01-24", 3).observe(this) { time ->
+        vm.getMonthlyTime("2022-01-24", 3).observe(this) { time ->
             when (time.status) {
                 Status.LOADING -> {
                 }
@@ -223,11 +221,10 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         binding.rvDoctorAboutDetails.adapter = aboutDoctorItemAdapter
         binding.rvDoctorAboutDetails.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-
     }
 
     private fun getAboutDoctor(doctorId: Int) {
-        vm.doctorById(doctorId).observe(this) { doctorData ->
+        vm.getDoctorById(doctorId).observe(this) { doctorData ->
             when (doctorData.status) {
                 Status.LOADING -> {
                     binding.clTop.invisible()
@@ -250,7 +247,6 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                     binding.clTop.visible()
                 }
             }
-
         }
     }
 

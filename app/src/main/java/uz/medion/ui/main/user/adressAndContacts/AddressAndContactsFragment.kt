@@ -23,7 +23,7 @@ class AddressAndContactsFragment :
     }
 
     private fun setUp() {
-        vm.branch().observe(this) { branch ->
+        vm.getBranch().observe(this) { branch ->
             when (branch.status) {
                 Status.LOADING -> {
                     binding.progress.visible()

@@ -2,24 +2,24 @@ package uz.medion.ui.main.user.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import uz.medion.data.Repository
+import uz.medion.data.repository.UserRepository
 import uz.medion.data.model.AboutClinicResponse
 import uz.medion.data.model.SpecialityItemResponse
 import uz.medion.data.model.remote.Resource
 import uz.medion.ui.base.BaseVM
 
 class HomeVM: BaseVM(){
-    private val repo = Repository()
+    private val repo = UserRepository()
     private val aboutClinicResponse = MutableLiveData<Resource<AboutClinicResponse>>()
     private val specialityResponse = MutableLiveData<Resource<List<SpecialityItemResponse>>>()
 
-    fun aboutClinic(): LiveData<Resource<AboutClinicResponse>> {
-        repo.aboutClinic(aboutClinicResponse)
+    fun getAboutClinic(): LiveData<Resource<AboutClinicResponse>> {
+        repo.getAboutClinic(aboutClinicResponse)
         return aboutClinicResponse
     }
 
-    fun speciality(): LiveData<Resource<List<SpecialityItemResponse>>>{
-        repo.speciality(specialityResponse)
+    fun getSpeciality(): LiveData<Resource<List<SpecialityItemResponse>>>{
+        repo.getSpeciality(specialityResponse)
         return specialityResponse
     }
 }

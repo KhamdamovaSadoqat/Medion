@@ -51,7 +51,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 "${Constants.BASE_API_URL}/api/v1/speciality/${args.specialityTypeId}/doctors"
         }
 
-        getDoctors(doctorsBySpecialityUrl)
+        getDoctorBySpeciality(doctorsBySpecialityUrl)
         getSpecialities()
         getSubSpeciality(args.specialityTypeId)
     }
@@ -61,7 +61,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             this.specialityId = specialityId
             doctorsBySpecialityUrl =
                 "${Constants.BASE_API_URL}/api/v1/speciality/$specialityId/doctors"
-            getDoctors(doctorsBySpecialityUrl)
+            getDoctorBySpeciality(doctorsBySpecialityUrl)
         }
         binding.rvDoctorsCategories.adapter = ourDoctorsCategoryAdapter
         binding.rvDoctorsCategories.layoutManager =
@@ -126,7 +126,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             ) {
                 //Fri Feb 11 00:00:00 GMT+05:00 2022
                 chosenDate = DateTimeUtils.timeMillsToTextDate2(eventDay.calendar.timeInMillis)
-                getFilterDoctors(chosenDate, args.specialityTypeId, subSpecialityId)
+                getFilteredDoctors(chosenDate, args.specialityTypeId, subSpecialityId)
             }
         }
         val currentDate = Calendar.getInstance()
@@ -140,7 +140,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     }
 
     private fun getSpecialities() {
-        vm.speciality().observe(this) { speciality ->
+        vm.getSpeciality().observe(this) { speciality ->
             when (speciality.status) {
                 Status.LOADING -> {
                     binding.progressForRv.visible()
@@ -157,8 +157,8 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         }
     }
 
-    private fun getDoctors(url: String) {
-        vm.doctorBySpeciality(url).observe(this) { doctors ->
+    private fun getDoctorBySpeciality(url: String) {
+        vm.getDoctorBySpeciality(url).observe(this) { doctors ->
             when (doctors.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
@@ -176,7 +176,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     }
 
     private fun getSubSpeciality(specialityId: Int) {
-        vm.subSpeciality(specialityId).observe(this) { subSpeciality ->
+        vm.getSubSpeciality(specialityId).observe(this) { subSpeciality ->
             when (subSpeciality.status) {
                 Status.LOADING -> {
                 }
@@ -199,8 +199,8 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
     }
 
     //{"code":1002,"message":"Doctor doesn't work in selected date","meta":null}
-    private fun getFilterDoctors(date: String, specialityId: Int, subSpecialityId: Int) {
-        vm.filterDoctors(date, specialityId, subSpecialityId).observe(this) { doctorList ->
+    private fun getFilteredDoctors(date: String, specialityId: Int, subSpecialityId: Int) {
+        vm.getFilteredDoctors(date, specialityId, subSpecialityId).observe(this) { doctorList ->
             when (doctorList.status) {
                 Status.LOADING -> {
                 }

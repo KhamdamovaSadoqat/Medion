@@ -31,7 +31,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
     }
 
     fun setUp() {
-        vm.speciality().observe(this) { speciality ->
+        vm.getSpeciality().observe(this) { speciality ->
             when (speciality.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
@@ -58,7 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
             }
         }
 
-        vm.aboutClinic().observe(this) { aboutClinic ->
+        vm.getAboutClinic().observe(this) { aboutClinic ->
             when (aboutClinic.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
