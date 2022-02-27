@@ -10,7 +10,7 @@
         android:fillViewport="true"
         tools:context=".ui.main.user.aboutDoctor.AboutDoctorFragment">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -19,8 +19,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_top"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/card_profile_avater"
@@ -195,9 +195,14 @@
             <FrameLayout
                 android:id="@+id/parent_fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/cl_top"
+                app:layout_constraintVertical_bias="0"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="1"
+                app:layout_constraintTop_toBottomOf="@id/parent_fragment_container"
                 android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -206,6 +211,6 @@
                 android:text="@string/submit"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
