@@ -154,28 +154,11 @@ interface ApiInterface {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Headers("Content-Type: application/json")
     @GET("/api/v1/doctor/get/{id}")
-
     fun getDoctorId(
-        @Header("Authorization") token: String,
-        @Path("id") id: Int
-
+        @Path("id") id: Int,
+        @Header("Authorization") token: String
     ): Observable<DoctorGetResponse>
 
 

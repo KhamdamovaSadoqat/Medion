@@ -88,6 +88,9 @@ class ChangeProfileDoctorFragment : Fragment() {
                 Status.SUCCESS->{
                    binding.doctor=doctor.data
                 }
+                Status.ERROR -> {
+                    Log.d("-------------", "onCreateView: ${doctor.message}")
+                }
             }
 
         }

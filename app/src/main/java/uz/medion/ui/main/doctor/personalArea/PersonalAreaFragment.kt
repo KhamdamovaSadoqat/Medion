@@ -28,8 +28,9 @@ class PersonalAreaFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
        binding=DataBindingUtil.inflate(inflater,R.layout.fragment_personal_area, container, false)
-        viewModel=ViewModelProvider(this).get(PersonalAreaVM::class.java)
+        viewModel= ViewModelProvider(this)[PersonalAreaVM::class.java]
         viewModel.getDoctorInfo().observe(viewLifecycleOwner){doctor->
+
             binding.doctorInfo=doctor.data
             Log.d("PersonalArea", "onCreateView: ${doctor.data}")
         }

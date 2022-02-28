@@ -208,7 +208,7 @@ compositeDisposable.add(
         response:MutableLiveData<Resource<DoctorGetResponse>>
     ){
         compositeDisposable.add(
-            api.getDoctorId("Bearer ${Constants.token}",3)
+            api.getDoctorId(3, "Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object :DisposableObserver<DoctorGetResponse>(){

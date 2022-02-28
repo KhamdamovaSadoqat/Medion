@@ -78,10 +78,12 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                                 Log.d("----------", "setUp: loading")
                             }
                             Status.SUCCESS -> {
+                                Log.d("-------------", "setUp: data: ${response.data}")
                                 prefs.isRegistered = true
                                 prefs.password = binding.etPassword.text.toString().trim()
                                 prefs.accessToken = response.data?.accessToken
                                 prefs.refreshToken = response.data?.refreshToken
+
                                 Constants.setUnAuthorized(false)
 
                                 val decodedToken =
