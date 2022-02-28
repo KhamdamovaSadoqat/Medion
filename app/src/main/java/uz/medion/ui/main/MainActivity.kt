@@ -96,7 +96,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 destination.id == R.id.esteticMedicineFragment ||
                 destination.id == R.id.spaMedicineFragment ||
                 destination.id == R.id.appointmentEnrollFragment ||
-                destination.id == R.id.appointmentFragment ||
                 destination.id == R.id.calendarFragment
             ) ViewUtils.fadeIn(binding.ivNotification)
             else ViewUtils.fadeOut(binding.ivNotification)
@@ -128,7 +127,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 R.id.chooseLanguageFragment -> binding.tvMain.setText(R.string.choose_language)
                 R.id.changeNumberFragment -> binding.tvMain.setText(R.string.change_mobile_phone_number)
                 R.id.personalDateFragment -> binding.tvMain.setText(R.string.personal_information)
-                R.id.appointmentFragment -> binding.tvMain.setText(R.string.constultation)
                 R.id.myDocumentsFragment -> binding.tvMain.setText(R.string.my_documents)
                 R.id.spaMedicineFragment -> binding.tvMain.setText(R.string.spa_medicine)
                 R.id.aboutDoctorFragment -> binding.tvMain.setText(R.string.about_doctor)

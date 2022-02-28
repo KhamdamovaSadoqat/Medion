@@ -7,6 +7,7 @@ import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexDirection.ROW
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
@@ -14,6 +15,7 @@ import uz.medion.R
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentHomeBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.utils.SafeFlexboxLayoutManager
 import uz.medion.utils.ViewUtils
 import uz.medion.utils.invisible
 import uz.medion.utils.visible
@@ -31,33 +33,42 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
     }
 
     fun setUp() {
-        vm.getSpeciality().observe(this) { speciality ->
-            when (speciality.status) {
-                Status.LOADING -> {
-                    binding.progress.visible()
-                }
-                Status.SUCCESS -> {
-                    binding.progress.invisible()
+        getSpeciality()
+        getAboutClinic()
+    }
 
-                    //initializing adapters
-                    adapter = HomeAdapter { id ->
-                        // id = it +1
-                        val action =
-                            HomeFragmentDirections.actionHomeFragmentToOurDoctorsFragment(id + 1)
-                        findNavController().navigate(action)
-                    }
-                    binding.rvCategories.layoutManager =
-                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                    adapter.setData(speciality.data!!)
-                    binding.rvCategories.adapter = adapter
-                }
-                Status.ERROR -> {
-                    binding.progress.invisible()
-                    Log.e("----------", "error: ${speciality.message}")
+    private fun setUpUI() {
+        binding.tvAll.setOnClickListener {
+            if (tvAll) {
+                binding.tvAll.text = requireContext().getText(R.string.hide_all)
+                val flexboxLayoutManager = SafeFlexboxLayoutManager(requireContext())
+                flexboxLayoutManager.flexDirection = ROW
+                flexboxLayoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
+                binding.rvCategories.removeAllViews()
+                binding.rvCategories.removeAllViewsInLayout()
+                binding.rvCategories.layoutManager = flexboxLayoutManager
+                tvAll = false
+            } else {
+                binding.tvAll.text = requireContext().getText(R.string.all)
+                binding.rvCategories.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                tvAll = true
+            }
+        }
+        animationFab = AnimationUtils.loadAnimation(context, R.anim.anim_fab_open)
+        binding.btnChat.setOnClickListener {
+            ViewUtils.fadeOut(binding.btnChat)
+            ViewUtils.fadeIn(binding.fab)
+            binding.fab.startAnimation(animationFab)
+            binding.fab.setOnClickListener {
+                when (it) {
+                    it -> findNavController().navigate(R.id.chatFragment)
                 }
             }
         }
+    }
 
+    private fun getAboutClinic(){
         vm.getAboutClinic().observe(this) { aboutClinic ->
             when (aboutClinic.status) {
                 Status.LOADING -> {
@@ -88,33 +99,34 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeVM>() {
         }
     }
 
-    private fun setUpUI() {
-        binding.tvAll.setOnClickListener {
-            if (tvAll) {
-                binding.tvAll.text = requireContext().getText(R.string.hide_all)
-                val layoutManager = FlexboxLayoutManager(context)
-                layoutManager.flexDirection = ROW
-                layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
-                binding.rvCategories.layoutManager = layoutManager
-                tvAll = false
-            } else {
-                binding.tvAll.text = requireContext().getText(R.string.all)
-                binding.rvCategories.layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                tvAll = true
-            }
-        }
-        animationFab = AnimationUtils.loadAnimation(context, R.anim.anim_fab_open)
-        binding.btnChat.setOnClickListener {
-            ViewUtils.fadeOut(binding.btnChat)
-            ViewUtils.fadeIn(binding.fab)
-            binding.fab.startAnimation(animationFab)
-            binding.fab.setOnClickListener {
-                when (it) {
-                    it -> findNavController().navigate(R.id.chatFragment)
+    private fun getSpeciality(){
+        vm.getSpeciality().observe(this) { speciality ->
+            when (speciality.status) {
+                Status.LOADING -> {
+                    binding.progress.visible()
+                }
+                Status.SUCCESS -> {
+                    binding.progress.invisible()
+
+                    //initializing adapters
+                    adapter = HomeAdapter { id ->
+                        // id = it +1
+                        val action =
+                            HomeFragmentDirections.actionHomeFragmentToOurDoctorsFragment(id + 1)
+                        findNavController().navigate(action)
+                    }
+                    binding.rvCategories.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    adapter.setData(speciality.data!!)
+                    binding.rvCategories.adapter = adapter
+                }
+                Status.ERROR -> {
+                    binding.progress.invisible()
+                    Log.e("----------", "error: ${speciality.message}")
                 }
             }
         }
+
     }
 
     @LayoutRes

@@ -177,6 +177,8 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/activity_splash.xml" value="0.2578125" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/chat_doctor_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment.xml" value="0.264" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment_date.xml" value="0.25" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment_subspeciality.xml" value="0.25" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_appointment_time.xml" value="0.23731884057971014" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/dialog_my_documents.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_about_doctor.xml" value="0.23278985507246377" />
@@ -185,7 +187,7 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_adress.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_adress_and_contacts.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_appointment.xml" value="0.264" />
-        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_appointment_enroll.xml" value="0.264" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_appointment_enroll.xml" value="0.4" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_calendar.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_certificate.xml" value="0.23278985507246377" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/fragment_change_number.xml" value="0.23278985507246377" />

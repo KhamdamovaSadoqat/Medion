@@ -101,6 +101,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                                         val intent = Intent(requireContext(), DoctorActivity::class.java)
                                         startActivity(intent)
                                     }
+
                                 }
                                 requireActivity().finish()
                             }

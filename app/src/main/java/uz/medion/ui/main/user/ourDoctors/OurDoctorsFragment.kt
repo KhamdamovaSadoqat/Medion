@@ -50,7 +50,7 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             doctorsBySpecialityUrl =
                 "${Constants.BASE_API_URL}/api/v1/speciality/${args.specialityTypeId}/doctors"
         }
-
+        calendarUI()
         getDoctorBySpeciality(doctorsBySpecialityUrl)
         getSpecialities()
         getSubSpeciality(args.specialityTypeId)
@@ -71,7 +71,6 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
             this.subSpecialityId = subSpecialityId + 1
         }
         binding.rvSubSpeciality.adapter = subSpecialityAdapter
-
         ourDoctorsDetailsAdapter = OurDoctorsDetailsAdapter { doctorId ->
             val action =
                 OurDoctorsFragmentDirections.actionOurDoctorsFragmentToAboutDoctorFragment(
@@ -117,8 +116,10 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 tvCategoryAll = true
             }
         }
+    }
 
-        //calendar modifying
+    //calendar modifying
+    private fun calendarUI(){
         binding.calendarView.currentPageDate
         binding.calendarView.setOnDayClickListener{ eventDay ->
             if (eventDay.isEnabled && eventDay.calendar.get(Calendar.MONTH) == binding.calendarView.currentPageDate.get(
@@ -136,7 +137,6 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
         max.timeInMillis = currentDate.timeInMillis + 2592000000 // +1 month
         binding.calendarView.setMinimumDate(min)
         binding.calendarView.setMaximumDate(max)
-
     }
 
     private fun getSpecialities() {
@@ -194,7 +194,6 @@ class OurDoctorsFragment : BaseFragment<FragmentOurDoctorsBinding, OurDoctorsVM>
                 Status.ERROR -> {
                 }
             }
-
         }
     }
 

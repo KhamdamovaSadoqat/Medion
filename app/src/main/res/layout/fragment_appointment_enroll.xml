@@ -239,6 +239,7 @@
                 android:id="@+id/cl_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@id/cl_cash">
@@ -310,13 +311,19 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="12dp"
-            android:background="@drawable/bg_red_8"
+            android:backgroundTint="@color/fire_brick_900_40"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:stateListAnimator="@null"
+            app:cornerRadius="8dp"
+            app:strokeWidth="0dp"
+            app:strokeColor="@color/transparent"
             android:text="@string/pay"
             android:textColor="@color/white"
             android:textSize="16sp"

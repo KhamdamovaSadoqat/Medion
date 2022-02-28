@@ -32,7 +32,10 @@
             android:exported="true"
             android:screenOrientation="fullSensor"
             tools:ignore="LockedOrientationActivity">
-
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.main.doctor.DoctorActivity"
@@ -45,10 +48,7 @@
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Medion"
             tools:ignore="LockedOrientationActivity" >
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
+
         </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
