@@ -3,6 +3,7 @@ package uz.medion.data.retrofit
 import io.reactivex.Observable
 import retrofit2.http.*
 import uz.medion.data.model.*
+import uz.medion.data.model.doctor.DoctorGetResponse
 
 interface ApiInterface {
 
@@ -72,7 +73,7 @@ interface ApiInterface {
 
     //AboutDoctor:: Booking
     @GET("/api/v1/doctor/get/{id}")
-    fun doctorById(
+    fun  doctorById(
         @Path("id") id: Int,
         @Header("Authorization") token: String
     ): Observable<DoctorResponse>
@@ -150,5 +151,32 @@ interface ApiInterface {
         @Path("doctorId") doctorId: Int,
         @Header("Authorization") token: String
     ): Observable<Boolean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/doctor/get/{id}")
+
+    fun getDoctorId(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+
+    ): Observable<DoctorGetResponse>
+
 
 }

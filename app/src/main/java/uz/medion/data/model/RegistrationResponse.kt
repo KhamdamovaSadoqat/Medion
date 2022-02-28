@@ -2,7 +2,7 @@ package uz.medion.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class RegistrationResponse(
+data class  RegistrationResponse(
 
 	@field:SerializedName("access_token")
 	val accessToken: String? = null,

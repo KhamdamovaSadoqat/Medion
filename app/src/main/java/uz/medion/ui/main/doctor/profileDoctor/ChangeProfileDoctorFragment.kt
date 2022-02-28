@@ -23,12 +23,8 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import uz.medion.R
-import uz.medion.data.model.doctor.DoctorControllerPostResponses
 import uz.medion.data.model.doctor.DoctorsControllerPostBody
-import uz.medion.data.model.doctor.EduInfo
-import uz.medion.data.network.CreateRetrofit
-import uz.medion.data.network.NetworkInterceptor
-import uz.medion.data.network.RestApi
+import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentChangeProfileDoctorBinding
 import java.util.*
 
@@ -49,6 +45,7 @@ class ChangeProfileDoctorFragment : Fragment() {
     private val calendar= Calendar.getInstance()
     private lateinit var viewModel:ChangeProfileDoctorFragmentViewModel
     private lateinit var request: DoctorsControllerPostBody
+    var list :ArrayList<String>  = arrayListOf()
 
 
 
@@ -69,26 +66,31 @@ class ChangeProfileDoctorFragment : Fragment() {
             container,
             false
         )
-        val interceptor = NetworkInterceptor(requireContext()   )
-//        val service= CreateRetrofit.getRetrofit(interceptor).create(RestApi::class.java)
-//        val factory = ChangeProfileDoctorFactory(service)
 
-        request= DoctorsControllerPostBody(
-            binding.birthdayEdit.toString(),
-          listOf(),
-            binding.nameEdit.toString(),
-            "male",
-            "htt",
-            "1234",
-            binding.editPhone.toString(),
-            listOf(),
-            "kamalov",
-            listOf(),
-            )
+//        request= DoctorsControllerPostBody(
+//            binding.birthdayEdit.toString(),
+//          listOf(),
+//            binding.nameEdit.toString()+" "+binding.surnameEdit+" "+binding.middleName,
+//            "male",
+//            "htt",
+//            "1234",
+//            binding.phoneEdit.toString(),
+//            listOf(),
+//            "kamalov",
+//            listOf(),
+//            )
 
         viewModel=ViewModelProvider(requireActivity()).get(ChangeProfileDoctorFragmentViewModel::class.java)
 
-        viewModel.doctorInfo(request)
+        viewModel.getDoctorId().observe(viewLifecycleOwner){ doctor->
+            Log.d(TAG, "onCreateView: ${doctor.data}")
+            when(doctor.status){
+                Status.SUCCESS->{
+                   binding.doctor=doctor.data
+                }
+            }
+
+        }
         binding.imgPickImage.setOnClickListener {
             showImagePickerOptions(requireContext(), object : PickerOptionListener {
                 override fun onTakeCameraSelected() {
@@ -152,6 +154,8 @@ class ChangeProfileDoctorFragment : Fragment() {
         binding.previous.setEndIconOnClickListener {
             endIcon(binding.previous,binding.previousEdit)
         }
+
+
 
         return binding.root
 

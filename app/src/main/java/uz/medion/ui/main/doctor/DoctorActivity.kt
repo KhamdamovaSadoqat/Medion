@@ -5,19 +5,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import uz.medion.R
+import uz.medion.data.constants.Constants
+import uz.medion.data.local.PrefsHelper
 import uz.medion.databinding.ActivityDoctorBinding
 
 class DoctorActivity : AppCompatActivity() {
     private val TAG = "DoctorActivity"
+   private lateinit var prefs: PrefsHelper
+    private var isFirstOpen = true
     private lateinit var binding: ActivityDoctorBinding
-    private lateinit var navController: NavController
+        private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDoctorBinding.inflate(layoutInflater)
+//        if (prefs.accessToken!=null){
+//            Constants.token=prefs.accessToken!!
+//            isFirstOpen=false
+//        } else{
+//            Constants.token=""
+//            isFirstOpen=true
+//        }
+
         setContentView(binding.root)
         val navHost =
             supportFragmentManager.findFragmentById(R.id.doctor_nav_controller)
@@ -34,7 +45,9 @@ class DoctorActivity : AppCompatActivity() {
             )
         )
         bottomNavController.setupWithNavController(navController)
+
     }
+
 
 
 }

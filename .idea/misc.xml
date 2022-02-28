@@ -17,6 +17,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/fragment_home.xml" value="0.203125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_received_message.xml" value="0.15625" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Medion/app/src/main/res/layout/item_send_message.xml" value="0.25" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_app.xml" value="0.126" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_4.xml" value="0.240625" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_8.xml" value="0.240625" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/bg_blue_bottom_16.xml" value="0.240625" />
@@ -55,9 +56,11 @@
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_image_placeholder.xml" value="0.21822916666666667" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_person.xml" value="0.21979166666666666" />
         <entry key="..\:/idrok/Medion/app/src/main/res/drawable/ic_search_white.xml" value="0.16822916666666668" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/aaaaaa_progress.xml" value="0.1" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/activity_doctor.xml" value="0.1" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/activity_splash.xml" value="0.1793478260869565" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/content_main.xml" value="0.17753623188405798" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/content_profile.xml" value="0.20364583333333333" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/dialog_appointment.xml" value="0.225" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/dialog_appointment_time.xml" value="0.225" />
@@ -68,12 +71,14 @@
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_adress_and_contacts.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_appointment.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_appointment_enroll.xml" value="0.15208333333333332" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_calendar.xml" value="0.15081521739130435" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_certificate.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_chamge_profile_doctor.xml" value="0.264" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_change_number.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_change_password.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_change_profile_doctor.xml" value="0.34796238244514105" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_choose_language.xml" value="0.15208333333333332" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_doctor_details.xml" value="0.1" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_estetic_medicine.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_home.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_log_in.xml" value="0.1793478260869565" />
@@ -83,8 +88,9 @@
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_our_doctors.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_patient_info.xml" value="0.1" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_payment_complete.xml" value="0.15208333333333332" />
-        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_personal_account.xml" value="0.15208333333333332" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_personal_account.xml" value="0.264" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_personal_area.xml" value="0.34110787172011664" />
+        <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_personal_area_v_m.xml" value="0.23854166666666668" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_personal_data.xml" value="0.1" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_personal_date.xml" value="0.15208333333333332" />
         <entry key="..\:/idrok/Medion/app/src/main/res/layout/fragment_profile_doc.xml" value="0.264" />

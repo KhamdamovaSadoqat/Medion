@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="doctor"
+            type="uz.medion.data.model.doctor.DoctorGetResponse" />
+    </data>
 
 
     <androidx.core.widget.NestedScrollView
@@ -106,6 +111,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/surname_edit"
+                    android:text="@{doctor.fullName}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"

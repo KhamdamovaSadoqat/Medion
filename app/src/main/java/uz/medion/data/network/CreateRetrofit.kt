@@ -8,15 +8,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import uz.medion.data.constants.Constants
 import java.util.concurrent.TimeUnit
 
-object CreateRetrofit {
-    private val logginInterceptor = HttpLoggingInterceptor()
-    private var retrofit: Retrofit? = null
-    var api:RestApi?=null
+class CreateRetrofit {
+    companion object {
+        private var retrofit: Retrofit? = null
+        var api: RestApi? = null
 
 
-    fun restartRetrofit() {
-        retrofit = null
-    }
+        fun restartRetrofit() {
+            retrofit = null
+        }
+
 
 
     fun getRetrofit(): RestApi {
@@ -26,7 +27,6 @@ object CreateRetrofit {
         val client = OkHttpClient.Builder()
             .connectTimeout(100, TimeUnit.SECONDS)
             .readTimeout(100, TimeUnit.SECONDS)
-            .writeTimeout(100, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder().apply {
                     addHeader("Content-Type", "application/json")
@@ -34,19 +34,18 @@ object CreateRetrofit {
                 chain.proceed(request)
             }.addInterceptor(loggingInterceptor)
             .build()
-        if (retrofit==null){
+        if (retrofit == null) {
 
 
-
-        retrofit = Retrofit.Builder()
-            .baseUrl(Constants.BASE_API_URL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-            api= retrofit!!.create(RestApi::class.java)
-      }
+            retrofit = Retrofit.Builder()
+                .baseUrl(Constants.BASE_API_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+            api = retrofit!!.create(RestApi::class.java)
+        }
         return api!!
 
     }
-}
+}}

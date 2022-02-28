@@ -18,6 +18,7 @@ object Constants {
     const val YOUTUBE_API = "AIzaSyALAoQ1eIP7lM2STLmeRpKiDaSXqv84Ulc"
 
     var token = ""
+    var doctorId = -1
     var language = ""
     var cardNumber = "UZCARD"
     private val unAuthorized = MutableLiveData<Boolean>()

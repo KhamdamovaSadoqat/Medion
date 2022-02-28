@@ -1,6 +1,8 @@
 package uz.medion.ui.main.user.myDoctors
 
+import android.annotation.SuppressLint
 import android.os.Build
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,8 +64,10 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
         }
     }
 
+    @SuppressLint("LogConditional")
     private fun getMyDoctors(){
         vm.myDoctors().observe(this) { myDoctors ->
+            Log.d("TAG", "getMyDoctors: ${myDoctors.data}")
             when (myDoctors.status) {
                 Status.LOADING -> {
                     binding.progress.visible()

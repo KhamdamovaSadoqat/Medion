@@ -15,7 +15,7 @@ import uz.medion.data.model.doctor.MyPatientsItem
 import uz.medion.databinding.FragmentTodayPatientBinding
 import uz.medion.ui.main.doctor.myPatient.MyPatientAdapter
 
-class TodayPatientFragment : Fragment(), MyPatientAdapter.PatientItemListener {
+class TodayPatientFragment : Fragment() {
 
    private lateinit var binding:FragmentTodayPatientBinding
    private lateinit var adapter: MyPatientAdapter
@@ -31,7 +31,7 @@ class TodayPatientFragment : Fragment(), MyPatientAdapter.PatientItemListener {
     }
 
 private fun setRv(patient: List<DoctorMyPacientesResponseItem>){
-    adapter= MyPatientAdapter(this)
+//    adapter= MyPatientAdapter(this)
     adapter.setData(patient)
     binding.rvTodayPatient.layoutManager=
         LinearLayoutManager(requireContext(), RecyclerView.VERTICAL,false)
@@ -40,7 +40,4 @@ private fun setRv(patient: List<DoctorMyPacientesResponseItem>){
 
 
 
-    override fun onClickPatient(patient: DoctorMyPacientesResponseItem) {
-
-    }
 }
