@@ -2,6 +2,7 @@ package uz.medion.ui.main.user.adressAndContacts
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -47,10 +48,10 @@ RecyclerView.Adapter<AddressAndContactsAdapter.VH>() {
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: BranchResponse) {
             binding.apply {
-                ImageDownloader.loadImage(context, item.imgUrl!!, binding.ivCenterPhoto)
                 tvClinicName.text = item.title
                 tvLocation.text = item.address
                 tvMobilePhone.text = item.phone
+                ImageDownloader.loadImage(context, item.imgUrl!!, binding.ivCenterPhoto)
             }
         }
     }

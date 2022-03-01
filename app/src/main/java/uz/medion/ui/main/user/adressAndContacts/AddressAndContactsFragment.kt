@@ -16,10 +16,8 @@ class AddressAndContactsFragment :
 
     lateinit var addressAndContactsAdapter: AddressAndContactsAdapter
 
-
     override fun onBound() {
         setUp()
-
     }
 
     private fun setUp() {

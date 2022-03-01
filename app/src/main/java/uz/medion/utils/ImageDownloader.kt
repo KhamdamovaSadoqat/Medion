@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.util.Log
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
@@ -46,8 +47,10 @@ object ImageDownloader {
 
 
         } else {
+            Log.d("----------", "loadImage:$uri///")
+            Log.d("----------", "loadImage:${uri.toString().removeSpaces()}///")
             Glide.with(context)
-                .load(uri)
+                .load(uri.toString().removeSpaces())
                 .apply {
                     if (placeHolderRes != null)
                         placeholder(placeHolderRes)
@@ -57,6 +60,7 @@ object ImageDownloader {
                         error(errorRes)
                     else
                         error(R.drawable.ic_loading_error)
+
                     into(imageView)
                 }
         }
