@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.util.Log
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
@@ -13,7 +12,6 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import uz.medion.R
-
 
 object ImageDownloader {
     @SuppressLint("CheckResult")
@@ -44,11 +42,7 @@ object ImageDownloader {
                         setPlaceHolder(R.drawable.ic_image_placeholder, R.drawable.ic_loading_error)
                     load(uri, imageView)
                 }
-
-
         } else {
-            Log.d("----------", "loadImage:$uri///")
-            Log.d("----------", "loadImage:${uri.toString().removeSpaces()}///")
             Glide.with(context)
                 .load(uri.toString().removeSpaces())
                 .apply {
@@ -81,12 +75,7 @@ object ImageDownloader {
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                     onResponse.invoke(resource)
                 }
-
-                override fun onLoadCleared(placeholder: Drawable?) {
-
-                }
-
+                override fun onLoadCleared(placeholder: Drawable?) {}
             })
-
     }
 }

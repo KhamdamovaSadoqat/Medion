@@ -127,4 +127,10 @@ interface UserApi {
         @Header("Authorization") token: String
     ): Observable<Boolean>
 
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/estetic/parent")
+    fun getEsteticMedicine(
+        @Header("Authorization") token: String,
+    ): Observable<EsteticMedicineResponse>
+
 }
