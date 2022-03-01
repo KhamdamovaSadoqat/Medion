@@ -131,6 +131,6 @@ interface UserApi {
     @GET("/api/v1/estetic/parent")
     fun getEsteticMedicine(
         @Header("Authorization") token: String,
-    ): Observable<EsteticMedicineResponse>
+    ): Observable<List<EsteticMedicineResponse>>
 
 }

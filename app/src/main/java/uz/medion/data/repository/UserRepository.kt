@@ -433,13 +433,13 @@ class UserRepository {
         response.value = Resource(Status.LOADING, null, null, null)
     }
 
-    fun getEsteticMedicine(response: MutableLiveData<Resource<EsteticMedicineResponse>>) {
+    fun getEsteticMedicine(response: MutableLiveData<Resource<List<EsteticMedicineResponse>>>) {
         compositeDisposable.add(
             apiClient.getEsteticMedicine("Bearer ${Constants.token}")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<EsteticMedicineResponse>() {
-                    override fun onNext(t: EsteticMedicineResponse) {
+                .subscribeWith(object : DisposableObserver<List<EsteticMedicineResponse>>() {
+                    override fun onNext(t: List<EsteticMedicineResponse>) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
 

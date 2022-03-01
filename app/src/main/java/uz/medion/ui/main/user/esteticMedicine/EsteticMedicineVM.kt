@@ -10,9 +10,9 @@ import uz.medion.ui.base.BaseVM
 class EsteticMedicineVM: BaseVM() {
 
     val repo = UserRepository()
-    private val esteticMedicine = MutableLiveData<Resource<EsteticMedicineResponse>>()
+    private val esteticMedicine = MutableLiveData<Resource<List<EsteticMedicineResponse>>>()
 
-    fun getEsteticMedicine(): LiveData<Resource<EsteticMedicineResponse>> {
+    fun getEsteticMedicine(): LiveData<Resource<List<EsteticMedicineResponse>>> {
         repo.getEsteticMedicine(esteticMedicine)
         return esteticMedicine
     }

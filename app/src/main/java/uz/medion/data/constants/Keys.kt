@@ -32,5 +32,7 @@ object Keys {
     const val BUNDLE_ABOUT_DOCTOR_WORK = "bundle_about_doctor_work"
     const val BUNDLE_ABOUT_DOCTOR_ID = "bundle_about_doctor_id"
 
+    const val BUNDLE_ESTETIC_MEDICINE_POSITION = "bundle_estetic_medicine_position"
+
     const val REQUEST_CODE_SIGN_IN = 9001
 }

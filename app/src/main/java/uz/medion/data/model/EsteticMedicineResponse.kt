@@ -20,10 +20,19 @@ data class EsteticMedicineResponse(
 	val text: String
 )
 
+data class ImageResponsesItem(
+
+	@field:SerializedName("isMain")
+	val isMain: Boolean,
+
+	@field:SerializedName("url")
+	val url: String
+)
+
 data class ChildResponsesItem(
 
 	@field:SerializedName("subTitle")
-	val subTitle: Any,
+	val subTitle: String,
 
 	@field:SerializedName("mainTitle")
 	val mainTitle: String,
@@ -36,13 +45,4 @@ data class ChildResponsesItem(
 
 	@field:SerializedName("imageResponses")
 	val imageResponses: List<ImageResponsesItem>
-)
-
-data class ImageResponsesItem(
-
-	@field:SerializedName("isMain")
-	val isMain: Boolean,
-
-	@field:SerializedName("url")
-	val url: String
 )
