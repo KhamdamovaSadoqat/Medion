@@ -18,7 +18,6 @@ class EsteticMedicineViewPager(
     }
 
     override fun createFragment(position: Int): Fragment {
-        Log.d("----------", "createFragment: ")
         val bundle = Bundle()
         val fr = ChildFragment()
         bundle.putInt(Keys.BUNDLE_ESTETIC_MEDICINE_POSITION, position)

@@ -133,4 +133,11 @@ interface UserApi {
         @Header("Authorization") token: String,
     ): Observable<List<EsteticMedicineResponse>>
 
+    @Headers("Content-Type: application/json")
+    @POST("api/v1/chat")
+    fun postChat(
+        @Header("Authorization") token: String,
+        @Body message: MessageRequest,
+    ): Observable<Boolean>
+
 }

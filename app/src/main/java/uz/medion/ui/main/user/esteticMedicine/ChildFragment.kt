@@ -1,6 +1,6 @@
 package uz.medion.ui.main.user.esteticMedicine
 
-import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import uz.medion.R
 import uz.medion.data.constants.Keys
@@ -14,13 +14,8 @@ class ChildFragment : BaseFragment<FragmentChildBinding, EsteticMedicineVM>() {
     var position = 0
 
     override fun onBound() {
-        setUpViews()
+        position = arguments?.getInt(Keys.BUNDLE_ESTETIC_MEDICINE_POSITION) ?: 0
         getEsteticMedicine()
-    }
-
-    private fun setUpViews() {
-        val bundle = Bundle()
-        position = bundle.getInt(Keys.BUNDLE_ESTETIC_MEDICINE_POSITION)
     }
 
     private fun getEsteticMedicine() {

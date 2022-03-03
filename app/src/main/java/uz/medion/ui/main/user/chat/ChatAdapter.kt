@@ -72,7 +72,7 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         }
     }
 
-    override fun getItemCount()=chatMessage.size
+    override fun getItemCount() = chatMessage.size
 
     override fun getItemViewType(position: Int): Int {
         return if (chatMessage[position].senderedId == senderId) {

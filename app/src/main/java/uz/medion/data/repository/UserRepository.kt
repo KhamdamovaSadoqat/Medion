@@ -455,4 +455,25 @@ class UserRepository {
         )
         response.value = Resource(Status.LOADING, null, null, null)
     }
+
+    fun postChat(response: MutableLiveData<Resource<Boolean>>, messageRequest: MessageRequest){
+        compositeDisposable.add(
+            apiClient.postChat("Bearer ${Constants.token}" , messageRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object: DisposableObserver<Boolean>(){
+                    override fun onNext(t: Boolean) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
 }
