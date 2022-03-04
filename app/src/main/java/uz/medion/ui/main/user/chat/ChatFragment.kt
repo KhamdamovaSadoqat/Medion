@@ -14,6 +14,8 @@ import uz.medion.data.model.MessageRequest
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentChatBinding
 import uz.medion.ui.base.BaseFragment
+import uz.medion.utils.invisible
+import uz.medion.utils.visible
 
 class ChatFragment : BaseFragment<FragmentChatBinding, ChatVM>() {
 
@@ -21,6 +23,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatVM>() {
 
     override fun onBound() {
         setUp()
+        getChatMessages(1)
     }
 
     fun setUp() {
@@ -28,6 +31,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatVM>() {
         binding.rvChat.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.rvChat.adapter = chatAdapter
+        chatAdapter.setUserId(prefs.userId)
 
         binding.ivFiles.setOnClickListener {
             val intent = Intent()
@@ -43,10 +47,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatVM>() {
             override fun afterTextChanged(editText: Editable?) {
                 binding.ivSend.setOnClickListener {
                     Log.d("----------", "setUp: sending")
-                    if (binding.editTextTextPersonName.text.isNotEmpty() && binding.editTextTextPersonName.text.isNotBlank()) {
+                    if (binding.editTextTextPersonName.text!!.isNotEmpty() && binding.editTextTextPersonName.text!!.isNotBlank()) {
                         Log.d("----------", "setUp: not empty")
                         postMessage(MessageRequest(3,
                             binding.editTextTextPersonName.text.toString()))
+                        binding.editTextTextPersonName.text!!.clear()
+                        getChatMessages(1)
                     }
                 }
             }
@@ -61,7 +67,30 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatVM>() {
                     "somethin went wrong",
                     Toast.LENGTH_SHORT).show()
                 Status.SUCCESS -> {
-                    binding.editTextTextPersonName.text.clear()
+                    Log.d("----------", "postMessage: success")
+                    binding.editTextTextPersonName.text!!.clear()
+                    binding.editTextTextPersonName.setText("")
+                }
+            }
+        }
+    }
+
+    private fun getChatMessages(chatId: Int){
+        vm.getChatMessages(chatId).observe(this){
+            when (it.status) {
+                Status.LOADING -> {binding.progress.visible()}
+                Status.ERROR -> {
+                    binding.progress.invisible()
+                    Toast.makeText(requireContext(),
+                        "somethin went wrong",
+                        Toast.LENGTH_SHORT).show()
+                }
+                Status.SUCCESS -> {
+                    binding.progress.invisible()
+                    Log.d("----------", "postMessage: success")
+                    if(it.data?.isEmpty() != true)
+                    chatAdapter.setData(it.data!!)
+                    binding.rvChat.smoothScrollToPosition(it.data.size)
                 }
             }
         }

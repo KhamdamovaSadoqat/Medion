@@ -15,6 +15,7 @@ object Keys {
     const val CARD_NUMBER_EXPIRE_DATE = "card_number_expire_date"
     const val SHOULD_CHECK_FOR_UPDATE = "should_check_for_update"
     const val MEDION_NOTIFICATION = "should_check_for_update"
+    const val USER_ID = "user_id"
 
     const val EXTRA_UNAUTHORIZED = "extra_unAthorized"
     const val BUNDLE_CERTIFICATE = "bundle_certificate"

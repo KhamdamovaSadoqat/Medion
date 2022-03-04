@@ -39,7 +39,7 @@
                     app:srcCompat="@drawable/ic_files" />
 
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextTextPersonName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,14 +86,17 @@
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:overScrollMode="never"
-                android:padding="20dp"
+                android:paddingVertical="20dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </FrameLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>

@@ -78,22 +78,27 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                                 Log.d("----------", "setUp: loading")
                             }
                             Status.SUCCESS -> {
+                                val decodedToken =
+                                    gson.fromJson(jwtDecoded.decoded(response.data?.accessToken!!),
+                                        TokenDecoded::class.java)
+                                prefs.userId = decodedToken.userId
                                 prefs.isRegistered = true
                                 prefs.password = binding.etPassword.text.toString().trim()
-                                prefs.accessToken = response.data?.accessToken
-                                prefs.refreshToken = response.data?.refreshToken
+                                prefs.accessToken = response.data.accessToken
+                                prefs.refreshToken = response.data.refreshToken
                                 Constants.setUnAuthorized(false)
 
-                                val decodedToken = gson.fromJson(jwtDecoded.decoded(response.data?.accessToken!!), TokenDecoded::class.java)
                                 when {
                                     decodedToken.roles[0] == "CLIENT" -> {
                                         // starting new activity and ending the login
-                                        val intent = Intent(requireContext(), MainActivity::class.java)
+                                        val intent =
+                                            Intent(requireContext(), MainActivity::class.java)
                                         startActivity(intent)
                                     }
                                     decodedToken.roles[0] == "ADMIN" -> {
                                         //start doctor activity
-                                        val intent = Intent(requireContext(), DoctorActivity::class.java)
+                                        val intent =
+                                            Intent(requireContext(), DoctorActivity::class.java)
                                         startActivity(intent)
                                     }
                                     decodedToken.roles[0] == "DOCTOR" -> {
@@ -101,7 +106,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
                                         val intent = Intent(requireContext(), DoctorActivity::class.java)
                                         startActivity(intent)
                                     }
-
                                 }
                                 requireActivity().finish()
                             }

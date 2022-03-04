@@ -231,8 +231,10 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_my_doctors.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_my_documents.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_profile.xml" value="0.1" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_received_message.xml" value="0.25" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_search_view.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_selected.xml" value="0.25416666666666665" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_send_message.xml" value="0.2" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_sub_category.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_time_table.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/item_video.xml" value="0.25416666666666665" />

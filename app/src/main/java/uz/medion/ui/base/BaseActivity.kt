@@ -228,7 +228,7 @@ abstract class BaseActivity<T: ViewDataBinding, V: BaseVM> : AppCompatActivity()
     //app needs to load resources in the locale that was set by user last time.
     override fun attachBaseContext(context: Context) {
         prefs =
-            PrefsHelper(gson, PreferenceManager.getDefaultSharedPreferences(context))
+            PrefsHelper(PreferenceManager.getDefaultSharedPreferences(context))
         super.attachBaseContext(updateBaseContextLocale(context))
     }
 

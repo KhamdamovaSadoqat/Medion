@@ -8,22 +8,33 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.constants.Constants
-import uz.medion.data.model.ChatMessageItem
+import uz.medion.data.model.ChatMessagesResponse
 import uz.medion.databinding.ItemReceivedMessageBinding
 import uz.medion.databinding.ItemSendMessageBinding
 
-class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private  var chatMessage:List<ChatMessageItem> =ArrayList()
-    private lateinit var senderId:String
+    private var chatMessage: List<ChatMessagesResponse> = ArrayList()
+    private var userId = 0
+
+    fun setData(chatMessage: List<ChatMessagesResponse>) {
+        this.chatMessage = chatMessage
+        notifyDataSetChanged()
+    }
+
+    fun setUserId(userId: Int) {
+        this.userId = userId
+        notifyDataSetChanged()
+    }
 
     class SentMessageVH(
         private val binding: ItemSendMessageBinding,
-        private val context: Context
+        private val context: Context,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(category: ChatMessageItem) {
+        fun onBind(category: ChatMessagesResponse) {
             binding.apply {
-                tvSend.text = context.getString(category.message)
+                tvSend.text = category.text
+                tvTime.text = category.createdAt
             }
         }
     }
@@ -31,10 +42,10 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     class ReceivedVH(private val binding: ItemReceivedMessageBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(category: ChatMessageItem) {
+        fun onBind(category: ChatMessagesResponse) {
             binding.apply {
-                tvReceive.text = context.getString(category.message)
-                tvTime.text = context.getString(category.dateTime)
+                tvReceive.text = category.text
+                tvTime.text = category.createdAt
             }
         }
     }
@@ -65,20 +76,15 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == Constants.VIEW_TYPE_SENT){
             (holder as SentMessageVH).onBind(chatMessage[position])
-            notifyDataSetChanged()
         }else{
             (holder as ReceivedVH).onBind(chatMessage[position])
-            notifyDataSetChanged()
         }
     }
 
     override fun getItemCount() = chatMessage.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (chatMessage[position].senderedId == senderId) {
-            Constants.VIEW_TYPE_SENT
-        } else {
-            Constants.VIEW_TYPE_RECEIVED
-        }
+        return if (chatMessage[position].senderId == userId) Constants.VIEW_TYPE_SENT
+        else Constants.VIEW_TYPE_RECEIVED
     }
 }

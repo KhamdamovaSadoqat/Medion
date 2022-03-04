@@ -130,14 +130,21 @@ interface UserApi {
     @Headers("Content-Type: application/json")
     @GET("/api/v1/estetic/parent")
     fun getEsteticMedicine(
-        @Header("Authorization") token: String,
+        @Header("Authorization") token: String
     ): Observable<List<EsteticMedicineResponse>>
 
     @Headers("Content-Type: application/json")
     @POST("api/v1/chat")
     fun postChat(
         @Header("Authorization") token: String,
-        @Body message: MessageRequest,
+        @Body message: MessageRequest
     ): Observable<Boolean>
+
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/chat/{chatId}")
+    fun getChatMessages(
+        @Header("Authorization") token: String,
+        @Path("chatId") chatId: Int
+    ): Observable<List<ChatMessagesResponse>>
 
 }

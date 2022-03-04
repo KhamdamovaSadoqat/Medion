@@ -32,7 +32,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseVM> : Fragment(), BaseM
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        prefs = PrefsHelper(gson, PreferenceManager.getDefaultSharedPreferences(requireContext()))
+        prefs = PrefsHelper(PreferenceManager.getDefaultSharedPreferences(requireContext()))
 
 
         return DataBindingUtil.inflate<T>(inflater, getLayoutResId(), container, false)

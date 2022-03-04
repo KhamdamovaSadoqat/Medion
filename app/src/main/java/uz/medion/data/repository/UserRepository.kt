@@ -476,4 +476,25 @@ class UserRepository {
         )
         response.value = Resource(Status.LOADING, null, null, null)
     }
+
+    fun getChatMessages(response: MutableLiveData<Resource<List<ChatMessagesResponse>>>, chatId: Int){
+        compositeDisposable.add(
+            apiClient.getChatMessages("Bearer ${Constants.token}" , chatId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object: DisposableObserver<List<ChatMessagesResponse>>(){
+                    override fun onNext(t: List<ChatMessagesResponse>) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
 }
