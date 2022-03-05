@@ -4,40 +4,47 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.medion.data.model.*
 import uz.medion.data.model.remote.Resource
-import uz.medion.data.Repository
+import uz.medion.data.repository.UserRepository
 import uz.medion.ui.base.BaseVM
 
 class AboutDoctorVM: BaseVM() {
 
-    private val repo = Repository()
+    private val repo = UserRepository()
     private val monthlyDateResponse = MutableLiveData<Resource<List<MonthlyDateResponse>>>()
     private val monthlyTimeResponse = MutableLiveData<Resource<List<MonthlyTimeResponse>>>()
     private val commentsResponse = MutableLiveData<Resource<List<CommentResponse>>>()
     private val doctorByIdResponse = MutableLiveData<Resource<DoctorResponse>>()
     private val certificateResponse = MutableLiveData<Resource<List<DoctorCertificateResponse>>>()
+    private val subSpecialityResponse = MutableLiveData<Resource<List<SubSpecialityResponse>>>()
 
-    fun doctorById(doctorId: Int): LiveData<Resource<DoctorResponse>>{
-        repo.doctorsById(doctorId, doctorByIdResponse)
+
+    fun getDoctorById(doctorId: Int): LiveData<Resource<DoctorResponse>>{
+        repo.getDoctorById(doctorId, doctorByIdResponse)
         return  doctorByIdResponse
     }
 
-    fun sendComment(comment: SendComment): LiveData<Resource<List<CommentResponse>>>{
-        repo.sendComment(comment, commentsResponse)
+    fun postComment(commentRequest: CommentRequest): LiveData<Resource<List<CommentResponse>>>{
+        repo.postComment(commentRequest, commentsResponse)
         return commentsResponse
     }
 
-    fun comments(doctorId: Int): LiveData<Resource<List<CommentResponse>>> {
-        repo.comments(doctorId, commentsResponse)
+    fun getComments(doctorId: Int): LiveData<Resource<List<CommentResponse>>> {
+        repo.getComments(doctorId, commentsResponse)
         return commentsResponse
     }
 
-    fun monthlyDate(doctorId: Int): LiveData<Resource<List<MonthlyDateResponse>>>{
-        repo.monthlyDate(doctorId, monthlyDateResponse)
+    fun getSubSpeciality(specialityId: Int): LiveData<Resource<List<SubSpecialityResponse>>> {
+        repo.getSubSpeciality(specialityId, subSpecialityResponse)
+        return subSpecialityResponse
+    }
+
+    fun getMonthlyDate(doctorId: Int): LiveData<Resource<List<MonthlyDateResponse>>>{
+        repo.getMonthlyDate(doctorId, monthlyDateResponse)
         return monthlyDateResponse
     }
 
-    fun monthlyTime(date: String, doctorId: Int): LiveData<Resource<List<MonthlyTimeResponse>>>{
-        repo.monthlyTime(date, doctorId, monthlyTimeResponse)
+    fun getMonthlyTime(date: String, doctorId: Int): LiveData<Resource<List<MonthlyTimeResponse>>>{
+        repo.getMonthlyTime(date, doctorId, monthlyTimeResponse)
         return  monthlyTimeResponse
     }
 

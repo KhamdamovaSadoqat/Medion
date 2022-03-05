@@ -10,18 +10,7 @@ import uz.medion.ui.base.BaseActivity
 @SuppressLint("CustomSplashScreen")
 class SplashActivity: BaseActivity<ActivitySplashBinding, SplashVM>() {
 
-    override fun onBound() {
-    }
-//    private lateinit var navController: NavController
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = ActivitySplashBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//        val navHost = supportFragmentManager.findFragmentById(R.id.splash_nav_controller)
-//        if (navHost != null) {
-//            navController = navHost.findNavController()
-//        }
-//    }
+    override fun onBound() {}
 
     override fun setStatusBarBackgroundHeight(statusBarBackground: View) {}
 

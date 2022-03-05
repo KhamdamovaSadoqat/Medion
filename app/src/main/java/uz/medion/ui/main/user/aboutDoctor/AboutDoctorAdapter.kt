@@ -2,7 +2,6 @@ package uz.medion.ui.main.user.aboutDoctor
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat

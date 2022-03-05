@@ -31,8 +31,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarVM>() {
 
     }
 
-    fun getBookingEvent() {
-        vm.bookingEvent().observe(this) { booked ->
+    private fun getBookingEvent() {
+        vm.getBookedEvent().observe(this) { booked ->
             when (booked.status) {
                 Status.LOADING -> {
                     binding.progress.visible()

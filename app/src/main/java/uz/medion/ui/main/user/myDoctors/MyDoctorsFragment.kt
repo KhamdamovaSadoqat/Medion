@@ -1,9 +1,6 @@
 package uz.medion.ui.main.user.myDoctors
 
-import android.annotation.SuppressLint
 import android.os.Build
-import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,9 +20,9 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
         setUp()
     }
 
-    private fun  setUp() {
+    private fun setUp() {
         myDoctorsAdapter = MyDoctorsAdapter { doctor ->
-            setMyDoctorsFavourite(doctor.id!!)
+            postMyDoctorsFavourite(doctor.id!!)
             getMyDoctors()
         }
         binding.rvMyDoctors.layoutManager =
@@ -65,10 +62,8 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
         }
     }
 
-    @SuppressLint("LogConditional")
     private fun getMyDoctors(){
-        vm.myDoctors().observe(this) { myDoctors ->
-            Log.d("TAG", "getMyDoctors: ${myDoctors.data}")
+        vm.getMyDoctors().observe(this) { myDoctors ->
             when (myDoctors.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
@@ -86,7 +81,7 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
     }
 
     private fun getMyDoctorsFavourite(){
-        vm.myDoctorsFavourite().observe(this) { myDoctors ->
+        vm.getMyDoctorsFavourite().observe(this) { myDoctors ->
             when (myDoctors.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
@@ -103,8 +98,8 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
         }
     }
 
-    private fun setMyDoctorsFavourite(doctorId: Int){
-        vm.setDoctorsFavourite(doctorId).observe(this) { myDoctors ->
+    private fun postMyDoctorsFavourite(doctorId: Int){
+        vm.postDoctorsFavourite(doctorId).observe(this) { myDoctors ->
             when (myDoctors.status) {
                 Status.LOADING -> {
                     binding.progress.visible()

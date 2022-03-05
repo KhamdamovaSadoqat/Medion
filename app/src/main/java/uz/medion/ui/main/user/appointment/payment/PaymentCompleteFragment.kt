@@ -1,4 +1,4 @@
-package uz.medion.ui.main.user.payment
+package uz.medion.ui.main.user.appointment.payment
 
 import androidx.lifecycle.ViewModelProvider
 import uz.medion.R
