@@ -1,6 +1,8 @@
 package uz.medion.ui.main.doctor
 
 import android.os.Bundle
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -11,23 +13,29 @@ import uz.medion.R
 import uz.medion.data.constants.Constants
 import uz.medion.data.local.PrefsHelper
 import uz.medion.databinding.ActivityDoctorBinding
+import uz.medion.ui.base.BaseActivity
 
-class DoctorActivity : AppCompatActivity() {
+class DoctorActivity : BaseActivity<ActivityDoctorBinding,DoctorVM>() {
     private val TAG = "DoctorActivity"
-   private lateinit var prefs: PrefsHelper
     private var isFirstOpen = true
-    private lateinit var binding: ActivityDoctorBinding
-        private lateinit var navController: NavController
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDoctorBinding.inflate(layoutInflater)
-//        if (prefs.accessToken!=null){
-//            Constants.token=prefs.accessToken!!
-//            isFirstOpen=false
-//        } else{
-//            Constants.token=""
-//            isFirstOpen=true
-//        }
+    private lateinit var navController: NavController
+
+    override fun setStatusBarBackgroundHeight(statusBarBackground: View) {}
+
+    override fun getLayoutResId()=R.layout.activity_doctor
+
+    override fun onBound() {
+        if (prefs.accessToken!=null){
+            Constants.token=prefs.accessToken!!
+            isFirstOpen=false
+        } else{
+            Constants.token=""
+            isFirstOpen=true
+        }
+        setUp()
+    }
+
+    private fun setUp() {
 
         setContentView(binding.root)
         val navHost =
@@ -48,6 +56,7 @@ class DoctorActivity : AppCompatActivity() {
 
     }
 
+    override val vm: DoctorVM by viewModels()
 
 
 }

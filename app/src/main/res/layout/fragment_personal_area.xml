@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <data>
-<variable
-    name="doctorInfo"
-    type="uz.medion.data.model.doctor.DoctorGetResponse" />
-    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -19,19 +15,21 @@
         android:id="@+id/card_view_personal_area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="40dp"
+        app:cardCornerRadius="45dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/doc_pic" />
+            android:id="@+id/profile_img"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_image_placeholder" />
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
+        android:layout_marginTop="12sp"
         app:layout_constraintStart_toEndOf="@+id/card_view_personal_area"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="95dp"
         app:layout_constraintBottom_toTopOf="@id/linear_category"
         android:id="@+id/linear_personal_Area_name"
@@ -45,7 +43,6 @@
             android:id="@+id/fullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{doctorInfo.fullName}"
             android:textSize="16sp" />
 
         <TextView
@@ -55,10 +52,10 @@
             android:textSize="12sp" />
 
         <TextView
+            android:text="+998907852414"
             android:id="@+id/patientPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{doctorInfo.phoneNumber}"
             android:textSize="16sp"
 
             />

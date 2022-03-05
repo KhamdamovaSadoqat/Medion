@@ -6,26 +6,29 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import android.text.method.KeyListener
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import uz.medion.R
-import uz.medion.data.model.doctor.DoctorsControllerPostBody
+import uz.medion.data.model.doctor.DoctorPutBody
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentChangeProfileDoctorBinding
+import uz.medion.ui.base.BaseFragment
+import uz.medion.utils.ImageDownloader
+import uz.medion.utils.invisible
+import uz.medion.utils.visible
+import java.net.URL
 import java.util.*
 
 
@@ -33,20 +36,15 @@ private const val PROFILE_IMAGE_REQ_CODE = 101
 private const val GALLERY_IMAGE_REQ_CODE = 102
 private const val CAMERA_IMAGE_REQ_CODE = 103
 
-class ChangeProfileDoctorFragment : Fragment() {
-    private var TAG="ChangeProfile"
-
-    private lateinit var binding: FragmentChangeProfileDoctorBinding
+class ChangeProfileDoctorFragment :BaseFragment<FragmentChangeProfileDoctorBinding,ChangeProfileDoctorFragmentViewModel>() {
+    private var TAG = "ChangeProfile"
     private var mCameraUri: Uri? = null
     private var mGalleryUri: Uri? = null
     private var mProfileUri: Uri? = null
     private var check = true
     private lateinit var listener: KeyListener
-    private val calendar= Calendar.getInstance()
-    private lateinit var viewModel:ChangeProfileDoctorFragmentViewModel
-    private lateinit var request: DoctorsControllerPostBody
-    var list :ArrayList<String>  = arrayListOf()
-
+    private val calendar = Calendar.getInstance()
+    var list: ArrayList<String> = arrayListOf()
 
 
     interface PickerOptionListener {
@@ -54,43 +52,36 @@ class ChangeProfileDoctorFragment : Fragment() {
         fun onChooseGallerySelected()
     }
 
-    @SuppressLint("WrongConstant", "SetTextI18n", "LogConditional")
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun getLayoutResId() = R.layout.fragment_change_profile_doctor
 
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_change_profile_doctor,
-            container,
-            false
-        )
+    @SuppressLint("LogConditional")
+    override fun onBound() {
 
-//        request= DoctorsControllerPostBody(
-//            binding.birthdayEdit.toString(),
-//          listOf(),
-//            binding.nameEdit.toString()+" "+binding.surnameEdit+" "+binding.middleName,
-//            "male",
-//            "htt",
-//            "1234",
-//            binding.phoneEdit.toString(),
-//            listOf(),
-//            "kamalov",
-//            listOf(),
-//            )
 
-        viewModel=ViewModelProvider(requireActivity()).get(ChangeProfileDoctorFragmentViewModel::class.java)
-
-        viewModel.getDoctorId().observe(viewLifecycleOwner){ doctor->
+        vm.getDoctorId().observe(viewLifecycleOwner) { doctor ->
             Log.d(TAG, "onCreateView: ${doctor.data}")
-            when(doctor.status){
-                Status.SUCCESS->{
-                   binding.doctor=doctor.data
+            when (doctor.status) {
+                Status.LOADING -> {
+                    binding.progress.visible()
+
+                }
+                Status.SUCCESS -> {
+                    binding.nameEdit.setText(doctor.data?.fullName)
+                    binding.birthdayEdit.setText(doctor.data?.birthDate)
+                    binding.doctorEdit.setText(doctor.data?.aboutDoctor)
+                    binding.experienceEdit.setText(doctor.data?.workExperience)
+                    binding.phoneEdit.setText("+998907852414")
+                    ImageDownloader.loadImage(requireContext(),doctor.data!!.image,binding.imgDoctor)
+                    Log.d(TAG, "onBound: ${doctor.data.image}")
+
+                    videoPlayer(doctor.data.doctorVideoUrl)
+                    binding.progress.invisible()
                 }
                 Status.ERROR -> {
+                    binding.progress.invisible()
                     Log.d("-------------", "onCreateView: ${doctor.message}")
                 }
+
             }
 
         }
@@ -109,23 +100,23 @@ class ChangeProfileDoctorFragment : Fragment() {
 
         binding.name.setEndIconOnClickListener {
             binding.name.isClickable
-            endIcon(binding.name,binding.nameEdit)
+            endIcon(binding.name, binding.nameEdit)
 
         }
-
         binding.editSurname.setEndIconOnClickListener {
-            endIcon(binding.editSurname,binding.surnameEdit)
+            endIcon(binding.editSurname, binding.surnameEdit)
         }
         binding.editMiddleName.setEndIconOnClickListener {
-            endIcon(binding.editMiddleName,binding.middleName)
+            endIcon(binding.editMiddleName, binding.middleName)
         }
+
         binding.editBirthday.setEndIconOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 R.style.MySpinnerDatePickerStyle,
                 DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                     // Display Selected date in TextView
-                    binding.birthdayEdit.setText("$dayOfMonth.$monthOfYear.$year")
+                    binding.birthdayEdit.setText("$year-$monthOfYear-$dayOfMonth")
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -140,29 +131,27 @@ class ChangeProfileDoctorFragment : Fragment() {
         }
         binding.editPhone.setEndIconOnClickListener {
 
-            endIcon(binding.editPhone,binding.phoneEdit)
+            endIcon(binding.editPhone, binding.phoneEdit)
         }
         binding.editDoctor.setEndIconOnClickListener {
-            endIcon(binding.editDoctor,binding.doctorEdit)
+            endIcon(binding.editDoctor, binding.doctorEdit)
         }
         binding.editStaj.setEndIconOnClickListener {
-            endIcon(binding.editStaj,binding.experienceEdit)
+            endIcon(binding.editStaj, binding.experienceEdit)
         }
         binding.editEducationInformation.setEndIconOnClickListener {
-            endIcon(binding.editEducationInformation,binding.education)
+            endIcon(binding.editEducationInformation, binding.education)
         }
         binding.editCurrent.setEndIconOnClickListener {
-            endIcon(binding.editCurrent,binding.currentEdit)
+            endIcon(binding.editCurrent, binding.currentEdit)
         }
         binding.previous.setEndIconOnClickListener {
-            endIcon(binding.previous,binding.previousEdit)
+            endIcon(binding.previous, binding.previousEdit)
         }
-
-
-
-        return binding.root
-
     }
+
+    override val vm: ChangeProfileDoctorFragmentViewModel
+        get() = ViewModelProvider(this).get(ChangeProfileDoctorFragmentViewModel::class.java)
 
 
     @SuppressLint("LogConditional")
@@ -289,7 +278,26 @@ class ChangeProfileDoctorFragment : Fragment() {
             check = true
         }
     }
+private fun videoPlayer(url:String){
 
+    lifecycle.addObserver(binding.doctorPlayerView)
+    //giving youtube id for streaming
+    val youtubeId = url.split("=")
+    binding.doctorPlayerView.addYouTubePlayerListener(object :
+        AbstractYouTubePlayerListener() {
+        override fun onReady(@NonNull youTubePlayer: YouTubePlayer) {
+            val videoId = youtubeId[youtubeId.size-1]
+            youTubePlayer.loadVideo(videoId, 0F)
+        }
+    })
+}
+    private fun putDoctorInfo(id:Int,doctorPutBody:DoctorPutBody){
+        vm.putDoctorInfo(id,doctorPutBody).observe(viewLifecycleOwner){doctorPutBody->
+//            doctorPutBody.data?.fullName=binding.nameEdit.toString()
+//            doctorPutBody.data?.birthDate=binding.editBirthday.toString()
+
+        }
+    }
 
 }
 

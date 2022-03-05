@@ -1,39 +1,33 @@
 package uz.medion.ui.main.doctor.personalArea
 
-import android.annotation.SuppressLint
-import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.content.Context
+import android.graphics.BitmapFactory
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import uz.medion.R
-import uz.medion.data.model.doctor.DoctorGetResponse
+import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentPersonalAreaBinding
+import uz.medion.ui.base.BaseFragment
+import uz.medion.ui.main.doctor.profileDoctor.ChangeProfileDoctorFragmentViewModel
+import uz.medion.utils.ImageDownloader
+import java.net.URL
 
-class PersonalAreaFragment : Fragment() {
-    private lateinit var binding:FragmentPersonalAreaBinding
-    private lateinit var viewModel:PersonalAreaVM
+class PersonalAreaFragment : BaseFragment<FragmentPersonalAreaBinding,ChangeProfileDoctorFragmentViewModel>() {
 
 
+    override fun getLayoutResId() = R.layout.fragment_personal_area
+    override fun onBound() {
+        vm.getDoctorId().observe(viewLifecycleOwner) { doctor ->
+            when(doctor.status){
+                Status.LOADING->{}
+                Status.SUCCESS->{
+                    binding.fullName.setText(doctor.data?.fullName)
+                    ImageDownloader.loadImage(requireContext(),doctor.data!!.image,binding.profileImg)
 
-
-    @SuppressLint("LogConditional")
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-       binding=DataBindingUtil.inflate(inflater,R.layout.fragment_personal_area, container, false)
-        viewModel= ViewModelProvider(this)[PersonalAreaVM::class.java]
-        viewModel.getDoctorInfo().observe(viewLifecycleOwner){doctor->
-
-            binding.doctorInfo=doctor.data
-            Log.d("PersonalArea", "onCreateView: ${doctor.data}")
-        }
+                }
+                Status.ERROR->{}
+            }
+             }
         binding.personalData.setOnClickListener {
             findNavController().navigate(R.id.changeProfileDoctorFragment)
         }
@@ -50,10 +44,13 @@ class PersonalAreaFragment : Fragment() {
             findNavController().navigate(R.id.patientInfoFragment)
         }
 
-        return binding.root
     }
 
+    override val vm: ChangeProfileDoctorFragmentViewModel
+        get() = ViewModelProvider(this).get(ChangeProfileDoctorFragmentViewModel::class.java)
 
+private fun profileImage(url:String ,context: Context){
 
-
+    ImageDownloader.loadImage(context,url,binding.profileImg)
+}
 }

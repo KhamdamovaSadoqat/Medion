@@ -2,11 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable
-            name="doctor"
-            type="uz.medion.data.model.doctor.DoctorGetResponse" />
-    </data>
+
 
 
     <androidx.core.widget.NestedScrollView
@@ -32,7 +28,6 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/nile_blue_900"
                     android:src="@drawable/ic_person"
                     app:cardCornerRadius="75dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +40,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:contentDescription="@string/todo"
-                        app:srcCompat="@drawable/patient" />
+                        app:srcCompat="@drawable/ic_image_placeholder" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -111,7 +106,6 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/surname_edit"
-                    android:text="@{doctor.fullName}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
@@ -378,6 +372,35 @@
     android:layout_height="wrap_content"
     android:src="@drawable/cerficates"
     />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/video"
+                android:textSize="16sp"
+
+                />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp">
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/doctor_player_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:autoPlay="false"
+                    app:enableLiveVideoUi="false"
+                    app:showSeekBar="true"
+                    app:showVideoCurrentTime="true"
+                    app:showVideoDuration="true" />
+            </FrameLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -393,9 +416,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="@string/save"
+    android:visibility="gone"
+
     android:textColor="@color/white"
     android:background="@drawable/bg_red_8"
     />
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_tab" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

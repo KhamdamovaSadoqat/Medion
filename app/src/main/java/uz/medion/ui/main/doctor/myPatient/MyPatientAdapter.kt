@@ -48,8 +48,10 @@ class MyPatientAdapter(private val listener:(DoctorMyPacientesResponseItem)->Uni
     class VH(private val binding: ItemSelectedBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(patient: DoctorMyPacientesResponseItem) {
-            binding.patient=patient
-            binding.tvNamePatient.text=patient.username
+           binding.apply {
+               tvNamePatient.text=patient.username
+
+           }
 
 
 
@@ -72,7 +74,7 @@ class MyPatientAdapter(private val listener:(DoctorMyPacientesResponseItem)->Uni
 
     override fun onClick(v: View?) {
         when(v!!.id){
-            R.id.iv_favourites->{
+            R.id.ic_favourite_patient->{
                 listener.invoke(list[position])
             }
         }
