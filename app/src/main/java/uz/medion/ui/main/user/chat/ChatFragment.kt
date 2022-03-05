@@ -52,7 +52,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatVM>() {
                         postMessage(MessageRequest(3,
                             binding.editTextTextPersonName.text.toString()))
                         binding.editTextTextPersonName.text!!.clear()
-                        getChatMessages(1)
+
                     }
                 }
             }
@@ -63,10 +63,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatVM>() {
         vm.postChat(messageRequest).observe(this) {
             when (it.status) {
                 Status.LOADING -> {}
-                Status.ERROR -> Toast.makeText(requireContext(),
-                    "somethin went wrong",
-                    Toast.LENGTH_SHORT).show()
+                Status.ERROR -> {
+                    getChatMessages(1)
+                    Toast.makeText(requireContext(),
+                        "somethin went wrong",
+                        Toast.LENGTH_SHORT).show()
+                }
                 Status.SUCCESS -> {
+                    getChatMessages(1)
                     Log.d("----------", "postMessage: success")
                     binding.editTextTextPersonName.text!!.clear()
                     binding.editTextTextPersonName.setText("")
