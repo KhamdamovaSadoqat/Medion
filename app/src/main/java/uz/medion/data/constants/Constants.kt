@@ -19,7 +19,8 @@ object Constants {
 
     var token = ""
     var language = ""
-    var cardNumber = "UZCARD"
+    var cardNumber = "dddd dddd dddd dddd"
+    var cardNumberExpireDate = "yyyy-mm-dd"
     private val unAuthorized = MutableLiveData<Boolean>()
 
     fun setUnAuthorized(isUnAuthorized: Boolean) {

@@ -22,7 +22,7 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
 
     private fun setUp() {
         myDoctorsAdapter = MyDoctorsAdapter { doctor ->
-            setMyDoctorsFavourite(doctor.id!!)
+            postMyDoctorsFavourite(doctor.id!!)
             getMyDoctors()
         }
         binding.rvMyDoctors.layoutManager =
@@ -63,7 +63,7 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
     }
 
     private fun getMyDoctors(){
-        vm.myDoctors().observe(this) { myDoctors ->
+        vm.getMyDoctors().observe(this) { myDoctors ->
             when (myDoctors.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
@@ -81,7 +81,7 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
     }
 
     private fun getMyDoctorsFavourite(){
-        vm.myDoctorsFavourite().observe(this) { myDoctors ->
+        vm.getMyDoctorsFavourite().observe(this) { myDoctors ->
             when (myDoctors.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
@@ -98,8 +98,8 @@ class MyDoctorsFragment : BaseFragment<FragmentMyDoctorsBinding, MyDoctorsVM>() 
         }
     }
 
-    private fun setMyDoctorsFavourite(doctorId: Int){
-        vm.setDoctorsFavourite(doctorId).observe(this) { myDoctors ->
+    private fun postMyDoctorsFavourite(doctorId: Int){
+        vm.postDoctorsFavourite(doctorId).observe(this) { myDoctors ->
             when (myDoctors.status) {
                 Status.LOADING -> {
                     binding.progress.visible()

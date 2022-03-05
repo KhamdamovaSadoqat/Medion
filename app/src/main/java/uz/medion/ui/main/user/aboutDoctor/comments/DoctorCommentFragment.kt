@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.constants.Keys
-import uz.medion.data.model.SendComment
+import uz.medion.data.model.CommentRequest
 import uz.medion.data.model.remote.Status
 import uz.medion.databinding.FragmentDoctorCommentBinding
 import uz.medion.ui.base.BaseFragment
@@ -43,7 +43,7 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
         //get comment from backend
-        vm.comments(doctorId).observe(this) { comments ->
+        vm.getComments(doctorId).observe(this) { comments ->
             when (comments.status) {
                 Status.LOADING -> {
                     binding.progress.visible()
@@ -66,8 +66,8 @@ class DoctorCommentFragment : BaseFragment<FragmentDoctorCommentBinding, AboutDo
             if (binding.etUserComment.text.isNullOrEmpty() || binding.etUserComment.text.isNullOrBlank()) {
                 binding.etUserComment.error = "Write comment please!"
             } else {
-                vm.sendComment(
-                    SendComment(rating, doctorId, binding.etUserComment.text.toString())
+                vm.postComment(
+                    CommentRequest(rating, doctorId, binding.etUserComment.text.toString())
                 ).observe(this) { comments ->
                     when (comments.status) {
                         Status.LOADING -> {

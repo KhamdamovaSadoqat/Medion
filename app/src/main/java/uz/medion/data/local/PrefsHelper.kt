@@ -6,7 +6,6 @@ import uz.medion.data.constants.Keys
 import uz.medion.utils.put
 
 class PrefsHelper(
-    private val gson: Gson,
     private val preferences: SharedPreferences
 ) {
     var language: String?
@@ -45,4 +44,11 @@ class PrefsHelper(
         get() = preferences.getString(Keys.CARD_NUMBER, null)
         set(value) = preferences.put(Keys.CARD_NUMBER, value)
 
+    var cardNumberExpireDate: String?
+        get() = preferences.getString(Keys.CARD_NUMBER_EXPIRE_DATE, null)
+        set(value) = preferences.put(Keys.CARD_NUMBER_EXPIRE_DATE, value)
+
+    var userId: Int
+        get() = preferences.getInt(Keys.USER_ID, 0)
+        set(value) = preferences.put(Keys.USER_ID, value)
 }

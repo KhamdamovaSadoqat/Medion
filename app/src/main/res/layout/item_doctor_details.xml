@@ -6,86 +6,94 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:padding="16dp"
         android:background="@drawable/bg_transparent_8">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/siv_profile_picture"
             android:layout_width="92dp"
             android:layout_height="92dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
             android:padding="2dp"
-            android:src="@drawable/doc_pic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            app:strokeColor="@android:color/darker_gray"
-            app:strokeWidth="1dp" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
         <TextView
             android:id="@+id/tv_full_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="124dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:lines="2"
             android:textColor="@color/tangaroa_900"
-            android:textIsSelectable="true"
+            android:textIsSelectable="false"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintWidth_percent="0.65"
+            app:layout_constraintLeft_toRightOf="@id/siv_profile_picture"/>
 
         <TextView
             android:id="@+id/tv_category_of_doctor"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="@string/main_doctor_of_urology"
             android:textColor="@color/tangaroa_900"
             android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintWidth_percent="0.65"
             app:layout_constraintLeft_toRightOf="@id/siv_profile_picture"
             app:layout_constraintTop_toBottomOf="@id/tv_full_name" />
 
         <TextView
             android:id="@+id/tv_experience"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/experience"
             android:textColor="@color/tangaroa_900"
             android:textSize="12sp"
+            app:layout_constraintWidth_percent="0.3"
             app:layout_constraintLeft_toRightOf="@id/siv_profile_picture"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_category_of_doctor" />
 
         <TextView
             android:id="@+id/tv_comments"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
             android:text="@string/comment"
             android:textColor="@color/tangaroa_900"
             android:textSize="12sp"
             app:layout_constraintLeft_toRightOf="@id/tv_experience"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintTop_toBottomOf="@id/tv_category_of_doctor" />
 
 
         <View
             android:id="@+id/v_divider"
-            style="@style/Divider"
-            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_comments" />
+            app:layout_constraintTop_toBottomOf="@id/tv_comments"
+            android:background="@color/solitude_50" />
 
         <TextView
             android:id="@+id/tv_clinic_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:maxLines="2"
             android:text="@string/clinic_name"
@@ -95,27 +103,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/v_divider" />
 
-        <TextView
-            android:id="@+id/tv_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            android:maxLines="2"
-            android:text="@string/doc_detail"
-            android:textColor="@color/tangaroa_900"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_clinic_name" />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_doctor_details_appointment"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="32dp"
             android:background="@drawable/bg_red_8"
             android:text="@string/doctor_s_appointment"
             android:textColor="@color/white"
@@ -123,6 +115,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_detail" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_clinic_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

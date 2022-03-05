@@ -1,6 +1,5 @@
-package uz.medion.data.retrofit
+package uz.medion.data.retrofit.auth
 
-import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,20 +10,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 import uz.medion.data.constants.Constants
 import java.io.IOException
 import java.util.concurrent.TimeUnit
-import okhttp3.Interceptor
-import okhttp3.Request
 
-
-class ApiClient {
+class AuthApiClient {
     companion object {
         private var retrofit: Retrofit? = null
-        var api: ApiInterface? = null
+        var api: AuthApi? = null
 
         fun restartRetrofit() {
             retrofit = null
         }
 
-        fun getApiClient(): ApiInterface {
+        fun getApiClient(): AuthApi {
 
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
@@ -46,7 +42,7 @@ class ApiClient {
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build()
-                api = retrofit!!.create(ApiInterface::class.java)
+                api = retrofit!!.create(AuthApi::class.java)
             }
             return api!!
         }

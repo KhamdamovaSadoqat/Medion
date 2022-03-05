@@ -12,8 +12,10 @@ object Keys {
     const val TOKEN_EXPIRY = "token_expiry"
     const val LAST_UPDATE_PROMPT = "last_time_prompt"
     const val CARD_NUMBER = "card_number"
+    const val CARD_NUMBER_EXPIRE_DATE = "card_number_expire_date"
     const val SHOULD_CHECK_FOR_UPDATE = "should_check_for_update"
     const val MEDION_NOTIFICATION = "should_check_for_update"
+    const val USER_ID = "user_id"
 
     const val EXTRA_UNAUTHORIZED = "extra_unAthorized"
     const val BUNDLE_CERTIFICATE = "bundle_certificate"
@@ -31,8 +33,7 @@ object Keys {
     const val BUNDLE_ABOUT_DOCTOR_WORK = "bundle_about_doctor_work"
     const val BUNDLE_ABOUT_DOCTOR_ID = "bundle_about_doctor_id"
 
-
-
+    const val BUNDLE_ESTETIC_MEDICINE_POSITION = "bundle_estetic_medicine_position"
 
     const val REQUEST_CODE_SIGN_IN = 9001
 }
