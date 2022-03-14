@@ -22,14 +22,14 @@ class AuthRepository {
 
     fun registrationCreate(
         phoneNumber: RegistrationCreateRequest,
-        response: MutableLiveData<Resource<ResponseOfRequestEmail>>,
+        response: MutableLiveData<Resource<EmailResponseResponse>>,
     ) {
         compositeDisposable.add(
             apiClient.requestMail(phoneNumber)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<ResponseOfRequestEmail>() {
-                    override fun onNext(t: ResponseOfRequestEmail) {
+                .subscribeWith(object : DisposableObserver<EmailResponseResponse>() {
+                    override fun onNext(t: EmailResponseResponse) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
 

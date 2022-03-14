@@ -53,6 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
                 startActivity(intent)
                 finish()
             }
+
         }
         navController.addOnDestinationChangedListener { _, destination, _ ->
             //where bottom navigation should be removed

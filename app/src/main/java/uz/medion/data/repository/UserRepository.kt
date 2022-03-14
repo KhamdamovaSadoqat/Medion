@@ -482,16 +482,67 @@ class UserRepository {
             apiClient.getChatMessages("Bearer ${Constants.token}" , chatId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableObserver<List<ChatMessagesResponse>>(){
+                .subscribeWith(object : DisposableObserver<List<ChatMessagesResponse>>() {
                     override fun onNext(t: List<ChatMessagesResponse>) {
                         response.value = Resource(Status.SUCCESS, t, null, null)
                     }
+
                     override fun onError(e: Throwable) {
                         if (e.message?.contains("401", true) == true) {
                             Constants.setUnAuthorized(true)
                         }
                         response.value = Resource(Status.ERROR, null, e.message, e)
                     }
+
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+    fun getProfile(response: MutableLiveData<Resource<ProfileResponse>>) {
+        compositeDisposable.add(
+            apiClient.getProfile("Bearer ${Constants.token}")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<ProfileResponse>() {
+                    override fun onNext(t: ProfileResponse) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
+                    override fun onComplete() {}
+                })
+        )
+        response.value = Resource(Status.LOADING, null, null, null)
+    }
+
+    fun postResetPhone(
+        response: MutableLiveData<Resource<EmailResponseResponse>>,
+        registrationCreateRequest: RegistrationCreateRequest,
+    ) {
+        compositeDisposable.add(
+            apiClient.postResetPhone("Bearer ${Constants.token}", registrationCreateRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<EmailResponseResponse>() {
+                    override fun onNext(t: EmailResponseResponse) {
+                        response.value = Resource(Status.SUCCESS, t, null, null)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        if (e.message?.contains("401", true) == true) {
+                            Constants.setUnAuthorized(true)
+                        }
+                        response.value = Resource(Status.ERROR, null, e.message, e)
+                    }
+
                     override fun onComplete() {}
                 })
         )

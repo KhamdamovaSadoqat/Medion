@@ -147,4 +147,17 @@ interface UserApi {
         @Path("chatId") chatId: Int
     ): Observable<List<ChatMessagesResponse>>
 
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/user/profile")
+    fun getProfile(
+        @Header("Authorization") token: String
+    ): Observable<ProfileResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/registration/reidentification")
+    fun postResetPhone(
+        @Header("Authorization") token: String,
+        @Body registrationCreateRequest: RegistrationCreateRequest
+    ): Observable<EmailResponseResponse>
+
 }

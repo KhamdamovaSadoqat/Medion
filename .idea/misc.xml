@@ -156,6 +156,7 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_left_2.xml" value="0.26205128205128203" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right.xml" value="1.0583333333333333" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right_2.xml" value="0.2351851851851852" />
+        <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right_3.xml" value="0.1285" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right_black.xml" value="0.2351851851851852" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_arrow_right_red.xml" value="0.2351851851851852" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/drawable/ic_camere.xml" value="0.1" />
@@ -242,6 +243,7 @@
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/partial_bottom_navigation.xml" value="0.264" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/layout/partial_bottom_navigation_doctors.xml" value="0.25416666666666665" />
         <entry key="..\:/projects/Android/Medion/app/src/main/res/xml/network_security_config.xml" value="0.25" />
+        <entry key="..\:/projects/Android/caches/transforms-3/42bd72adf79bff190136ae2766f1a896/transformed/jetified-material-calendar-view-1.7.0/res/layout/calendar_view.xml" value="0.1" />
         <entry key="..\:/projects/Android/caches/transforms-3/dcec5ad578fb2052ee92b84ffd306ba4/transformed/jetified-material-calendar-view-1.7.0/res/layout/calendar_view.xml" value="0.1" />
       </map>
     </option>

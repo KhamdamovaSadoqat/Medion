@@ -14,7 +14,7 @@ interface AuthApi {
     @POST("/api/v1/registration/request") // createRegistrationRequest
     fun requestMail(
         @Body phoneNumber: RegistrationCreateRequest, // phone number
-    ): Observable<ResponseOfRequestEmail>
+    ): Observable<EmailResponseResponse>
 
     @Headers("Content-Type: application/json")
     @POST("/api/v1/registration/{requestId}")

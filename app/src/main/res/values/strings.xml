@@ -7,7 +7,7 @@
     <string name="clinic_photo" translatable="false">clinic photo</string>
 
     <!-- https responses -->
-    <string name="user_is_registered">User is registrated</string>
+    <string name="user_is_registered">Пользователь зарегистрирован</string>
 
     <!-- all -->
     <string name="msg_no_network">Невозможно подключиться к Интернету</string>
@@ -64,7 +64,7 @@
 
     <!-- ourDoctor -->
     <string name="main_doctor_of_urology">Главное врач Урология</string>
-    <string name="_4_6">4.6</string>
+    <string name="_4_6" translatable="false">4.6</string>
     <string name="experience"><b>%s</b> года стажа</string>
     <string name="comment"><b>%s</b> отзыва</string>
     <string name="clinic_name">Медицинский центр MEDION CLINIC,AESTHETIC &amp; SPA</string>
@@ -85,7 +85,7 @@
     <string name="work">Работа</string>
     <string name="reyting">Рейтинг</string>
     <string name="sertificate">Сертификаты</string>
-    <string name="university_name">Тошкент тиббиёт академияси, Тошкент </string>
+    <string name="university_name" translatable="false">Тошкент тиббиёт академияси, Тошкент </string>
     <string name="about_consultation">Консультирует детей и взрослых с заболеваниями
         ЛОР-органов. Прежде чем поставить диагноз и
         определить план лечения, собирает подробный
@@ -138,14 +138,14 @@
     <string name="save">Сохранить</string>
 
     <string name="choose_language">Выберите язык</string>
-    <string name="russian">Русский</string>
-    <string name="uzbek">O‘zbek(Lotin)</string>
-    <string name="english">English</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="uzbek" translatable="false">O‘zbek(Lotin)</string>
+    <string name="english" translatable="false">English</string>
 
     <string name="name">Имя</string>
     <string name="surname">Фамилия</string>
     <string name="middle_name">Отчество</string>
-    <string name="fill_phone_numeber">_________</string>
+    <string name="fill_phone_numeber" translatable="false">998 12 345 67 89</string>
     <string name="blood_group">Группа крови</string>
     <string name="dob">Дата рождения</string>
     <string name="submit">Записаться</string>
@@ -157,7 +157,7 @@
     <string name="female">Женский </string>
     <string name="weight">Вес, кг </string>
     <string name="height">Рост, см</string>
-    <string name="_21_12_1970">21.12.1970</string>
+    <string name="_21_12_1970" translatable="false">21.12.1970</string>
 
     <!-- Address and contacts -->
     <string name="address_contacts_1">    MEDION - уникальный инновационный медицинский центр,
@@ -172,12 +172,12 @@
     <!-- Estethic medicine -->
     <string name="estetic_medicine_1">Мы бы хотели пригласить Вас к нам в гости. Показать, как выглядит наш центр. Прислушаться к внутреннему голосу и принять разумное решение.</string>
     <string name="estetic_medicine_2">Услуги эстетической</string>
-    <string name="estetic_medicine_3">Глаза выдают реальный возраст, поэтому хирургическая коррекция дает возможность значительно улучшить свой внешний вид. В основном данная процедура востребована у пациентов средних лет. Первыми признаками возрастных изменений являются морщины и мешки под глазами, из-за которых человек выглядит старше. Иногда эта процедура требуется и в более молодом возрасте, если есть анатомическая предрасположенность к формированию провисаний и грыж.</string>
+    <string name="estetic_medicine_3" translatable="false">Глаза выдают реальный возраст, поэтому хирургическая коррекция дает возможность значительно улучшить свой внешний вид. В основном данная процедура востребована у пациентов средних лет. Первыми признаками возрастных изменений являются морщины и мешки под глазами, из-за которых человек выглядит старше. Иногда эта процедура требуется и в более молодом возрасте, если есть анатомическая предрасположенность к формированию провисаний и грыж.</string>
     <string name="estetic_medicine_4">ПРИМЕРЫ НАШИХ РАБОТ:</string>
     <string name="before_surgery">До процедуры</string>
-    <string name="estetic_medicine_5">Блефаропластика</string>
-    <string name="estetic_medicine_6">Маммопластика</string>
-    <string name="estetic_medicine_7">Пластика живота</string>
+    <string name="estetic_medicine_5" translatable="false">Блефаропластика</string>
+    <string name="estetic_medicine_6" translatable="false">Маммопластика</string>
+    <string name="estetic_medicine_7" translatable="false">Пластика живота</string>
 
     <string name="spa_tv_1">Клиника MEDION предлагает Вам широкий выбор SPA-услуг, оказывающих благотворный физиотерапевтический и релаксирующий эффект на организм.</string>
     <string name="spa_tv_2">Мы предоставляем процедуры:</string>
@@ -186,12 +186,12 @@
     <string name="water_procedures">Водные процедуры</string>
     <string name="medicine_in_bath">Процедуры в хаммаме</string>
     <string name="preventive_service">Профилактические услуги/SPA</string>
-    <string name="lipolytics">Липолитики</string>
-    <string name="mesotherapy">Мезотерапия</string>
-    <string name="plasmolifting">Плазмалифтинг</string>
-    <string name="botulinum_toxins">Ботулотоксины</string>
-    <string name="biorevitalization">Биоревитализация и биорепарация</string>
-    <string name="contour_plastic">Контурная пластика</string>
+    <string name="lipolytics" translatable="false">Липолитики</string>
+    <string name="mesotherapy" translatable="false">Мезотерапия</string>
+    <string name="plasmolifting" translatable="false">Плазмалифтинг</string>
+    <string name="botulinum_toxins" translatable="false">Ботулотоксины</string>
+    <string name="biorevitalization" translatable="false">Биоревитализация и биорепарация</string>
+    <string name="contour_plastic" translatable="false">Контурная пластика</string>
     <string name="healing_procedures">Лечебные процедуры</string>
     <string name="body_peels">Пиллинги для тела</string>
 
@@ -199,38 +199,38 @@
     <string name="massage2">Лечебный массаж на основе масла</string>
     <string name="massage4">Классический (Relax) массаж на основе масла</string>
     <string name="massage6">Лечебный массаж</string>
-    <string name="massage8">Массаж шейно-воротниковой зоны</string>
-    <string name="massage9">Массаж спины</string>
-    <string name="massage10">Массаж рук</string>
-    <string name="massage11">Массаж головы</string>
-    <string name="massage12">Массаж лица</string>
-    <string name="massage13">Лечебный массаж ног</string>
-    <string name="massage14">Массаж ног</string>
-    <string name="massage15">Спортивный силовой массаж</string>
-    <string name="massage16">Лимфодренажный массаж (ручной)</string>
-    <string name="massage17">Антицеллюлитный массаж живота</string>
-    <string name="massage18">Антицеллюлитный массаж ног</string>
-    <string name="massage19">Антицеллюлитный массаж (более 90кг)</string>
-    <string name="massage20">Антицеллюлитный массаж (до 80 кг)</string>
-    <string name="massage21">Антицеллюлитный медовый массаж </string>
-    <string name="massage22">Детский массаж с 2,5 мес до 1 года</string>
-    <string name="massage23">Детский массаж с 1 года до 6 лет</string>
-    <string name="massage24">Детский массаж с 7 до 12 лет</string>
-    <string name="massage1_1">Проводится на основе масла Ericson Laboratoire (общий) 40 мин</string>
-    <string name="massage1_2">Проводится на основе масла Ericson Laboratoire (общий) 1 час</string>
-    <string name="massage1_3">Проводится на основе масла Ericson Laboratoire (общий) 1,5 часа</string>
-    <string name="massage1_4">1,5 часа</string>
-    <string name="massage1_5">20 мин</string>
-    <string name="massage1_6">30 мин</string>
-    <string name="massage1_7">15 мин</string>
-    <string name="massage1_8">1 час</string>
+    <string name="massage8" translatable="false">Массаж шейно-воротниковой зоны</string>
+    <string name="massage9" translatable="false">Массаж спины</string>
+    <string name="massage10" translatable="false">Массаж рук</string>
+    <string name="massage11" translatable="false">Массаж головы</string>
+    <string name="massage12" translatable="false">Массаж лица</string>
+    <string name="massage13" translatable="false">Лечебный массаж ног</string>
+    <string name="massage14" translatable="false">Массаж ног</string>
+    <string name="massage15" translatable="false">Спортивный силовой массаж</string>
+    <string name="massage16" translatable="false">Лимфодренажный массаж (ручной)</string>
+    <string name="massage17" translatable="false">Антицеллюлитный массаж живота</string>
+    <string name="massage18" translatable="false">Антицеллюлитный массаж ног</string>
+    <string name="massage19" translatable="false">Антицеллюлитный массаж (более 90кг)</string>
+    <string name="massage20" translatable="false">Антицеллюлитный массаж (до 80 кг)</string>
+    <string name="massage21" translatable="false">Антицеллюлитный медовый массаж </string>
+    <string name="massage22" translatable="false">Детский массаж с 2,5 мес до 1 года</string>
+    <string name="massage23" translatable="false">Детский массаж с 1 года до 6 лет</string>
+    <string name="massage24" translatable="false">Детский массаж с 7 до 12 лет</string>
+    <string name="massage1_1" translatable="false">Проводится на основе масла Ericson Laboratoire (общий) 40 мин</string>
+    <string name="massage1_2" translatable="false">Проводится на основе масла Ericson Laboratoire (общий) 1 час</string>
+    <string name="massage1_3" translatable="false">Проводится на основе масла Ericson Laboratoire (общий) 1,5 часа</string>
+    <string name="massage1_4" translatable="false">1,5 часа</string>
+    <string name="massage1_5" translatable="false">20 мин</string>
+    <string name="massage1_6" translatable="false">30 мин</string>
+    <string name="massage1_7" translatable="false">15 мин</string>
+    <string name="massage1_8" translatable="false">1 час</string>
 
     <!-- need to change -->
     <string name="name_doctor">Имя</string>
     <string name="birthday">Дата рождения</string>
     <string name="doctor">Врачи</string>
     <string name="phone">Телефон</string>
-    <string name="staj">года стажа</string>
+    <string name="staj">Phone</string>
     <string name="higher_education">Высшее образование</string>
     <string name="current">Текущие</string>
     <string name="previous">Предыдущие</string>
@@ -247,70 +247,70 @@
 
 
     <!-- ourDoctorName -->
-    <string name="dc_sevara">Эргашева Севара Рустамовна</string>
-    <string name="dc_botir">Ширмухамедов Батыр Турсунпулатович</string>
-    <string name="dc_alisher">Маматходжаев Алишер Насырович</string>
-    <string name="dc_elena">Мустафина Елена Рафиковна	</string>
+    <string name="dc_sevara" translatable="false">Эргашева Севара Рустамовна</string>
+    <string name="dc_botir" translatable="false">Ширмухамедов Батыр Турсунпулатович</string>
+    <string name="dc_alisher" translatable="false">Маматходжаев Алишер Насырович</string>
+    <string name="dc_elena" translatable="false">Мустафина Елена Рафиковна	</string>
 
     <!-- ourDoctorJob -->
-    <string name="vrach_uzi">Врач УЗИ</string>
-    <string name="detskiy_ortoped">Детский ортопед </string>
+    <string name="vrach_uzi" translatable="false">Врач УЗИ</string>
+    <string name="detskiy_ortoped" translatable="false">Детский ортопед </string>
 
     <!-- searchView-->
-    <string name="searchview">SearchView</string>
+    <string name="searchview" translatable="false">SearchView</string>
 
 
     <!-- Calendar -->
     <string name="constultation">Записаться на консультацию</string>
-    <string name="t_8_30">08:30</string>
-    <string name="t_9_00">09:00</string>
-    <string name="t_9_30">09:30</string>
-    <string name="t_10_00">10:00</string>
-    <string name="t_10_30">10:30</string>
-    <string name="t_11_00">11:00</string>
-    <string name="t_11_30">11:30</string>
-    <string name="t_12_00">12:00</string>
-    <string name="t_14_00">14:00</string>
-    <string name="t_14_30">14:30</string>
-    <string name="t_15_00">15:00</string>
-    <string name="t_15_30">15:30</string>
-    <string name="t_16_00">16:00</string>
-    <string name="t_16_30">16:30</string>
-    <string name="t_17_00">17:00</string>
-    <string name="t_17_30">17:30</string>
+    <string name="t_8_30" translatable="false">08:30</string>
+    <string name="t_9_00" translatable="false">09:00</string>
+    <string name="t_9_30" translatable="false">09:30</string>
+    <string name="t_10_00" translatable="false">10:00</string>
+    <string name="t_10_30" translatable="false">10:30</string>
+    <string name="t_11_00" translatable="false">11:00</string>
+    <string name="t_11_30" translatable="false">11:30</string>
+    <string name="t_12_00" translatable="false">12:00</string>
+    <string name="t_14_00" translatable="false">14:00</string>
+    <string name="t_14_30" translatable="false">14:30</string>
+    <string name="t_15_00" translatable="false">15:00</string>
+    <string name="t_15_30" translatable="false">15:30</string>
+    <string name="t_16_00" translatable="false">16:00</string>
+    <string name="t_16_30" translatable="false">16:30</string>
+    <string name="t_17_00" translatable="false">17:00</string>
+    <string name="t_17_30" translatable="false">17:30</string>
 
     <!-- AppointmentPayment -->
     <string name="date_ant_time">Дата и время</string>
     <string name="oferta">Я принимаю условия оказания услуг</string>
     <string name="cost_of_consultation">Стоимость консультации</string>
-    <string name="example_cost">45 000 sum</string>
+    <string name="example_cost" translatable="false">45 000 sum</string>
     <string name="payment_type">Способ оплаты:   Новой картой онлайн</string>
     <string name="cash">С наличными</string>
-    <string name="uzcard">UZCARD</string>
+    <string name="uzcard" translatable="false">UZCARD</string>
     <string name="add_card">Добавить карту</string>
     <string name="pay">Оплатить</string>
-    <string name="card_number">1234 5678 9012 3456</string>
+    <string name="card_number" translatable="false">1234 5678 9012 3456</string>
     <string name="expire_date">Срок действия</string>
     <string name="mm_yy">ММ/ГГ</string>
     <string name="add">Добавить</string>
-    <string name="thanks">Спасибо!</string>
+    <string name="thanks">Спасибо</string>
     <string name="payment_competed">Оплата прошла УСПЕШНО</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="personal_data">Личные данные</string>
     <string name="my_patients">Mои пациенты</string>
     <string name="today_patients">Сегодняшние пациенты</string>
     <string name="language">Языки</string>
-    <string name="log_out">Выход</string>
-    <string name="phone_number_mobil">+998906274859</string>
-    <string name="todo">TODO</string>
+    <string name="log_out" translatable="false">Выход</string>
+    <string name="phone_number_mobil" translatable="false">+998906274859</string>
+    <string name="todo" translatable="false">TODO</string>
 
     <!-- EditText hint-->
     <string name="write_mess">Напиши сообщение…</string>
 
     <!-- Adminsistator name-->
-    <string name="anastasiya">Анастасия</string>
+    <string name="anastasiya" translatable="false">Анастасия</string>
 
 
 </resources>
