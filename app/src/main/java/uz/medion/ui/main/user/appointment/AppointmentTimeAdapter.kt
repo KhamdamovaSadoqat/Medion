@@ -39,7 +39,6 @@ class AppointmentTimeAdapter(private val itemClickListener: (MonthlyTimeResponse
         return VH(binding, parent.context)
     }
 
-
     override fun onBindViewHolder(holder: VH, @SuppressLint("RecyclerView") position: Int) {
         val clickingItem = clickingItems[position]
         if (clickingItem.isSelected) {
