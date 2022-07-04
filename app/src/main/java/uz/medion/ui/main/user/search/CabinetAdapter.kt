@@ -8,15 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.model.DoctorCategoryItem
+import uz.medion.data.model.ItemSearch
 import uz.medion.databinding.ItemSearchViewBinding
 
 class CabinetAdapter(private val itemClickListener: (Int) -> Unit) :
     RecyclerView.Adapter<CabinetAdapter.CabinetViewHolder>() {
 
-    private var lists = listOf<DoctorCategoryItem>()
+    private var lists = listOf<ItemSearch>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(mlist: ArrayList<DoctorCategoryItem>) {
+    fun setData(mlist: ArrayList<ItemSearch>) {
         this.lists = mlist
         notifyDataSetChanged()
     }
@@ -37,7 +38,7 @@ class CabinetAdapter(private val itemClickListener: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: CabinetViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(lists[position].id)
         }
         holder.onBind(lists[position])
     }
@@ -46,12 +47,10 @@ class CabinetAdapter(private val itemClickListener: (Int) -> Unit) :
 
     class CabinetViewHolder(private val binding: ItemSearchViewBinding, val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(category: DoctorCategoryItem) {
+        fun onBind(category: ItemSearch) {
             binding.apply {
-                tvNameSv.text = context.getString(category.categoryName)
+                tvNameSv.text = category.name
             }
         }
-
-
     }
 }

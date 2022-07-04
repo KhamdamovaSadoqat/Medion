@@ -70,7 +70,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInVM>() {
         //login
         binding.btnSignIn.setOnClickListener {
             if (checkAllFields()) {
-                vm.login(Login(binding.etPassword.text.toString(),
+                vm.login(Login(binding.etPassword.text.toString().trim(),
                     binding.etPhoneNumber.text.toString()))
                     .observe(this) { response ->
                         when (response.status) {

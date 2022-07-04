@@ -8,16 +8,18 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
+import uz.medion.data.model.DoctorResponse
 import uz.medion.data.model.DoctorsItem
 import uz.medion.databinding.ItemDoctorSearchBinding
+import uz.medion.utils.ImageDownloader
 
 class DoctorAdapter(private var itemClickListener: (Int) -> Unit) :
     RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
 
-    private var arrayList = arrayListOf<DoctorsItem>()
+    private var arrayList = arrayListOf<DoctorResponse>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(lists: ArrayList<DoctorsItem>) {
+    fun setData(lists: ArrayList<DoctorResponse>) {
         this.arrayList = lists
         notifyDataSetChanged()
     }
@@ -39,7 +41,7 @@ class DoctorAdapter(private var itemClickListener: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-             itemClickListener.invoke(position)
+             itemClickListener.invoke(arrayList[position].id?:0)
         }
         holder.onBind(arrayList[position])
     }
@@ -48,16 +50,11 @@ class DoctorAdapter(private var itemClickListener: (Int) -> Unit) :
 
     class DoctorViewHolder(private var binding: ItemDoctorSearchBinding, val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(category: DoctorsItem) {
+        fun onBind(category:DoctorResponse) {
             binding.apply {
-                cardProfileAvater.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        context,
-                       category.image
-                    )
-                )
-                tvFullName.text = context.getString(category.name)
-                tvCategoryOfDoctor.text = context.getString(category.job)
+                ImageDownloader.loadImage(context, category.image!!, cardProfileAvater)
+                tvFullName.text = category.fullName
+                tvCategoryOfDoctor.text = category.workInfoList!![0]?.position
             }
         }
     }

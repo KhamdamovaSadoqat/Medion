@@ -8,9 +8,28 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.user.search.SearchViewFragment">
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            app:iconifiedByDefault="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/background_search"
+            android:padding="4dp"
+            app:queryHint="Qidirish"
+            app:searchIcon="@drawable/ic_search_white"
+            app:queryBackground="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/scroll"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -100,8 +119,8 @@
                     android:id="@+id/v_divider3"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="12dp"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
                     android:background="@color/solitude_50" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -133,8 +152,8 @@
                     android:id="@+id/v_divider4"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="12dp"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
                     android:background="@color/solitude_50" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -148,39 +167,6 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_main" />
 
-                <TextView
-                    android:id="@+id/tv_short"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/short_discription"
-                    android:textColor="@color/steel_grey_800"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/v_divider5"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@color/solitude_50"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_descripion_search"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:clipToPadding="false"
-                    android:overScrollMode="never"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_main" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,15 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.model.DoctorCategoryItem
+import uz.medion.data.model.ItemSearch
 import uz.medion.databinding.ItemSearchViewBinding
 
 class MainAdapter(private val itemCliCkListener: (Int) -> Unit) :
     RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    private var arrayList = listOf<DoctorCategoryItem>()
+    private var arrayList = listOf<ItemSearch>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(lists: ArrayList<DoctorCategoryItem>) {
+    fun setData(lists: ArrayList<ItemSearch>) {
         this.arrayList = lists
         notifyDataSetChanged()
     }
@@ -37,7 +38,7 @@ class MainAdapter(private val itemCliCkListener: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            itemCliCkListener.invoke(position)
+            itemCliCkListener.invoke(arrayList[position].id)
         }
         holder.onBind(arrayList[position])
     }
@@ -46,9 +47,9 @@ class MainAdapter(private val itemCliCkListener: (Int) -> Unit) :
 
     class MainViewHolder(private var binding: ItemSearchViewBinding, val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(category: DoctorCategoryItem) {
+        fun onBind(category: ItemSearch) {
             binding.apply {
-                tvNameSv.text = context.getString(category.categoryName)
+                tvNameSv.text = category.name
             }
         }
     }

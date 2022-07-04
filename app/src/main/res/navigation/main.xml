@@ -295,7 +295,23 @@
         android:id="@+id/searchViewFragment"
         android:name="uz.medion.ui.main.user.search.SearchViewFragment"
         android:label="fragment_search_view"
-        tools:layout="@layout/fragment_search_view" />
+        tools:layout="@layout/fragment_search_view" >
+
+        <action
+            android:id="@+id/action_searchViewFragment_to_aboutDoctorFragment"
+            app:destination="@id/aboutDoctorFragment" >
+            <argument
+                android:name="doctorId"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/action_searchViewFragment_to_ourDoctorsFragment"
+            app:destination="@id/ourDoctorsFragment" >
+            <argument
+                android:name="specialityTypeId"
+                app:argType="integer" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="uz.medion.ui.main.user.chat.ChatFragment"

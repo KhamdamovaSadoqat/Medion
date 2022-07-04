@@ -1,6 +1,7 @@
 package uz.medion.ui.main.user.search
 
 import android.annotation.SuppressLint
+import android.content.ClipData
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,15 +9,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.medion.R
 import uz.medion.data.model.DoctorCategoryItem
+import uz.medion.data.model.ItemSearch
 import uz.medion.databinding.ItemSearchViewBinding
 
 class ServiceAdapter(private val itemClickListener: (Int) -> Unit) :
     RecyclerView.Adapter<ServiceAdapter.ItemViewHolder>() {
 
-    private var listItem = listOf<DoctorCategoryItem>()
+    private var listItem = listOf<ItemSearch>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(mlistItem: ArrayList<DoctorCategoryItem>) {
+    fun setData(mlistItem: ArrayList<ItemSearch>) {
         this.listItem = mlistItem
         notifyDataSetChanged()
     }
@@ -38,7 +40,7 @@ class ServiceAdapter(private val itemClickListener: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            itemClickListener.invoke(position)
+            itemClickListener.invoke(listItem[position].id)
         }
         holder.onBind(listItem[position])
     }
@@ -47,9 +49,9 @@ class ServiceAdapter(private val itemClickListener: (Int) -> Unit) :
 
     class ItemViewHolder(private val binding: ItemSearchViewBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(category: DoctorCategoryItem) {
+        fun onBind(category: ItemSearch) {
             binding.apply {
-                tvNameSv.text =context.getString(category.categoryName)
+                tvNameSv.text = category.name
             }
         }
     }
