@@ -1,60 +1,62 @@
 package uz.medion.ui.main.user.appointment
 
 import android.annotation.SuppressLint
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import uz.medion.R
 import uz.medion.data.constants.Constants
-import uz.medion.data.constants.Keys
 import uz.medion.databinding.FragmentAppointmentEnrollBinding
 import uz.medion.ui.base.BaseFragment
 import uz.medion.utils.DateTimeUtils
-import java.util.*
+import uz.medion.utils.visible
 
 class AppointmentEnrollFragment : BaseFragment<FragmentAppointmentEnrollBinding, AppointmentVM>() {
 
     val args: AppointmentEnrollFragmentArgs by navArgs()
-    private var doctorName: String = ""
-    private var date: String = ""
-    private var time: String = ""
-    private var type: String = ""
-    private var card: String = ""
 
     override fun onBound() {
-        time = args.appointmentTime
-        doctorName = args.doctorName
-        type = args.appointmentType
-        date = DateTimeUtils.timeMillsToTextDate(args.appointmentDate) // need to give date in correct form
         setUp()
-
     }
 
     @SuppressLint("SetTextI18n")
     fun setUp() {
-        Constants.cardNumber = prefs.cardNumber ?: "UZCARD"
-        binding.tvCard.text = Constants.cardNumber
-
-        binding.tvFullName.text = doctorName
-        binding.tvDataTime.text = "$date, $time"
-        binding.tvConsultationType.text = type
-
-        if (requireArguments().containsKey(Keys.BUNDLE_APPOINTMENT_CARD_NUMBER)) {
-            card =
-                requireArguments().getString(Keys.BUNDLE_APPOINTMENT_CARD_NUMBER, "123") as String
-            binding.tvCard.text = card
-            Constants.cardNumber = prefs.cardNumber ?: "UZCARD"
+        if (prefs.cardNumber != null) {
+            Constants.cardNumber = prefs.cardNumber!!
+            binding.tvCard.text = Constants.cardNumber
+            binding.clCard.visible()
         }
 
+        binding.tvFullName.text = args.doctorName
+        binding.tvDataTime.text =
+            "${DateTimeUtils.timeMillsToTextDate(args.appointmentDate)}, ${args.appointmentTime}"
+        binding.tvConsultationType.text = args.appointmentType
         binding.chbCard.setOnClickListener {
-            binding.chbCash.isChecked = false
+            if(binding.chbCard.isChecked)
+            binding.btnSubmit.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                R.color.fire_brick_900))
+            else binding.btnSubmit.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                R.color.fire_brick_900_40))
         }
         binding.chbCash.setOnClickListener {
-            binding.chbCard.isChecked = false
+            if(binding.chbCash.isChecked)
+                binding.btnSubmit.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                    R.color.fire_brick_900))
+            else binding.btnSubmit.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                R.color.fire_brick_900_40))
         }
-
         binding.clAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_appointmentEnrollFragment_to_addCardFragment)
+            val action =
+                AppointmentEnrollFragmentDirections.actionAppointmentEnrollFragmentToAddCardFragment(
+                    args.doctorName,
+                    args.doctorId,
+                    args.appointmentDate,
+                    args.appointmentTime,
+                    args.appointmentTypeId,
+                    args.appointmentType
+                )
+            findNavController().navigate(action)
         }
         binding.btnSubmit.setOnClickListener {
             if (binding.chbCard.isChecked)

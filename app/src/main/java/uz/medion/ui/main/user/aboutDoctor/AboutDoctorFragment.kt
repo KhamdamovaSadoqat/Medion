@@ -1,10 +1,14 @@
 package uz.medion.ui.main.user.aboutDoctor
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,46 +19,46 @@ import uz.medion.data.constants.Constants
 import uz.medion.data.constants.Keys
 import uz.medion.data.model.AboutDoctorItems
 import uz.medion.data.model.AppointmentTimeItemIsClicked
-import uz.medion.databinding.DialogAppointmentBinding
+import uz.medion.data.model.DoctorResponse
+import uz.medion.data.model.remote.Status
+import uz.medion.databinding.DialogAppointmentDateBinding
+import uz.medion.databinding.DialogAppointmentSubspecialityBinding
 import uz.medion.databinding.DialogAppointmentTimeBinding
 import uz.medion.databinding.FragmentAboutDoctorBinding
 import uz.medion.ui.base.BaseFragment
-import uz.medion.ui.main.user.appointment.AppointmentTimeAdapter
-import java.util.*
-import uz.medion.data.model.remote.Status
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.fragment.navArgs
-import uz.medion.data.model.DoctorResponse
-import uz.medion.utils.ImageDownloader
-import uz.medion.utils.invisible
-import uz.medion.utils.visible
-import android.os.Bundle
 import uz.medion.ui.main.user.aboutDoctor.certificate.DoctorCertificateFragment
 import uz.medion.ui.main.user.aboutDoctor.comments.DoctorCommentFragment
 import uz.medion.ui.main.user.aboutDoctor.details.DoctorDetailsFragment
 import uz.medion.ui.main.user.aboutDoctor.work.DoctorWorkFragment
-import kotlin.collections.ArrayList
-
+import uz.medion.ui.main.user.ourDoctors.OurDoctorsSubSpecialityAdapter
+import uz.medion.utils.ImageDownloader
+import uz.medion.utils.invisible
+import uz.medion.utils.visible
+import java.util.*
 
 class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctorVM>() {
 
     private val args: AboutDoctorFragmentArgs by navArgs()
-
     private lateinit var aboutDoctorItemAdapter: AboutDoctorAdapter
     private lateinit var appointmentTimeAdapter: AppointmentTimeAdapter
-    private lateinit var dialogBinding: DialogAppointmentBinding
+    private lateinit var subSpecialityAdapter: OurDoctorsSubSpecialityAdapter
+    private lateinit var dialogSubSpecialityBinding: DialogAppointmentSubspecialityBinding
+    private lateinit var dialogDateBinding: DialogAppointmentDateBinding
     private lateinit var dialogTimeBinding: DialogAppointmentTimeBinding
     private lateinit var aboutDoctorItems: ArrayList<AboutDoctorItems>
     private lateinit var appointmentTimeIsClicked: ArrayList<AppointmentTimeItemIsClicked>
+    private lateinit var subSpecialityIsClicked: ArrayList<AppointmentTimeItemIsClicked>
     private lateinit var doctorData: DoctorResponse
-    private var resultDialog: BottomSheetDialog? = null
-    private var resultTimeDialog: BottomSheetDialog? = null
+    private var dateDialog: BottomSheetDialog? = null
+    private var timeDialog: BottomSheetDialog? = null
+    private var subSpecialityDialog: BottomSheetDialog? = null
     private var appointmentDoctorName: String = ""
+    private var subSpecialityId: Int = 1
     private var appointmentDate: Long = 0
     private var appointmentTime: String = ""
     private var appointmentType: String = ""
     val bundle = Bundle()
+
 
     override fun onBound() {
         loadAboutDoctorItems()
@@ -70,23 +74,53 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         appointmentType = args.appointmentType
         appointmentDoctorName = args.appointmentDoctorName
 
-        if (appointmentType != "null") {
-            loadDialog()
-        }
 
         binding.btnSubmit.setOnClickListener {
-            val action =
-                AboutDoctorFragmentDirections.actionAboutDoctorFragmentToAppointmentFragment(
-                    appointmentDoctorName, )
-            findNavController().navigate(action)
+            loadSubSpecialityDialog()
+            showSubSpecialityDialog()
+        }
+    }
+
+    private fun loadSubSpecialityDialog() {
+        dialogSubSpecialityBinding =
+            DialogAppointmentSubspecialityBinding.inflate(LayoutInflater.from(requireContext()))
+        subSpecialityAdapter = OurDoctorsSubSpecialityAdapter { subSpecialityId ->
+            this.subSpecialityId = subSpecialityId + 1
+        }
+        dialogSubSpecialityBinding.btnSubmit.setOnClickListener {
+            loadDateDialog()
+            dismissSubSpecialityDialog()
+            showCalendarDialog()
+        }
+        vm.getSubSpeciality(args.specialityId).observe(this) { subSpeciality ->
+            when (subSpeciality.status) {
+                Status.LOADING -> {
+                    dialogSubSpecialityBinding.progress.visible()
+                }
+                Status.SUCCESS -> {
+                    dialogSubSpecialityBinding.progress.invisible()
+                    if (subSpeciality.data!!.isNotEmpty()) {
+                        subSpecialityIsClicked = arrayListOf()
+                        for (notCLicked in subSpeciality.data.indices) {
+                            subSpecialityIsClicked.add(AppointmentTimeItemIsClicked(false))
+                        }
+                        subSpecialityIsClicked[0] = AppointmentTimeItemIsClicked(true)
+                        subSpecialityAdapter.items = subSpeciality.data
+                        subSpecialityAdapter.clickingItems = subSpecialityIsClicked
+                    }
+                    dialogSubSpecialityBinding.rvSubSpeciality.adapter = subSpecialityAdapter
+                }
+                Status.ERROR -> {}
+            }
         }
     }
 
     //booking // dates
     @SuppressLint("SetTextI18n")
-    private fun loadDialog() {
-        dialogBinding = DialogAppointmentBinding.inflate(LayoutInflater.from(requireContext()))
-        vm.monthlyDate(3).observe(this) { availableDates ->
+    private fun loadDateDialog() {
+        dialogDateBinding =
+            DialogAppointmentDateBinding.inflate(LayoutInflater.from(requireContext()))
+        vm.getMonthlyDate(3).observe(this) { availableDates ->
             when (availableDates.status) {
                 Status.LOADING -> {
                 }
@@ -103,8 +137,8 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                         responseDateLast[1].toInt(),
                         responseDateLast[2].toInt())
 
-                    dialogBinding.calendarView.setMinimumDate(min)
-                    dialogBinding.calendarView.setMaximumDate(max)
+                    dialogDateBinding.calendarView.setMinimumDate(min)
+                    dialogDateBinding.calendarView.setMaximumDate(max)
                     val calendars: MutableList<Calendar> = ArrayList()
                     for (day in availableDates.data.indices) {
                         if (availableDates.data[day].open == true) {
@@ -120,19 +154,18 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                             calendars.add(firstDisabled)
                         }
                     }
-                    dialogBinding.calendarView.setDisabledDays(calendars)
+                    dialogDateBinding.calendarView.setDisabledDays(calendars)
                     //handle calendar day click
-                    dialogBinding.calendarView.setOnDayClickListener {
+                    dialogDateBinding.calendarView.setOnDayClickListener {
                         val clickedDay: Calendar = DateUtils.getCalendar()
                         clickedDay.timeInMillis = it.calendar.timeInMillis
                         if (!calendars.contains(clickedDay)) {
                             appointmentDate = clickedDay.timeInMillis
                             dismissCalendarDialog()
-                            loadResultTimeDialog()
+                            loadTimeDialog()
                             showTimeDialog()
                         }
                     }
-                    showCalendarDialog()
                 }
                 Status.ERROR -> {
                     Log.e("----------", "error: ${availableDates.message}")
@@ -142,7 +175,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
     }
 
     //booking // times
-    private fun loadResultTimeDialog() {
+    private fun loadTimeDialog() {
         dialogTimeBinding =
             DialogAppointmentTimeBinding.inflate(LayoutInflater.from(requireContext()))
         appointmentTimeAdapter = AppointmentTimeAdapter { time ->
@@ -151,7 +184,7 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         dialogTimeBinding.rvTime.adapter = appointmentTimeAdapter
         dialogTimeBinding.rvTime.layoutManager = GridLayoutManager(requireContext(), 4)
 
-        vm.monthlyTime("2022-01-24", 3).observe(this) { time ->
+        vm.getMonthlyTime("2022-01-24", 3).observe(this) { time ->
             when (time.status) {
                 Status.LOADING -> {
                 }
@@ -170,12 +203,15 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         dialogTimeBinding.btnSubmit.setOnClickListener {
             dismissResultTimeDialog()
             dismissCalendarDialog()
+
             val action =
                 AboutDoctorFragmentDirections.actionAboutDoctorFragmentToAppointmentEnrollFragment(
                     appointmentDoctorName,
+                    args.doctorId,
                     appointmentDate,
                     appointmentTime,
-                    appointmentType)
+                    appointmentType,
+                    subSpecialityId)
             findNavController().navigate(action)
         }
     }
@@ -199,23 +235,10 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                 aboutDoctorItemAdapter.setData(aboutDoctorItems)
 
                 when (position) {
-                    0 -> {
-                        beginDoctorDetailsFragment()
-                    }
-                    1 -> {
-                        beginDoctorWorkFragment()
-                    }
-                    2 -> {
-                        beginDoctorCommentFragment()
-                    }
-                    3 -> {
-                        val doctorCertificateFragment: Fragment = DoctorCertificateFragment()
-                        val transaction: FragmentTransaction =
-                            childFragmentManager.beginTransaction()
-                        transaction.replace(binding.parentFragmentContainer.id,
-                            doctorCertificateFragment)
-                            .commit()
-                    }
+                    0 -> beginDoctorDetailsFragment()
+                    1 -> beginDoctorWorkFragment()
+                    2 -> beginDoctorCommentFragment()
+                    3 -> beginDoctorCertificateFragment()
                 }
             }
         }
@@ -223,11 +246,10 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
         binding.rvDoctorAboutDetails.adapter = aboutDoctorItemAdapter
         binding.rvDoctorAboutDetails.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-
     }
 
     private fun getAboutDoctor(doctorId: Int) {
-        vm.doctorById(doctorId).observe(this) { doctorData ->
+        vm.getDoctorById(doctorId).observe(this) { doctorData ->
             when (doctorData.status) {
                 Status.LOADING -> {
                     binding.clTop.invisible()
@@ -250,7 +272,6 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
                     binding.clTop.visible()
                 }
             }
-
         }
     }
 
@@ -299,30 +320,53 @@ class AboutDoctorFragment : BaseFragment<FragmentAboutDoctorBinding, AboutDoctor
             doctorCommentFragment).commit()
     }
 
+    private fun beginDoctorCertificateFragment(){
+        val doctorCertificateFragment: Fragment = DoctorCertificateFragment()
+        val transaction: FragmentTransaction =
+            childFragmentManager.beginTransaction()
+
+        transaction.replace(binding.parentFragmentContainer.id,
+            doctorCertificateFragment)
+            .commit()
+    }
+
     private fun showCalendarDialog() {
-        resultDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
-        resultDialog!!.setContentView(dialogBinding.root)
-        resultDialog!!.show()
+        dateDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
+        dateDialog!!.setContentView(dialogDateBinding.root)
+        dateDialog!!.show()
     }
 
     private fun showTimeDialog() {
-        resultTimeDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
-        resultTimeDialog!!.setContentView(dialogTimeBinding.root)
-        resultTimeDialog!!.show()
+        timeDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
+        timeDialog!!.setContentView(dialogTimeBinding.root)
+        timeDialog!!.show()
+    }
+
+    private fun showSubSpecialityDialog() {
+        subSpecialityDialog = BottomSheetDialog(requireContext(), R.style.SheetDialog)
+        subSpecialityDialog!!.setContentView(dialogSubSpecialityBinding.root)
+        subSpecialityDialog!!.show()
     }
 
     private fun dismissCalendarDialog() {
-        if (resultDialog!!.isShowing) {
-            resultDialog!!.dismiss()
+        if (dateDialog!!.isShowing) {
+            dateDialog!!.dismiss()
         }
-        resultDialog!!.dismiss()
+        dateDialog!!.dismiss()
     }
 
     private fun dismissResultTimeDialog() {
-        if (resultTimeDialog!!.isShowing) {
-            resultTimeDialog!!.dismiss()
+        if (timeDialog!!.isShowing) {
+            timeDialog!!.dismiss()
         }
-        resultTimeDialog!!.dismiss()
+        timeDialog!!.dismiss()
+    }
+
+    private fun dismissSubSpecialityDialog() {
+        if (subSpecialityDialog!!.isShowing) {
+            subSpecialityDialog!!.dismiss()
+        }
+        subSpecialityDialog!!.dismiss()
     }
 
     override fun getLayoutResId() = R.layout.fragment_about_doctor

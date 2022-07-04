@@ -16,6 +16,7 @@ class DoctorCertificateFragment : BaseFragment<FragmentDoctorCertificateBinding,
 
     override fun onBound() {
         loadCertificate()
+        getCertificate("3")
     }
 
     private fun loadCertificate() {
@@ -39,7 +40,7 @@ class DoctorCertificateFragment : BaseFragment<FragmentDoctorCertificateBinding,
 
     }
 
-    fun getCertificate(username: String) {
+    private fun getCertificate(username: String) {
         vm.getCertificate(username).observe(this) { certificates ->
             when (certificates.status) {
                 Status.LOADING -> {}

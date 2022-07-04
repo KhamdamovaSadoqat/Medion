@@ -1,4 +1,4 @@
-package uz.medion.ui.main.user.appointment
+package uz.medion.ui.main.user.aboutDoctor
 
 import android.annotation.SuppressLint
 import android.content.Context

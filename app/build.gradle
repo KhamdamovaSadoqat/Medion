@@ -142,4 +142,7 @@ dependencies {
 
     //mask
     implementation 'ru.egslava:MaskedEditText:1.0.5'
+
+    //indicator
+    implementation 'com.tbuonomo:dotsindicator:4.2'
 }

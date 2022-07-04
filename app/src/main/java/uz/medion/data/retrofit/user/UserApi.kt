@@ -1,54 +1,29 @@
-package uz.medion.data.retrofit
+package uz.medion.data.retrofit.user
 
 import io.reactivex.Observable
 import retrofit2.http.*
 import uz.medion.data.model.*
-import uz.medion.data.model.doctor.DoctorGetResponse
 
-interface ApiInterface {
-
-    @GET("/api/v1/registration")
-    fun isRegistrationFlowAvailable(
-        @Header("username") userName: String,
-    ): Observable<IsRegistrationFlowAvailable>
-
-    @POST("/api/v1/registration/request") // createRegistrationRequest
-    fun requestMail(
-        @Body phoneNumber: RegistrationCreateRequest, // phone number
-    ): Observable<ResponseOfRequestEmail>
-
-    @Headers("Content-Type: application/json")
-    @POST("/api/v1/registration/{requestId}")
-    fun verifyAndRegisterUser(
-        @Path("requestId") requestId: String,
-        @Query("code") code: String,
-        @Body registrationRequest: RegistrationRequest,
-    ): Observable<RegistrationResponse>
-
-    @Headers("Content-Type: application/json")
-    @POST("/api/v1/auth/login")
-    fun login(
-        @Body login: Login,
-    ): Observable<UserLogin>
+interface UserApi {
 
     //HomeFragment:: About clinic
     @Headers("Content-Type: application/json")
     @GET("/api/v1/about/info")
-    fun aboutClinic(
+    fun getAboutClinic(
         @Header("Authorization") token: String,
     ): Observable<AboutClinicResponse>
 
     //HomeFragment:: Specialities
     @Headers("Content-Type: application/json")
     @GET("/api/v1/speciality/list")
-    fun speciality(
+    fun getSpeciality(
         @Header("Authorization") token: String,
     ): Observable<List<SpecialityItemResponse>>
 
     //OurDoctorsFragment:: Getting Doctors by Speciality
     @Headers("Content-Type: application/json")
     @GET
-    fun doctorsBySpeciality(
+    fun getDoctorsBySpeciality(
         @Url url: String,
         @Header("Authorization") token: String,
     ): Observable<List<DoctorResponse>>
@@ -56,7 +31,7 @@ interface ApiInterface {
     //Getting subSpeciality
     @Headers("Content-Type: application/json")
     @GET("/api/v1/sub-speciality/{specialityId}")
-    fun subSpeciality(
+    fun getSubSpeciality(
         @Path("specialityId") specialityId: Int,
         @Header("Authorization") token: String
     ): Observable<List<SubSpecialityResponse>>
@@ -64,7 +39,7 @@ interface ApiInterface {
     //Filtering doctors
     @Headers("Content-Type: application/json")
     @GET("/api/v1/booking/check")
-    fun filterDoctors(
+    fun getFilteredDoctors(
         @Query("date")date: String,
         @Query("specialityId") specialityId: Int,
         @Query("subSpecialityId") subSpecialityId: Int,
@@ -73,21 +48,21 @@ interface ApiInterface {
 
     //AboutDoctor:: Booking
     @GET("/api/v1/doctor/get/{id}")
-    fun  doctorById(
+    fun getDoctorById(
         @Path("id") id: Int,
         @Header("Authorization") token: String
     ): Observable<DoctorResponse>
 
     @Headers("Content-Type: application/json")
     @GET("/api/v1/booking/date")
-    fun monthlyDate(
+    fun getMonthlyDate(
         @Query("doctorId") doctorId: Int,
         @Header("Authorization") token: String,
     ): Observable<List<MonthlyDateResponse>>
 
     @Headers("Content-Type: application/json")
     @GET("/api/v1/booking/time")
-    fun monthlyTime(
+    fun getMonthlyTime(
         @Query("date") date: String,
         @Query("doctorId") doctorId: Int,
         @Header("Authorization") token: String,
@@ -95,7 +70,7 @@ interface ApiInterface {
 
     @Headers("Content-Type: application/json")
     @GET("/api/v1/booking/allBookings")
-    fun bookedEvent(
+    fun getBookedEvent(
         @Query("username") userName: String,
         @Header("Authorization") token: String
     ): Observable<List<BookingResponse>>
@@ -103,22 +78,22 @@ interface ApiInterface {
     //Address and contacts
     @Headers("Content-Type: application/json")
     @GET("/api/v1/branch")
-    fun branch(
+    fun getBranch(
         @Header("Authorization") token: String
     ): Observable<List<BranchResponse>>
 
     //About Doctor // comments
     @Headers("Content-Type: application/json")
     @GET("/api/v1/comment/{doctorId}")
-    fun comments(
+    fun getComments(
         @Path("doctorId") doctorId: Int,
         @Header("Authorization") token: String,
     ): Observable<List<CommentResponse>>
 
     @Headers("Content-Type: application/json")
     @POST("/api/v1/comment")
-    fun sendComment(
-        @Body comment: SendComment,
+    fun postComment(
+        @Body commentRequest: CommentRequest,
         @Header("Authorization") token: String,
     ): Observable<List<CommentResponse>>
 
@@ -133,25 +108,44 @@ interface ApiInterface {
     //MyDoctor //favourites
     @Headers("Content-Type: application/json")
     @GET("/api/v1/user/mydoctors")
-    fun myDoctors(
+    fun getMyDoctors(
         @Query("name") userName: String,
         @Header("Authorization") token: String,
     ): Observable<List<DoctorResponse>>
 
     @Headers("Content-Type: application/json")
     @GET("/api/v1/user/getfavorite")
-    fun myDoctorsFavourite(
+    fun getMyDoctorsFavourite(
         @Query("name") userName: String,
         @Header("Authorization") token: String,
     ): Observable<List<DoctorResponse>>
 
     @Headers("Content-Type: application/json")
     @POST("/api/v1/user/favorite/{doctorId}")
-    fun setDoctorFavourite(
+    fun postDoctorFavourite(
         @Path("doctorId") doctorId: Int,
         @Header("Authorization") token: String
     ): Observable<Boolean>
 
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/estetic/parent")
+    fun getEsteticMedicine(
+        @Header("Authorization") token: String
+    ): Observable<List<EsteticMedicineResponse>>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1/chat")
+    fun postChat(
+        @Header("Authorization") token: String,
+        @Body message: MessageRequest
+    ): Observable<Boolean>
+
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/chat/{chatId}")
+    fun getChatMessages(
+        @Header("Authorization") token: String,
+        @Path("chatId") chatId: Int
+    ): Observable<List<ChatMessagesResponse>>
 
 
     @Headers("Content-Type: application/json")

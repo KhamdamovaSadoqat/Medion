@@ -70,9 +70,10 @@ class OurDoctorsDetailsAdapter(private val itemClickListener: (Int) -> Unit) :
                 tvFullName.text = doctorDetailItem.fullName
                 tvCategoryOfDoctor.text = doctorDetailItem.workInfoList!![0]!!.position
                 tvClinicName.text = doctorDetailItem.workInfoList[0]!!.organization
-                tvExperience.text = doctorDetailItem.workExperience
-                tvComments.text = doctorDetailItem.commentCount.toString()
-//                tvDetail.text
+                val exp = context.getString(R.string.experience, doctorDetailItem.workExperience)
+                tvExperience.text = exp
+                val comment = context.getString(R.string.comment,  doctorDetailItem.commentCount.toString())
+                tvComments.text = comment
             }
         }
     }

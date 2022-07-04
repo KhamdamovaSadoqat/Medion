@@ -13,7 +13,6 @@ import com.bumptech.glide.request.transition.Transition
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import uz.medion.R
 
-
 object ImageDownloader {
     @SuppressLint("CheckResult")
     fun loadImage(
@@ -43,11 +42,9 @@ object ImageDownloader {
                         setPlaceHolder(R.drawable.ic_image_placeholder, R.drawable.ic_loading_error)
                     load(uri, imageView)
                 }
-
-
         } else {
             Glide.with(context)
-                .load(uri)
+                .load(uri.toString().removeSpaces())
                 .apply {
                     if (placeHolderRes != null)
                         placeholder(placeHolderRes)
@@ -57,6 +54,7 @@ object ImageDownloader {
                         error(errorRes)
                     else
                         error(R.drawable.ic_loading_error)
+
                     into(imageView)
                 }
         }
@@ -77,12 +75,7 @@ object ImageDownloader {
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                     onResponse.invoke(resource)
                 }
-
-                override fun onLoadCleared(placeholder: Drawable?) {
-
-                }
-
+                override fun onLoadCleared(placeholder: Drawable?) {}
             })
-
     }
 }

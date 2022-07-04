@@ -2,7 +2,7 @@ package uz.medion.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class SendComment(
+data class CommentRequest(
 
 	@field:SerializedName("score")
 	val score: Int? = null,

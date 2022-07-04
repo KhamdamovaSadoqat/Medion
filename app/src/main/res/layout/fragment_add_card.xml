@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.user.payment.AddCardFragment">
+        tools:context=".ui.main.user.appointment.payment.AddCardFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_add_card"

@@ -18,10 +18,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import retrofit2.HttpException
 import uz.medion.R
-import uz.medion.BR
 import uz.medion.data.constants.Constants
 import uz.medion.data.local.PrefsHelper
-import uz.medion.data.retrofit.ApiClient
+import uz.medion.data.retrofit.user.UserApiClient
 import java.io.IOException
 import java.net.ConnectException
 import java.util.*
@@ -211,7 +210,7 @@ abstract class BaseActivity<T: ViewDataBinding, V: BaseVM> : AppCompatActivity()
      */
     @SuppressWarnings("deprecation")
     override fun setLanguage(language: String) {
-        ApiClient.restartRetrofit()
+        UserApiClient.restartRetrofit()
         Constants.language = language
         prefs.language = language
         val dm = resources.displayMetrics
@@ -229,7 +228,7 @@ abstract class BaseActivity<T: ViewDataBinding, V: BaseVM> : AppCompatActivity()
     //app needs to load resources in the locale that was set by user last time.
     override fun attachBaseContext(context: Context) {
         prefs =
-            PrefsHelper(gson, PreferenceManager.getDefaultSharedPreferences(context))
+            PrefsHelper(PreferenceManager.getDefaultSharedPreferences(context))
         super.attachBaseContext(updateBaseContextLocale(context))
     }
 

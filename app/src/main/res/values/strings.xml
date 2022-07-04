@@ -65,8 +65,8 @@
     <!-- ourDoctor -->
     <string name="main_doctor_of_urology">Главное врач Урология</string>
     <string name="_4_6">4.6</string>
-    <string name="experience"><b>22</b> года стажа</string>
-    <string name="comment"><b>64</b> отзыва</string>
+    <string name="experience"><b>%s</b> года стажа</string>
+    <string name="comment"><b>%s</b> отзыва</string>
     <string name="clinic_name">Медицинский центр MEDION CLINIC,AESTHETIC &amp; SPA</string>
     <string name="doc_detail">Повторная консультация уролога в течение 2-х недель</string>
     <string name="doctor_s_appointment">Назначение врача</string>
